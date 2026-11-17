@@ -1,0 +1,10 @@
+{
+  "order": 12,
+  "score_power_cap": 3,
+  "proved": false,
+  "status": "diverging_numerical_attempt_stopped",
+  "observation": "After widening numerical search limits, objective magnitudes exceeded 1e17 while the dual residual factor remained about 0.95. No feasible identity was obtained.",
+  "stopped_utc": "2026-11-17T11:01:49.368877+00:00",
+  "log": "logs/sos_truncated_m12_cap3_wide.log",
+  "interpretation": "Failure of this numerical attempt is not a proof of infeasibility or a counterexample."
+}

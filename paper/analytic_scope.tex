@@ -137,3 +137,18 @@ failure remains open in this computational record.
 
 \paragraph{Additional verified orders.}
 Exact rational quotient certificates and independent verification now cover orders 9, 10, 11. The machine-readable verification records and certificate hashes are stored in \texttt{checkpoints/research\_status.json}.
+
+\paragraph{Downward propagation of a higher-order certificate.}
+A universal sign certificate at an order $M$ also implies the signs at every
+smaller positive order. Indeed, at positive heat times the conditional-Hermite
+bounds above and weighted homogeneity give
+$|S_r(P_tp)|\le C_r t^{-r}$. Since
+$\partial_t S_r(P_tp)=-S_{r+1}(P_tp)$ and $S_r(P_tp)\to0$ as $t\to\infty$,
+\[
+ S_r(P_tp)=\int_t^\infty S_{r+1}(P_sp)\,ds.
+\]
+Induction propagates nonnegativity downward, and the stated endpoint argument
+then applies. A sharp variance bound at order $M$ propagates in the same way,
+because integration of $(M-1)!/[2(v+s)^M]$ gives
+$(M-2)!/[2(v+t)^{M-1}]$. This observation motivates searching directly for
+higher-order certificates; it supplies no new higher-order sign by itself.

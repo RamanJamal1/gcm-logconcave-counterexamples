@@ -1,0 +1,12 @@
+{
+  "order": 15,
+  "dimensions": [
+    176,
+    135
+  ],
+  "rows": 1039,
+  "nonzero_entries": 6987430,
+  "proved": false,
+  "method": "Original sparse exact coefficient constraints, row-scaled in float64; no dense whitening",
+  "seconds": 16.31138038635254
+}
