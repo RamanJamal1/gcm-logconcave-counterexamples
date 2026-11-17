@@ -1,7 +1,7 @@
 {
   "order": 13,
-  "segment": 2,
-  "status": "running",
+  "segment": 3,
+  "status": "segment_complete",
   "proved": false,
   "history": [
     {
@@ -29,14 +29,27 @@
       "residual": 583.3934315658465,
       "segment": 2,
       "seconds": 645.7411291599274
+    },
+    {
+      "order": 13,
+      "proved": false,
+      "status": "numerical_segment_candidate",
+      "normalization": 479001600,
+      "min_scaled_eigenvalues": [
+        41.523153408459194,
+        34.7520603964839
+      ],
+      "residual": 300.0631432085695,
+      "segment": 3,
+      "seconds": 647.8010592460632
     }
   ],
   "precision_bits": 64,
   "iterations_per_segment": 1,
-  "initial_file": "logs/native_m13_segment_2.ini-s",
-  "last_residual": 583.3934315658465,
+  "initial_file": "logs/native_m13_segment_3.ini-s",
+  "last_residual": 300.0631432085695,
   "min_scaled_eigenvalues": [
-    131.13885245919056,
-    73.89561209668373
+    41.523153408459194,
+    34.7520603964839
   ]
 }
