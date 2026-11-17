@@ -1,0 +1,83 @@
+{
+  "convention": "Boltzmann H=integral p log p, generator (1/2)dxx",
+  "density": "standard_normal(x)*(1+(1/10)*sin(x))",
+  "strict_convexity_global_lower_bound": "71/81",
+  "proof_of_convexity": "Vxx=1-qxx/q+(qx/q)^2 >=1-|qxx|/q >=8/9; conservative 71/81 also valid",
+  "digits": 140,
+  "finite_difference": {
+    "scheme": "24-point forward on nonnegative heat times",
+    "step": "0.0001",
+    "exact_rational_weights": true
+  },
+  "convolution": "exact Gaussian conditioning formula, outer high-precision Gauss-Hermite integration",
+  "runs": [
+    {
+      "nodes": 192,
+      "results": {
+        "9": {
+          "integrand": "-31767.18686574461089485882888232008972614311549566411687350211728978842",
+          "heat_convolution_forward_difference": "-31767.1868657446108970336014833060985375048863436471362216414447318393",
+          "relative_error": "6.8459716316e-20",
+          "passed": true
+        },
+        "10": {
+          "integrand": "330634.8396996268678519831235475190378949734633324586555990320717878998",
+          "heat_convolution_forward_difference": "330634.8396996268671386932006436164888153811148219742852148391194801364",
+          "relative_error": "2.15733442837e-18",
+          "passed": true
+        },
+        "11": {
+          "integrand": "-3905125.143796147239845164898514920006342105914152149525090879316547638",
+          "heat_convolution_forward_difference": "-3905125.143796147468375160320392142817677238170370710539885676301647622",
+          "relative_error": "5.85205305866e-17",
+          "passed": true
+        },
+        "12": {
+          "integrand": "51667295.82143684382246040183940012834599771830474281763985952626041043",
+          "heat_convolution_forward_difference": "51667295.82143677205588848294248520050264483171530476257261754682041584",
+          "relative_error": "1.38901350996e-15",
+          "passed": true
+        }
+      }
+    },
+    {
+      "nodes": 256,
+      "results": {
+        "9": {
+          "integrand": "-31767.18686574461089703350357363958951800540886891067902548359353638658",
+          "heat_convolution_forward_difference": "-31767.1868657446108970336016720005426460345916203845164910648735485228",
+          "relative_error": "3.0880405422e-24",
+          "passed": true
+        },
+        "10": {
+          "integrand": "330634.8396996268671387352831853022714134407119543642901531984443912071",
+          "heat_convolution_forward_difference": "330634.839699626867138693194667488045101389851134486891268254515358732",
+          "relative_error": "1.27296076398e-22",
+          "passed": true
+        },
+        "11": {
+          "integrand": "-3905125.143796147468357327165991715845956397069817517836357897993371038",
+          "heat_convolution_forward_difference": "-3905125.143796147468375158960143655995741283993909003353590932538227675",
+          "relative_error": "4.56625421602e-21",
+          "passed": true
+        },
+        "12": {
+          "integrand": "51667295.82143677206335474048131237168608240628928785025390342511005346",
+          "heat_convolution_forward_difference": "51667295.82143677205588834605903745279041300381440871277954313919238063",
+          "relative_error": "1.44509100071e-19",
+          "passed": true
+        }
+      }
+    }
+  ],
+  "cross_resolution_relative_errors": {
+    "9": "6.84566342154e-20",
+    "10": "2.15720715037e-18",
+    "11": "5.8515963984e-17",
+    "12": "1.38886900351e-15"
+  },
+  "generated_backend_smoke_check": "passed",
+  "elapsed_seconds": 50.81699800491333,
+  "rigorous_interval_certificate": false,
+  "passed": true
+}
