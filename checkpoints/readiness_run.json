@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "seed": 260830275,
-  "generation": 3,
+  "generation": 4,
   "gpu_evaluations": 64,
-  "refinement_evaluations": 7,
+  "refinement_evaluations": 8,
   "best": {
     "6": {
       "parameters": {
@@ -20,7 +20,7 @@
     }
   },
   "certificates": [],
-  "status": "running",
+  "status": "bounded_run_complete",
   "errors": [],
   "backend": "torch_cuda",
   "device": "NVIDIA RTX A6000",
