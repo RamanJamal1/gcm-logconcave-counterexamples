@@ -46,7 +46,7 @@
     }
   },
   "certificates": [],
-  "status": "running",
+  "status": "stopped_for_new_order12_family",
   "errors": [],
   "pending_certifications": [],
   "strategy": "differential evolution with random immigration and FP64 L-BFGS",
@@ -69,5 +69,6 @@
     0,
     0,
     0
-  ]
+  ],
+  "reason": "Orders10 and11 now have exact certificates; supplementary resources reassigned to a broader order12 family."
 }
