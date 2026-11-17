@@ -1,0 +1,6 @@
+{
+  "order": 9,
+  "status": "solver_error",
+  "error": "Solver 'SDPA' failed. Try another solver, or solve with verbose=True for more information.",
+  "proved": false
+}

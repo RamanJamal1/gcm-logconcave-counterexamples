@@ -1,22 +1,22 @@
 \section{An explicit certified upper bound}
-\begin{proposition}[A rational-parameter order-46 witness]
+\begin{proposition}[A rational-parameter order-17 witness]
 Let
 \[
- p(x)=\frac{e^{-x^2/4096}}{Z}
- \left(1+\frac{\cos x}{16384}+\frac{\cos2x}{2^{56}}\right),\qquad
- Z=64\sqrt\pi\left(1+\frac{e^{-1024}}{16384}+\frac{e^{-4096}}{2^{56}}\right).
+ p(x)=\frac{e^{-33x^2/2000}}{Z}
+ \left(1+\frac{\cos x}{32}+\frac{\cos2x}{270000}\right),\qquad
+ Z=\sqrt{\frac{2000\pi}{33}}\left(1+\frac{e^{-500/33}}{32}+\frac{e^{-2000/33}}{270000}\right).
 \]
 Then $p$ is smooth, positive, and a probability density, and
 \[
- (-\log p)''>\frac1{2500},\qquad S_{46}(p)<-\frac1{50000}.
+ (-\log p)''>\frac1{2000},\qquad S_{17}(p)<-\frac1{20}.
 \]
-In particular, the first failing order is no larger than 46.
+In particular, the first failing order is no larger than 17.
 \end{proposition}
 \begin{proof}[Computer-assisted proof and error bounds]
-Write $a=2^{-14}$, $b=2^{-56}$, and $\kappa=2^{-11}$.
+Write $a=1/32$, $b=1/270000$, and $\kappa=33/1000$.
 The positivity and normalization assertions follow from $a+b<1$ and
 Gaussian Fourier integration. The elementary bound
-$V''\ge\kappa-(a+4b)/(1-a-b)>1/2500$ uses exact rational arithmetic.
+$V''\ge\kappa-(a+4b)/(1-a-b)>1/2000$ uses exact rational arithmetic.
 
 For the entropy derivative, set $d=1+\kappa t$, $\tau=t/d$,
 $\lambda=\kappa d$, and $r(\tau,y)=1+ae^{-\tau/2}\cos y+be^{-2\tau}\cos2y$.
@@ -63,18 +63,18 @@ sum of the two error bounds divided by $\Xi$, where
 \[
  M_m=m!\kappa^{m-1}\left(\frac a2 e^{-1/(2\kappa)}+2be^{-2/\kappa}\right).
 \]
-These are the exact Gaussian entropy and second-moment contributions. With $N=96$, $K=0$, and 200 decimal digits, outward-rounded Arb
+These are the exact Gaussian entropy and second-moment contributions. With $N=128$, $K=16$, and 200 decimal digits, outward-rounded Arb
 arithmetic, including both errors, gives
 \[
- S_{46}(p)\in[-2.280758403046968\cdot10^{-5},
-              -2.280758403046967\cdot10^{-5}].
+ S_{17}(p)\in[-0.058078835675198101,
+              -0.058078835675198100].
 \]
 The full enclosure and parameters are stored in
-\texttt{certs/fourier\_series\_m46.json}. The program is
+\texttt{certs/simple\_fourier\_m17.json}. The program is
 \texttt{src/certify\_fourier\_series.py}; independent checks compare lower-order
 outputs with spatial Arb quadrature and the order-48 time-change polynomial
 with direct Arb power-series exponentiation.
 \end{proof}
 This witness gives an upper bound, not minimality. Together with the
 lower-order certificates and their endpoint hypotheses, it brackets the
-remaining question between orders nine and 46.
+remaining question between orders nine and 17.
