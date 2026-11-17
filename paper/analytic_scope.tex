@@ -101,7 +101,7 @@ In particular,
 \[
  S_6(p)v^6\ge60,\qquad S_7(p)v^7\ge360,\qquad S_8(p)v^8\ge2520.
 \]
-The Gaussian attains each bound. The positive-time smoothing argument extends
+Equality holds if and only if the density is Gaussian. The positive-time smoothing argument extends
 these bounds to arbitrary log-concave inputs at positive heat times, with
 $v$ replaced by $v+t$; the endpoint argument applies when the indicated
 right entropy derivative exists in the Taylor sense.
@@ -114,6 +114,20 @@ $\mathbb E[(-u_2)^m]\ge(\mathbb E[-u_2])^m=I(p)^m$.
 The score identity $\mathbb E[(X-\mathbb EX)u_1(X)]=-1$ and Cauchy--Schwarz
 give $vI(p)\ge1$. Combining these bounds proves the assertions.
 For a Gaussian, all $u_j$, $j\ge3$, vanish, and equality holds throughout.
+Conversely, equality forces equality in the score Cauchy--Schwarz inequality,
+so $u_1(x)=-(x-\mathbb EX)/v$ almost everywhere. Smooth positivity then
+identifies $p$ as the Gaussian of that mean and variance.
+More quantitatively, if $S_m(p)v^m\le c_m(1+\varepsilon)$, where
+$c_m=(m-1)!/2$, the preceding chain gives
+\[
+ 0\le vI(p)-1\le(1+\varepsilon)^{1/m}-1,\qquad
+ \mathbb E\!\left[\left(\sqrt v\,u_1(X)+
+ \frac{X-\mathbb EX}{\sqrt v}\right)^2\right]=vI(p)-1.
+\]
+Thus every variance-normalized minimizing sequence has vanishing
+relative score discrepancy from its matching Gaussian. This structural
+statement follows from the exact lower bound, rather than from numerical
+clustering of the search candidates.
 The stated smoothing and endpoint extensions follow as before.
 \end{proof}
 Thus a finite negative derivative at orders six through 11 cannot

@@ -1,0 +1,27 @@
+{
+  "order": 12,
+  "segment": 1,
+  "status": "running",
+  "proved": false,
+  "history": [
+    {
+      "order": 12,
+      "proved": false,
+      "status": "numerical_segment_candidate",
+      "normalization": 39916800,
+      "min_scaled_eigenvalues": [
+        2.348265916303682e-05,
+        0.00010735632273086434
+      ],
+      "residual": 0.00021011331027942504,
+      "segment": 1,
+      "seconds": 143.28545212745667
+    }
+  ],
+  "initial_file": "logs/native_m12_segment_1.ini-s",
+  "last_residual": 0.00021011331027942504,
+  "min_scaled_eigenvalues": [
+    2.348265916303682e-05,
+    0.00010735632273086434
+  ]
+}

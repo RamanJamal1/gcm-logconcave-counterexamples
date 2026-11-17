@@ -21,3 +21,8 @@ __pycache__/
 !MORNING_BRIEFING.md
 
 *.tmp
+
+# Working solver matrices and crash dumps are local-only.
+logs/
+core
+core.*

@@ -1,7 +1,7 @@
 # Overnight research results: log-concave GCM
 
 **Provisional report — research is still running.**
-Updated 2026-11-17 09:42:45 UTC. Scheduled interval: 2026-11-17T06:02:55.131528+00:00 to 2026-11-17T14:02:00+00:00.
+Updated 2026-11-17 09:56:17 UTC. Scheduled interval: 2026-11-17T06:02:55.131528+00:00 to 2026-11-17T14:02:00+00:00.
 
 **The exact minimal order remains unresolved. The verified bracket is 12 ≤ m* ≤ 16.**
 
@@ -36,7 +36,7 @@ Certified signed derivative: `S16 < -1/2`, with an enclosure near `-0.5721296782
 
 The sharp bound `S_m Var(p)^m ≥ (m-1)!/2` is independently verified throughout orders 6–11; the additional constants at orders 9, 10, and 11 are 20,160, 181,440, and 1,814,400.
 
-The Gaussian attains these proven bounds. Numerical values can differ in their last digits because of rounding; they are not the proof. The infimum of the unnormalized derivative is zero under dilation, so normalization is essential.
+The Gaussian uniquely attains these proven bounds. For a normalized minimizing sequence, the relative score discrepancy from the matching Gaussian tends to zero; the note gives an explicit bound. Numerical values can differ in their last digits because of rounding; they are not the proof. The infimum of the unnormalized derivative is zero under dilation, so normalization is essential.
 
 [certs/exact_mckean_m6.json](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/exact_mckean_m6.json), [certs/exact_mckean_m7.json](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/exact_mckean_m7.json), [certs/exact_mckean_m8.json](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/exact_mckean_m8.json).
 
@@ -44,20 +44,20 @@ The Gaussian attains these proven bounds. Numerical values can differ in their l
 
 GPU: NVIDIA RTX A6000, 49,140 MiB reported memory. The environment exposed 8 CPU cores and 62.8 GiB host RAM; these observed values differ from the requested 6-core/48-GB specification. The filesystem reported about 206.9 GB total capacity. PyTorch/CUDA executed the search; it was not a CPU-only run.
 
-Production FP32 candidate evaluations: **41,213,952**.
-Recorded FP64 refined candidates: **406,400**. These are evaluations, not necessarily unique densities; warmups/readiness tests and uncheckpointed interrupted partial generations are excluded.
+Production FP32 candidate evaluations: **46,784,512**.
+Recorded FP64 refined candidates: **449,920**. These are evaluations, not necessarily unique densities; warmups/readiness tests and uncheckpointed interrupted partial generations are excluded.
 
 | Campaign | Saved status | FP32 evaluations | FP64 refinements |
 |---|---|---:|---:|
 | campaign_A | bounded_run_complete | 11,468,800 | 154,112 |
-| campaign_B | running | 27,197,440 | 212,480 |
+| campaign_B | chunk_complete | 32,768,000 | 256,000 |
 | higher_campaign | stopped_for_new_order12_family | 1,630,208 | 25,472 |
 | polynomial_campaign | interrupted_exit143 | 32,768 | 512 |
 | polynomial_wide_campaign | bounded_run_complete | 884,736 | 13,824 |
 
 Campaign B used 65,536 simultaneous FP32 candidates, selected 512 elites, and used FP64 refinement with 2,049- and 4,097-point resolution checks. Campaign C uses a periodic GPU approximation only to screen rationalized parameters; retained negative results require full spatial Arb certification. Supplementary searches include polynomial curvature, signed higher harmonics, asymmetric phases, localized Fourier modes, and convex quartic deformations.
 
-Resource sampling began at 2026-11-17T09:02:01.851026+00:00; 81 observations were recorded. Maximum observed host nonavailable-memory estimate: 5.46 GiB. Maximum sampled GPU memory use during that monitoring interval: 5,718 MiB. Earlier compiled-batch validation measured a 5.73-GB allocation. Sampling is not a continuous proof of a resource bound. Certification process pools were capped at four workers.
+Resource sampling began at 2026-11-17T09:02:01.851026+00:00; 108 observations were recorded. Maximum observed host nonavailable-memory estimate: 6.10 GiB. Maximum sampled GPU memory use during that monitoring interval: 5,718 MiB. Earlier compiled-batch validation measured a 5.73-GB allocation. Sampling is not a continuous proof of a resource bound. Certification process pools were capped at four workers.
 
 ## Validation, limitations, and files
 
