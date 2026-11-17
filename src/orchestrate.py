@@ -51,7 +51,7 @@ def main(args):
  state['pending_certifications']=[j for j in state['pending_certifications'] if not Path(j['path']).exists()]
  try:
   while time.monotonic()-start<args.seconds and state['generation']-initial_generation<args.generations:
-   g=state['generation'];family=FAMILIES[g%4];order=6+(g//4)%3;remaining=args.batch;elites=[];scores=[];micro=args.microbatch
+   g=state['generation'];family=FAMILIES[g%4];order=args.orders[(g//4)%len(args.orders)];remaining=args.batch;elites=[];scores=[];micro=args.microbatch
    while remaining:
     n=min(micro,remaining)
     try:
@@ -80,6 +80,7 @@ def main(args):
        c=parameters(optimized[j],family);entry={'parameters':c,'normalized':val,'signed':float(fine[1][j,order-6]),'convexity_bound':curvature,'certified':False,'generation':g,'grid':2*args.dense_grid-1}
        state['best'][str(order)]=entry;atomic_json(ROOT/f'checkpoints/elite_m{order}.json',entry);improved=True
        if entry['signed']<-1e-8:
+        atomic_json(ROOT/f'checkpoints/m{order}_hits/g{g}_{j}.json',entry)
         target=ROOT/f'certs/m{order}_g{g}_{j}.json';state['pending_certifications'].append({'path':str(target),'candidate':c,'order':order});save();pending.append((str(target),pool.submit(certification_job,c,order,target)))
        save(sync=True)
     except (RuntimeError,FloatingPointError) as e:
@@ -102,4 +103,4 @@ def main(args):
  print(json.dumps({'status':state['status'],'state':str(path),'best':state['best']},indent=2))
 
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--seconds',type=float,default=60);p.add_argument('--generations',type=int,default=12);p.add_argument('--batch',type=int,default=32768);p.add_argument('--microbatch',type=int,default=128);p.add_argument('--elites',type=int,default=512);p.add_argument('--refine-chunk',type=int,default=4);p.add_argument('--refine-steps',type=int,default=8);p.add_argument('--grid',type=int,default=513);p.add_argument('--dense-grid',type=int,default=2049);p.add_argument('--terms',type=int,default=3);p.add_argument('--workers',type=int,default=4);p.add_argument('--seed',type=int,default=260830275);p.add_argument('--state',default='checkpoints/campaign.json');p.add_argument('--resume',action='store_true');p.add_argument('--sync-seconds',type=float,default=1500);p.add_argument('--sync',action='store_true');main(p.parse_args())
+ p=argparse.ArgumentParser();p.add_argument('--orders',type=int,nargs='+',default=[6,7,8]);p.add_argument('--seconds',type=float,default=60);p.add_argument('--generations',type=int,default=12);p.add_argument('--batch',type=int,default=32768);p.add_argument('--microbatch',type=int,default=128);p.add_argument('--elites',type=int,default=512);p.add_argument('--refine-chunk',type=int,default=4);p.add_argument('--refine-steps',type=int,default=8);p.add_argument('--grid',type=int,default=513);p.add_argument('--dense-grid',type=int,default=2049);p.add_argument('--terms',type=int,default=3);p.add_argument('--workers',type=int,default=4);p.add_argument('--seed',type=int,default=260830275);p.add_argument('--state',default='checkpoints/campaign.json');p.add_argument('--resume',action='store_true');p.add_argument('--sync-seconds',type=float,default=1500);p.add_argument('--sync',action='store_true');main(p.parse_args())
