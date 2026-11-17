@@ -1,7 +1,7 @@
 {
   "order": 12,
-  "segment": 10,
-  "status": "running",
+  "segment": 11,
+  "status": "segment_complete",
   "proved": false,
   "history": [
     {
@@ -133,13 +133,26 @@
       "residual": 0.00019002124835409973,
       "segment": 10,
       "seconds": 379.46877884864807
+    },
+    {
+      "order": 12,
+      "proved": false,
+      "status": "numerical_segment_candidate",
+      "normalization": 39916800,
+      "min_scaled_eigenvalues": [
+        1.4727417356145628e-05,
+        0.00015638931726764697
+      ],
+      "residual": 0.00015567820576656288,
+      "segment": 11,
+      "seconds": 381.1229362487793
     }
   ],
-  "last_residual": 0.00019002124835409973,
+  "last_residual": 0.00015567820576656288,
   "min_scaled_eigenvalues": [
-    1.4323388797252531e-05,
-    0.00014629652035791666
+    1.4727417356145628e-05,
+    0.00015638931726764697
   ],
   "warm_start_abandoned": "Near-feasible but ill-conditioned warm Gram stalled at zero iterations; restart from default identity.",
-  "initial_file": "logs/native_m12_segment_10.ini-s"
+  "initial_file": "logs/native_m12_segment_11.ini-s"
 }

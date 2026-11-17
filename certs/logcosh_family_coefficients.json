@@ -1,0 +1,173 @@
+{
+  "status": "complete",
+  "records": [
+    {
+      "order": 2,
+      "proved_positive_on_parameter_domain": true,
+      "negative_coefficient_count": 0,
+      "coefficient_count": 3,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": [
+        [
+          [
+            6,
+            2
+          ],
+          "1/2"
+        ],
+        [
+          [
+            5,
+            1
+          ],
+          "2"
+        ],
+        [
+          [
+            4,
+            1
+          ],
+          "2"
+        ]
+      ]
+    },
+    {
+      "order": 3,
+      "proved_positive_on_parameter_domain": false,
+      "negative_coefficient_count": 1,
+      "coefficient_count": 8,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": null
+    },
+    {
+      "order": 4,
+      "proved_positive_on_parameter_domain": false,
+      "negative_coefficient_count": 3,
+      "coefficient_count": 17,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": null
+    },
+    {
+      "order": 5,
+      "proved_positive_on_parameter_domain": false,
+      "negative_coefficient_count": 7,
+      "coefficient_count": 28,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": null
+    },
+    {
+      "order": 6,
+      "proved_positive_on_parameter_domain": false,
+      "negative_coefficient_count": 6,
+      "coefficient_count": 43,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": null
+    },
+    {
+      "order": 7,
+      "proved_positive_on_parameter_domain": false,
+      "negative_coefficient_count": 16,
+      "coefficient_count": 60,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": null
+    },
+    {
+      "order": 8,
+      "proved_positive_on_parameter_domain": false,
+      "negative_coefficient_count": 18,
+      "coefficient_count": 81,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": null
+    },
+    {
+      "order": 9,
+      "proved_positive_on_parameter_domain": false,
+      "negative_coefficient_count": 22,
+      "coefficient_count": 104,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": null
+    },
+    {
+      "order": 10,
+      "proved_positive_on_parameter_domain": false,
+      "negative_coefficient_count": 29,
+      "coefficient_count": 131,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": null
+    },
+    {
+      "order": 11,
+      "proved_positive_on_parameter_domain": false,
+      "negative_coefficient_count": 37,
+      "coefficient_count": 160,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": null
+    },
+    {
+      "order": 12,
+      "proved_positive_on_parameter_domain": false,
+      "negative_coefficient_count": 47,
+      "coefficient_count": 193,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": null
+    },
+    {
+      "order": 13,
+      "proved_positive_on_parameter_domain": false,
+      "negative_coefficient_count": 56,
+      "coefficient_count": 228,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": null
+    },
+    {
+      "order": 14,
+      "proved_positive_on_parameter_domain": false,
+      "negative_coefficient_count": 64,
+      "coefficient_count": 267,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": null
+    },
+    {
+      "order": 15,
+      "proved_positive_on_parameter_domain": false,
+      "negative_coefficient_count": 70,
+      "coefficient_count": 308,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": null
+    },
+    {
+      "order": 16,
+      "proved_positive_on_parameter_domain": false,
+      "negative_coefficient_count": 85,
+      "coefficient_count": 353,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": null
+    },
+    {
+      "order": 17,
+      "proved_positive_on_parameter_domain": false,
+      "negative_coefficient_count": 99,
+      "coefficient_count": 400,
+      "domain": "alpha=a>0, beta^2=a^2(1-s), 0<s<=1",
+      "denominator": "product(a+j for j=0,...,2m-1)",
+      "positive_polynomial_terms": null
+    }
+  ],
+  "seconds": 1.3292031288146973,
+  "note": "Coefficient positivity is a sufficient exact criterion. False entries are inconclusive."
+}

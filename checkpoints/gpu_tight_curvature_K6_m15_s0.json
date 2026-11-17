@@ -1,0 +1,30 @@
+{
+  "order": 15,
+  "terms": 6,
+  "amplitudes": [
+    0.007999999999999997,
+    2.602802673501264e-07,
+    -8.771311906759151e-11,
+    7.99480008446626e-14,
+    -8.574462792445119e-17,
+    2.8232456256907485e-19
+  ],
+  "sine_amplitudes": [
+    0.0,
+    1.970845263967988e-09,
+    4.419267096611487e-12,
+    2.1683039288753766e-13,
+    -4.703164001055542e-15,
+    8.663581494247571e-17
+  ],
+  "kappa": 0.008063603844233923,
+  "periodic_surrogate": 5.888695686683719e-05,
+  "normalized_screen": 0.9201087010443318,
+  "coarse_fine_error": 1.8228149024912543e-18,
+  "certified": false,
+  "calls": 166,
+  "refinement_candidates": 96,
+  "seconds": 41.19311499595642,
+  "curvature_method": "grid maximum plus global fourth-log-derivative interpolation bound (floating screening)",
+  "note": "Periodic surrogate with full Gaussian corrections omitted; requires spatial certificate"
+}
