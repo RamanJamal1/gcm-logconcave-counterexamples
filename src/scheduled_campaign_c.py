@@ -12,7 +12,7 @@ def main():
    if state.get('status')=='bounded_run_complete':break
   time.sleep(30)
  schedule=json.loads((ROOT/'checkpoints/overnight_schedule.json').read_text());schedule.update(phase='C',status='campaign_C_running',campaign_C_started_utc=datetime.datetime.now(datetime.timezone.utc).isoformat());(ROOT/'checkpoints/overnight_schedule.json').write_text(json.dumps(schedule,indent=2)+'\n')
- from campaign_c import main as campaign
+ from campaign_c_multimode import main as campaign
  campaign(seconds=3600,batch=65536,sync=True)
  schedule.update(phase='certification_and_report',status='campaign_C_complete');(ROOT/'checkpoints/overnight_schedule.json').write_text(json.dumps(schedule,indent=2)+'\n')
  print('Campaign C complete',flush=True)

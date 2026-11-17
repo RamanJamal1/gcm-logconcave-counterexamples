@@ -1,0 +1,26 @@
+{
+  "status": "bounded_run_complete",
+  "gpu_evaluations": 6144,
+  "refinement_evaluations": 1536,
+  "generation": 3,
+  "certifications": 24,
+  "best_certified": {
+    "16": {
+      "signed": -0.7399421397559678,
+      "parameters": {
+        "amplitudes": [
+          "40/637",
+          "1/46300",
+          "-1/20400000"
+        ],
+        "kappa": "59/879"
+      },
+      "certificate": "certs/campaign_C_m16_best.json"
+    }
+  },
+  "errors": [],
+  "method": "rational multi-harmonic GPU periodic screening; full spatial Arb verification",
+  "order": 16,
+  "device": "NVIDIA RTX A6000",
+  "elapsed_seconds": 53.459264039993286
+}
