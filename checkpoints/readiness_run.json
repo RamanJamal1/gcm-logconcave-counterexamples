@@ -46,7 +46,7 @@
     }
   },
   "certificates": [],
-  "status": "running",
+  "status": "bounded_run_complete",
   "errors": [],
   "backend": "torch_cuda",
   "device": "NVIDIA RTX A6000",

@@ -1,6 +1,6 @@
 # GCM research progress
 
-Status: running
+Status: bounded_run_complete
 GPU evaluations: 192
 Completed generations: 12
 
