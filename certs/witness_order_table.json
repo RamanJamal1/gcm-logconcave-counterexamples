@@ -1,0 +1,32 @@
+[
+  {
+    "order": 6,
+    "signed_derivative_interval": "[0.00470855509837029108 +/- 1.32e-21]",
+    "negative": false,
+    "certificate": "certs/witness_order_table/m6.json"
+  },
+  {
+    "order": 7,
+    "signed_derivative_interval": "[0.00814249917834257331 +/- 5.13e-21]",
+    "negative": false,
+    "certificate": "certs/witness_order_table/m7.json"
+  },
+  {
+    "order": 8,
+    "signed_derivative_interval": "[0.014996902306619040904 +/- 5.39e-22]",
+    "negative": false,
+    "certificate": "certs/witness_order_table/m8.json"
+  },
+  {
+    "order": 12,
+    "signed_derivative_interval": "[0.281161966724305670893 +/- 6.72e-22]",
+    "negative": false,
+    "certificate": "certs/witness_order_table/m12.json"
+  },
+  {
+    "order": 13,
+    "signed_derivative_interval": "[0.614252053171316591106 +/- 7.46e-22]",
+    "negative": false,
+    "certificate": "certs/witness_order_table/m13.json"
+  }
+]

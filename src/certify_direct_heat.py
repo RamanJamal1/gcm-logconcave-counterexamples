@@ -13,8 +13,8 @@ from flint import arb,acb,acb_series,ctx
 def rat(s):
  f=Fraction(str(s));return arb(f.numerator)/f.denominator
 
-def certify(source,L=120,dps=200):
- start=time.time();ctx.dps=dps;data=json.loads(Path(source).read_text());m=data['order'];ctx.cap=m+1
+def certify(source,L=120,dps=200,order_override=None):
+ start=time.time();ctx.dps=dps;data=json.loads(Path(source).read_text());m=data['order'] if order_override is None else order_override;ctx.cap=m+1
  params=data['parameters'];strings=params.get('amplitudes',[params.get('a'),params.get('b')]);aa=list(map(rat,strings));k=rat(params['kappa']);K=len(aa)
  t=acb_series([0,1],prec=m+1);d=1+k*t;invd=1/d;tau=t*invd;front=d**arb('-0.5');logd=d.log();atten=[(-j*j*tau/2).exp() for j in range(1,K+1)]
  def integrand(x,analytic):
