@@ -11,6 +11,24 @@
       "name": "polynomial_campaign",
       "exit_code": 143,
       "recovery": "Retain recorded counts; wider polynomial family active."
+    },
+    {
+      "name": "sos_cached_native_m12_128",
+      "exit_code": 143,
+      "detected_utc": "2026-11-17T09:10:50.714361+00:00",
+      "recovery": "Restarted from saved conic matrix with visible heartbeat and one solver thread"
+    },
+    {
+      "name": "sos_exact_preconditioned_m13",
+      "exit_code": 143,
+      "detected_utc": "2026-11-17T09:10:50.714384+00:00",
+      "recovery": "Restarted exact elimination under visible supervisor"
+    },
+    {
+      "name": "windowed_modes_m15",
+      "exit_code": 143,
+      "detected_utc": "2026-11-17T09:10:50.714391+00:00",
+      "recovery": "Saved best positive screen retained; broader convex-perturbation search active"
     }
   ],
   "cause": "Not established; no Python traceback in redirected logs."

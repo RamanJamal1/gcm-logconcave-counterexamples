@@ -1,0 +1,15 @@
+{
+  "name": "native_m12_recovery",
+  "command": [
+    ".venv/bin/python",
+    "-u",
+    "src/resume_native_solver.py",
+    "--threads",
+    "1"
+  ],
+  "started_utc": "2026-11-17T09:10:12.565724+00:00",
+  "status": "running",
+  "child_pid_in_namespace": 5,
+  "heartbeat_utc": "2026-11-17T09:10:42.567086+00:00",
+  "elapsed_seconds": 30.001407384872437
+}

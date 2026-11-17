@@ -12,10 +12,10 @@
   "campaign_B_microbatch": 65536,
   "campaign_B_status": "rewarming verified larger kernels; scheduled after A",
   "supplementary_sessions": {
-    "higher_campaign": 23758,
-    "polynomial_campaign": 14430,
-    "projection_baseline": 57663,
-    "projection_warm": 87215
+    "native_m12": 66389,
+    "exact_m13": 26415,
+    "convex_perturbation": 90649,
+    "resource_monitor": 9332
   },
   "campaign_B_started_utc": "2026-11-17T08:32:56.984942+00:00",
   "campaign_C_exec_session_id": 81267
