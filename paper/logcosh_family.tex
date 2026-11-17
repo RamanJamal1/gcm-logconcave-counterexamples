@@ -1,0 +1,41 @@
+\section{An exact exclusion for a family with exponential tails}
+A supplementary calculation treats the entire two-parameter family
+\[
+ p_{\alpha,\beta}(x)=Z_{\alpha,\beta}^{-1}
+ e^{\beta x}\cosh(x)^{-\alpha},\qquad \alpha>0,\quad |\beta|<\alpha.
+\]
+Its potential has $V''=\alpha\operatorname{sech}^2x>0$ everywhere,
+although it has no uniform positive curvature lower bound. All higher
+log derivatives are bounded, and exponential tails justify the displayed
+entropy differentiation and integration by parts.
+\begin{proposition}[Tilted hyperbolic-secant family]
+For this family, $S_m(p_{\alpha,\beta})>0$ for every $2\le m\le17$.
+This assertion concerns this family only and does not raise the universal
+lower endpoint of the bracket for $m^*$.
+\end{proposition}
+\begin{proof}
+Put $T=\tanh X$. Then $(1+T)/2$ has the beta distribution with parameters
+$(\alpha+\beta)/2$ and $(\alpha-\beta)/2$. Hence, writing $M_k=\mathbb E T^k$,
+\[
+ M_0=1,\quad M_1=\frac\beta\alpha,\qquad
+ M_{k+1}=\frac{\beta M_k+kM_{k-1}}{\alpha+k}.
+\]
+The score derivatives of order at least two are $\alpha$ times polynomials
+in $T$, obtained by applying $(1-T^2)\partial_T$ repeatedly to $-T$.
+Substitute these into the exact entropy recurrence. After multiplication
+by $(\alpha)_{2m}=\prod_{j=0}^{2m-1}(\alpha+j)$ and the substitution
+$s=1-\beta^2/\alpha^2\in(0,1]$, the result is a polynomial
+\[
+ (\alpha)_{2m}S_m
+ =\sum_i\alpha^i\sum_{k=0}^{n_i}
+ b_{m,i,k}\binom{n_i}{k}s^k(1-s)^{n_i-k}.
+\]
+The exact rational arrays in
+\path{certs/logcosh_family_coefficients.json} have $b_{m,i,k}\ge0$,
+and for each $m$ at least one endpoint coefficient $b_{m,i,n_i}>0$.
+That term is strictly positive whenever $\alpha>0$ and $s>0$.
+The separate verifier reconstructs the entropy polynomial independently,
+computes the expectations using beta raw moments and the binomial theorem,
+and checks every Bernstein identity and coefficient sign exactly.
+Its record is \path{certs/independent_logcosh_family.json}.
+\end{proof}

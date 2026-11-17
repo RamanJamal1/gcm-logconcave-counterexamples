@@ -6,6 +6,7 @@ An unsuccessful coefficient test says nothing about the sign.
 """
 import json,time,math
 from pathlib import Path
+from fractions import Fraction as F
 from flint import fmpq_mpoly_ctx
 from search_logcosh_exact import grouped,ROOT
 from checkpoint_io import write_json
@@ -26,9 +27,16 @@ def main():
   for (i,j),c in poly.terms():
    assert j%2==0
    transformed+=c*a**(i+j)*(1-b)**(j//2)
-  coeffs=list(transformed.coeffs());proved=bool(coeffs) and all(c>=0 for c in coeffs)
-  record={'order':m,'proved_positive_on_parameter_domain':proved,'negative_coefficient_count':sum(c<0 for c in coeffs),'coefficient_count':len(coeffs),'domain':'alpha=a>0, beta^2=a^2(1-s), 0<s<=1','denominator':'product(a+j for j=0,...,2m-1)','positive_polynomial_terms':[[list(map(int,e)),str(c)] for e,c in transformed.terms()] if proved else None}
+  coeffs=list(transformed.coeffs());power_positive=bool(coeffs) and all(c>=0 for c in coeffs)
+  by_a={}
+  for (i,j),c in transformed.terms():by_a.setdefault(int(i),{})[int(j)]=F(str(c))
+  bernstein=[]
+  for i,co in sorted(by_a.items()):
+   n=max(co);values=[sum((co.get(j,F(0))*F(math.comb(k,j),math.comb(n,j)) for j in range(k+1)),F(0)) for k in range(n+1)]
+   bernstein.append({'alpha_power':i,'degree':n,'coefficients':list(map(str,values))})
+  proved=all(F(v)>=0 for row in bernstein for v in row['coefficients']) and any(F(row['coefficients'][-1])>0 for row in bernstein)
+  record={'order':m,'proved_positive_on_parameter_domain':proved,'power_basis_positive':power_positive,'bernstein_by_alpha_power':bernstein,'negative_coefficient_count':sum(c<0 for c in coeffs),'coefficient_count':len(coeffs),'domain':'alpha=a>0, beta^2=a^2(1-s), 0<s<=1','denominator':'product(a+j for j=0,...,2m-1)','polynomial_terms':[[list(map(int,e)),str(c)] for e,c in transformed.terms()] }
   records.append(record);print(m,proved,record['negative_coefficient_count'],len(coeffs),flush=True)
   write_json(ROOT/'certs/logcosh_family_coefficients.json',{'status':'running','records':records,'seconds':time.time()-start})
- write_json(ROOT/'certs/logcosh_family_coefficients.json',{'status':'complete','records':records,'seconds':time.time()-start,'note':'Coefficient positivity is a sufficient exact criterion. False entries are inconclusive.'})
+ write_json(ROOT/'certs/logcosh_family_coefficients.json',{'status':'complete','records':records,'seconds':time.time()-start,'note':'Nonnegative Bernstein coefficients in s on [0,1], and positive alpha powers, prove the whole family. A positive s=1 coefficient supplies strict positivity for 0<s<=1.'})
 if __name__=='__main__':main()
