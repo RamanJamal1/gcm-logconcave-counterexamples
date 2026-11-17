@@ -1,6 +1,6 @@
 # GCM research progress
 
-Updated: 2026-11-17T10:56:50.180944+00:00
+Updated: 2026-11-17T10:56:53.206157+00:00
 
 Verified bracket: 12 ≤ m* ≤ 16. Exact minimality remains unresolved.
 
