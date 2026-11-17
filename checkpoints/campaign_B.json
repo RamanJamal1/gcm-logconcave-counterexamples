@@ -33,7 +33,7 @@
     }
   },
   "certificates": [],
-  "status": "chunk_complete",
+  "status": "bounded_run_complete",
   "errors": [],
   "pending_certifications": [],
   "backend": "torch_cuda",
