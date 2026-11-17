@@ -5,4 +5,4 @@ GPU evaluations: 98304
 Completed generations: 2
 
 Numerical candidates are not interval certificates.
-- Order 6: normalized signed derivative 60.0127716277; certified: false
+- Order 6: normalized signed derivative 60.0122029015; certified: false
