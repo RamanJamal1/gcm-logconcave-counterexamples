@@ -83,3 +83,6 @@ The following observations are derived here, not attributed to an unverified ref
 - `"Gaussian completely monotone" "m=6"`
 - `site:arxiv.org "A higher-order Otto calculus approach"`
 
+
+
+Update 2026-11-17 06:03 UTC: terminal networking restored; full HTML and original arXiv source archives for both papers downloaded successfully. See literature/download_manifest.json and extracted *_source directories. Earlier DNS failure notes describe the initial environment only.
