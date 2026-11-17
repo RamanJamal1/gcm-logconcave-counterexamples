@@ -65,6 +65,39 @@
       "verification_record": "certs/interval_sos_verification_m13.json",
       "sha256": "4fe7fe1954f62cab4006a241c0addbc3e6d3f0040111c016820b90eb3fbf8d84",
       "certificate": "certs/exact_quotient_m13.json"
+    },
+    "6": {
+      "order": 6,
+      "target_subtraction": "0",
+      "exact_identity": true,
+      "positive_definite_grams": true,
+      "ibp_identities_verified": true,
+      "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
+      "seconds": 0.06566810607910156,
+      "certificate": "certs/exact_sos_m6.json",
+      "sha256": "1c33e5da89d84634e327442b2d4ab18e5cad76e6c01d48d78b472baabd9f4ae2"
+    },
+    "7": {
+      "order": 7,
+      "target_subtraction": "0",
+      "exact_identity": true,
+      "positive_definite_grams": true,
+      "ibp_identities_verified": true,
+      "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
+      "seconds": 0.12579059600830078,
+      "certificate": "certs/exact_sos_m7.json",
+      "sha256": "440c22d0a4a4a17ec2ff4e3ce6d1d2f2a6e9cf728bdf3e4237ff4e365bd19b52"
+    },
+    "8": {
+      "order": 8,
+      "target_subtraction": "0",
+      "exact_identity": true,
+      "positive_definite_grams": true,
+      "ibp_identities_verified": true,
+      "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
+      "seconds": 0.25492262840270996,
+      "certificate": "certs/exact_sos_m8.json",
+      "sha256": "33e1d20ae2937ffcbd5b782f08a3daab98a535636a073ef340427d0a578369b1"
     }
   },
   "lower_bound": 14,
@@ -120,6 +153,39 @@
       "seconds": 15.934104681015015,
       "sha256": "35e0b1acbc83909c952804710f113445f2feb3861fec343a96443346053427ef",
       "certificate": "certs/exact_mckean_quotient_m11.json"
+    },
+    "6": {
+      "order": 6,
+      "target_subtraction": "60*u2**6",
+      "exact_identity": true,
+      "positive_definite_grams": true,
+      "ibp_identities_verified": true,
+      "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
+      "seconds": 0.07042789459228516,
+      "certificate": "certs/exact_mckean_m6.json",
+      "sha256": "ec7e74e3a2cf83559824bb3c15a6564c80f211ab569c360484a2731f9aef1da3"
+    },
+    "7": {
+      "order": 7,
+      "target_subtraction": "-360*u2**7",
+      "exact_identity": true,
+      "positive_definite_grams": true,
+      "ibp_identities_verified": true,
+      "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
+      "seconds": 0.11834192276000977,
+      "certificate": "certs/exact_mckean_m7.json",
+      "sha256": "5ec7d48aa51e6bfadb75dd275868909750893eb9992c13481ba2294e00df03b9"
+    },
+    "8": {
+      "order": 8,
+      "target_subtraction": "2520*u2**8",
+      "exact_identity": true,
+      "positive_definite_grams": true,
+      "ibp_identities_verified": true,
+      "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
+      "seconds": 0.20633935928344727,
+      "certificate": "certs/exact_mckean_m8.json",
+      "sha256": "b366db412c9b5f56228c8e8bfb73dc9778412f12b88675e7519553f757e51f8a"
     }
   },
   "historical_witnesses": [

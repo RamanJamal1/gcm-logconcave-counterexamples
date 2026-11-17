@@ -55,6 +55,15 @@ python3 -m venv .venv
   --output certs/independent_paired15_m16.json
 ```
 
+For the larger order-13 identity, a faster independent matrix check uses exact rational polynomial arithmetic and outward-rounded Arb Schur complements:
+
+```bash
+.venv/bin/python src/verify_sos_arb.py certs/exact_quotient_m13.json
+.venv/bin/python src/verify_logcosh_family.py
+```
+
+The second command checks the entire tilted hyperbolic-secant family at orders 2–17 using exact beta-moment and Bernstein identities. It is a family-specific exclusion, not a universal higher-order sign.
+
 Both routines use 200-digit ball arithmetic with analytic bounds for the omitted infinite tails. High precision alone is not treated as a rigorous enclosure. The independent calculation differentiates the exact heat evolution and bounds its tail using Cauchy's estimate.
 
 ## Search and validation

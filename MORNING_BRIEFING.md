@@ -1,7 +1,7 @@
 # Overnight research results: log-concave GCM
 
 **Provisional report — research is still running.**
-Updated 2026-11-17 11:40:20 UTC. Scheduled interval: 2026-11-17T06:02:55.131528+00:00 to 2026-11-17T14:02:00+00:00.
+Updated 2026-11-17 11:51:38 UTC. Scheduled interval: 2026-11-17T06:02:55.131528+00:00 to 2026-11-17T14:02:00+00:00.
 
 **The exact minimal order remains unresolved. The verified bracket is 14 ≤ m* ≤ 16.**
 
@@ -46,22 +46,22 @@ The Gaussian uniquely attains these proven bounds. For a normalized minimizing s
 
 GPU: NVIDIA RTX A6000, 49,140 MiB reported memory. The environment exposed 8 CPU cores and 62.8 GiB host RAM; these observed values differ from the requested 6-core/48-GB specification. The filesystem reported about 206.9 GB total capacity. PyTorch/CUDA executed the search; it was not a CPU-only run.
 
-Production FP32 candidate evaluations: **99,278,848**.
-Recorded FP64 refined candidates: **861,208**. These are evaluations, not necessarily unique densities; warmups/readiness tests and uncheckpointed interrupted partial generations are excluded.
+Production FP32 candidate evaluations: **103,407,616**.
+Recorded FP64 refined candidates: **893,480**. These are evaluations, not necessarily unique densities; warmups/readiness tests and uncheckpointed interrupted partial generations are excluded.
 
 | Campaign | Saved status | FP32 evaluations | FP64 refinements |
 |---|---|---:|---:|
 | campaign_A | bounded_run_complete | 11,468,800 | 154,112 |
 | campaign_B | bounded_run_complete | 70,057,984 | 547,328 |
-| campaign_C | running | 15,204,352 | 118,784 |
+| campaign_C | running | 19,333,120 | 151,040 |
 | higher_campaign | stopped_for_new_order12_family | 1,630,208 | 25,472 |
 | polynomial_campaign | interrupted_exit143 | 32,768 | 512 |
 | polynomial_wide_campaign | bounded_run_complete | 884,736 | 13,824 |
-| harmonic_refinement_campaign | bounded_run_complete | 0 | 1,176 |
+| harmonic_refinement_campaign | bounded_run_complete | 0 | 1,192 |
 
 Campaign B used 65,536 simultaneous FP32 candidates, selected 512 elites, and used FP64 refinement with 2,049- and 4,097-point resolution checks. Campaign C uses a periodic GPU approximation only to screen rationalized parameters; retained negative results require full spatial Arb certification. Supplementary searches include polynomial curvature, signed higher harmonics, asymmetric phases, localized Fourier modes, convex quartic deformations, two interacting base frequencies, and positive-curvature lattices.
 
-Resource sampling began at 2026-11-17T09:02:01.851026+00:00; 313 observations were recorded. Maximum observed host nonavailable-memory estimate: 6.57 GiB. Maximum sampled GPU memory use during that monitoring interval: 8,200 MiB. Earlier compiled-batch validation measured a 5.73-GB allocation. Sampling is not a continuous proof of a resource bound. Certification process pools were capped at four workers.
+Resource sampling began at 2026-11-17T09:02:01.851026+00:00; 336 observations were recorded. Maximum observed host nonavailable-memory estimate: 6.57 GiB. Maximum sampled GPU memory use during that monitoring interval: 8,200 MiB. Earlier compiled-batch validation measured a 5.73-GB allocation. Sampling is not a continuous proof of a resource bound. Certification process pools were capped at four workers.
 
 ## Validation, limitations, and files
 
@@ -75,6 +75,7 @@ A finite search cannot prove a universal lower bound. The lower end of the brack
 - [LaTeX source](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/paper/draft_note.tex)
 - [CPU-only reproduction instructions](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/README.md)
 - [Verified bracket and certificate hashes](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/checkpoints/research_status.json)
+- [Audited proof manifest](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/verified_manifest.json)
 - [Formula validation](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/formula_tests.json)
 - [Certified derivative table for the explicit witness](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/witness_order_table.json)
 - [Literature verification](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/notes_literature.md)

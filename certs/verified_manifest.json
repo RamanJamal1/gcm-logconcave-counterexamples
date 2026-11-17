@@ -1,0 +1,153 @@
+{
+  "passed": true,
+  "lower_bound": 14,
+  "upper_bound": 16,
+  "exact_minimal_order_resolved": false,
+  "records": [
+    {
+      "kind": "universal_nonnegative_sign",
+      "order": 6,
+      "path": "certs/exact_sos_m6.json",
+      "sha256": "1c33e5da89d84634e327442b2d4ab18e5cad76e6c01d48d78b472baabd9f4ae2",
+      "verification": "standard-library Fraction sparse polynomials and exact Schur complements"
+    },
+    {
+      "kind": "universal_nonnegative_sign",
+      "order": 7,
+      "path": "certs/exact_sos_m7.json",
+      "sha256": "440c22d0a4a4a17ec2ff4e3ce6d1d2f2a6e9cf728bdf3e4237ff4e365bd19b52",
+      "verification": "standard-library Fraction sparse polynomials and exact Schur complements"
+    },
+    {
+      "kind": "universal_nonnegative_sign",
+      "order": 8,
+      "path": "certs/exact_sos_m8.json",
+      "sha256": "33e1d20ae2937ffcbd5b782f08a3daab98a535636a073ef340427d0a578369b1",
+      "verification": "standard-library Fraction sparse polynomials and exact Schur complements"
+    },
+    {
+      "kind": "universal_nonnegative_sign",
+      "order": 9,
+      "path": "certs/exact_quotient_m9.json",
+      "sha256": "6b830c679df8a4e944d6956edceca529a0ad1af9cf56c3c8be03c843b7c1dd8b",
+      "verification": "standard-library Fraction sparse polynomials and exact Schur complements"
+    },
+    {
+      "kind": "universal_nonnegative_sign",
+      "order": 10,
+      "path": "certs/exact_quotient_m10.json",
+      "sha256": "0e30cfac02ba0c992041f6505336ecf70b4f6f301f0c75cac1b12d4ca58aa1fc",
+      "verification": "standard-library Fraction sparse polynomials and exact Schur complements"
+    },
+    {
+      "kind": "universal_nonnegative_sign",
+      "order": 11,
+      "path": "certs/exact_quotient_m11.json",
+      "sha256": "90cc900f691ed1d1e33ed8c04e53b61c46771cfe8eafc1a808c975b57c4e3a9f",
+      "verification": "standard-library Fraction sparse polynomials and exact Schur complements"
+    },
+    {
+      "kind": "universal_nonnegative_sign",
+      "order": 13,
+      "path": "certs/exact_quotient_m13.json",
+      "sha256": "4fe7fe1954f62cab4006a241c0addbc3e6d3f0040111c016820b90eb3fbf8d84",
+      "verification": "independent Fraction polynomial identity and Arb interval Schur complements"
+    },
+    {
+      "kind": "sharp_gaussian_bound",
+      "order": 6,
+      "path": "certs/exact_mckean_m6.json",
+      "sha256": "ec7e74e3a2cf83559824bb3c15a6564c80f211ab569c360484a2731f9aef1da3",
+      "verification": "standard-library Fraction sparse polynomials and exact Schur complements"
+    },
+    {
+      "kind": "sharp_gaussian_bound",
+      "order": 7,
+      "path": "certs/exact_mckean_m7.json",
+      "sha256": "5ec7d48aa51e6bfadb75dd275868909750893eb9992c13481ba2294e00df03b9",
+      "verification": "standard-library Fraction sparse polynomials and exact Schur complements"
+    },
+    {
+      "kind": "sharp_gaussian_bound",
+      "order": 8,
+      "path": "certs/exact_mckean_m8.json",
+      "sha256": "b366db412c9b5f56228c8e8bfb73dc9778412f12b88675e7519553f757e51f8a",
+      "verification": "standard-library Fraction sparse polynomials and exact Schur complements"
+    },
+    {
+      "kind": "sharp_gaussian_bound",
+      "order": 9,
+      "path": "certs/exact_mckean_quotient_m9.json",
+      "sha256": "5d92a13bd9840b45a094c4b3320c1d93d2f4f240714dde7f1045bf9247ff221e",
+      "verification": "standard-library Fraction sparse polynomials and exact Schur complements"
+    },
+    {
+      "kind": "sharp_gaussian_bound",
+      "order": 10,
+      "path": "certs/exact_mckean_quotient_m10.json",
+      "sha256": "c1d24a0ea34272b2c753e23be1f19175f5e18360973bc765304fe447ecd6b887",
+      "verification": "standard-library Fraction sparse polynomials and exact Schur complements"
+    },
+    {
+      "kind": "sharp_gaussian_bound",
+      "order": 11,
+      "path": "certs/exact_mckean_quotient_m11.json",
+      "sha256": "35e0b1acbc83909c952804710f113445f2feb3861fec343a96443346053427ef",
+      "verification": "standard-library Fraction sparse polynomials and exact Schur complements"
+    },
+    {
+      "kind": "heat_flow_propagated_sign",
+      "order": 12,
+      "source_order": 13,
+      "source_certificate": "certs/exact_quotient_m13.json",
+      "lemma": "certs/downward_propagation.md",
+      "lemma_sha256": "44705c835b6f416a65d4b2f34517306d572147c3739f87b883fce134df6f18cc",
+      "method": "Universal higher sign integrated along heat flow; endpoint via right Taylor expansion"
+    },
+    {
+      "kind": "negative_witness_or_global_curvature",
+      "order": 16,
+      "path": "certs/paired15_m16.json",
+      "sha256": "f18bc27c133e2cafc11408f83ba69c34458337d4c54d11318daa6a4ba71ca904"
+    },
+    {
+      "kind": "negative_witness_or_global_curvature",
+      "order": 16,
+      "path": "certs/independent_paired15_m16.json",
+      "sha256": "344472fc69f43f8c8cadb5f5475eeb6b0ebe71d524b86c012778e3e9411161c6"
+    },
+    {
+      "kind": "negative_witness_or_global_curvature",
+      "order": 16,
+      "path": "certs/exact_min_curvature_paired15_m16.json",
+      "sha256": "e6d38e6d50343d5a529647e4750ace658f61e917b555ef8d7100ae2a4c341890"
+    },
+    {
+      "kind": "family_specific_positive_signs",
+      "orders": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "path": "certs/logcosh_family_coefficients.json",
+      "sha256": "8a4d9b2e7a363b27b198328467cc7001aae451cb298a51813b04c98056bea493",
+      "verification_record": "certs/independent_logcosh_family.json",
+      "verification_sha256": "0937655a15c2806dd69b16ddb7d6c38428198109f37de0be36e48175903de062"
+    }
+  ],
+  "seconds": 0.9143476486206055,
+  "note": "Analytic extension and downward propagation are mathematical arguments in the note; numerical search candidates are not included."
+}
