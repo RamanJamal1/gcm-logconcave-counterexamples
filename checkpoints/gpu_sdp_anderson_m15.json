@@ -1,0 +1,15 @@
+{
+  "order": 15,
+  "status": "running",
+  "proved": false,
+  "gpu_matrix_iterations": 8001,
+  "best_min_scaled_eigenvalue": -1.335480715607744,
+  "current_min_scaled_eigenvalues": [
+    -1.335480715607744,
+    -0.2756138695746806
+  ],
+  "residual": 4.3655745685100555e-11,
+  "seconds": 192.03567337989807,
+  "candidate": "certs/sos_gpu_anderson_m15.json",
+  "device": "NVIDIA RTX A6000"
+}

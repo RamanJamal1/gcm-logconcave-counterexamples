@@ -1,0 +1,17 @@
+{
+  "order": 15,
+  "status": "stopped_for_accelerated_projection",
+  "proved": false,
+  "gpu_matrix_iterations": 13701,
+  "best_min_scaled_eigenvalue": -1.8875092717133422,
+  "current_min_scaled_eigenvalues": [
+    -1.8875092717133422,
+    -0.2916148627459931
+  ],
+  "residual": 5.820766091346741e-11,
+  "seconds": 301.35645866394043,
+  "candidate": "certs/sos_gpu_feasibility_m15.json",
+  "device": "NVIDIA RTX A6000",
+  "stopped_utc": "2026-11-17T12:05:58.502500+00:00",
+  "note": "Saved best numerical affine candidate becomes the accelerated method warm start. No proof claimed."
+}

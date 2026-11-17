@@ -55,7 +55,7 @@ python3 -m venv .venv
   --output certs/independent_paired15_m16.json
 ```
 
-For the larger order-13 identity, a faster independent matrix check uses exact rational polynomial arithmetic and outward-rounded Arb Schur complements:
+The standard-library order-13 check took about 31 minutes in this run. For that larger identity, a faster independent matrix check uses exact rational polynomial arithmetic and outward-rounded Arb Schur complements:
 
 ```bash
 .venv/bin/python src/verify_sos_arb.py certs/exact_quotient_m13.json

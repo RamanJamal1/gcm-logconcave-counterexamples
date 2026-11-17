@@ -59,12 +59,15 @@
       "exact_identity": true,
       "positive_definite_grams": true,
       "ibp_identities_verified": true,
-      "verifier": "independent Fraction polynomial identity and Arb interval Schur complements",
-      "seconds": 4.512944936752319,
-      "digits": 200,
-      "verification_record": "certs/interval_sos_verification_m13.json",
+      "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
+      "seconds": 1847.0529510974884,
+      "source_sha256": "4fe7fe1954f62cab4006a241c0addbc3e6d3f0040111c016820b90eb3fbf8d84",
       "sha256": "4fe7fe1954f62cab4006a241c0addbc3e6d3f0040111c016820b90eb3fbf8d84",
-      "certificate": "certs/exact_quotient_m13.json"
+      "certificate": "certs/exact_quotient_m13.json",
+      "verification_record": "certs/independent_fraction_m13.json",
+      "additional_verification_records": [
+        "certs/interval_sos_verification_m13.json"
+      ]
     },
     "6": {
       "order": 6,

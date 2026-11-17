@@ -1,0 +1,10 @@
+{
+  "order": 15,
+  "proved": false,
+  "source": "certs/sos_gpu_anderson_m15.json",
+  "shift": 1.3969929259590304,
+  "minimum_before_shift": -1.3869929259590303,
+  "dual_residual": 1.5750314132935443,
+  "primal_feasible_by_construction": true,
+  "warm_file": "logs/primal_feasible_m15.ini-s"
+}

@@ -51,7 +51,7 @@
       "order": 13,
       "path": "certs/exact_quotient_m13.json",
       "sha256": "4fe7fe1954f62cab4006a241c0addbc3e6d3f0040111c016820b90eb3fbf8d84",
-      "verification": "independent Fraction polynomial identity and Arb interval Schur complements"
+      "verification": "standard-library Fraction sparse polynomials and exact Schur complements"
     },
     {
       "kind": "sharp_gaussian_bound",
@@ -160,6 +160,6 @@
       "verification_sha256": "0937655a15c2806dd69b16ddb7d6c38428198109f37de0be36e48175903de062"
     }
   ],
-  "seconds": 0.07554507255554199,
+  "seconds": 0.07479453086853027,
   "note": "Analytic extension and downward propagation are mathematical arguments in the note; numerical search candidates are not included."
 }

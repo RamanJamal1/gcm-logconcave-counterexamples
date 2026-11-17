@@ -1,0 +1,10 @@
+{
+  "order": 14,
+  "proved": false,
+  "source": null,
+  "shift": 5922.1412616366315,
+  "minimum_before_shift": -5922.131261636631,
+  "dual_residual": 7313.776286740635,
+  "primal_feasible_by_construction": true,
+  "warm_file": "logs/primal_feasible_m14.ini-s"
+}
