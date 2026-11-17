@@ -21,5 +21,10 @@
   "certified": true,
   "status": "certified_negative",
   "seconds": 0.03678584098815918,
-  "method": "exact time-change polynomial, finite periodic Fourier sum, rigorous nonzero-mode and infinite-series bounds"
+  "method": "exact time-change polynomial, finite periodic Fourier sum, rigorous nonzero-mode and infinite-series bounds",
+  "human_readable_claim": {
+    "V_second_derivative_lower_bound": "1/2500",
+    "signed_entropy_derivative_upper_bound": "-1/50000",
+    "normalizer": "64*sqrt(pi)*(1+exp(-1024)/16384+exp(-4096)/2^56)"
+  }
 }

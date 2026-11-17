@@ -1,0 +1,75 @@
+\section{An explicit certified upper bound}
+\begin{proposition}[A rational-parameter order-46 witness]
+Let
+\[
+ p(x)=\frac{e^{-x^2/4096}}{Z}
+ \left(1+\frac{\cos x}{16384}+\frac{\cos2x}{2^{56}}\right),\qquad
+ Z=64\sqrt\pi\left(1+\frac{e^{-1024}}{16384}+\frac{e^{-4096}}{2^{56}}\right).
+\]
+Then $p$ is smooth, positive, and a probability density, and
+\[
+ (-\log p)''>\frac1{2500},\qquad S_{46}(p)<-\frac1{50000}.
+\]
+In particular, the first failing order is no larger than 46.
+\end{proposition}
+\begin{proof}[Computer-assisted proof and error bounds]
+Write $a=2^{-14}$, $b=2^{-56}$, and $\kappa=2^{-11}$.
+The positivity and normalization assertions follow from $a+b<1$ and
+Gaussian Fourier integration. The elementary bound
+$V''\ge\kappa-(a+4b)/(1-a-b)>1/2500$ uses exact rational arithmetic.
+
+For the entropy derivative, set $d=1+\kappa t$, $\tau=t/d$,
+$\lambda=\kappa d$, and $r(\tau,y)=1+ae^{-\tau/2}\cos y+be^{-2\tau}\cos2y$.
+Use the exact heat formula in~\cite{zou} and the absolutely convergent series
+\[
+ (1+u)\log(1+u)=u+\sum_{n\ge2}\frac{(-1)^n}{n(n-1)}u^n.
+\]
+A term with $p+q=n$ has time exponent $L=(p+4q)/2$ and Fourier modes $k$.
+Gaussian averaging changes its time factor to
+$e^{-k^2/(2\kappa)}e^{-(L-k^2/2)\tau}$.
+The exact signed derivative polynomial is
+\[
+ T_m(B,\kappa)=\sum_{j=0}^{m-1}\frac{m!}{(m-j)!}\binom{m-1}{j}
+ \kappa^j B^{m-j}.
+\]
+The zero-mode coefficient of $\cos^p y\cos^q2y$ is the exact rational
+\[
+ 2^{-n}\sum_{\substack{0\le j\le q\\0\le p+2q-4j\le2p}}
+ \binom qj\binom p{(p+2q-4j)/2},
+\]
+with the sum interpreted as zero when $p$ is odd. The implementation also
+supports retaining finitely many nonzero modes.
+
+For completeness, put $r_0=|a|+|b|$. The absolute Fourier coefficient sum
+at degree $n$ is at most $r_0^n$ and
+$|T_m(B,\kappa)|\le(|B|+m\kappa)^m$.
+Writing $y=k^2/2$, the filtered bound
+$e^{-y/\kappa}(2n+y+m\kappa)^m$ decreases for $y\ge0$.
+Thus all degree-$n$ contributions are bounded by
+$r_0^n(2n+m\kappa)^m$. After truncation at $N$, their tail is at most
+\[
+ \frac{(2+m\kappa)^m r_0^{N+1}(N+1)^m}
+ {1-r_0(1+1/(N+1))^m},
+\]
+when the denominator is positive. If modes through $|k|\le K$ are retained,
+the omitted modes in degrees at most $N$ contribute at most
+\[
+ e^{-y_0/\kappa}(2N+y_0+m\kappa)^m\frac{r_0^2}{1-r_0},
+ \qquad y_0=(K+1)^2/2.
+\]
+The exact Gaussian entropy and second-moment contributions are included
+separately. With $N=96$, $K=0$, and 200 decimal digits, outward-rounded Arb
+arithmetic, including both errors, gives
+\[
+ S_{46}(p)\in[-2.280758403046968\cdot10^{-5},
+              -2.280758403046967\cdot10^{-5}].
+\]
+The full enclosure and parameters are stored in
+\texttt{certs/fourier\_series\_m46.json}. The program is
+\texttt{src/certify\_fourier\_series.py}; independent checks compare lower-order
+outputs with spatial Arb quadrature and the order-48 time-change polynomial
+with direct Arb power-series exponentiation.
+\end{proof}
+This witness gives an upper bound, not minimality. Together with the
+lower-order certificates and their endpoint hypotheses, it brackets the
+remaining question between orders nine and 46.
