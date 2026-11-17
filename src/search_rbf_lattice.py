@@ -3,6 +3,7 @@ import os
 os.environ['OPENBLAS_NUM_THREADS']='1';os.environ['OMP_NUM_THREADS']='1'
 import argparse,json,time,math
 from pathlib import Path
+from checkpoint_io import write_json
 import numpy as np
 from scipy.special import erf
 from scipy.integrate import simpson
@@ -34,9 +35,9 @@ def search(m,seconds,seed):
   try:value,signed,var=evaluate(x,m);score=float(np.arcsinh(value/math.factorial(m-1)))
   except (ValueError,FloatingPointError,OverflowError):return 1e100
   if np.isfinite(score) and score<best.get('objective',float('inf')):
-   eps,w,s,c=decode(x);best.update(order=m,raw_parameters=x.tolist(),weights=w.tolist(),widths=s.tolist(),centers=c.tolist(),curvature_lower_bound=eps,normalized=value,signed=signed,variance=var,objective=score,certified=False,evaluations=count,elapsed_seconds=time.time()-start,status='running');path.write_text(json.dumps(best,indent=2)+'\n');print(count,value,time.time()-start,flush=True)
+   eps,w,s,c=decode(x);best.update(order=m,raw_parameters=x.tolist(),weights=w.tolist(),widths=s.tolist(),centers=c.tolist(),curvature_lower_bound=eps,normalized=value,signed=signed,variance=var,objective=score,certified=False,evaluations=count,elapsed_seconds=time.time()-start,status='running');write_json(path,best);print(count,value,time.time()-start,flush=True)
   return score if np.isfinite(score) else 1e100
  r=differential_evolution(obj,[(math.log(1e-4),0),(math.log(.2),math.log(5)),(math.log(.08),math.log(.7)),(-2,2),(-2,2),(-.5,.5)],popsize=12,maxiter=10000,seed=173600+seed,tol=1e-12,polish=False,callback=lambda x,convergence:time.time()-start>=seconds)
- fine=evaluate(np.array(best['raw_parameters']),m,8193);best.update(status='bounded_run_complete',evaluations=count,elapsed_seconds=time.time()-start,fine_normalized=fine[0],fine_signed=fine[1]);path.write_text(json.dumps(best,indent=2)+'\n');print(best,flush=True)
+ fine=evaluate(np.array(best['raw_parameters']),m,8193);best.update(status='bounded_run_complete',evaluations=count,elapsed_seconds=time.time()-start,fine_normalized=fine[0],fine_signed=fine[1]);write_json(path,best);print(best,flush=True)
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--order',type=int,default=12);p.add_argument('--seconds',type=float,default=600);p.add_argument('--seed',type=int,default=0);a=p.parse_args();search(a.order,a.seconds,a.seed)

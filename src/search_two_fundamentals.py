@@ -3,6 +3,7 @@ import os
 os.environ['OPENBLAS_NUM_THREADS']='1';os.environ['OMP_NUM_THREADS']='1'
 import argparse,json,time,math
 from pathlib import Path
+from checkpoint_io import write_json
 import numpy as np
 from scipy.optimize import differential_evolution
 from search_detuned_spatial import evaluate
@@ -17,10 +18,10 @@ def search(m,seconds,seed):
   if sum(abs(a))>=.8 or k<=0:return 1e100
   value=evaluate(a,w,k,m,1025);score=float(np.arcsinh(value/(a[0]**2)))
   if np.isfinite(score) and score<best.get('objective',float('inf')):
-   best.update(order=m,amplitudes=a.tolist(),frequencies=w.tolist(),kappa=k,signed_numerical=value,objective=score,parameters=x.tolist(),certified=False,evaluations=count,elapsed_seconds=time.time()-start,status='running');path.write_text(json.dumps(best,indent=2)+'\n');print('best',count,value,score,time.time()-start,flush=True)
+   best.update(order=m,amplitudes=a.tolist(),frequencies=w.tolist(),kappa=k,signed_numerical=value,objective=score,parameters=x.tolist(),certified=False,evaluations=count,elapsed_seconds=time.time()-start,status='running');write_json(path,best);print('best',count,value,score,time.time()-start,flush=True)
   return score if np.isfinite(score) else 1e100
  def callback(x,convergence):return time.time()-start>=seconds
  r=differential_evolution(objective,[(math.log(.01),math.log(.2)),(1.02,2.2),(-1,1),(-1,2),(-2,3),(-1,2),(-1,1)],popsize=12,maxiter=10000,tol=1e-8,seed=171100+seed,callback=callback,polish=False)
- a,w,k=decode(np.array(best['parameters']));best.update(status='bounded_run_complete',evaluations=count,elapsed_seconds=time.time()-start,signed_fine=evaluate(a,w,k,m,8193));path.write_text(json.dumps(best,indent=2)+'\n');print(best,flush=True)
+ a,w,k=decode(np.array(best['parameters']));best.update(status='bounded_run_complete',evaluations=count,elapsed_seconds=time.time()-start,signed_fine=evaluate(a,w,k,m,8193));write_json(path,best);print(best,flush=True)
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--order',type=int,default=15);p.add_argument('--seconds',type=float,default=600);p.add_argument('--seed',type=int,default=0);a=p.parse_args();search(a.order,a.seconds,a.seed)

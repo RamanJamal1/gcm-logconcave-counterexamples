@@ -3,6 +3,7 @@ import os
 os.environ['OPENBLAS_NUM_THREADS']='1';os.environ['OMP_NUM_THREADS']='1'
 import argparse,time,json,math
 from pathlib import Path
+from checkpoint_io import write_json
 import numpy as np
 from scipy.optimize import differential_evolution
 from scipy.integrate import simpson
@@ -30,9 +31,9 @@ def search(m,seconds,seed,wide=False):
   if curvature<=1e-7:return 1e3-curvature
   value,signed,var=evaluate(x,m);score=float(np.arcsinh(value/math.factorial(m-1)))
   if np.isfinite(score) and score<best.get('objective',float('inf')):
-   mu,w=decode(x);best.update(order=m,raw_parameters=x.tolist(),means=mu.tolist(),weights=w.tolist(),curvature_lower_bound=curvature,normalized=value,signed=signed,variance=var,objective=score,certified=False,evaluations=count,elapsed_seconds=time.time()-start,status='running');path.write_text(json.dumps(best,indent=2)+'\n');print(count,value,time.time()-start,flush=True)
+   mu,w=decode(x);best.update(order=m,raw_parameters=x.tolist(),means=mu.tolist(),weights=w.tolist(),curvature_lower_bound=curvature,normalized=value,signed=signed,variance=var,objective=score,certified=False,evaluations=count,elapsed_seconds=time.time()-start,status='running');write_json(path,best);print(count,value,time.time()-start,flush=True)
   return score if np.isfinite(score) else 1e100
  r=differential_evolution(obj,([(1.,5.)] if wide else [(.3,.99999)])+[(-12,8)]*4,popsize=16,maxiter=10000,seed=174600+seed,tol=1e-12,polish=False,callback=lambda x,convergence:time.time()-start>=seconds)
- fine=evaluate(np.array(best['raw_parameters']),m,8193);best.update(status='bounded_run_complete',evaluations=count,elapsed_seconds=time.time()-start,fine_normalized=fine[0],fine_signed=fine[1]);path.write_text(json.dumps(best,indent=2)+'\n');print(best,flush=True)
+ fine=evaluate(np.array(best['raw_parameters']),m,8193);best.update(status='bounded_run_complete',evaluations=count,elapsed_seconds=time.time()-start,fine_normalized=fine[0],fine_signed=fine[1]);write_json(path,best);print(best,flush=True)
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--order',type=int,default=15);p.add_argument('--seconds',type=float,default=600);p.add_argument('--seed',type=int,default=0);p.add_argument('--wide',action='store_true');a=p.parse_args();search(a.order,a.seconds,a.seed,a.wide)
