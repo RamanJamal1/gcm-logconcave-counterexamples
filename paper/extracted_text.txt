@@ -1,0 +1,508 @@
+Exact Lower-Order Certiﬁcates and a Search for Log-Concave
+Violations of Gaussian Complete Monotonicity
+Computational research record
+November 17, 2026 — provisional during computation
+Abstract
+We describe reduced entropy-derivative formulas, constrained density families, and a mixed-
+precision computational search at orders six, seven, and eight. The formulas are independently
+checked against high-precision heat-convolution ﬁnite diﬀerences. Rigorous ﬁnite-interval in-
+tegration is combined with analytic tail bounds and global convexity estimates. Exact ratio-
+nal sum-of-squares identities additionally yield the sharp Gaussian lower bounds at orders six
+through eight under the stated analytic hypotheses. A further exact certiﬁcate establishes the
+nonnegative sign at order nine. This document is an ongoing-results record: an explicit order-17
+witness is certiﬁed, while the exact minimal order remains unresolved.
+1
+Question and conventions
+Throughout, Pt = et∂2
+x/2 and H(p) =
+R
+R p log p is Boltzmann entropy. Put Sm(p) = (−1)m ∂m
+t H(Ptp)|t=0.
+The target is the smallest m ≥6 admitting a smooth positive probability density with V = −log p,
+V ′′ > 0 everywhere, and Sm < 0. Gu and Sellke [2] disprove the unrestricted conjecture at order
+ﬁve and establish existence of a log-concave violation at an unspeciﬁed order. Zou, Fan, Gao, and
+Wang [1] give an explicit log-concave family whose signed derivative is negative for all suﬃciently
+large orders. The log-concave signs through order ﬁve are known [3]. Consequently, a certiﬁed
+order-six witness would establish minimality. An order-seven or order-eight witness alone would
+establish only an upper bound.
+2
+Scaling and exact reduced formulas
+Proposition 1 (Scaling and Gaussian controls). For pa(x) = a−1p(x/a), a > 0, one has Sm(pa) =
+a−2mSm(p). For the centered Gaussian of variance v, Sm = (m−1)!/(2vm). Thus Sm(p) Var(p)m is
+scale invariant, whereas a strictly positive universal lower bound for unnormalized Sm is impossible.
+Proof. Heat scaling gives H(Ptpa) = H(Pt/a2p)−log a. For the Gaussian, H(Ptp) = −1
+2 log(2πe(v+
+t)). Diﬀerentiate these identities m times.
+Proposition 2 (Reduced derivative recurrence). For smooth Gaussian-decaying densities with
+bounded higher log derivatives, write uj = ∂j
+x log p. If F is a polynomial in u2, u3, . . ., then ∂tEpF =
+EpLF, where
+LF = −1
+2
+X
+i,j≥2
+Fijui+1uj+1 + 1
+2
+X
+i≥2
+Fi
+i−1
+X
+k=1
+i
+k
+
+uk+1ui−k+1.
+1
+
+Starting with F2 = u2
+2/2, the polynomial Fm = Lm−2F2 satisﬁes Im = EpFm and involves derivatives
+at most of order m.
+Proof. The heat equation gives ∂t log p = (u2 + u2
+1)/2. Diﬀerentiating ui gives its diﬀusion term,
+u1ui+1, and the quadratic sum displayed above. Diﬀerentiating the expectation contributes 1
+2Ep∂2
+xF.
+Integrating Ep(∂2
+xF + u1∂xF) = 0 eliminates the drift and combines the second-derivative terms
+into −1
+2
+P Fijui+1uj+1. Gaussian tails justify the boundary limits.
+Conventions and recurrence.
+Put uj = ∂j
+x log p, H(p) =
+R
+R p log p, and ∂tp = 1
+2∂2
+xp. Then
+Im = EpFm, where F1 = −u2
+1/2, F2 = u2
+2/2, and
+Fm+1 = −1
+2
+X
+i,j
+∂ui∂ujFm ui+1uj+1 + 1
+2
+X
+i
+∂uiFm
+i−1
+X
+k=1
+i
+k
+
+uk+1ui−k+1.
+The sums use only i, j ≥2. This recurrence eliminates u1 by integration by parts and uses deriva-
+tives only through um in Fm.
+No claim of uniqueness of the reduced representative is made.
+Shannon entropy is −H and reverses every sign.
+F6 = u2
+6
+2
+−15u3
+4
++ 60u6
+2
++ 105u4
+3
+−600u3
+2u2
+3
+−15u2u2
+5
++ 150u2
+2u2
+4
+−60u3u4u5
++ 450u2u2
+3u4
+2
+
+F7 = 360u7
+2
+−u2
+7
+2
+−6300u4
+2u2
+3
+−2415u2
+3u2
+4
+−630u2u3
+4
+−630u3
+3u5
+−315u2
+2u2
+5
++ 21u2u2
+6
++ 70u2
+4u6
++ 105u4u2
+5
++ 2100u3
+2u2
+4
++ 4410u2u4
+3
++ 105u3u5u6
++ 9450u2
+2u2
+3u4
+−2520u2u3u4u5
+3
+
+F8 = u2
+8
+2
++ 2520u8
+2
++ 3115u4
+4
+−70560u5
+2u2
+3
+−47880u4
+3u4
+−17640u2
+2u3
+4
+−5880u3
+2u2
+5
+−280u2
+5u6
+−210u4u2
+6
+−28u2u2
+7
++ 588u2
+2u2
+6
++ 7140u2
+3u2
+5
++ 29400u4
+2u2
+4
++ 123480u2
+2u4
+3
+−135240u2u2
+3u2
+4
+−35280u2u3
+3u5
+−280u4u5u7
+−168u3u6u7
++ 3920u2u2
+4u6
++ 5880u2u4u2
+5
++ 5880u2
+3u4u6
++ 20160u3u2
+4u5
++ 176400u3
+2u2
+3u4
+−70560u2
+2u3u4u5
++ 5880u2u3u5u6
+3
+Explicit search families
+The ﬁrst family is
+p(x) = Z−1e−x2/2
+ 
+1 +
+K
+X
+k=1
+ak cos(ωkx + θk)
+!
+.
+If A0 = P |ak| < 1 and A2 = P |ak|ω2
+k < 1 −A0, then V ′′ ≥1 −A2/(1 −A0) > 0 globally. Its
+normalizer is Z =
+√
+2π(1 + P ake−ω2
+k/2 cos θk). We also use p ∝exp[−x2/2 + P ak cos(ωkx + θk)],
+for which V ′′ ≥1 −A2. The positive-curvature family has
+V ′′(x) = 1 +
+X
+k
+wke−(x−ck)2/(2s2
+k),
+wk ≥0, sk > 0.
+Two exact integrations use sk
+p
+π/2(x−ck) erf((x−ck)/(
+√
+2sk))+s2
+ke−(x−ck)2/(2s2
+k), together with a
+linear tilt. Finally, two equal-variance Gaussian components with means ±d, d < 1, and arbitrary
+4
+
+positive mixture weights satisfy V ′′ ≥1 −d2. These suﬃcient convexity restrictions deﬁne a subset
+of all strictly log-concave densities; failure to ﬁnd a violation in them proves no general theorem.
+4
+Numerical validation and rigorous certiﬁcates
+For p(x) = ϕ(x)(1 + sin x/10), exact Gaussian conditioning gives its heat convolution. At 100
+decimal digits, 160-node Gauss–Hermite quadrature and a 24-point positive-time ﬁnite diﬀerence
+give relative diﬀerences 1.12 · 10−22, 1.92 · 10−22, and 1.17 · 10−19 at orders six, seven, and eight. A
+separate 96-to-160-node convergence check has maximum relative change below 2.86 · 10−13. These
+are numerical checks, not interval proofs.
+Certiﬁcation uses exact rational or decimal parameters, 200-digit Arb arithmetic, and complex
+analytic integration on [−L, L]. The integrands are entire or meromorphic; poles produce nonﬁnite
+balls and are rejected by the integration procedure. A uniform bound on |Fm|, obtained from its
+absolute coeﬃcients and uniform log-derivative bounds, multiplies an analytic tail estimate. For a
+multiplier g with |g| ≤M,
+Z
+|x|>L
+e−x2/2|g(x)| dx ≤2M
+L e−L2/2.
+Shifted Gaussian majorants handle the curvature and mixture families. Both normalization and
+numerator errors are enclosed. Only an interval with strictly negative upper endpoint, together
+with a global positive convexity bound, is accepted as a counterexample.
+5
+From exact identities to entropy signs
+The certiﬁcate ﬁles certs/exact_sos_m6.json, exact_sos_m7.json, and exact_sos_m8.json
+contain rational matrices Qm,0, Qm,1 and rational coeﬃcients λm,k satisfying the polynomial identity
+(−1)mFm = vT
+mQm,0vm + (−u2)vT
+m−1Qm,1vm−1 −
+X
+k
+λm,k(DPk + u1Pk).
+Here vr lists the monomials of weighted degree r in the variables uj of weight j, and the Pk are
+monomials of weighted degree 2m−1 using variables through um−1 for the original certiﬁcates. The
+additional order-nine certiﬁcate certs/exact_quotient_m9.json uses explicit generators through
+u17 and Gram dimensions (30, 22). It was located in the exact integration-by-parts quotient that
+eliminates u1, then reconstructed over the rationals and checked by the same independent veriﬁer.
+Both matrices have been proved positive deﬁnite using exact rational Schur complements, inde-
+pendently of the numerical SDP that suggested them. A standalone veriﬁer uses only the Python
+standard library and checks the polynomial identity, every integration-by-parts term, and matrix
+positivity.
+Proposition 3 (Sign under justiﬁed integration by parts). For m ∈{6, 7, 8, 9, 10}, let p be a smooth
+positive log-concave density such that its entropy derivative is Im =
+R
+pFm, all the displayed terms
+are integrable, and
+R
+p(DPk + u1Pk) = 0. Then Sm(p) ≥0. In particular, this conclusion applies
+to the four implemented search families.
+Proof. Integrate the exact identity.
+The last sum vanishes.
+Log-concavity means u2 ≤0, and
+positive deﬁniteness implies both remaining terms are nonnegative at every point.
+5
+
+Extension to positive heat times.
+The following analytic argument records how to remove
+the Gaussian-tail restriction; the algebraic certiﬁcate does not depend on this argument.
+Let
+Y = X +
+√
+tZ, with Z standard Gaussian, and let pt be its density. For the probabilists’ Hermite
+polynomial Hek,
+p(k)
+t (y)
+pt(y) = t−k/2E[(−1)kHek(Z) | Y = y].
+Conditional Jensen gives, for every ﬁnite q ≥1,
+Z
+pt
+
+p(k)
+t
+pt
+
+q
+≤t−kq/2E|Hek(Z)|q < ∞.
+Each uj is a polynomial in p(k)
+t /pt, k ≤j. Hölder’s inequality therefore makes every ﬁnite polynomial
+in the uj integrable, locally uniformly for t > 0. For a compactly supported cutoﬀχR tending to
+one,
+Z
+χRpt(DP + u1P) = −
+Z
+χ′
+RptP −→0,
+since ∥χ′
+R∥∞= O(R−1) and ptP is integrable. This justiﬁes the required integrations by parts
+without pointwise boundary estimates. Gaussian convolution preserves log-concavity. Log-concave
+probability densities have ﬁnite moments of all orders; a ﬁxed bounded set carrying positive input
+mass supplies a quadratic lower bound on log pt, while the Gaussian kernel supplies an upper
+bound. Together with the displayed conditional-moment estimates, these bounds justify entropy
+diﬀerentiation and the recurrence on compact positive-time intervals. Consequently the certiﬁcates
+imply (−1)mH(m)(Ptp) ≥0 for t > 0.
+The endpoint t = 0.
+If the entropy proﬁle admits an order-m right Taylor expansion at zero,
+continuity and the positive-time sign give (−1)m∆m
+h H(0) ≥0; dividing by hm and taking h ↓0
+gives the same sign for the right derivative. This endpoint regularity is explicit: smoothness of the
+spatial density alone is not being used as a substitute for existence of the stated time derivative.
+Under this natural interpretation of the derivative in the research question, the certiﬁcates rule out
+counterexamples at orders six through 10. They do not identify the ﬁrst failing higher order.
+5.1
+Sharp Gaussian lower bounds at orders six through eight
+A second set of exact certiﬁcates, certs/exact_mckean_m6.json through exact_mckean_m8.json,
+veriﬁes the stronger identities
+(−1)mFm −(m −1)!
+2
+(−u2)m = wT
+mAmwm + (−u2)wT
+m−1Bmwm−1 −
+X
+k
+ηm,k(DPk + u1Pk).
+The vectors wr contain only weighted-degree-r monomials involving at least one uj with j ≥3. All
+matrices are positive deﬁnite over the rationals. Their dimensions are respectively (7, 4), (11, 7),
+and (17, 11). The independent veriﬁer conﬁrms these identities using exact arithmetic.
+Proposition 4 (Sharp variance-normalized bounds). Under the derivative and integration-by-parts
+hypotheses above, a log-concave probability density of variance v satisﬁes
+S6(p)v6 ≥60,
+S7(p)v7 ≥360,
+S8(p)v8 ≥2520.
+The Gaussian attains each bound. The positive-time smoothing argument extends these bounds to
+arbitrary log-concave inputs at positive heat times, with v replaced by v + t; the endpoint argument
+applies when the indicated right entropy derivative exists in the Taylor sense.
+6
+
+Proof. Integrating the stronger identities gives Sm ≥1
+2(m −1)!E[(−u2)m]. Since −u2 ≥0, Jensen’s
+inequality and integration by parts imply E[(−u2)m] ≥(E[−u2])m = I(p)m. The score identity
+E[(X −EX)u1(X)] = −1 and Cauchy–Schwarz give vI(p) ≥1. Combining these bounds proves
+the assertions. For a Gaussian, all uj, j ≥3, vanish, and equality holds throughout. The stated
+smoothing and endpoint extensions follow as before.
+Thus a ﬁnite negative derivative at orders six through 10 cannot occur in the regularity class
+speciﬁed by the question’s time derivative. The ﬁrst possible failing order is at least 11; locating
+that ﬁrst failure remains open in this computational record.
+Additional veriﬁed orders.
+Exact rational quotient certiﬁcates and independent veriﬁcation
+now cover orders 9, 10. The machine-readable veriﬁcation records and certiﬁcate hashes are stored
+in checkpoints/research_status.json.
+6
+An explicit certiﬁed upper bound
+Proposition 5 (A rational-parameter order-17 witness). Let
+p(x) = e−33x2/2000
+Z
+
+1 + cos x
+32
++ cos 2x
+270000
+
+,
+Z =
+r
+2000π
+33
+ 
+1 + e−500/33
+32
++ e−2000/33
+270000
+!
+.
+Then p is smooth, positive, and a probability density, and
+(−log p)′′ >
+1
+2000,
+S17(p) < −1
+20.
+In particular, the ﬁrst failing order is no larger than 17.
+Computer-assisted proof and error bounds. Write a = 1/32, b = 1/270000, and κ = 33/1000. The
+positivity and normalization assertions follow from a + b < 1 and Gaussian Fourier integration.
+The elementary bound V ′′ ≥κ −(a + 4b)/(1 −a −b) > 1/2000 uses exact rational arithmetic.
+For the entropy derivative, set d = 1 + κt, τ = t/d, λ = κd, and r(τ, y) = 1 + ae−τ/2 cos y +
+be−2τ cos 2y. Use the exact heat formula in [1] and the absolutely convergent series
+(1 + u) log(1 + u) = u +
+X
+n≥2
+(−1)n
+n(n −1)un.
+The Gaussian average of the linear term is constant, so its positive-order time derivatives vanish.
+A term with p + q = n has time exponent L = (p +4q)/2 and Fourier modes k. Gaussian averaging
+changes its time factor to e−k2/(2κ)e−(L−k2/2)τ. The exact signed derivative polynomial is
+Tm(B, κ) =
+m−1
+X
+j=0
+m!
+(m −j)!
+m −1
+j
+
+κjBm−j.
+The zero-mode coeﬃcient of cosp y cosq 2y is the exact rational
+2−n
+X
+0≤j≤q
+0≤p+2q−4j≤2p
+q
+j
+
+p
+(p + 2q −4j)/2
+
+,
+7
+
+with the sum interpreted as zero when p is odd. The implementation also supports retaining ﬁnitely
+many nonzero modes.
+For completeness, put r0 = |a| + |b|. The absolute Fourier coeﬃcient sum at degree n is at
+most rn
+0 and |Tm(B, κ)| ≤(|B| + mκ)m. Writing y = k2/2, the ﬁltered bound e−y/κ(2n + y + mκ)m
+decreases for y ≥0. Thus all degree-n contributions are bounded by rn
+0 (2n+mκ)m. After truncation
+at N, their tail is at most
+(2 + mκ)mrN+1
+0
+(N + 1)m
+1 −r0(1 + 1/(N + 1))m ,
+when the denominator is positive. If modes through |k| ≤K are retained, the omitted modes in
+degrees at most N contribute at most
+e−y0/κ(2N + y0 + mκ)m
+r2
+0
+1 −r0
+,
+y0 = (K + 1)2/2.
+Put Ξ = 1 + ae−1/(2κ) + be−2/κ. The ﬁnal expression is 1
+2(m −1)!κm + (ﬁnite sum + Mm)/Ξ, with
+the sum of the two error bounds divided by Ξ, where
+Mm = m!κm−1 a
+2e−1/(2κ) + 2be−2/κ
+.
+These are the exact Gaussian entropy and second-moment contributions. With N = 128, K = 16,
+and 200 decimal digits, outward-rounded Arb arithmetic, including both errors, gives
+S17(p) ∈[−0.058078835675198101, −0.058078835675198100].
+The full enclosure and parameters are stored in certs/simple_fourier_m17.json. The program is
+src/certify_fourier_series.py; independent checks compare lower-order outputs with spatial
+Arb quadrature and the order-48 time-change polynomial with direct Arb power-series exponenti-
+ation.
+This witness gives an upper bound, not minimality. Together with the lower-order certiﬁcates
+and their endpoint hypotheses, it brackets the remaining question between orders 11 and 17.
+7
+Status and reproducibility
+The current run is ongoing. Exact algebraic certiﬁcates establish the lower-order bounds described
+above.
+No exact minimal-order conclusion is claimed.
+The authoritative numerical state is in
+checkpoints/campaign_A.json; certiﬁcates are in certs/. Complete counts and ﬁnal outcomes
+will replace this provisional paragraph after the scheduled campaign. The code, source literature,
+and versioned checkpoints are backed up to the private research repository. Float32 exploration,
+ﬂoat64 reﬁnement, and rigorous interval certiﬁcation are distinct stages.
+References
+[1] J. Zou, L. Fan, J. Gao, and J. Wang, An Explicit Family of Log-Concave Counterexamples to
+the Gaussian Completely Monotone Conjecture, arXiv:2608.30275 (2026).
+[2] Y. Gu and M. Sellke, A Counterexample to the Gaussian Completely Monotone Conjecture,
+arXiv:2605.11656 (2026).
+[3] G. Wang, A higher-order Otto calculus approach to the Gaussian completely monotone conjec-
+ture, arXiv:2408.13957.
+8

@@ -3,30 +3,30 @@
     {
       "family": "fourier_multiplier",
       "batch": 2048,
-      "compile_seconds": 53.90902876853943,
-      "seconds": 0.011498689651489258,
-      "max_relative_difference_fp32": 6.04534761805553e-06
+      "compile_seconds": 19.367680072784424,
+      "seconds": 0.011524438858032227,
+      "max_relative_difference_fp32": 6.255310381675372e-06
     },
     {
       "family": "fourier_potential",
       "batch": 2048,
-      "compile_seconds": 26.44026255607605,
-      "seconds": 0.00270688533782959,
-      "max_relative_difference_fp32": 4.813315626961412e-06
+      "compile_seconds": 1.0339272022247314,
+      "seconds": 0.0029045820236206056,
+      "max_relative_difference_fp32": 7.369374088739278e-06
     },
     {
       "family": "rbf_curvature",
       "batch": 2048,
-      "compile_seconds": 102.9170355796814,
-      "seconds": 0.003865337371826172,
-      "max_relative_difference_fp32": 5.5447521845053416e-06
+      "compile_seconds": 1.9908983707427979,
+      "seconds": 0.0027765989303588866,
+      "max_relative_difference_fp32": 6.997787295404123e-06
     },
     {
       "family": "skew_gaussian_mixture",
       "batch": 2048,
-      "compile_seconds": 35.1765251159668,
-      "seconds": 0.0022130727767944334,
-      "max_relative_difference_fp32": 3.26385861626477e-06
+      "compile_seconds": 1.6014180183410645,
+      "seconds": 0.0020792245864868163,
+      "max_relative_difference_fp32": 2.6006996449723374e-06
     }
   ],
   "note": "FP32 screening only. All selected candidates receive eager FP64 refinement and resolution checks."

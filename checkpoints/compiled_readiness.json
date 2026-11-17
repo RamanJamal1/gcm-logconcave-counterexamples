@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "seed": 260830275,
+  "generation": 1,
+  "gpu_evaluations": 2048,
+  "refinement_evaluations": 16,
+  "best": {
+    "7": {
+      "parameters": {
+        "family": "fourier_multiplier",
+        "amplitudes": [
+          -0.012305217266124144,
+          0.008079155026863077,
+          -0.0009328464555048063
+        ],
+        "frequencies": [
+          0.6057851083516843,
+          1.833398962411954,
+          3.2666186311393988
+        ],
+        "phases": [
+          -0.7905962533087629,
+          2.4606369371530583,
+          -2.9324003484034993
+        ]
+      },
+      "normalized": 428.23086504400976,
+      "signed": 409.1193772991578,
+      "convexity_bound": 0.957466492096513,
+      "certified": false,
+      "generation": 0,
+      "grid": 4097
+    }
+  },
+  "certificates": [],
+  "status": "bounded_run_complete",
+  "errors": [],
+  "pending_certifications": [],
+  "backend": "torch_cuda",
+  "device": "NVIDIA RTX A6000",
+  "rng_state": [
+    67,
+    244,
+    139,
+    15,
+    0,
+    0,
+    0,
+    0,
+    4,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ]
+}

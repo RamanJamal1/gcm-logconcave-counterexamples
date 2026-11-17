@@ -2,6 +2,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb,amsthm,booktabs,geometry,hyperref}
 \geometry{margin=1in}
+\setlength{\emergencystretch}{2em}
+\allowdisplaybreaks
 \newtheorem{proposition}{Proposition}
 \title{Exact Lower-Order Certificates and a Search for Log-Concave Violations of Gaussian Complete Monotonicity}
 \author{Computational research record}
@@ -15,14 +17,14 @@ The formulas are independently checked against high-precision heat-convolution
 finite differences. Rigorous finite-interval integration is combined with
 analytic tail bounds and global convexity estimates. Exact rational sum-of-squares identities additionally yield the sharp Gaussian
 lower bounds at orders six through eight under the stated analytic hypotheses.
-A further exact certificate establishes the nonnegative sign at order nine.
+Additional exact certificates establish the nonnegative signs through order eleven.
 This document is an ongoing-results record: an explicit order-17 witness is certified, while the exact minimal
 order remains unresolved.
 \end{abstract}
 \section{Question and conventions}
 Throughout, $P_t=e^{t\partial_x^2/2}$ and
 $H(p)=\int_{\mathbb R}p\log p$ is Boltzmann entropy. Put
-$S_m(p)=(-1)^m\left.\partial_t^mH(P_tp)\right|_{t=0}$.
+\[S_m(p)=(-1)^m\left.\partial_t^mH(P_tp)\right|_{t=0}.\]
 The target is the smallest $m\ge6$ admitting a smooth positive probability
 density with $V=-\log p$, $V''>0$ everywhere, and $S_m<0$.
 Gu and Sellke~\cite{gu} disprove the unrestricted conjecture at order five
