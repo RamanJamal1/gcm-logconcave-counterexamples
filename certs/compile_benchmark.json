@@ -1,0 +1,7 @@
+{
+  "eager_seconds": 0.46854424476623535,
+  "compile_seconds": 264.4211378097534,
+  "fused_seconds": 0.011697602272033692,
+  "max_relative_difference": 0.0007041380158625543,
+  "status": "completed"
+}

@@ -1,35 +1,21 @@
 {
   "schema": 1,
   "seed": 260830275,
-  "generation": 2,
-  "gpu_evaluations": 24576,
-  "refinement_evaluations": 296,
+  "generation": 3,
+  "gpu_evaluations": 32768,
+  "refinement_evaluations": 392,
   "best": {
     "10": {
       "parameters": {
-        "family": "rbf_curvature",
-        "weights": [
-          0.9831907378500808,
-          0.38878065688759506,
-          1.5946934001504351
-        ],
-        "widths": [
-          2.4276126606031667,
-          1.8192912060672437,
-          2.7675525051240633
-        ],
-        "centers": [
-          -2.511753003009085,
-          -2.8283964559656214,
-          2.413872269120043
-        ],
-        "tilt": 0.2630813903543803
+        "family": "skew_gaussian_mixture",
+        "separation_half": 0.041930301782644466,
+        "weight": 0.5077040701242777
       },
-      "normalized": 181584.31757721098,
-      "signed": 5081752885.5058155,
-      "convexity_bound": 1.0,
+      "normalized": 181440.00092157413,
+      "signed": 178281.38694304688,
+      "convexity_bound": 0.9982418497924164,
       "certified": false,
-      "generation": 2,
+      "generation": 3,
       "grid": 4097
     }
   },
@@ -49,8 +35,8 @@
     0,
     0,
     0,
-    192,
     0,
+    1,
     0,
     0,
     0,
