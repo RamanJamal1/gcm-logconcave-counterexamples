@@ -1,0 +1,44 @@
+{
+  "nonnegative_orders": [
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "sharp_gaussian_orders": [
+    6,
+    7,
+    8
+  ],
+  "negative_witness_order": 17,
+  "negative_witness_certificate": "certs/simple_fourier_m17.json",
+  "verified_certificates": {
+    "9": {
+      "order": 9,
+      "target_subtraction": "0",
+      "exact_identity": true,
+      "positive_definite_grams": true,
+      "ibp_identities_verified": true,
+      "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
+      "seconds": 0.7623732089996338,
+      "sha256": "6b830c679df8a4e944d6956edceca529a0ad1af9cf56c3c8be03c843b7c1dd8b",
+      "certificate": "certs/exact_quotient_m9.json"
+    },
+    "10": {
+      "order": 10,
+      "target_subtraction": "0",
+      "exact_identity": true,
+      "positive_definite_grams": true,
+      "ibp_identities_verified": true,
+      "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
+      "seconds": 3.9383156299591064,
+      "sha256": "0e30cfac02ba0c992041f6505336ecf70b4f6f301f0c75cac1b12d4ca58aa1fc",
+      "certificate": "certs/exact_quotient_m10.json"
+    }
+  },
+  "lower_bound": 11,
+  "upper_bound": 17,
+  "updated": 1794898993.0538797,
+  "exact_minimal_order_resolved": false
+}

@@ -20,6 +20,13 @@
       "compile_seconds": 102.9170355796814,
       "seconds": 0.003865337371826172,
       "max_relative_difference_fp32": 5.5447521845053416e-06
+    },
+    {
+      "family": "skew_gaussian_mixture",
+      "batch": 2048,
+      "compile_seconds": 35.1765251159668,
+      "seconds": 0.0022130727767944334,
+      "max_relative_difference_fp32": 3.26385861626477e-06
     }
   ],
   "note": "FP32 screening only. All selected candidates receive eager FP64 refinement and resolution checks."
