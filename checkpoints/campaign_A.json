@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "seed": 260830275,
-  "generation": 293,
-  "gpu_evaluations": 10944512,
-  "refinement_evaluations": 150016,
+  "generation": 301,
+  "gpu_evaluations": 11468800,
+  "refinement_evaluations": 154112,
   "best": {
     "6": {
       "parameters": {
@@ -20,7 +20,7 @@
     }
   },
   "certificates": [],
-  "status": "running",
+  "status": "bounded_run_complete",
   "errors": [],
   "pending_certifications": [],
   "backend": "torch_cuda",
@@ -34,7 +34,7 @@
     0,
     0,
     0,
-    72,
+    136,
     64,
     0,
     0,

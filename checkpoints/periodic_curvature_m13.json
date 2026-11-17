@@ -1,0 +1,16 @@
+{
+  "periodic_surrogate": 3.510899943182786e-06,
+  "order": 13,
+  "amplitudes": [
+    0.0030000000004977287,
+    5.5587570869680176e-08,
+    -8.64952179580188e-12
+  ],
+  "kappa": 0.003013462053722755,
+  "objective": 0.38082778151858143,
+  "certified": false,
+  "note": "Periodic surrogate only; full Gaussian correction is not included",
+  "elapsed_seconds": 18.474987983703613,
+  "evaluations": 9423,
+  "periodic_surrogate_fine": 3.510899943182787e-06
+}

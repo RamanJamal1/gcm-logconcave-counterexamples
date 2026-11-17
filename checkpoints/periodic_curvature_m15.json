@@ -1,14 +1,16 @@
 {
-  "periodic_surrogate": 3.947141296278854e-06,
+  "periodic_surrogate": 3.929572081321818e-06,
   "order": 15,
   "amplitudes": [
-    0.0030011944308587037,
-    2.619212070748877e-08,
-    4.322405810499861e-12
+    0.0030000000062313185,
+    3.164133386341296e-08,
+    -4.203687053175877e-12
   ],
-  "kappa": 0.003014837504620712,
-  "objective": 0.42528570618600053,
+  "kappa": 0.0030135579424492402,
+  "objective": 0.4238169564714709,
   "certified": false,
   "note": "Periodic surrogate only; full Gaussian correction is not included",
-  "elapsed_seconds": 7.654813528060913
+  "elapsed_seconds": 27.70452070236206,
+  "evaluations": 11631,
+  "periodic_surrogate_fine": 3.929572081321819e-06
 }
