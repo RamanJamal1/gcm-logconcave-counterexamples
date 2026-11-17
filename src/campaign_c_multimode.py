@@ -22,15 +22,21 @@ def certify_job(order,params):
   with open(os.devnull,'w') as sink,contextlib.redirect_stdout(sink):return certify(order,list(params[:-1]),params[-1])
  except Exception as e:return {'certified':False,'error':repr(e),'parameters':params,'order':order}
 
-def main(seconds=3600,batch=65536,sync=False,state_path='checkpoints/campaign_C.json'):
+def main(seconds=3600,batch=65536,sync=False,state_path='checkpoints/campaign_C.json',resume=True):
  torch.set_num_threads(1);torch.manual_seed(170617);start=time.time();lastsync=start
  research=json.loads((ROOT/'checkpoints/research_status.json').read_text());witness=json.loads((ROOT/research['negative_witness_certificate']).read_text());order=research['negative_witness_order'];reference=witness['parameters']['amplitudes'];K=len(reference)
  fractions=sorted({Fraction(p,q) for q in range(10,1001) for p in range(1,min(150,q//5)+1) if Fraction(1,100)<=Fraction(p,q)<=Fraction(1,5)})
  values64=torch.tensor([float(f) for f in fractions],device='cuda',dtype=torch.float64);values=values64.float();pool=ProcessPoolExecutor(max_workers=2,mp_context=multiprocessing.get_context('spawn'));pending=[];seen=set()
  state={'status':'running','gpu_evaluations':0,'refinement_evaluations':0,'generation':0,'certifications':0,'best_certified':{},'errors':[],'method':'rational multi-harmonic GPU periodic screening; full spatial Arb verification','order':order,'device':torch.cuda.get_device_name(0)}
  path=ROOT/state_path
+ if resume and path.exists():
+  state=json.loads(path.read_text())
+  if state.get('rng_state'):torch.cuda.set_rng_state(torch.tensor(state['rng_state'],dtype=torch.uint8))
+  seen={(order,tuple(v)) for v in state.get('seen_parameters',[])}
+ prior_runtime=state.get('active_runtime_seconds',0)
+ state['status']='running'
  def save(reason=None):
-  state['elapsed_seconds']=time.time()-start;atomic_json(path,state)
+  state['elapsed_seconds']=time.time()-start;state['active_runtime_seconds']=prior_runtime+time.time()-start;state['rng_state']=torch.cuda.get_rng_state().tolist();state['seen_parameters']=[list(v) for _,v in sorted(seen)];atomic_json(path,state)
   if reason and sync:checkpoint(reason)
  def harvest(wait=False):
   for future,params,order in list(pending):
@@ -79,7 +85,7 @@ def main(seconds=3600,batch=65536,sync=False,state_path='checkpoints/campaign_C.
    pending.append((pool.submit(certify_job,order,strings),strings,order))
  while time.time()-start<seconds:
   run_generation(order);state['generation']+=1;harvest();save()
-  print({k:v for k,v in state.items() if k not in ['errors']},flush=True)
+  print({k:v for k,v in state.items() if k not in ['errors','rng_state','seen_parameters']},flush=True)
   if time.time()-lastsync>=1500:save('campaign C periodic rationalization checkpoint');lastsync=time.time()
  harvest(wait=True);pool.shutdown();state['status']='bounded_run_complete';save('campaign C complete')
  return state

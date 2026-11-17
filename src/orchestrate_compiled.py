@@ -21,9 +21,8 @@ def certification_job(c,order,path):
  atomic_json(path,r);return r
 
 def progress(state):
- lines=['# GCM research progress','',f"Status: {state['status']}",f"GPU evaluations: {state['gpu_evaluations']}",f"Completed generations: {state['generation']}",'','Numerical candidates are not interval certificates.']
- for m,e in state['best'].items():lines.append(f"- Order {m}: normalized signed derivative {e['normalized']:.12g}; certified: false")
- (ROOT/'PROGRESS.md').write_text('\n'.join(lines)+'\n')
+ from progress_dashboard import update
+ update()
 
 def main(args):
  path=ROOT/args.state
@@ -35,10 +34,10 @@ def main(args):
  torch.manual_seed(args.seed);rng=torch.Generator(device='cuda');rng.manual_seed(args.seed)
  if 'rng_state' in state:rng.set_state(torch.tensor(state['rng_state'],dtype=torch.uint8))
  state.setdefault('pending_certifications',[])
- pending=[];start=time.monotonic();last_sync=start;initial_generation=state['generation']
+ pending=[];start=time.monotonic();last_sync=start;initial_generation=state['generation'];prior_runtime=state.get('active_runtime_seconds',0)
  state['status']='running';state['backend']='torch_cuda';state['device']=torch.cuda.get_device_name(0)
  def save(sync=False):
-  state['rng_state']=rng.get_state().tolist();atomic_json(path,state);progress(state)
+  state['active_runtime_seconds']=prior_runtime+time.monotonic()-start;state['rng_state']=rng.get_state().tolist();atomic_json(path,state);progress(state)
   if sync and args.sync:
    reason=' '.join(f'm{m}={v["normalized"]:.7g}' for m,v in state['best'].items())
    result=checkpoint(reason or 'campaign initialized');atomic_json(ROOT/'certs/latest_sync.json',result)
@@ -93,7 +92,7 @@ def main(args):
    save(sync=periodic)
    if periodic:last_sync=time.monotonic()
    print(json.dumps({k:state[k] for k in ['generation','gpu_evaluations','refinement_evaluations','errors']}),flush=True)
-  state['status']='bounded_run_complete'
+  state['status']=getattr(args,'completion_status','bounded_run_complete')
  finally:
   pool.shutdown(wait=True)
   for target,future in pending:

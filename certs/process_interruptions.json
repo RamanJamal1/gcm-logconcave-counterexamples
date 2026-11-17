@@ -29,6 +29,24 @@
       "exit_code": 143,
       "detected_utc": "2026-11-17T09:10:50.714391+00:00",
       "recovery": "Saved best positive screen retained; broader convex-perturbation search active"
+    },
+    {
+      "name": "campaign_B",
+      "exit_code": 143,
+      "recovery": "Resumed with ten-minute chunks and cumulative active-runtime accounting.",
+      "detected_utc": "2026-11-17T09:43:00+00:00"
+    },
+    {
+      "name": "sos_cached_native_m12_supervised",
+      "exit_code": 143,
+      "recovery": "Saved matrix reused; fast exact row transformation and alternative numerical solvers developed.",
+      "detected_utc": "2026-11-17T09:43:00+00:00"
+    },
+    {
+      "name": "sos_exact_preconditioned_m13_supervised",
+      "exit_code": 143,
+      "recovery": "Replaced monolithic elimination with exact small Schur inverse and resumable column blocks; preparation completed.",
+      "detected_utc": "2026-11-17T09:43:00+00:00"
     }
   ],
   "cause": "Not established; no Python traceback in redirected logs."

@@ -15,7 +15,20 @@ def solve(m,sharp=False,delta=1e-5):
   problem.solve(solver='CLARABEL',tol_gap_abs=1e-10,tol_gap_rel=1e-10,tol_feas=1e-10,max_iter=250,static_regularization_constant=1e-12,dynamic_regularization_delta=1e-10,iterative_refinement_max_iter=30,verbose=True)
   result['status']=problem.status
   if all(Q.value is not None for Q in Qs):result.update(gram_matrices=[(Q.value*norm/np.outer(ss,ss)).tolist() for Q,ss in zip(Qs,scales)],min_scaled_eigenvalues=[float(la.eigvalsh(Q.value)[0]) for Q in Qs],residual=float(np.max(abs(A@vec.value-b))))
- except Exception as e:result.update(status='solver_error',error=repr(e))
+ except Exception as e:
+  result.update(status='solver_error',error=repr(e))
+  # Recover the last iterate without altering the solver's failure status.
+  try:
+   from cvxpy.reductions.cvx_attr2constr import recover_value_for_leaf
+   raw=problem._solver_cache['CLARABEL'].get_solution()
+   data,_,_=problem.get_problem_data(cp.CLARABEL)
+   mapping=data['param_prob'].var_id_to_col
+   recovered=[]
+   for Q,n in zip(Qs,dims):
+    offset=mapping[Q.id];recovered.append(recover_value_for_leaf(Q,np.asarray(raw.x)[offset:offset+n*(n+1)//2]))
+   xx=np.concatenate([q.ravel() for q in recovered])
+   result.update(raw_solver_status=str(raw.status),gram_matrices=[(q*norm/np.outer(ss,ss)).tolist() for q,ss in zip(recovered,scales)],min_scaled_eigenvalues=[float(la.eigvalsh(q)[0]) for q in recovered],residual=float(np.max(abs(A@xx-b))))
+  except Exception as recovery_error:result['iterate_recovery_error']=repr(recovery_error)
  result['seconds']=time.time()-start;(ROOT/f'certs/sos_cached_clarabel_{tag}m{m}.json').write_text(json.dumps(result,indent=2)+'\n');print({k:v for k,v in result.items() if k not in ['gram_matrices','basis_scales']},flush=True)
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--order',type=int,default=13);p.add_argument('--sharp',action='store_true');p.add_argument('--margin',type=float,default=1e-5);a=p.parse_args();solve(a.order,a.sharp,a.margin)
