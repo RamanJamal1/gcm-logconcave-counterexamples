@@ -11,19 +11,18 @@ def reconstruct(m,source):
  start=time.time();data=json.loads(Path(source).read_text());bases,target,keys,cols,layout,rows=setup(m)
  scales=data['basis_scales'];normalization=data['normalization']
  factors=[s.Rational(normalization,scales[block][i]*scales[block][j]) for block,i,j in layout]
- A=s.Matrix([[d.get(k,0)*factor for d,factor in zip(cols,factors)] for k in keys]);b=s.Matrix([target.get(k,0) for k in keys])
+ A=s.Matrix([[d.get(k,0) for d in cols] for k in keys]);b=s.Matrix([target.get(k,0) for k in keys])
  # Rank-revealing pivoting in scaled Gram coordinates controls rounding amplification.
- numerical=np.array(A,float);rn=np.maximum(np.linalg.norm(numerical,axis=1),1e-100)
+ numerical=np.array(A,float)*np.array([float(f) for f in factors])[None,:];rn=np.maximum(np.linalg.norm(numerical,axis=1),1e-100)
  _,_,permutation=la.qr(numerical/rn[:,None],mode='economic',pivoting=True)
  permutation=list(map(int,permutation));permuted=A[:,permutation]
  R,piv=permuted.row_join(b).rref();assert len(cols) not in piv
- original=[s.Rational(str(data['gram_matrices'][block][i][j]))/factor for (block,i,j),factor in zip(layout,factors)]
+ original=[s.Rational(str(data['gram_matrices'][block][i][j])) for block,i,j in layout]
  y=[original[j] for j in permutation];free=[j for j in range(len(y)) if j not in piv]
  for row,pivot in enumerate(piv):y[pivot]=R[row,-1]-sum(R[row,j]*y[j] for j in free)
  x=[s.Rational(0)]*len(y)
  for j,k in enumerate(permutation):x[k]=y[j]
  assert A*s.Matrix(x)==b
- x=[v*factor for v,factor in zip(x,factors)]
  grams=[s.zeros(len(base)) for base in bases]
  for v,(block,i,j) in zip(x,layout):grams[block][i,j]=grams[block][j,i]=v
  ldl=[]
