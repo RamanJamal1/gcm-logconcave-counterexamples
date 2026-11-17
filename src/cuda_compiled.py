@@ -1,4 +1,4 @@
-"""Fused FP32 screening; FP64 refinement remains eager and independently checked."""
+"""Fused FP32 screening and FP64 optimization; final values use independent eager evaluation."""
 import os
 os.environ['TORCHINDUCTOR_COMPILE_THREADS']='1'
 import torch
