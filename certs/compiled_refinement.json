@@ -7,6 +7,13 @@
       "compile_seconds": 138.86514377593994,
       "gradient_relative_max_error": 1.8104789350791283e-15,
       "loss_relative_error": 0.0
+    },
+    {
+      "family": "fourier_multiplier",
+      "order": 8,
+      "compile_seconds": 104.34425973892212,
+      "gradient_relative_max_error": 1.1022476895754671e-15,
+      "loss_relative_error": 0.0
     }
   ]
 }
