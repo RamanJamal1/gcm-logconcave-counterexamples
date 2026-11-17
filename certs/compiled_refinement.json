@@ -28,6 +28,20 @@
       "compile_seconds": 54.800230979919434,
       "gradient_relative_max_error": 3.4869184018525635e-15,
       "loss_relative_error": 2.0269176449442669e-16
+    },
+    {
+      "family": "rbf_curvature",
+      "order": 7,
+      "compile_seconds": 128.74626278877258,
+      "gradient_relative_max_error": 2.4424906541753444e-15,
+      "loss_relative_error": 1.9503551609085555e-16
+    },
+    {
+      "family": "rbf_curvature",
+      "order": 8,
+      "compile_seconds": 94.87846064567566,
+      "gradient_relative_max_error": 1.9845236565174673e-15,
+      "loss_relative_error": 0.0
     }
   ]
 }

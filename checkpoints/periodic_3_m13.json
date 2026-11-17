@@ -1,0 +1,14 @@
+{
+  "order": 13,
+  "amplitudes": [
+    0.003000000004941598,
+    5.54982824956288e-08,
+    2.539301765047281e-13
+  ],
+  "kappa": 0.0030095508558252606,
+  "periodic_surrogate": 3.5089420328987875e-06,
+  "periodic_surrogate_fine": 3.5089420328987875e-06,
+  "evaluations": 8485,
+  "certified": false,
+  "note": "Gaussian filtering modes omitted; screening only"
+}
