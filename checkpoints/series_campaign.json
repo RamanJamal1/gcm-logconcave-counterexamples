@@ -1,0 +1,33 @@
+{
+  "evaluations": 40,
+  "orders": {
+    "9": {
+      "normalized_signed_midpoint": 721269.6276573567,
+      "normalized_signed_interval": "[721269.6276573567013153114275942592993813400685 +/- 5.35e-41]",
+      "variance_interval": "[3.111508454239466284764423089170069678157336221618493369234601889699777574229073084106964278637540110 +/- 2.55e-100]",
+      "order": 9,
+      "family": "gaussian_two_fourier_modes",
+      "parameters": {
+        "a": "1/8",
+        "b": "19683/16777216",
+        "kappa": "4351768/14660381"
+      },
+      "density": "Z^-1 exp(-kappa*x^2/2)*(1+a*cos(x)+b*cos(2*x))",
+      "signed_derivative_interval": "[26.385101949330193879591699542000714422702233557 +/- 8.53e-46]",
+      "convexity_lower_bound": "[0.1484193350773080181204021914573707190829487992160640299866695142506869364445576141575038193072881257 +/- 2.34e-101]",
+      "periodic_finite_sum": "[26.37429213003900350372845629495846220366535504600095057470580416067164396620468718887442918460208 +/- 8.97e-96]",
+      "nonzero_mode_absolute_bound": "[1.052384344533493528982624742235724088568912650022523630107206766723636925042284399604557455709924638e-87 +/- 1.12e-187]",
+      "series_tail_absolute_bound": "[4.490839216087952077277699181840960299612660406195701569864222579157221711679955189093229916689271719e-46 +/- 3.73e-147]",
+      "mode_cutoff": 12,
+      "series_cutoff": 96,
+      "digits": 100,
+      "certified": false,
+      "status": "inconclusive_or_nonnegative",
+      "seconds": 0.21329069137573242,
+      "method": "exact time-change polynomial, finite periodic Fourier sum, rigorous nonzero-mode and infinite-series bounds"
+    }
+  },
+  "status": "running",
+  "started": 1794896939.3390205,
+  "method": "Arb finite Fourier series screening; final negatives at 200 digits"
+}
