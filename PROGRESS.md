@@ -1,18 +1,18 @@
 # GCM research progress
 
-Updated: 2026-11-17T08:34:08.588195+00:00
+Updated: 2026-11-17T08:34:17.185087+00:00
 
 Verified bracket: 12 ≤ m* ≤ 16. Exact minimality remains unresolved.
 
 | Campaign | Saved status | FP32 candidates | FP64 refined candidates |
 |---|---|---:|---:|
 | campaign_A | bounded_run_complete | 11,468,800 | 154,112 |
-| campaign_B | running | 458,752 | 3,152 |
+| campaign_B | running | 524,288 | 3,600 |
 | higher_campaign | stopped_for_new_order12_family | 1,630,208 | 25,472 |
 | polynomial_campaign | interrupted_exit143 | 32,768 | 512 |
 | polynomial_wide_campaign | running | 393,216 | 6,144 |
 
-Recorded production totals: 13,983,744 FP32 candidate evaluations; 189,392 FP64 refinements. Warmups and readiness runs are excluded. Interrupted partial generations may not be counted.
+Recorded production totals: 14,049,280 FP32 candidate evaluations; 189,840 FP64 refinements. Warmups and readiness runs are excluded. Interrupted partial generations may not be counted.
 
 Sharp proven normalized bounds: S6 Var^6 ≥ 60; S7 Var^7 ≥ 360; S8 Var^8 ≥ 2520.
 Exact rational nonnegativity certificates cover orders 6–11.
