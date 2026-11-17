@@ -1,0 +1,8 @@
+{
+  "order": 12,
+  "proved": false,
+  "status": "solver_error",
+  "error": "SolverError(\"Solver 'CLARABEL' failed. Try another solver, or solve with verbose=True for more information.\")",
+  "seconds": 442.91118144989014,
+  "condition": 44753860.35153596
+}
