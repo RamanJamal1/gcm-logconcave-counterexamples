@@ -2,8 +2,8 @@
   "schema": 1,
   "seed": 260830275,
   "generation": 7,
-  "gpu_evaluations": 112,
-  "refinement_evaluations": 14,
+  "gpu_evaluations": 128,
+  "refinement_evaluations": 15,
   "best": {
     "6": {
       "parameters": {
@@ -20,29 +20,15 @@
     },
     "7": {
       "parameters": {
-        "family": "rbf_curvature",
-        "weights": [
-          2.799385049199395,
-          1.307457759830939,
-          1.063898735900573
-        ],
-        "widths": [
-          2.640249764167856,
-          1.7301585148570982,
-          2.8350556610498026
-        ],
-        "centers": [
-          1.8878463027651469,
-          -2.180308374982631,
-          -1.544013415670996
-        ],
-        "tilt": 1.5755726859141312
+        "family": "skew_gaussian_mixture",
+        "separation_half": 0.1325020649650411,
+        "weight": 0.8888323661198434
       },
-      "normalized": 360.5730593641148,
-      "signed": 17286882.45082006,
-      "convexity_bound": 1.0,
+      "normalized": 360.0306947303998,
+      "signed": 343.0181304217091,
+      "convexity_bound": 0.9824432027800001,
       "certified": false,
-      "generation": 6,
+      "generation": 7,
       "grid": 2049
     }
   },
@@ -60,7 +46,7 @@
     0,
     0,
     0,
-    56,
+    64,
     0,
     0,
     0,
