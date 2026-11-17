@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-17T09:18:06.663088+00:00",
+  "timestamp": "2026-11-17T09:54:50.724452+00:00",
   "reason": "m7=360 m8=2520",
   "steps": [
     {
@@ -17,10 +17,10 @@
         "git",
         "commit",
         "-m",
-        "chore: checkpoint 2026-11-17T09:18:06.663088+00:00 - m7=360 m8=2520"
+        "chore: checkpoint 2026-11-17T09:54:50.724452+00:00 - m7=360 m8=2520"
       ],
       "returncode": 0,
-      "stdout": "[main aee79e5] chore: checkpoint 2026-11-17T09:18:06.663088+00:00 - m7=360 m8=2520\n 9 files changed, 169 insertions(+), 70 deletions(-)\n rewrite MORNING_BRIEFING.md (99%)\n rewrite checkpoints/convex_perturbation_m15_s0.json (84%)\n create mode 100644 src/final_report.py",
+      "stdout": "[main 8a19555] chore: checkpoint 2026-11-17T09:54:50.724452+00:00 - m7=360 m8=2520\n 14 files changed, 17472 insertions(+), 31 deletions(-)\n create mode 100644 certs/sos_cached_clarabel_m13.json\n create mode 100644 certs/sos_congruence_m12.json\n create mode 100644 src/continue_campaign_b.py\n create mode 100644 src/run_campaign_b_chunk.py\n create mode 100644 src/sos_congruence.py",
       "stderr": ""
     },
     {
@@ -33,7 +33,7 @@
       ],
       "returncode": 0,
       "stdout": "Branch 'main' set up to track remote branch 'main' from 'origin'.",
-      "stderr": "To https://github.com/returnedlegend/gcm-logconcave-counterexamples.git\n   818704f..aee79e5  main -> main"
+      "stderr": "To https://github.com/returnedlegend/gcm-logconcave-counterexamples.git\n   df4aad1..8a19555  main -> main"
     }
   ],
   "remote_status": "pushed"
