@@ -3,17 +3,17 @@
   "gpu_evaluations": 1114112,
   "refinement_evaluations": 8704,
   "generation": 16,
-  "certifications": 121,
+  "certifications": 122,
   "best_certified": {
     "16": {
-      "signed": -0.890205158600032,
+      "signed": -0.8905672315442176,
       "parameters": {
         "amplitudes": [
-          "4/61",
-          "1/41400",
-          "-1/18800000"
+          "3/46",
+          "1/41700",
+          "-1/18900000"
         ],
-        "kappa": "59/842"
+        "kappa": "65/933"
       },
       "certificate": "certs/campaign_C_m16_best.json"
     }
@@ -24,8 +24,8 @@
   "device": "NVIDIA RTX A6000",
   "configured_certification_worker_limit": 2,
   "peak_cuda_memory_allocated_bytes": 2699690496,
-  "elapsed_seconds": 178.68677973747253,
-  "active_runtime_seconds": 178.686781167984,
+  "elapsed_seconds": 180.11257433891296,
+  "active_runtime_seconds": 180.11257576942444,
   "rng_state": [
     121,
     154,
