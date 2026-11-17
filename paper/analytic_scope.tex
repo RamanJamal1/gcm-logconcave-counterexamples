@@ -1,0 +1,70 @@
+\section{From exact identities to entropy signs}
+The certificate files \texttt{certs/exact\_sos\_m6.json},
+\texttt{exact\_sos\_m7.json}, and \texttt{exact\_sos\_m8.json} contain
+rational matrices $Q_{m,0},Q_{m,1}$ and rational coefficients $\lambda_{m,k}$
+satisfying the polynomial identity
+\[
+ (-1)^mF_m=v_m^TQ_{m,0}v_m+(-u_2)v_{m-1}^TQ_{m,1}v_{m-1}
+ -\sum_k\lambda_{m,k}(DP_k+u_1P_k).
+\]
+Here $v_r$ lists the monomials of weighted degree $r$ in the variables
+$u_j$ of weight $j$, and the $P_k$ are monomials of weighted degree $2m-1$
+using variables through $u_{m-1}$.
+Both matrices have been proved positive definite using exact rational
+Schur complements, independently of the numerical SDP that suggested them.
+A standalone verifier uses only the Python standard library and checks the
+polynomial identity, every integration-by-parts term, and matrix positivity.
+
+\begin{proposition}[Sign under justified integration by parts]
+For $m\in\{6,7,8\}$, let $p$ be a smooth positive log-concave density such
+that its entropy derivative is $I_m=\int pF_m$, all the displayed terms are
+integrable, and $\int p(DP_k+u_1P_k)=0$. Then $S_m(p)\ge0$.
+In particular, this conclusion applies to the four implemented search families.
+\end{proposition}
+\begin{proof}
+Integrate the exact identity. The last sum vanishes. Log-concavity means
+$u_2\le0$, and positive definiteness implies both remaining terms are
+nonnegative at every point.
+\end{proof}
+
+\paragraph{Extension to positive heat times.}
+The following analytic argument records how to remove the Gaussian-tail
+restriction; the algebraic certificate does not depend on this argument.
+Let $Y=X+\sqrt t Z$, with $Z$ standard Gaussian, and let $p_t$ be its density.
+For the probabilists' Hermite polynomial $\mathrm{He}_k$,
+\[
+ \frac{p_t^{(k)}(y)}{p_t(y)}
+ =t^{-k/2}\mathbb E[(-1)^k\mathrm{He}_k(Z)\mid Y=y].
+\]
+Conditional Jensen gives, for every finite $q\ge1$,
+\[
+ \int p_t\left|\frac{p_t^{(k)}}{p_t}\right|^q
+ \le t^{-kq/2}\mathbb E|\mathrm{He}_k(Z)|^q<\infty.
+\]
+Each $u_j$ is a polynomial in $p_t^{(k)}/p_t$, $k\le j$.
+H\"older's inequality therefore makes every finite polynomial in the $u_j$
+integrable, locally uniformly for $t>0$.
+For a compactly supported cutoff $\chi_R$ tending to one,
+\[
+ \int\chi_Rp_t(DP+u_1P)=-\int\chi_R'p_tP\longrightarrow0,
+\]
+since $\|\chi_R'\|_\infty=O(R^{-1})$ and $p_tP$ is integrable.
+This justifies the required integrations by parts without pointwise boundary
+estimates. Gaussian convolution preserves log-concavity. Log-concave
+probability densities have finite moments of all orders; a fixed bounded
+set carrying positive input mass supplies a quadratic lower bound on
+$\log p_t$, while the Gaussian kernel supplies an upper bound. Together
+with the displayed conditional-moment estimates, these bounds justify
+entropy differentiation and the recurrence on compact positive-time intervals.
+Consequently the certificates imply $(-1)^mH^{(m)}(P_tp)\ge0$ for $t>0$.
+
+\paragraph{The endpoint $t=0$.}
+If the entropy profile admits an order-$m$ right Taylor expansion at zero,
+continuity and the positive-time sign give
+$(-1)^m\Delta_h^m H(0)\ge0$; dividing by $h^m$ and taking $h\downarrow0$
+gives the same sign for the right derivative. This endpoint regularity is
+explicit: smoothness of the spatial density alone is not being used as a
+substitute for existence of the stated time derivative. Under this natural
+interpretation of the derivative in the research question, the certificates
+rule out counterexamples at orders six, seven, and eight. They do not identify
+the first failing higher order.

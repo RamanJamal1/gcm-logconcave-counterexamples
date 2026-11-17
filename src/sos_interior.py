@@ -22,7 +22,8 @@ def probe(m):
  start=time.time();symbols=[u[j] for j in range(1,m+1)]
  def mon(parts):return s.prod(u[j] for j in parts)
  def coeff(expr):return dict(s.Poly(s.expand(expr),*symbols).terms())
- target=coeff((-1)**m*derive()[m]);bases=[[mon(p) for p in partitions(m,m)],[mon(p) for p in partitions(m-1,m-1)]]
+ normalization=s.factorial(m-1)
+ target=coeff((-1)**m*derive(m)[m]/normalization);bases=[[mon(p) for p in partitions(m,m)],[mon(p) for p in partitions(m-1,m-1)]]
  ids=[]
  for parts in partitions(2*m-1,m-1):
   p=mon(parts);ids.append(coeff(u[1]*p+sum(s.diff(p,u[j])*u[j+1] for j in range(1,m))))
@@ -50,9 +51,9 @@ def probe(m):
  problem=cp.Problem(cp.Maximize(margin),constraints)
  try:problem.solve(solver='CLARABEL',tol_gap_abs=1e-9,tol_feas=1e-9,max_iter=300)
  except Exception as e:return {'order':m,'status':'solver_error','error':str(e),'proved':False}
- r={'order':m,'status':problem.status,'proved':False,'interior_margin':None if margin.value is None else float(margin.value),'gram_sizes':[len(b) for b in bases],'ibp_identities':len(ids),'constraints':len(keys),'seconds':time.time()-start}
+ r={'order':m,'status':problem.status,'proved':False,'solver_normalization_factor':str(normalization),'interior_margin':None if margin.value is None else float(margin.value),'gram_sizes':[len(b) for b in bases],'ibp_identities':len(ids),'constraints':len(keys),'seconds':time.time()-start}
  if all(Q.value is not None for Q in grams):
-  r['gram_matrices']=[Q.value.tolist() for Q in grams];r['ibp_multipliers']=lam.value.tolist();r['min_eigenvalues']=[float(np.linalg.eigvalsh(Q.value).min()) for Q in grams];r['equality_residual']=float(np.max(abs(np.array([float(v.value) if hasattr(v,'value') else v for v in rhs])-b-D@lam.value)))
+  r['gram_matrices']=[(Q.value*float(normalization)).tolist() for Q in grams];r['ibp_multipliers']=(lam.value*float(normalization)).tolist();r['min_eigenvalues']=[float(np.linalg.eigvalsh(Q.value).min()) for Q in grams];r['equality_residual']=float(np.max(abs(np.array([float(v.value) if hasattr(v,'value') else v for v in rhs])-b-D@lam.value)))
  return r
 
 if __name__=='__main__':

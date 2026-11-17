@@ -11,7 +11,7 @@ def reconstruct(m):
  def mon(p):return s.prod(u[j] for j in p)
  def coeff(e):return dict(s.Poly(s.expand(e),*symbols).terms())
  bases=[[mon(p) for p in partitions(m,m)],[mon(p) for p in partitions(m-1,m-1)]]
- target=coeff((-1)**m*derive()[m]);columns=[];approx=[];layout=[];ids=[]
+ target=coeff((-1)**m*derive(m)[m]);columns=[];approx=[];layout=[];ids=[]
  for b,(base,weight) in enumerate(zip(bases,[1,-u[2]])):
   for i in range(len(base)):
    for j in range(i,len(base)):
@@ -35,7 +35,7 @@ def reconstruct(m):
   L,D=Q.LDLdecomposition(hermitian=False);assert L*D*L.T==Q
   ds=[D[i,i] for i in range(D.rows)];assert all(v>0 for v in ds),ds;pivots_out.append(ds)
  expr=sum((s.Matrix(base).T*Q*s.Matrix(base))[0]*weight for base,Q,weight in zip(bases,grams,[1,-u[2]]))-sum(lam*ident for lam,ident in zip(lams,ids))
- assert s.expand(expr-(-1)**m*derive()[m])==0
+ assert s.expand(expr-(-1)**m*derive(m)[m])==0
  result={'order':m,'status':'exact_identity_and_positive_definite_grams_verified','scope':'integrated nonnegativity for log-concave densities for which the displayed integration-by-parts identities and derivative representation are valid','bases':[[str(v) for v in base] for base in bases],'gram_matrices':[[[str(v) for v in row] for row in Q.tolist()] for Q in grams],'ibp_polynomials':[str(v) for v in ids],'ibp_multipliers':[str(v) for v in lams],'ldl_positive_diagonal':[[str(v) for v in ds] for ds in pivots_out],'identity':'(-1)^m F_m = v^T Q0 v + (-u2) w^T Q1 w - sum lambda_i (D P_i + u1 P_i)','seconds':time.time()-start}
  (ROOT/f'certs/exact_sos_m{m}.json').write_text(json.dumps(result,indent=2)+'\n');print(m,result['status'],result['seconds'],flush=True)
 

@@ -22,7 +22,7 @@ def probe(m):
  start=time.time();symbols=[u[j] for j in range(1,m+1)]
  def mon(parts):return s.prod(u[j] for j in parts)
  def coeff(expr):return dict(s.Poly(s.expand(expr),*symbols).terms())
- target=coeff((-1)**m*derive()[m]);bases=[[mon(p) for p in partitions(m,m)],[mon(p) for p in partitions(m-1,m-1)]]
+ target=coeff((-1)**m*derive(m)[m]);bases=[[mon(p) for p in partitions(m,m)],[mon(p) for p in partitions(m-1,m-1)]]
  ids=[]
  for parts in partitions(2*m-1,m-1):
   p=mon(parts);ids.append(coeff(u[1]*p+sum(s.diff(p,u[j])*u[j+1] for j in range(1,m))))

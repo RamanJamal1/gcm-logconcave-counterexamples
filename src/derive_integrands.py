@@ -13,10 +13,10 @@ from pathlib import Path
 import json
 import sympy as s
 ROOT=Path(__file__).resolve().parents[1]
-u={j:s.Symbol(f'u{j}') for j in range(1,10)}
+u={j:s.Symbol(f'u{j}') for j in range(1,33)}
 
 def reduced_time_derivative(f):
-    active=[j for j in range(2,9) if u[j] in f.free_symbols]
+    active=[j for j in range(2,32) if u[j] in f.free_symbols]
     out=0
     for i in active:
         for j in active:
@@ -24,9 +24,9 @@ def reduced_time_derivative(f):
         out+=s.diff(f,u[i])*sum(s.binomial(i,k)*u[k+1]*u[i-k+1] for k in range(1,i))/2
     return s.expand(out)
 
-def derive():
+def derive(max_order=8):
     f={1:-u[1]**2/2,2:u[2]**2/2}
-    for m in range(3,9):f[m]=reduced_time_derivative(f[m-1])
+    for m in range(3,max_order+1):f[m]=reduced_time_derivative(f[m-1])
     return f
 
 def main():
