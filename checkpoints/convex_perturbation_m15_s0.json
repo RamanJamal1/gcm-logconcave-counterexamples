@@ -12,5 +12,7 @@
   "signed_numerical": 0.0015903853663118478,
   "objective": 2.0888662662762205,
   "certified": false,
-  "elapsed_seconds": 623.63560795784
+  "elapsed_seconds": 623.63560795784,
+  "evaluations": 7686,
+  "signed_fine": 0.0015903853779743401
 }

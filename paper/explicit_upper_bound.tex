@@ -113,7 +113,7 @@ where
 \]
 Then $p$ is a smooth positive probability density and
 \[
- (-\log p)''>\frac1{5000},\qquad S_{16}(p)<-\frac12.
+ (-\log p)''>\frac1{2500},\qquad S_{16}(p)<-\frac12.
 \]
 \end{proposition}
 \begin{proof}[Computer-assisted proof]
@@ -121,8 +121,22 @@ Let $a=(1/16,1/45000,-1/20000000)$, $\kappa=67/1000$, and
 $A_j=\sum_{k=1}^3|a_k|k^j$. Positivity follows from $A_0<1$, and
 \[
  V''\ge\kappa-\frac{A_2}{1-A_0}
- =\frac{39900397}{168745991000}>\frac1{5000}.
+ =\frac{39900397}{168745991000}>0.
 \]
+For the sharper minimum, write $c=\cos x$,
+$g(c)=1+a_1c+a_2(2c^2-1)+a_3(4c^3-3c)$, and
+\[
+ H(c)=((1-c^2)g''(c)-cg'(c))g(c)-(1-c^2)g'(c)^2.
+\]
+The periodic contribution to $(\log p)''$ is $H/g^2$. Its derivative
+has numerator $N=H'g-2Hg'$. Exact rational arithmetic gives
+$N_0<-3/50$ and $\sum_{j\ge1}|N_j|<1/100$.
+Hence $N(c)<-1/20$ for $|c|\le1$, so the curvature is minimized at $c=-1$:
+\[
+ \min_x V''(x)=\frac{72599603}{168754009000}>\frac1{2500}.
+\]
+The coefficient certificate is \texttt{certs/exact\_min\_curvature\_m16.json},
+verified using only standard-library rational polynomial arithmetic.
 Gaussian Fourier integration gives the displayed normalizer exactly.
 The spatial rational-polynomial procedure above extends to three modes:
 $G(z)=z^3(1+\sum a_k(z^k+z^{-k})/2)$ is a degree-six polynomial,

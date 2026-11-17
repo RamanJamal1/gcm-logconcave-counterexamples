@@ -1,0 +1,13 @@
+{
+  "name": "detuned_spatial_m15",
+  "command": [
+    ".venv/bin/python",
+    "-u",
+    "src/search_detuned_spatial.py"
+  ],
+  "started_utc": "2026-11-17T09:26:45.774507+00:00",
+  "status": "running",
+  "child_pid_in_namespace": 6,
+  "heartbeat_utc": "2026-11-17T09:29:45.778976+00:00",
+  "elapsed_seconds": 180.0045177936554
+}

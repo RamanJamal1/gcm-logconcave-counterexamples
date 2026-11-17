@@ -6,8 +6,8 @@ from pathlib import Path
 from scipy.optimize import differential_evolution
 from generated_extended_integrands import INTEGRANDS
 
-def jets(x,a,delta,m):
- frequencies=np.arange(1,len(a)+1);z=-delta*x[None,:]+1j*frequencies[:,None];base=np.exp(-delta*x[None,:]**2/2+1j*frequencies[:,None]*x[None,:]);P0=np.ones_like(z);P1=z;ds=[1+np.sum(a[:,None]*base.real,axis=0),np.sum(a[:,None]*(P1*base).real,axis=0)]
+def jets(x,a,delta,m,frequencies=None):
+ frequencies=np.arange(1,len(a)+1) if frequencies is None else np.asarray(frequencies);z=-delta*x[None,:]+1j*frequencies[:,None];base=np.exp(-delta*x[None,:]**2/2+1j*frequencies[:,None]*x[None,:]);P0=np.ones_like(z);P1=z;ds=[1+np.sum(a[:,None]*base.real,axis=0),np.sum(a[:,None]*(P1*base).real,axis=0)]
  for n in range(1,m):P0,P1=P1,z*P1-n*delta*P0;ds.append(np.sum(a[:,None]*(P1*base).real,axis=0))
  q={j:ds[j]/ds[0] for j in range(1,m+1)};u={1:q[1]}
  for n in range(2,m+1):u[n]=q[n]-sum(math.comb(n-1,j-1)*u[j]*q[n-j] for j in range(1,n))

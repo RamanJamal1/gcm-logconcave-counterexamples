@@ -15,7 +15,7 @@ The convention is Boltzmann entropy `H(p) = integral p log p` and heat generator
          * (1 + cos(x)/16 + cos(2*x)/45000 - cos(3*x)/20000000) / Z
   ```
 
-  has `V'' > 1/5000` globally and `S16 < -1/2`. Here
+  has `V'' > 1/2500` globally and `S16 < -1/2`. Here
 
   ```text
   Z = sqrt(2000*pi/67)
@@ -41,7 +41,9 @@ python3 src/verify_sos_standalone.py \
 
 It independently derives the entropy polynomial, checks each integration-by-parts identity, and proves positivity of the rational Gram matrices by exact Schur complements. A numerical SDP status is never used as a proof.
 
-The counterexample verification needs `python-flint`:
+The exact global minimum curvature is `72599603/168754009000 > 1/2500`; its independent standard-library proof is reproduced with `python3 src/certify_min_curvature.py`.
+
+The entropy-derivative verification needs `python-flint`:
 
 ```bash
 python3 -m venv .venv

@@ -1,0 +1,19 @@
+{
+  "name": "sharp_m9_m11",
+  "command": [
+    ".venv/bin/python",
+    "-u",
+    "src/sos_mckean_quotient.py",
+    "--orders",
+    "9",
+    "10",
+    "11"
+  ],
+  "started_utc": "2026-11-17T09:19:09.921037+00:00",
+  "status": "exited",
+  "child_pid_in_namespace": 5,
+  "heartbeat_utc": "2026-11-17T09:28:09.937798+00:00",
+  "elapsed_seconds": 570.0174765586853,
+  "returncode": 0,
+  "finished_utc": "2026-11-17T09:28:39.938514+00:00"
+}

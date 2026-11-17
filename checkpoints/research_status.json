@@ -58,7 +58,9 @@
     "certs/rationalized_m17_2.json": "287537e256ecb1634a0726aaa2268135d5c4c474862e3380753d2200c708be55",
     "certs/independent_spatial_m17.json": "33bd5df38a7d00b1eb53dd227f74df38eff39bb4766fd53521756245b618e3b1",
     "certs/multifourier_m16.json": "b3678c2eea8273cb40924a0392427c180a71b3061aba60077b78e0bc6132e175",
-    "certs/independent_direct_heat_m16.json": "d366d9f9a7c494b281678efabd40ce2fb6636c59e8475f3b868ea1c583e127d9"
+    "certs/independent_direct_heat_m16.json": "d366d9f9a7c494b281678efabd40ce2fb6636c59e8475f3b868ea1c583e127d9",
+    "certs/exact_min_curvature_m16.json": "c2844735d6ac7f2d813bade60cc27b85188ddbdce94016855817334d1d3b6509"
   },
-  "updated_utc": "2026-11-17T08:33:26.877706+00:00"
+  "updated_utc": "2026-11-17T08:33:26.877706+00:00",
+  "curvature_certificate": "certs/exact_min_curvature_m16.json"
 }

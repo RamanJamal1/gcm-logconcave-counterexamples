@@ -1,0 +1,15 @@
+{
+  "name": "semismooth_m12",
+  "command": [
+    ".venv/bin/python",
+    "-u",
+    "src/sos_semismooth.py"
+  ],
+  "started_utc": "2026-11-17T09:22:32.607547+00:00",
+  "status": "exited",
+  "child_pid_in_namespace": 5,
+  "heartbeat_utc": "2026-11-17T09:25:32.612402+00:00",
+  "elapsed_seconds": 210.00561904907227,
+  "returncode": 0,
+  "finished_utc": "2026-11-17T09:26:02.613166+00:00"
+}

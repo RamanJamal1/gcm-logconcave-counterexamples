@@ -1,7 +1,7 @@
 # Overnight research results: log-concave GCM
 
 **Provisional report — research is still running.**
-Updated 2026-11-17 09:13:28 UTC. Scheduled interval: 2026-11-17T06:02:55.131528+00:00 to 2026-11-17T14:02:00+00:00.
+Updated 2026-11-17 09:30:14 UTC. Scheduled interval: 2026-11-17T06:02:55.131528+00:00 to 2026-11-17T14:02:00+00:00.
 
 **The exact minimal order remains unresolved. The verified bracket is 12 ≤ m* ≤ 16.**
 
@@ -19,10 +19,11 @@ Z = sqrt(2000*pi/67)
          - exp(-4500/67)/20000000)
 ```
 
-Global curvature: `V'' ≥ 39900397/168745991000 > 1/5000`.
+Exact global minimum curvature: `min V'' = 72599603/168754009000 > 1/2500`.
 Certified signed derivative: `S16 < -1/2`, with an enclosure near `-0.57212967821710969817`.
 
 [Primary interval certificate](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/multifourier_m16.json).
+[Exact global minimum-curvature proof](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/exact_min_curvature_m16.json).
 [Independent interval calculation](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/independent_direct_heat_m16.json). The spatial score-polynomial and exact heat-density calculations agree. Both include rigorous infinite-tail bounds.
 
 ## Orders 6, 7, and 8
@@ -30,7 +31,7 @@ Certified signed derivative: `S16 < -1/2`, with an enclosure near `-0.5721296782
 | Order | Sharp proven lower bound for S_m Var(p)^m | Best recorded numerical value |
 |---|---:|---:|
 | 6 | 60 | 60.000000000019 |
-| 7 | 360 | 360.00000000014 |
+| 7 | 360 | 360.00000000001 |
 | 8 | 2520 | 2520.0000000001 |
 
 The Gaussian attains these proven bounds. Numerical values can differ in their last digits because of rounding; they are not the proof. The infimum of the unnormalized derivative is zero under dilation, so normalization is essential.
@@ -41,20 +42,20 @@ The Gaussian attains these proven bounds. Numerical values can differ in their l
 
 GPU: NVIDIA RTX A6000, 49,140 MiB reported memory. The environment exposed 8 CPU cores and 62.8 GiB host RAM; these observed values differ from the requested 6-core/48-GB specification. The filesystem reported about 206.9 GB total capacity. PyTorch/CUDA executed the search; it was not a CPU-only run.
 
-Production FP32 candidate evaluations: **34,332,672**.
-Recorded FP64 refined candidates: **352,640**. These are evaluations, not necessarily unique densities; warmups/readiness tests and uncheckpointed interrupted partial generations are excluded.
+Production FP32 candidate evaluations: **41,213,952**.
+Recorded FP64 refined candidates: **406,400**. These are evaluations, not necessarily unique densities; warmups/readiness tests and uncheckpointed interrupted partial generations are excluded.
 
 | Campaign | Saved status | FP32 evaluations | FP64 refinements |
 |---|---|---:|---:|
 | campaign_A | bounded_run_complete | 11,468,800 | 154,112 |
-| campaign_B | running | 20,316,160 | 158,720 |
+| campaign_B | running | 27,197,440 | 212,480 |
 | higher_campaign | stopped_for_new_order12_family | 1,630,208 | 25,472 |
 | polynomial_campaign | interrupted_exit143 | 32,768 | 512 |
 | polynomial_wide_campaign | bounded_run_complete | 884,736 | 13,824 |
 
 Campaign B used 65,536 simultaneous FP32 candidates, selected 512 elites, and used FP64 refinement with 2,049- and 4,097-point resolution checks. Campaign C uses a periodic GPU approximation only to screen rationalized parameters; retained negative results require full spatial Arb certification. Supplementary searches include polynomial curvature, signed higher harmonics, asymmetric phases, localized Fourier modes, and convex quartic deformations.
 
-Resource sampling began at 2026-11-17T09:02:01.851026+00:00; 23 observations were recorded. Maximum observed host nonavailable-memory estimate: 4.58 GiB. Maximum sampled GPU memory use during that monitoring interval: 5,718 MiB. Earlier compiled-batch validation measured a 5.73-GB allocation. Sampling is not a continuous proof of a resource bound. Certification process pools were capped at four workers.
+Resource sampling began at 2026-11-17T09:02:01.851026+00:00; 56 observations were recorded. Maximum observed host nonavailable-memory estimate: 5.46 GiB. Maximum sampled GPU memory use during that monitoring interval: 5,718 MiB. Earlier compiled-batch validation measured a 5.73-GB allocation. Sampling is not a continuous proof of a resource bound. Certification process pools were capped at four workers.
 
 ## Validation, limitations, and files
 

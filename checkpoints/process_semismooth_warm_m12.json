@@ -1,0 +1,15 @@
+{
+  "name": "semismooth_warm_m12",
+  "command": [
+    ".venv/bin/python",
+    "-u",
+    "src/sos_semismooth_warm.py",
+    "--seconds",
+    "900"
+  ],
+  "started_utc": "2026-11-17T09:24:29.214917+00:00",
+  "status": "running",
+  "child_pid_in_namespace": 6,
+  "heartbeat_utc": "2026-11-17T09:29:59.222983+00:00",
+  "elapsed_seconds": 330.0081114768982
+}
