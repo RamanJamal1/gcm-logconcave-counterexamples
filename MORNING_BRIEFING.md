@@ -1,7 +1,7 @@
 # Overnight research results: log-concave GCM
 
 **Provisional report — research is still running.**
-Updated 2026-11-17 12:00:15 UTC. Scheduled interval: 2026-11-17T06:02:55.131528+00:00 to 2026-11-17T14:02:00+00:00.
+Updated 2026-11-17 12:19:07 UTC. Scheduled interval: 2026-11-17T06:02:55.131528+00:00 to 2026-11-17T14:02:00+00:00.
 
 **The exact minimal order remains unresolved. The verified bracket is 14 ≤ m* ≤ 16.**
 
@@ -64,7 +64,7 @@ Recorded FP64 refined candidates: **908,328**. These are evaluations, not necess
 
 Campaign B used 65,536 simultaneous FP32 candidates, selected 512 elites, and used FP64 refinement with 2,049- and 4,097-point resolution checks. Campaign C uses a periodic GPU approximation only to screen rationalized parameters; retained negative results require full spatial Arb certification. Supplementary searches include polynomial curvature, signed higher harmonics, asymmetric phases, localized Fourier modes, convex quartic deformations, two interacting base frequencies, and positive-curvature lattices.
 
-Resource sampling began at 2026-11-17T09:02:01.851026+00:00; 353 observations were recorded. Maximum observed host nonavailable-memory estimate: 6.57 GiB. Maximum sampled GPU memory use during that monitoring interval: 8,200 MiB. Earlier compiled-batch validation measured a 5.73-GB allocation. Sampling is not a continuous proof of a resource bound. Certification process pools were capped at four workers.
+Resource sampling began at 2026-11-17T09:02:01.851026+00:00; 378 observations were recorded. Maximum observed host nonavailable-memory estimate: 6.57 GiB. Maximum sampled GPU memory use during that monitoring interval: 8,200 MiB. Earlier compiled-batch validation measured a 5.73-GB allocation. Sampling is not a continuous proof of a resource bound. Certification process pools were capped at four workers.
 
 ## Validation, limitations, and files
 

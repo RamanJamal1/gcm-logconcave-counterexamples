@@ -12,15 +12,20 @@
   "campaign_B_microbatch": 65536,
   "campaign_B_status": "bounded_run_complete",
   "supplementary_sessions": {
-    "exact_m15_pipeline": 38514,
-    "exact_m14_pipeline": 39860,
+    "double_large_m15": 28276,
+    "double_large_m14": 85153,
     "sharp_m13_gmp": 82859,
-    "independent_fraction_m13": 85536,
-    "resource_monitor": 9332
+    "gpu_anderson_m14": 61571,
+    "dd_backend_build": 62063,
+    "resource_monitor": 9332,
+    "sync_watchdog": 60159
   },
   "campaign_B_started_utc": "2026-11-17T08:32:56.984942+00:00",
   "campaign_C_exec_session_id": 81267,
   "campaign_B_completed_utc": "2026-11-17T10:56:23.707164+00:00",
   "campaign_C_started_utc": "2026-11-17T10:56:28.111957+00:00",
-  "campaign_C_completed_utc": "2026-11-17T12:00:14.884542+00:00"
+  "campaign_C_completed_utc": "2026-11-17T12:00:14.884542+00:00",
+  "completed_proof_checks": [
+    "independent_fraction_m13"
+  ]
 }

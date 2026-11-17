@@ -1,0 +1,15 @@
+{
+  "order": 14,
+  "status": "running",
+  "proved": false,
+  "gpu_matrix_iterations": 4401,
+  "best_min_scaled_eigenvalue": -0.044507195031122694,
+  "current_min_scaled_eigenvalues": [
+    -0.044507195031122694,
+    -0.004731291065340853
+  ],
+  "residual": 5.002220859751105e-12,
+  "seconds": 82.94650101661682,
+  "candidate": "certs/sos_gpu_anderson_m14.json",
+  "device": "NVIDIA RTX A6000"
+}
