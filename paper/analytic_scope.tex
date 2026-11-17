@@ -9,14 +9,18 @@ satisfying the polynomial identity
 \]
 Here $v_r$ lists the monomials of weighted degree $r$ in the variables
 $u_j$ of weight $j$, and the $P_k$ are monomials of weighted degree $2m-1$
-using variables through $u_{m-1}$.
+using variables through $u_{m-1}$ for the original certificates.
+The additional order-nine certificate \texttt{certs/exact\_quotient\_m9.json}
+uses explicit generators through $u_{17}$ and Gram dimensions $(30,22)$.
+It was located in the exact integration-by-parts quotient that eliminates $u_1$,
+then reconstructed over the rationals and checked by the same independent verifier.
 Both matrices have been proved positive definite using exact rational
 Schur complements, independently of the numerical SDP that suggested them.
 A standalone verifier uses only the Python standard library and checks the
 polynomial identity, every integration-by-parts term, and matrix positivity.
 
 \begin{proposition}[Sign under justified integration by parts]
-For $m\in\{6,7,8\}$, let $p$ be a smooth positive log-concave density such
+For $m\in\{6,7,8,9\}$, let $p$ be a smooth positive log-concave density such
 that its entropy derivative is $I_m=\int pF_m$, all the displayed terms are
 integrable, and $\int p(DP_k+u_1P_k)=0$. Then $S_m(p)\ge0$.
 In particular, this conclusion applies to the four implemented search families.
@@ -66,7 +70,7 @@ gives the same sign for the right derivative. This endpoint regularity is
 explicit: smoothness of the spatial density alone is not being used as a
 substitute for existence of the stated time derivative. Under this natural
 interpretation of the derivative in the research question, the certificates
-rule out counterexamples at orders six, seven, and eight. They do not identify
+rule out counterexamples at orders six through nine. They do not identify
 the first failing higher order.
 
 \subsection{Sharp Gaussian lower bounds at orders six through eight}
@@ -103,7 +107,7 @@ give $vI(p)\ge1$. Combining these bounds proves the assertions.
 For a Gaussian, all $u_j$, $j\ge3$, vanish, and equality holds throughout.
 The stated smoothing and endpoint extensions follow as before.
 \end{proof}
-Thus a finite negative derivative at orders six, seven, or eight cannot
+Thus a finite negative derivative at orders six through nine cannot
 occur in the regularity class specified by the question's time derivative.
-The first possible failing order is at least nine; locating that first
+The first possible failing order is at least ten; locating that first
 failure remains open in this computational record.

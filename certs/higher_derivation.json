@@ -1,0 +1,50 @@
+{
+  "1": {
+    "terms": 1,
+    "gaussian": "-1/2"
+  },
+  "2": {
+    "terms": 1,
+    "gaussian": "1/2"
+  },
+  "3": {
+    "terms": 2,
+    "gaussian": "-1"
+  },
+  "4": {
+    "terms": 3,
+    "gaussian": "3"
+  },
+  "5": {
+    "terms": 5,
+    "gaussian": "-12"
+  },
+  "6": {
+    "terms": 9,
+    "gaussian": "60"
+  },
+  "7": {
+    "terms": 15,
+    "gaussian": "-360"
+  },
+  "8": {
+    "terms": 25,
+    "gaussian": "2520"
+  },
+  "9": {
+    "terms": 43,
+    "gaussian": "-20160"
+  },
+  "10": {
+    "terms": 70,
+    "gaussian": "181440"
+  },
+  "11": {
+    "terms": 113,
+    "gaussian": "-1814400"
+  },
+  "12": {
+    "terms": 181,
+    "gaussian": "19958400"
+  }
+}

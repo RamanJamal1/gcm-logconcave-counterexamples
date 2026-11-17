@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "family": "fourier_multiplier",
+      "order9_gpu": 549222114.2807078,
+      "order9_arb_interval": "[549222114.2807084902457312267839 +/- 8.97e-23]",
+      "relative_error": 1.085255732163155e-15,
+      "orders9_through12_resolution_error": 6.16028316964541e-15
+    },
+    {
+      "family": "fourier_potential",
+      "order9_gpu": 1235893130.509232,
+      "order9_arb_interval": "[1235893130.50923309706772509155 +/- 5.06e-21]",
+      "relative_error": 7.716478818951777e-16,
+      "orders9_through12_resolution_error": 5.861180519933124e-16
+    },
+    {
+      "family": "rbf_curvature",
+      "order9_gpu": 724405194.374487,
+      "order9_arb_interval": "[724405194.374487187106147197 +/- 6.74e-19]",
+      "relative_error": 1.645616161735514e-16,
+      "orders9_through12_resolution_error": 1.6456161617355143e-16
+    },
+    {
+      "family": "skew_gaussian_mixture",
+      "order9_gpu": 6238.414890320174,
+      "order9_arb_interval": "[6238.4148903201745605126942787 +/- 2.63e-26]",
+      "relative_error": 1.4578939005550017e-16,
+      "orders9_through12_resolution_error": 1.4578939005550017e-16
+    }
+  ]
+}

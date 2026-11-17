@@ -98,7 +98,11 @@ def verify(path):
   for i,x in enumerate(basis):
    for j,y in enumerate(basis):blockpoly=add(blockpoly,scale(mul(x,y),Q(matrix[i][j])))
   out=add(out,blockpoly if block==0 else scale(mul(var(2),blockpoly),-1))
- identities=[add(total_derivative(p),mul(var(1),p)) for p in monomials(2*m-1,m-1)]
+ if 'ibp_generators' in d:
+  ps=[parse(v) for v in d['ibp_generators']]
+  assert all(all(sum((i+1)*n for i,n in enumerate(e))==2*m-1 for e in p) for p in ps)
+  identities=[add(total_derivative(p),mul(var(1),p)) for p in ps]
+ else:identities=[add(total_derivative(p),mul(var(1),p)) for p in monomials(2*m-1,m-1)]
  assert len(d['ibp_polynomials'])==len(d['ibp_multipliers'])==len(identities)
  for expr,coefficient in zip(d['ibp_polynomials'],d['ibp_multipliers']):
   ident=parse(expr);assert ident in identities;identities.remove(ident);out=add(out,scale(ident,-Q(coefficient)))
