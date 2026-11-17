@@ -2,7 +2,7 @@
 
 Status: running
 GPU evaluations: 176
-Completed generations: 10
+Completed generations: 11
 
 Numerical candidates are not interval certificates.
 - Order 6: normalized signed derivative 60.0034055411; certified: false
