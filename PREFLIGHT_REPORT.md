@@ -28,9 +28,13 @@ token itself is valid. No token was printed or committed.
 
 - **GitHub:** remote create, push, and issue posting cannot be tested until
   this terminal can reach the API. No remote repository or issue was created.
-- **GPU:** no NVIDIA device nodes are visible. `nvidia-smi` and PyTorch CUDA
-  detection cannot reach the managed GPU backend and time out. The requested
-  RTX A6000 is not verified or accessible from this execution context.
+- **GPU (updated verification):** the machine's Thunder configuration explicitly
+  specifies `gpuType: a6000` and `gpuCount: 1`. CUDA/NVML are routed through
+  Thunder's globally preloaded library. The GPU service socket is rejected with
+  `PermissionError: [Errno 1] Operation not permitted` by this command sandbox.
+  Thus the A6000 allocation is configured, but driver access and CUDA execution
+  remain unverified. Missing local NVIDIA device nodes do not imply no GPU.
+  See `certs/gpu_access_probe.json` for the redacted hardware-access evidence.
 - **Hardware mismatch:** visible CPU/RAM are 8 CPUs and 62 GiB; disk is 193 GiB.
   These observations differ from the requested 6 CPUs / 48 GB specification.
 - **Dependencies:** JAX, optax, evosax, and python-flint are absent; terminal

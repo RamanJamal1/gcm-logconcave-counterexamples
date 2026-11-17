@@ -12,6 +12,9 @@ The research uses Boltzmann entropy H = integral p log p and heat generator
 - Five-case CPU smoke test passes; 10 evaluations, maximum grid discrepancy 3.27e-15.
 - No sustained search started; no counterexample or minimal-order theorem claimed.
 - GitHub CLI is installed; API connectivity and GPU access have not passed preflight.
+- GPU recheck confirms Thunder config requests one A6000; its service connection
+  is rejected by command sandbox network restrictions (errno 1). GPU presence
+  must not be inferred from missing local device nodes in this environment.
 - Local git initialization and checkpoint commit pass. Remote creation failed at API connectivity.
 
 See `PREFLIGHT_REPORT.md` and `certs/` for verification results. The requested

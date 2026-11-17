@@ -1,0 +1,15 @@
+{
+  "timestamp_utc": "2026-11-17T05:43:35.527156+00:00",
+  "hostname": "instance-00oe5a43",
+  "configured_gpu_type": "a6000",
+  "configured_gpu_count": 1,
+  "mode": "prototyping",
+  "cuda_routing": "/etc/ld.so.preload loads Thunder GPU library",
+  "service_probe": {
+    "result": "PermissionError",
+    "errno": 1,
+    "message": "Operation not permitted"
+  },
+  "physical_gpu_model_verified_by_driver": false,
+  "interpretation": "GPU allocation configured; driver runtime probe blocked by command sandbox network access. Absence of /dev/nvidia is not proof of absent GPU."
+}
