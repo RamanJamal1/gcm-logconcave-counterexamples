@@ -14,6 +14,13 @@
       "compile_seconds": 104.34425973892212,
       "gradient_relative_max_error": 1.1022476895754671e-15,
       "loss_relative_error": 0.0
+    },
+    {
+      "family": "fourier_potential",
+      "order": 7,
+      "compile_seconds": 73.1747350692749,
+      "gradient_relative_max_error": 3.967472553751815e-16,
+      "loss_relative_error": 1.2100277276795555e-16
     }
   ]
 }
