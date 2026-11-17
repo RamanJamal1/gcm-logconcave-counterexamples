@@ -1,0 +1,25 @@
+{
+  "order": 13,
+  "terms": 4,
+  "amplitudes": [
+    0.014999999999999998,
+    1.5891235964192057e-06,
+    -1.1491073272081652e-09,
+    2.515110909663592e-12
+  ],
+  "kappa": 0.01523506717661144,
+  "periodic_surrogate": 0.00039349297091119986,
+  "objective": 1.3253308623498672,
+  "certified": false,
+  "raw": [
+    -4.199705077879927,
+    0.2972889274738135,
+    -0.06626331891046389,
+    0.022374424801099118,
+    1e-05
+  ],
+  "elapsed_seconds": 22.24231266975403,
+  "note": "Periodic screening only; Gaussian-filter corrections omitted",
+  "evaluations": 14772,
+  "periodic_surrogate_fine": 0.00039349297091120506
+}

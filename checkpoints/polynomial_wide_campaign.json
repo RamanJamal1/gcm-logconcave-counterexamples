@@ -1,8 +1,8 @@
 {
   "status": "running",
   "order": 12,
-  "gpu_evaluations": 393216,
-  "refinement_evaluations": 6144,
+  "gpu_evaluations": 425984,
+  "refinement_evaluations": 6656,
   "best": {
     "normalized": 19958400.01422916,
     "signed": 3.009727300884627e+55,
@@ -20,5 +20,5 @@
     "certified": false
   },
   "errors": [],
-  "elapsed_seconds": 1677.56165933609
+  "elapsed_seconds": 1810.4543807506561
 }
