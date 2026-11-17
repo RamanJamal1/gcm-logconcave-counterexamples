@@ -15,7 +15,7 @@ def value(a,x):
  out=Q(0)
  for c in reversed(a):out=out*x+c
  return out
-def certify(amplitudes=('1/16','1/48000','-1/20000000'),kappa='1/15',lower_bound='0'):
+def certify(amplitudes=('1/15','1/40000','-1/18000000'),kappa='1/14',lower_bound='0'):
  a,b,c=map(Q,amplitudes);k=Q(kappa)
  g=[1-b,a-3*c,2*b,4*c];gp=deriv(g);gpp=deriv(gp);one_minus_x2=[Q(1),Q(0),Q(-1)]
  H=add(mul(add(mul(one_minus_x2,gpp),scale(mul([Q(0),Q(1)],gp),-1)),g),scale(mul(one_minus_x2,mul(gp,gp)),-1))
@@ -25,4 +25,4 @@ def certify(amplitudes=('1/16','1/48000','-1/20000000'),kappa='1/15',lower_bound
  return r
 if __name__=='__main__':
  import argparse
- p=argparse.ArgumentParser();p.add_argument('--amplitudes',nargs=3,default=['1/16','1/48000','-1/20000000']);p.add_argument('--kappa',default='1/15');p.add_argument('--lower-bound',default='1/12000');p.add_argument('--output',default='certs/exact_min_curvature_simple_48000_m16.json');a=p.parse_args();r=certify(a.amplitudes,a.kappa,a.lower_bound);Path(a.output).write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r,indent=2))
+ p=argparse.ArgumentParser();p.add_argument('--amplitudes',nargs=3,default=['1/15','1/40000','-1/18000000']);p.add_argument('--kappa',default='1/14');p.add_argument('--lower-bound',default='1/10000');p.add_argument('--output',default='certs/exact_min_curvature_paired15_m16.json');a=p.parse_args();r=certify(a.amplitudes,a.kappa,a.lower_bound);Path(a.output).write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r,indent=2))

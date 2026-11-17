@@ -1,0 +1,7 @@
+{
+  "reason": "The original sparse coefficient system has condition about 5.06e12. Switch to exact rational row elimination before floating whitening, the successful order-13 route.",
+  "original_sparse_candidate": "certs/sos_segment_m15.json",
+  "floating_qr_condition": 5055629728997.245,
+  "old_solvers_stopped_deliberately": true,
+  "proved": false
+}

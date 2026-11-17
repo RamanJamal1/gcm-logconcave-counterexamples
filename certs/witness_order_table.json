@@ -1,74 +1,74 @@
 [
   {
     "order": 6,
-    "signed_derivative_interval": "[0.004680196340756715109 +/- 8.95e-22]",
+    "signed_derivative_interval": "[0.005821867559227976438 +/- 7.34e-22]",
     "negative": false,
-    "certificate": "certs/witness_order_table_simple/m6.json"
+    "certificate": "certs/witness_order_table_paired15/m6.json"
   },
   {
     "order": 7,
-    "signed_derivative_interval": "[0.008079757027805640127 +/- 9.18e-22]",
+    "signed_derivative_interval": "[0.010328901733632347202 +/- 5.66e-22]",
     "negative": false,
-    "certificate": "certs/witness_order_table_simple/m7.json"
+    "certificate": "certs/witness_order_table_paired15/m7.json"
   },
   {
     "order": 8,
-    "signed_derivative_interval": "[0.014856615029101888729 +/- 5.87e-22]",
+    "signed_derivative_interval": "[0.019558949122628973996 +/- 8.30e-22]",
     "negative": false,
-    "certificate": "certs/witness_order_table_simple/m8.json"
+    "certificate": "certs/witness_order_table_paired15/m8.json"
   },
   {
     "order": 12,
-    "signed_derivative_interval": "[0.277996246123603161914 +/- 8.90e-22]",
+    "signed_derivative_interval": "[0.41753255134867216244 +/- 1.09e-21]",
     "negative": false,
-    "certificate": "certs/witness_order_table_simple/m12.json"
+    "certificate": "certs/witness_order_table_paired15/m12.json"
   },
   {
     "order": 13,
-    "signed_derivative_interval": "[0.60881237487054571457 +/- 5.30e-21]",
+    "signed_derivative_interval": "[0.94904750071011257686 +/- 3.41e-21]",
     "negative": false,
-    "certificate": "certs/witness_order_table_simple/m13.json"
+    "certificate": "certs/witness_order_table_paired15/m13.json"
   },
   {
     "order": 14,
-    "signed_derivative_interval": "[1.242353246567670958568 +/- 7.53e-22]",
+    "signed_derivative_interval": "[2.02314162725343027562 +/- 1.13e-21]",
     "negative": false,
-    "certificate": "certs/witness_order_table_simple/m14.json"
+    "certificate": "certs/witness_order_table_paired15/m14.json"
   },
   {
     "order": 15,
-    "signed_derivative_interval": "[1.88717494315875435271 +/- 4.15e-21]",
+    "signed_derivative_interval": "[3.29476210389396230391 +/- 2.23e-21]",
     "negative": false,
-    "certificate": "certs/witness_order_table_simple/m15.json"
+    "certificate": "certs/witness_order_table_paired15/m15.json"
   },
   {
     "order": 16,
-    "signed_derivative_interval": "[-0.76099654207878681651 +/- 4.11e-21]",
+    "signed_derivative_interval": "[-0.76971250884778794609 +/- 3.23e-21]",
     "negative": true,
-    "certificate": "certs/witness_order_table_simple/m16.json"
+    "certificate": "certs/witness_order_table_paired15/m16.json"
   },
   {
     "order": 17,
-    "signed_derivative_interval": "[-17.95090792555776456415 +/- 1.12e-21]",
+    "signed_derivative_interval": "[-36.17189205776807219196 +/- 3.64e-21]",
     "negative": true,
-    "certificate": "certs/witness_order_table_simple/m17.json"
+    "certificate": "certs/witness_order_table_paired15/m17.json"
   },
   {
     "order": 18,
-    "signed_derivative_interval": "[58.24142321307865314914 +/- 8.13e-21]",
-    "negative": false,
-    "certificate": "certs/witness_order_table_simple/m18.json"
+    "signed_derivative_interval": "[-31.1827297042322623545 +/- 4.05e-20]",
+    "negative": true,
+    "certificate": "certs/witness_order_table_paired15/m18.json"
   },
   {
     "order": 19,
-    "signed_derivative_interval": "[3214.2967327939545099332 +/- 6.88e-20]",
+    "signed_derivative_interval": "[3700.719338653211661614 +/- 1.76e-19]",
     "negative": false,
-    "certificate": "certs/witness_order_table_simple/m19.json"
+    "certificate": "certs/witness_order_table_paired15/m19.json"
   },
   {
     "order": 20,
-    "signed_derivative_interval": "[56571.514535431656891071 +/- 6.39e-19]",
+    "signed_derivative_interval": "[75350.399571823837504144 +/- 4.13e-19]",
     "negative": false,
-    "certificate": "certs/witness_order_table_simple/m20.json"
+    "certificate": "certs/witness_order_table_paired15/m20.json"
   }
 ]

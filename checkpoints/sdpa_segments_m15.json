@@ -1,7 +1,7 @@
 {
   "order": 15,
   "segment": 1,
-  "status": "running",
+  "status": "stopped_for_exact_row_preconditioning",
   "proved": false,
   "history": [
     {
@@ -25,5 +25,7 @@
   "min_scaled_eigenvalues": [
     100.03561918773903,
     274.29281600412287
-  ]
+  ],
+  "stop_reason": "The original sparse coefficient system has condition about 5.06e12. Switch to exact rational row elimination before floating whitening, the successful order-13 route.",
+  "stopped_utc": "2026-11-17T11:38:33.592864+00:00"
 }

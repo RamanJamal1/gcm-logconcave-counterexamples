@@ -18,7 +18,7 @@
     11
   ],
   "negative_witness_order": 16,
-  "negative_witness_certificate": "certs/simple_kappa_48000_m16.json",
+  "negative_witness_certificate": "certs/paired15_m16.json",
   "verified_certificates": {
     "9": {
       "order": 9,
@@ -71,7 +71,7 @@
   "upper_bound": 16,
   "updated": 1794915367.0866294,
   "exact_minimal_order_resolved": false,
-  "independent_negative_witness_certificate": "certs/independent_simple_kappa_48000_m16.json",
+  "independent_negative_witness_certificate": "certs/independent_paired15_m16.json",
   "witness_certificate_sha256": {
     "certs/rationalized_m17_2.json": "287537e256ecb1634a0726aaa2268135d5c4c474862e3380753d2200c708be55",
     "certs/independent_spatial_m17.json": "33bd5df38a7d00b1eb53dd227f74df38eff39bb4766fd53521756245b618e3b1",
@@ -80,10 +80,13 @@
     "certs/exact_min_curvature_m16.json": "c2844735d6ac7f2d813bade60cc27b85188ddbdce94016855817334d1d3b6509",
     "certs/simple_kappa_48000_m16.json": "cfdf839a817425095af18cefa18ec834fdbb8c8bfde99e3cd22712119fb44646",
     "certs/independent_simple_kappa_48000_m16.json": "679a6b9392d2027aef9dd9c6a1322c246ff74d635ab46f1451f3eff000875f13",
-    "certs/exact_min_curvature_simple_48000_m16.json": "1341fac150315c8e245cb9374a7b6dcc7083d2bb00b9f8141a7624de19d8b71f"
+    "certs/exact_min_curvature_simple_48000_m16.json": "1341fac150315c8e245cb9374a7b6dcc7083d2bb00b9f8141a7624de19d8b71f",
+    "certs/paired15_m16.json": "f18bc27c133e2cafc11408f83ba69c34458337d4c54d11318daa6a4ba71ca904",
+    "certs/independent_paired15_m16.json": "344472fc69f43f8c8cadb5f5475eeb6b0ebe71d524b86c012778e3e9411161c6",
+    "certs/exact_min_curvature_paired15_m16.json": "e6d38e6d50343d5a529647e4750ace658f61e917b555ef8d7100ae2a4c341890"
   },
-  "updated_utc": "2026-11-17T10:39:03.088998+00:00",
-  "curvature_certificate": "certs/exact_min_curvature_simple_48000_m16.json",
+  "updated_utc": "2026-11-17T11:39:41.790696+00:00",
+  "curvature_certificate": "certs/exact_min_curvature_paired15_m16.json",
   "verified_sharp_certificates": {
     "9": {
       "order": 9,
@@ -124,6 +127,11 @@
       "certificate": "certs/multifourier_m16.json",
       "independent_certificate": "certs/independent_direct_heat_m16.json",
       "curvature_certificate": "certs/exact_min_curvature_m16.json"
+    },
+    {
+      "negative_witness_certificate": "certs/simple_kappa_48000_m16.json",
+      "independent_negative_witness_certificate": "certs/independent_simple_kappa_48000_m16.json",
+      "curvature_certificate": "certs/exact_min_curvature_simple_48000_m16.json"
     }
   ],
   "propagated_signs": {

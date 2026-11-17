@@ -4,7 +4,7 @@ from pathlib import Path
 from certify_direct_heat import certify
 ROOT=Path(__file__).resolve().parents[1]
 if __name__=='__main__':
- state=json.loads((ROOT/'checkpoints/research_status.json').read_text());source=state['negative_witness_certificate'];out=ROOT/'certs/witness_order_table_simple';out.mkdir(exist_ok=True);rows=[]
+ state=json.loads((ROOT/'checkpoints/research_status.json').read_text());source=state['negative_witness_certificate'];out=ROOT/'certs/witness_order_table_paired15';out.mkdir(exist_ok=True);rows=[]
  for m in [6,7,8,12,13,14,15,16,17,18,19,20]:
   with open(os.devnull,'w') as sink,contextlib.redirect_stdout(sink):r=certify(source,order_override=m)
   (out/f'm{m}.json').write_text(json.dumps(r,indent=2)+'\n');row={'order':m,'signed_derivative_interval':r['signed_derivative_interval'],'negative':r['certified_negative_derivative'],'certificate':str((out/f'm{m}.json').relative_to(ROOT))};rows.append(row);print(row,flush=True);(ROOT/'certs/witness_order_table.json').write_text(json.dumps(rows,indent=2)+'\n')

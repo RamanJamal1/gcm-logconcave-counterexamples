@@ -11,19 +11,19 @@ The convention is Boltzmann entropy `H(p) = integral p log p` and heat generator
 - The explicit density
 
   ```text
-  p(x) = exp(-x²/30)
-         * (1 + cos(x)/16 + cos(2*x)/48000 - cos(3*x)/20000000) / Z
+  p(x) = exp(-x²/28)
+         * (1 + cos(x)/15 + cos(2*x)/40000 - cos(3*x)/18000000) / Z
   ```
 
-  has `V'' > 1/12000` globally and `S16 < -3/4`. Here
+  has `V'' > 1/10000` globally and `S16 < -3/4`. Here
 
   ```text
-  Z = sqrt(30*pi)
-      * (1 + exp(-15/2)/16 + exp(-30)/48000
-           - exp(-135/2)/20000000).
+  Z = sqrt(28*pi)
+      * (1 + exp(-7)/15 + exp(-28)/40000
+           - exp(-63)/18000000).
   ```
 
-  Two independent Arb calculations certify its signed derivative near `-0.76099654207878681651`: [spatial score-polynomial integration](certs/simple_kappa_48000_m16.json) and [exact heat-density Taylor integration](certs/independent_simple_kappa_48000_m16.json).
+  Two independent Arb calculations certify its signed derivative near `-0.76971250884778794609`: [spatial score-polynomial integration](certs/paired15_m16.json) and [exact heat-density Taylor integration](certs/independent_paired15_m16.json).
 
 Read [the LaTeX note](paper/draft_note.tex) or [its PDF](paper/draft_note.pdf) for definitions, proofs, analytic error bounds, and limitations. No novelty or exact-minimality claim is made.
 
@@ -35,7 +35,7 @@ Run from the repository root. The rational SOS verifier uses only the Python sta
 python3 src/verify_sos_standalone.py \
   certs/exact_sos_m6.json certs/exact_sos_m7.json certs/exact_sos_m8.json \
   certs/exact_quotient_m9.json certs/exact_quotient_m10.json \
-  certs/exact_quotient_m11.json \
+  certs/exact_quotient_m11.json certs/exact_quotient_m13.json \
   certs/exact_mckean_m6.json certs/exact_mckean_m7.json certs/exact_mckean_m8.json \
   certs/exact_mckean_quotient_m9.json certs/exact_mckean_quotient_m10.json \
   certs/exact_mckean_quotient_m11.json
@@ -43,7 +43,7 @@ python3 src/verify_sos_standalone.py \
 
 It independently derives the entropy polynomial, checks each integration-by-parts identity, and proves positivity of the rational Gram matrices by exact Schur complements. A numerical SDP status is never used as a proof.
 
-The exact global minimum curvature is `76658/843768795 > 1/12000`; its independent standard-library proof is reproduced with `python3 src/certify_min_curvature.py`.
+The exact global minimum curvature is `25777/235206314 > 1/10000`; its independent standard-library proof is reproduced with `python3 src/certify_min_curvature.py`.
 
 The entropy-derivative verification needs `python-flint`:
 
@@ -51,8 +51,8 @@ The entropy-derivative verification needs `python-flint`:
 python3 -m venv .venv
 .venv/bin/pip install python-flint==0.9.0
 .venv/bin/python src/certify_multifourier_spatial.py
-.venv/bin/python src/certify_direct_heat.py certs/simple_kappa_48000_m16.json \
-  --output certs/independent_simple_kappa_48000_m16.json
+.venv/bin/python src/certify_direct_heat.py certs/paired15_m16.json \
+  --output certs/independent_paired15_m16.json
 ```
 
 Both routines use 200-digit ball arithmetic with analytic bounds for the omitted infinite tails. High precision alone is not treated as a rigorous enclosure. The independent calculation differentiates the exact heat evolution and bounds its tail using Cauchy's estimate.

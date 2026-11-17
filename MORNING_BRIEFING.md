@@ -1,7 +1,7 @@
 # Overnight research results: log-concave GCM
 
 **Provisional report — research is still running.**
-Updated 2026-11-17 11:36:58 UTC. Scheduled interval: 2026-11-17T06:02:55.131528+00:00 to 2026-11-17T14:02:00+00:00.
+Updated 2026-11-17 11:40:20 UTC. Scheduled interval: 2026-11-17T06:02:55.131528+00:00 to 2026-11-17T14:02:00+00:00.
 
 **The exact minimal order remains unresolved. The verified bracket is 14 ≤ m* ≤ 16.**
 
@@ -12,19 +12,19 @@ The convention is Boltzmann entropy `H = integral p log p`, with heat generator 
 ## Concrete counterexample
 
 ```text
-p(x) = exp(-x²/30)
-       * (1 + cos(x)/16 + cos(2*x)/48000 - cos(3*x)/20000000) / Z
-Z = sqrt(30*pi)
-    * (1 + exp(-15/2)/16 + exp(-30)/48000
-         - exp(-135/2)/20000000)
+p(x) = exp(-x²/28)
+       * (1 + cos(x)/15 + cos(2*x)/40000 - cos(3*x)/18000000) / Z
+Z = sqrt(28*pi)
+    * (1 + exp(-7)/15 + exp(-28)/40000
+         - exp(-63)/18000000)
 ```
 
-Exact global minimum curvature: `min V'' = 76658/843768795 > 1/12000`.
-Certified signed derivative: `S16 < -3/4`, with an enclosure near `-0.76099654207878681651`.
+Exact global minimum curvature: `min V'' = 25777/235206314 > 1/10000`.
+Certified signed derivative: `S16 < -3/4`, with an enclosure near `-0.76971250884778794609`.
 
-[Primary interval certificate](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/simple_kappa_48000_m16.json).
-[Exact global minimum-curvature proof](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/exact_min_curvature_simple_48000_m16.json).
-[Independent interval calculation](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/independent_simple_kappa_48000_m16.json). The spatial score-polynomial and exact heat-density calculations agree. Both include rigorous infinite-tail bounds.
+[Primary interval certificate](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/paired15_m16.json).
+[Exact global minimum-curvature proof](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/exact_min_curvature_paired15_m16.json).
+[Independent interval calculation](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/independent_paired15_m16.json). The spatial score-polynomial and exact heat-density calculations agree. Both include rigorous infinite-tail bounds.
 
 ## Orders 6, 7, and 8
 
@@ -46,14 +46,14 @@ The Gaussian uniquely attains these proven bounds. For a normalized minimizing s
 
 GPU: NVIDIA RTX A6000, 49,140 MiB reported memory. The environment exposed 8 CPU cores and 62.8 GiB host RAM; these observed values differ from the requested 6-core/48-GB specification. The filesystem reported about 206.9 GB total capacity. PyTorch/CUDA executed the search; it was not a CPU-only run.
 
-Production FP32 candidate evaluations: **98,164,736**.
-Recorded FP64 refined candidates: **852,504**. These are evaluations, not necessarily unique densities; warmups/readiness tests and uncheckpointed interrupted partial generations are excluded.
+Production FP32 candidate evaluations: **99,278,848**.
+Recorded FP64 refined candidates: **861,208**. These are evaluations, not necessarily unique densities; warmups/readiness tests and uncheckpointed interrupted partial generations are excluded.
 
 | Campaign | Saved status | FP32 evaluations | FP64 refinements |
 |---|---|---:|---:|
 | campaign_A | bounded_run_complete | 11,468,800 | 154,112 |
 | campaign_B | bounded_run_complete | 70,057,984 | 547,328 |
-| campaign_C | running | 14,090,240 | 110,080 |
+| campaign_C | running | 15,204,352 | 118,784 |
 | higher_campaign | stopped_for_new_order12_family | 1,630,208 | 25,472 |
 | polynomial_campaign | interrupted_exit143 | 32,768 | 512 |
 | polynomial_wide_campaign | bounded_run_complete | 884,736 | 13,824 |
@@ -61,7 +61,7 @@ Recorded FP64 refined candidates: **852,504**. These are evaluations, not necess
 
 Campaign B used 65,536 simultaneous FP32 candidates, selected 512 elites, and used FP64 refinement with 2,049- and 4,097-point resolution checks. Campaign C uses a periodic GPU approximation only to screen rationalized parameters; retained negative results require full spatial Arb certification. Supplementary searches include polynomial curvature, signed higher harmonics, asymmetric phases, localized Fourier modes, convex quartic deformations, two interacting base frequencies, and positive-curvature lattices.
 
-Resource sampling began at 2026-11-17T09:02:01.851026+00:00; 307 observations were recorded. Maximum observed host nonavailable-memory estimate: 6.57 GiB. Maximum sampled GPU memory use during that monitoring interval: 8,200 MiB. Earlier compiled-batch validation measured a 5.73-GB allocation. Sampling is not a continuous proof of a resource bound. Certification process pools were capped at four workers.
+Resource sampling began at 2026-11-17T09:02:01.851026+00:00; 313 observations were recorded. Maximum observed host nonavailable-memory estimate: 6.57 GiB. Maximum sampled GPU memory use during that monitoring interval: 8,200 MiB. Earlier compiled-batch validation measured a 5.73-GB allocation. Sampling is not a continuous proof of a resource bound. Certification process pools were capped at four workers.
 
 ## Validation, limitations, and files
 
