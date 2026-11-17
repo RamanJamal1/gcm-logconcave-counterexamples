@@ -1,0 +1,22 @@
+[
+  {
+    "family": "fourier_multiplier",
+    "cpu_gpu_relative_error": 1.7402041562886043e-15,
+    "refinement_finite": true
+  },
+  {
+    "family": "fourier_potential",
+    "cpu_gpu_relative_error": 1.6138475566706353e-15,
+    "refinement_finite": true
+  },
+  {
+    "family": "rbf_curvature",
+    "cpu_gpu_relative_error": 1.5600945044738202e-15,
+    "refinement_finite": true
+  },
+  {
+    "family": "skew_gaussian_mixture",
+    "cpu_gpu_relative_error": 1.894677946676556e-15,
+    "refinement_finite": true
+  }
+]
