@@ -73,7 +73,7 @@ interpretation of the derivative in the research question, the certificates
 rule out counterexamples at orders six through 11. They do not identify
 the first failing higher order.
 
-\subsection{Sharp Gaussian lower bounds at orders six through eight}
+\subsection{Sharp Gaussian lower bounds at orders six through eleven}
 A second set of exact certificates, \texttt{certs/exact\_mckean\_m6.json}
 through \texttt{exact\_mckean\_m8.json}, verifies the stronger identities
 \[
@@ -85,10 +85,19 @@ The vectors $w_r$ contain only weighted-degree-$r$ monomials involving at
 least one $u_j$ with $j\ge3$. All matrices are positive definite over the
 rationals. Their dimensions are respectively $(7,4)$, $(11,7)$, and $(17,11)$.
 The independent verifier confirms these identities using exact arithmetic.
+The stronger identities also hold at orders nine, ten, and eleven, with Gram
+dimensions $(25,17)$, $(36,25)$, and $(50,36)$, respectively. Their exact
+quotient certificates are \texttt{certs/exact\_mckean\_quotient\_m9.json}
+through \texttt{exact\_mckean\_quotient\_m11.json}; each was independently
+verified with rational Schur complements.
 
 \begin{proposition}[Sharp variance-normalized bounds]
 Under the derivative and integration-by-parts hypotheses above, a log-concave
 probability density of variance $v$ satisfies
+\[
+ S_m(p)v^m\ge\frac{(m-1)!}{2},\qquad 6\le m\le11.
+\]
+In particular,
 \[
  S_6(p)v^6\ge60,\qquad S_7(p)v^7\ge360,\qquad S_8(p)v^8\ge2520.
 \]

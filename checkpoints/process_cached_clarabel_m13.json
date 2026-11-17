@@ -1,0 +1,15 @@
+{
+  "name": "cached_clarabel_m13",
+  "command": [
+    ".venv/bin/python",
+    "-u",
+    "src/solve_cached_clarabel.py",
+    "--order",
+    "13"
+  ],
+  "started_utc": "2026-11-17T09:41:04.411355+00:00",
+  "status": "running",
+  "child_pid_in_namespace": 5,
+  "heartbeat_utc": "2026-11-17T09:42:34.415833+00:00",
+  "elapsed_seconds": 90.00453305244446
+}

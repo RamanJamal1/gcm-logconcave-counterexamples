@@ -5,6 +5,7 @@
 \setlength{\emergencystretch}{2em}
 \allowdisplaybreaks
 \newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
 \title{Log-Concave Entropy Derivatives: Exact Certificates through Order Eleven and a Counterexample at Order Sixteen}
 \author{Computational research record}
 \date{November 17, 2026 --- provisional during computation}
@@ -16,7 +17,7 @@ and a mixed-precision computational search at orders six, seven, and eight.
 The formulas are independently checked against high-precision heat-convolution
 finite differences. Rigorous finite-interval integration is combined with
 analytic tail bounds and global convexity estimates. Exact rational sum-of-squares identities additionally yield the sharp Gaussian
-lower bounds at orders six through eight under the stated analytic hypotheses.
+lower bounds at orders six through eleven under the stated analytic hypotheses.
 Additional exact certificates establish the nonnegative signs through order eleven.
 This document is an ongoing-results record: an explicit order-16 witness is certified, with an independently double-checked order-17 example, while the exact minimal
 order remains unresolved.
@@ -27,6 +28,18 @@ $H(p)=\int_{\mathbb R}p\log p$ is Boltzmann entropy. Put
 \[S_m(p)=(-1)^m\left.\partial_t^mH(P_tp)\right|_{t=0}.\]
 The target is the smallest $m\ge6$ admitting a smooth positive probability
 density with $V=-\log p$, $V''>0$ everywhere, and $S_m<0$.
+\begin{theorem}[Certified bracket]
+For the heat and entropy conventions above, with the indicated entropy
+derivative at zero interpreted through its right Taylor expansion,
+\[
+ 12\le m^*\le16.
+\]
+At orders $6\le m\le11$, the stronger variance-normalized bound
+$S_m(p)\operatorname{Var}(p)^m\ge(m-1)!/2$ holds.
+An explicit three-frequency density below has $V''>1/2500$ everywhere
+and $S_{16}<-1/2$. The exact minimal order within this bracket is unresolved.
+\end{theorem}
+
 Gu and Sellke~\cite{gu} disprove the unrestricted conjecture at order five
 and establish existence of a log-concave violation at an unspecified order.
 Zou, Fan, Gao, and Wang~\cite{zou} give an explicit log-concave family whose

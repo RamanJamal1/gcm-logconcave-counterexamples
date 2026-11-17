@@ -7,7 +7,7 @@ The convention is Boltzmann entropy `H(p) = integral p log p` and heat generator
 ## Verified results
 
 - Exact rational sum-of-squares identities establish nonnegativity at orders 6–11 under justified integration by parts. The note gives the positive-time smoothing and endpoint argument.
-- Stronger identities give the sharp bounds `S6 Var^6 ≥ 60`, `S7 Var^7 ≥ 360`, and `S8 Var^8 ≥ 2520`.
+- Stronger identities give `S_m Var(p)^m ≥ (m-1)!/2` for every order 6–11, including the sharp bounds `S6 Var^6 ≥ 60`, `S7 Var^7 ≥ 360`, and `S8 Var^8 ≥ 2520`.
 - The explicit density
 
   ```text
@@ -36,7 +36,9 @@ python3 src/verify_sos_standalone.py \
   certs/exact_sos_m6.json certs/exact_sos_m7.json certs/exact_sos_m8.json \
   certs/exact_quotient_m9.json certs/exact_quotient_m10.json \
   certs/exact_quotient_m11.json \
-  certs/exact_mckean_m6.json certs/exact_mckean_m7.json certs/exact_mckean_m8.json
+  certs/exact_mckean_m6.json certs/exact_mckean_m7.json certs/exact_mckean_m8.json \
+  certs/exact_mckean_quotient_m9.json certs/exact_mckean_quotient_m10.json \
+  certs/exact_mckean_quotient_m11.json
 ```
 
 It independently derives the entropy polynomial, checks each integration-by-parts identity, and proves positivity of the rational Gram matrices by exact Schur complements. A numerical SDP status is never used as a proof.

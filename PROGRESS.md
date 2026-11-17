@@ -1,6 +1,6 @@
 # GCM research progress
 
-Updated: 2026-11-17T09:32:48.750166+00:00
+Updated: 2026-11-17T09:42:47.428994+00:00
 
 Verified bracket: 12 ≤ m* ≤ 16. Exact minimality remains unresolved.
 
@@ -15,6 +15,6 @@ Verified bracket: 12 ≤ m* ≤ 16. Exact minimality remains unresolved.
 Recorded production totals: 41,213,952 FP32 candidate evaluations; 406,400 FP64 refinements. Warmups and readiness runs are excluded. Interrupted partial generations may not be counted.
 
 Sharp proven normalized bounds: S6 Var^6 ≥ 60; S7 Var^7 ≥ 360; S8 Var^8 ≥ 2520.
-Exact rational nonnegativity certificates cover orders 6–11.
+Exact rational nonnegativity and sharp Gaussian-bound certificates cover orders 6–11.
 An order-16 witness has a spatial Arb certificate; the earlier order-17 witness has independent Fourier-series and spatial certificates.
 See MORNING_BRIEFING.md, checkpoints/research_status.json, and paper/draft_note.tex.

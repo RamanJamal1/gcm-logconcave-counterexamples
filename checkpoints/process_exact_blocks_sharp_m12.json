@@ -1,0 +1,18 @@
+{
+  "name": "exact_blocks_sharp_m12",
+  "command": [
+    ".venv/bin/python",
+    "-u",
+    "src/prepare_exact_blocks.py",
+    "--order",
+    "12",
+    "--sharp"
+  ],
+  "started_utc": "2026-11-17T09:40:18.676512+00:00",
+  "status": "exited",
+  "child_pid_in_namespace": 5,
+  "heartbeat_utc": "2026-11-17T09:40:18.677377+00:00",
+  "elapsed_seconds": 30.001307487487793,
+  "returncode": 0,
+  "finished_utc": "2026-11-17T09:40:48.677821+00:00"
+}

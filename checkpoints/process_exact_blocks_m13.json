@@ -1,0 +1,17 @@
+{
+  "name": "exact_blocks_m13",
+  "command": [
+    ".venv/bin/python",
+    "-u",
+    "src/prepare_exact_blocks.py",
+    "--order",
+    "13"
+  ],
+  "started_utc": "2026-11-17T09:37:59.851224+00:00",
+  "status": "exited",
+  "child_pid_in_namespace": 6,
+  "heartbeat_utc": "2026-11-17T09:38:59.853340+00:00",
+  "elapsed_seconds": 90.0028064250946,
+  "returncode": 0,
+  "finished_utc": "2026-11-17T09:39:29.854032+00:00"
+}

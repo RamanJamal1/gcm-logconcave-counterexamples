@@ -8,8 +8,10 @@
     "900"
   ],
   "started_utc": "2026-11-17T09:24:29.214917+00:00",
-  "status": "running",
+  "status": "exited",
   "child_pid_in_namespace": 6,
-  "heartbeat_utc": "2026-11-17T09:32:29.226320+00:00",
-  "elapsed_seconds": 480.01145195961
+  "heartbeat_utc": "2026-11-17T09:39:29.235703+00:00",
+  "elapsed_seconds": 930.0215566158295,
+  "returncode": 0,
+  "finished_utc": "2026-11-17T09:39:59.236478+00:00"
 }

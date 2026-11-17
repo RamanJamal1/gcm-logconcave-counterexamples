@@ -6,8 +6,10 @@
     "src/search_detuned_spatial.py"
   ],
   "started_utc": "2026-11-17T09:26:45.774507+00:00",
-  "status": "running",
+  "status": "exited",
   "child_pid_in_namespace": 6,
-  "heartbeat_utc": "2026-11-17T09:32:45.783094+00:00",
-  "elapsed_seconds": 360.0086340904236
+  "heartbeat_utc": "2026-11-17T09:35:45.787286+00:00",
+  "elapsed_seconds": 570.0135219097137,
+  "returncode": 0,
+  "finished_utc": "2026-11-17T09:36:15.788030+00:00"
 }
