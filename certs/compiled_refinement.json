@@ -1,5 +1,5 @@
 {
-  "passed": false,
+  "passed": true,
   "checks": [
     {
       "family": "fourier_multiplier",
@@ -42,6 +42,20 @@
       "compile_seconds": 94.87846064567566,
       "gradient_relative_max_error": 1.9845236565174673e-15,
       "loss_relative_error": 0.0
+    },
+    {
+      "family": "skew_gaussian_mixture",
+      "order": 7,
+      "compile_seconds": 124.43365359306335,
+      "gradient_relative_max_error": 4.130972387510898e-16,
+      "loss_relative_error": 2.1544922314768665e-16
+    },
+    {
+      "family": "skew_gaussian_mixture",
+      "order": 8,
+      "compile_seconds": 105.02208542823792,
+      "gradient_relative_max_error": 6.039689720554461e-16,
+      "loss_relative_error": 1.113400308745475e-16
     }
   ]
 }

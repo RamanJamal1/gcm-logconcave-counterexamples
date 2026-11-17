@@ -35,9 +35,10 @@ def setup(m):
     b=base[j];e=[x+y for x,y in zip(a,b)];e[1]+=block
     d={k:v*(-1 if block else 1)*(1 if i==j else 2) for k,v in reduce(tuple(e)).items()}
     keys.update(d);columns.append(d);layout.append((block,i,j))
- keys=sorted(keys);G=s.polys.matrices.DomainMatrix.from_Matrix(s.Matrix([[d.get(k,0) for d in columns] for k in keys])).to_Matrix()
- # Choose independent equality rows exactly, checking target compatibility later.
- _,pivot=(G.T).rref();rows=list(pivot)
+ keys=sorted(keys)
+ # Keep every canonical equality. Exact reconstruction checks all rows;
+ # there is no need for an expensive preliminary row-reduction here.
+ rows=list(range(len(keys)))
  return bases,target,keys,columns,layout,rows
 
 def probe(m,solver):
