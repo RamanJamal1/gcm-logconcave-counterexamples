@@ -10,7 +10,8 @@
   "sharp_gaussian_orders": [
     6,
     7,
-    8
+    8,
+    9
   ],
   "negative_witness_order": 16,
   "negative_witness_certificate": "certs/multifourier_m16.json",
@@ -51,7 +52,7 @@
   },
   "lower_bound": 12,
   "upper_bound": 16,
-  "updated": 1794900952.6975117,
+  "updated": 1794907874.7816389,
   "exact_minimal_order_resolved": false,
   "independent_negative_witness_certificate": "certs/independent_direct_heat_m16.json",
   "witness_certificate_sha256": {
@@ -62,5 +63,18 @@
     "certs/exact_min_curvature_m16.json": "c2844735d6ac7f2d813bade60cc27b85188ddbdce94016855817334d1d3b6509"
   },
   "updated_utc": "2026-11-17T08:33:26.877706+00:00",
-  "curvature_certificate": "certs/exact_min_curvature_m16.json"
+  "curvature_certificate": "certs/exact_min_curvature_m16.json",
+  "verified_sharp_certificates": {
+    "9": {
+      "order": 9,
+      "target_subtraction": "-20160*u2**9",
+      "exact_identity": true,
+      "positive_definite_grams": true,
+      "ibp_identities_verified": true,
+      "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
+      "seconds": 0.5027546882629395,
+      "sha256": "5d92a13bd9840b45a094c4b3320c1d93d2f4f240714dde7f1045bf9247ff221e",
+      "certificate": "certs/exact_mckean_quotient_m9.json"
+    }
+  }
 }
