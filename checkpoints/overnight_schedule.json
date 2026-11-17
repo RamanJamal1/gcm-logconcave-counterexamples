@@ -17,5 +17,6 @@
     "projection_baseline": 57663,
     "projection_warm": 87215
   },
-  "campaign_B_started_utc": "2026-11-17T08:32:56.984942+00:00"
+  "campaign_B_started_utc": "2026-11-17T08:32:56.984942+00:00",
+  "campaign_C_exec_session_id": 81267
 }

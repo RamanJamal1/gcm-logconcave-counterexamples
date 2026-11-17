@@ -43,7 +43,7 @@ def main(seconds=3600,batch=65536,sync=False,state_path='checkpoints/campaign_C.
      name=f'certs/campaign_C_m{order}_best.json';atomic_json(ROOT/name,r);state['best_certified'][str(order)]={'signed':score,'parameters':r['parameters'],'certificate':name};save(f'certified rationalized m{order}={score:.12g}')
  def run_generation(order):
   a_ref=float(Fraction(reference[0]));lower=torch.searchsorted(values,torch.tensor(a_ref*.75,device='cuda')).item();upper=torch.searchsorted(values,torch.tensor(a_ref*1.25,device='cuda')).item()
-  idx=torch.randint(lower,upper,(batch,),device='cuda');aa=values[idx];amplitudes=[aa];denominators=[]
+  eligible=torch.tensor([j for j in range(lower,upper) if fractions[j].denominator<=100],device='cuda');idx=eligible[torch.randint(len(eligible),(batch,),device='cuda')];aa=values[idx];amplitudes=[aa];denominators=[]
   for j,ref in enumerate(reference[1:],1):
    rr=float(Fraction(ref));scale=10**max(0,math.floor(math.log10(1/abs(rr)))-2)
    denominator=(torch.exp(torch.randn(batch,device='cuda')*.3)/(abs(rr)*scale)).round().clamp(min=1)*scale
