@@ -17,7 +17,7 @@ def update(orders):
  s=re.sub(r'A further exact rational certificate proves.*?An explicit strictly',f'Additional exact rational certificates prove nonnegative signs through order {lower-1} (`certs/exact_quotient_m*.json`), independently verified using standard-library rational arithmetic. An explicit strictly',s);p.write_text(s)
  p=ROOT/'paper/analytic_scope.tex';s=p.read_text();s=re.sub(r'For \$m\\in\\\{[0-9,]+\\\}\$',lambda match:'For $m\\in\\{'+','.join(map(str,range(6,lower)))+'\\}$',s)
  s=re.sub(r'The first possible failing order is at least \w+;',f'The first possible failing order is at least {lower};',s)
- s=s.replace('orders six through nine',f'orders six through {lower-1}')
+ s=re.sub(r'orders six through (?:nine|[0-9]+)',f'orders six through {lower-1}',s)
  # Keep a separate explicit audit paragraph rather than inferring the scope from file names.
  marker='\\paragraph{Additional verified orders.}'
  if marker in s:s=s[:s.index(marker)].rstrip()+'\n'

@@ -31,7 +31,7 @@ def read_json(path):
 
 def main():
     r = {'timestamp_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
-         'mode': 'preflight_only; overnight goal paused'}
+         'mode': 'read-only verification during active overnight campaign'}
     r['gh_installed'] = bool(shutil.which('gh'))
     r['gh_auth_status'] = command(['gh', 'auth', 'status'])
     r['github_identity'] = command(['gh', 'api', 'user', '--jq', '.login'])
