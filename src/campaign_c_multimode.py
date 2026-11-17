@@ -48,7 +48,7 @@ def main(seconds=3600,batch=65536,sync=False,state_path='checkpoints/campaign_C.
     from flint import arb
     score=float(arb(r['signed_derivative_interval']).mid());previous=state['best_certified'].get(str(order),{}).get('signed',float('inf'))
     if score<previous:
-     name=f'certs/campaign_C_m{order}_best.json';atomic_json(ROOT/name,r);state['best_certified'][str(order)]={'signed':score,'parameters':r['parameters'],'certificate':name};save(f'certified rationalized m{order}={score:.12g}')
+     name=f'certs/{Path(state_path).stem}_m{order}_best.json';atomic_json(ROOT/name,r);state['best_certified'][str(order)]={'signed':score,'parameters':r['parameters'],'certificate':name};save(f'certified rationalized m{order}={score:.12g}')
  def run_generation(order):
   a_ref=float(Fraction(reference[0]));lower=torch.searchsorted(values,torch.tensor(a_ref*.75,device='cuda')).item();upper=torch.searchsorted(values,torch.tensor(a_ref*1.25,device='cuda')).item()
   eligible=torch.tensor([j for j in range(lower,upper) if fractions[j].denominator<=100],device='cuda');idx=eligible[torch.randint(len(eligible),(batch,),device='cuda')];aa=values[idx];amplitudes=[aa];denominators=[]

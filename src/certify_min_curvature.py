@@ -15,7 +15,7 @@ def value(a,x):
  out=Q(0)
  for c in reversed(a):out=out*x+c
  return out
-def certify(amplitudes=('1/16','1/45000','-1/20000000'),kappa='67/1000',lower_bound='0'):
+def certify(amplitudes=('1/16','1/48000','-1/20000000'),kappa='1/15',lower_bound='0'):
  a,b,c=map(Q,amplitudes);k=Q(kappa)
  g=[1-b,a-3*c,2*b,4*c];gp=deriv(g);gpp=deriv(gp);one_minus_x2=[Q(1),Q(0),Q(-1)]
  H=add(mul(add(mul(one_minus_x2,gpp),scale(mul([Q(0),Q(1)],gp),-1)),g),scale(mul(one_minus_x2,mul(gp,gp)),-1))

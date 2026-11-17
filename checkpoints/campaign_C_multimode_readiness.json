@@ -15,7 +15,7 @@
         ],
         "kappa": "59/879"
       },
-      "certificate": "certs/campaign_C_m16_best.json"
+      "certificate": "certs/campaign_C_multimode_readiness_m16_best.json"
     }
   },
   "errors": [],
