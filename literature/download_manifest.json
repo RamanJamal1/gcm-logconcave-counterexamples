@@ -1,0 +1,30 @@
+[
+  {
+    "url": "https://arxiv.org/html/2608.30275",
+    "path": "literature/2608.30275.html",
+    "bytes": 217987,
+    "content_type": "text/html; charset=utf-8",
+    "status": "downloaded"
+  },
+  {
+    "url": "https://arxiv.org/src/2608.30275",
+    "path": "literature/2608.30275.source",
+    "bytes": 10538,
+    "content_type": "application/gzip",
+    "status": "downloaded"
+  },
+  {
+    "url": "https://arxiv.org/html/2605.11656",
+    "path": "literature/2605.11656.html",
+    "bytes": 333696,
+    "content_type": "text/html; charset=utf-8",
+    "status": "downloaded"
+  },
+  {
+    "url": "https://arxiv.org/src/2605.11656",
+    "path": "literature/2605.11656.source",
+    "bytes": 8644,
+    "content_type": "application/gzip",
+    "status": "downloaded"
+  }
+]
