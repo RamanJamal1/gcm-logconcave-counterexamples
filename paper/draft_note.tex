@@ -1,0 +1,133 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,booktabs,geometry,hyperref}
+\geometry{margin=1in}
+\newtheorem{proposition}{Proposition}
+\title{A Reproducible Search for Low-Order Log-Concave Violations of Gaussian Complete Monotonicity}
+\author{Computational research record}
+\date{November 17, 2026 --- provisional during computation}
+\begin{document}
+\maketitle
+\begin{abstract}
+We describe reduced entropy-derivative formulas, constrained density families,
+and a mixed-precision computational search at orders six, seven, and eight.
+The formulas are independently checked against high-precision heat-convolution
+finite differences. Rigorous finite-interval integration is combined with
+analytic tail bounds and global convexity estimates. This document is a
+methods and ongoing-results record: no new counterexample or exact minimal
+order is asserted in this provisional version.
+\end{abstract}
+\section{Question and conventions}
+Throughout, $P_t=e^{t\partial_x^2/2}$ and
+$H(p)=\int_{\mathbb R}p\log p$ is Boltzmann entropy. Put
+$S_m(p)=(-1)^m\left.\partial_t^mH(P_tp)\right|_{t=0}$.
+The target is the smallest $m\ge6$ admitting a smooth positive probability
+density with $V=-\log p$, $V''>0$ everywhere, and $S_m<0$.
+Gu and Sellke~\cite{gu} disprove the unrestricted conjecture at order five
+and establish existence of a log-concave violation at an unspecified order.
+Zou, Fan, Gao, and Wang~\cite{zou} give an explicit log-concave family whose
+signed derivative is negative for all sufficiently large orders.
+The log-concave signs through order five are known~\cite{wang}.
+Consequently, a certified order-six witness would establish minimality.
+An order-seven or order-eight witness alone would establish only an upper bound.
+
+\section{Scaling and exact reduced formulas}
+\begin{proposition}[Scaling and Gaussian controls]
+For $p_a(x)=a^{-1}p(x/a)$, $a>0$, one has $S_m(p_a)=a^{-2m}S_m(p)$.
+For the centered Gaussian of variance $v$, $S_m=(m-1)!/(2v^m)$.
+Thus $S_m(p)\operatorname{Var}(p)^m$ is scale invariant, whereas a
+strictly positive universal lower bound for unnormalized $S_m$ is impossible.
+\end{proposition}
+\begin{proof}
+Heat scaling gives $H(P_tp_a)=H(P_{t/a^2}p)-\log a$.
+For the Gaussian, $H(P_tp)=-\tfrac12\log(2\pi e(v+t))$.
+Differentiate these identities $m$ times.
+\end{proof}
+\begin{proposition}[Reduced derivative recurrence]
+For smooth Gaussian-decaying densities with bounded higher log derivatives,
+write $u_j=\partial_x^j\log p$. If $F$ is a polynomial in $u_2,u_3,\ldots$,
+then $\partial_t\mathbb E_p F=\mathbb E_p\mathcal LF$, where
+\[
+\mathcal LF=-\frac12\sum_{i,j\ge2}F_{ij}u_{i+1}u_{j+1}
++\frac12\sum_{i\ge2}F_i\sum_{k=1}^{i-1}\binom{i}{k}u_{k+1}u_{i-k+1}.
+\]
+Starting with $F_2=u_2^2/2$, the polynomial $F_m=\mathcal L^{m-2}F_2$
+satisfies $I_m=\mathbb E_p F_m$ and involves derivatives at most of order $m$.
+\end{proposition}
+\begin{proof}
+The heat equation gives $\partial_t\log p=(u_2+u_1^2)/2$.
+Differentiating $u_i$ gives its diffusion term, $u_1u_{i+1}$, and the
+quadratic sum displayed above. Differentiating the expectation contributes
+$\tfrac12\mathbb E_p\partial_x^2F$.
+Integrating $\mathbb E_p(\partial_x^2F+u_1\partial_xF)=0$
+eliminates the drift and combines the second-derivative terms into
+$-\tfrac12\sum F_{ij}u_{i+1}u_{j+1}$. Gaussian tails justify the boundary limits.
+\end{proof}
+\input{formulas.tex}
+
+\section{Explicit search families}
+The first family is
+\[
+p(x)=Z^{-1}e^{-x^2/2}\left(1+\sum_{k=1}^K a_k\cos(\omega_kx+\theta_k)\right).
+\]
+If $A_0=\sum|a_k|<1$ and $A_2=\sum|a_k|\omega_k^2<1-A_0$,
+then $V''\ge1-A_2/(1-A_0)>0$ globally. Its normalizer is
+$Z=\sqrt{2\pi}(1+\sum a_ke^{-\omega_k^2/2}\cos\theta_k)$.
+We also use $p\propto\exp[-x^2/2+\sum a_k\cos(\omega_kx+\theta_k)]$,
+for which $V''\ge1-A_2$.
+The positive-curvature family has
+\[
+ V''(x)=1+\sum_k w_k e^{-(x-c_k)^2/(2s_k^2)},\qquad w_k\ge0,\ s_k>0.
+\]
+Two exact integrations use
+$s_k\sqrt{\pi/2}(x-c_k)\operatorname{erf}((x-c_k)/(\sqrt2s_k))
++s_k^2e^{-(x-c_k)^2/(2s_k^2)}$, together with a linear tilt.
+Finally, two equal-variance Gaussian components with means $\pm d$, $d<1$,
+and arbitrary positive mixture weights satisfy $V''\ge1-d^2$.
+These sufficient convexity restrictions define a subset of all strictly
+log-concave densities; failure to find a violation in them proves no general theorem.
+
+\section{Numerical validation and rigorous certificates}
+For $p(x)=\phi(x)(1+\sin x/10)$, exact Gaussian conditioning gives its
+heat convolution. At 100 decimal digits, 160-node Gauss--Hermite quadrature
+and a 24-point positive-time finite difference give relative differences
+$1.12\cdot10^{-22}$, $1.92\cdot10^{-22}$, and $1.17\cdot10^{-19}$
+at orders six, seven, and eight. A separate 96-to-160-node convergence
+check has maximum relative change below $2.86\cdot10^{-13}$.
+These are numerical checks, not interval proofs.
+
+Certification uses exact rational or decimal parameters, 200-digit Arb
+arithmetic, and complex analytic integration on $[-L,L]$. The integrands
+are entire or meromorphic; poles produce nonfinite balls and are rejected
+by the integration procedure. A uniform bound on $|F_m|$, obtained from
+its absolute coefficients and uniform log-derivative bounds, multiplies an
+analytic tail estimate. For a multiplier $g$ with $|g|\le M$,
+\[
+ \int_{|x|>L}e^{-x^2/2}|g(x)|\,dx\le \frac{2M}{L}e^{-L^2/2}.
+\]
+Shifted Gaussian majorants handle the curvature and mixture families.
+Both normalization and numerator errors are enclosed. Only an interval with
+strictly negative upper endpoint, together with a global positive convexity
+bound, is accepted as a counterexample.
+
+\section{Status and reproducibility}
+The current run is ongoing. No exact minimal-order conclusion is claimed.
+The authoritative numerical state is in \texttt{checkpoints/campaign\_A.json};
+certificates are in \texttt{certs/}. Complete counts and final outcomes will
+replace this provisional paragraph after the scheduled campaign.
+The code, source literature, and versioned checkpoints are backed up to the
+private research repository. Float32 exploration, float64 refinement, and
+rigorous interval certification are distinct stages.
+
+\begin{thebibliography}{9}
+\bibitem{zou} J. Zou, L. Fan, J. Gao, and J. Wang,
+\emph{An Explicit Family of Log-Concave Counterexamples to the Gaussian
+Completely Monotone Conjecture}, arXiv:2608.30275 (2026).
+\bibitem{gu} Y. Gu and M. Sellke,
+\emph{A Counterexample to the Gaussian Completely Monotone Conjecture},
+arXiv:2605.11656 (2026).
+\bibitem{wang} G. Wang,
+\emph{A higher-order Otto calculus approach to the Gaussian completely
+monotone conjecture}, arXiv:2408.13957.
+\end{thebibliography}
+\end{document}

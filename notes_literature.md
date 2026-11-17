@@ -1,6 +1,6 @@
 # Literature verification and mathematical conventions
 
-Checked 2026-11-17 UTC. Primary HTML was read through the web tool. Direct local HTML/PDF/TeX downloads failed with DNS resolution errors; `/literature/retrieval.json` records all six attempts. The web tool's TeX-source requests also failed (cache miss). Consequently no local full-source archive is claimed.
+Checked 2026-11-17 UTC. Both primary papers were verified and their full HTML and original source archives downloaded. See `literature/download_manifest.json` and extracted source directories. Initial network failures remain recorded for provenance in `literature/retrieval.json`.
 
 ## Zou, Fan, Gao, Wang (2026)
 
