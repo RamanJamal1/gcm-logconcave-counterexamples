@@ -3,7 +3,7 @@ import json,datetime
 from pathlib import Path
 from checkpoint_io import write_text
 ROOT=Path(__file__).resolve().parents[1]
-CAMPAIGNS=['campaign_A','campaign_B','campaign_C','higher_campaign','polynomial_campaign','polynomial_wide_campaign']
+CAMPAIGNS=['campaign_A','campaign_B','campaign_C','higher_campaign','polynomial_campaign','polynomial_wide_campaign','harmonic_refinement_campaign']
 def read(path):
  try:return json.loads(path.read_text())
  except (FileNotFoundError,json.JSONDecodeError):return {}

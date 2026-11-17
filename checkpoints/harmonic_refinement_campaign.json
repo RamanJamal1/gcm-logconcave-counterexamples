@@ -1,0 +1,16 @@
+{
+  "status": "bounded_run_complete",
+  "gpu_evaluations": 0,
+  "refinement_evaluations": 768,
+  "method": "Supplementary FP64 harmonic and asymmetric-phase L-BFGS searches",
+  "source_files": [
+    "checkpoints/gpu_harmonic_K12_m12_s0.json",
+    "checkpoints/gpu_harmonic_K12_m13_s0.json",
+    "checkpoints/gpu_harmonic_K12_m14_s0.json",
+    "checkpoints/gpu_harmonic_K12_m15_s0.json",
+    "checkpoints/gpu_harmonic_phase_K6_m12_s0.json",
+    "checkpoints/gpu_harmonic_phase_K6_m13_s0.json",
+    "checkpoints/gpu_harmonic_phase_K6_m14_s0.json",
+    "checkpoints/gpu_harmonic_phase_K6_m15_s0.json"
+  ]
+}

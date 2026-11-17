@@ -22,7 +22,10 @@ def prepare(m):
     for i in range(n):
      for j in range(i,n):
       if q[i,j]:f.write(f'{row+1} {block+1} {i+1} {j+1} {-q[i,j]:.17g}\n')
- warm=json.loads((ROOT/f'certs/sos_semismooth_warm_m{m}.json').read_text());qs=[np.array(q)*np.outer(ss,ss)/norm-1e-5*np.eye(n) for q,ss,n in zip(warm['gram_matrices'],scales,dims)];shift=max(1e-4,-min(la.eigvalsh(q)[0] for q in qs)+1e-4);qs=[q+shift*np.eye(n) for q,n in zip(qs,dims)]
+ warm_path=ROOT/f'certs/sos_semismooth_warm_m{m}.json'
+ if not warm_path.exists():
+  print('exported',path,'bytes',path.stat().st_size,'no warm matrix; use default interior point',flush=True);return
+ warm=json.loads(warm_path.read_text());qs=[np.array(q)*np.outer(ss,ss)/norm-1e-5*np.eye(n) for q,ss,n in zip(warm['gram_matrices'],scales,dims)];shift=max(1e-4,-min(la.eigvalsh(q)[0] for q in qs)+1e-4);qs=[q+shift*np.eye(n) for q,n in zip(qs,dims)]
  with open(ROOT/f'logs/native_m{m}_initial.ini-s','w') as f:
   f.write(' '+' '.join(['0']*len(b))+'\n')
   for k in (1,2):

@@ -1,0 +1,9 @@
+{
+  "order": 13,
+  "segment": 0,
+  "status": "running",
+  "proved": false,
+  "history": [],
+  "precision_bits": 64,
+  "iterations_per_segment": 1
+}
