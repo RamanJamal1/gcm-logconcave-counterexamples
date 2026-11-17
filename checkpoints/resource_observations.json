@@ -1,15 +1,15 @@
 {
   "sampling_started_utc": "2026-11-17T09:02:01.851026+00:00",
-  "samples": 288,
+  "samples": 291,
   "max_host_used_bytes_upper_bound": 6550179840,
   "max_gpu_used_mib": 8200,
   "host_budget_exceeded_observed": false,
   "last": {
-    "utc": "2026-11-17T11:27:15.444151+00:00",
-    "host_used_bytes_upper_bound": 5332799488,
+    "utc": "2026-11-17T11:28:46.371681+00:00",
+    "host_used_bytes_upper_bound": 5070278656,
     "host_total_bytes": 67433480192,
-    "disk_free_bytes": 198704316416,
-    "gpu_utilization_percent": 0,
+    "disk_free_bytes": 198704144384,
+    "gpu_utilization_percent": 71,
     "gpu_memory_used_mib": 2614,
     "gpu_memory_total_mib": 49140
   }

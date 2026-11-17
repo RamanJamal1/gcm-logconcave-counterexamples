@@ -55,7 +55,10 @@
   "signed": 16607697690.175003,
   "objective": 0.48121187635227075,
   "certified": false,
-  "evaluations": 11902,
-  "elapsed_seconds": 442.98944211006165,
-  "status": "running"
+  "evaluations": 16200,
+  "elapsed_seconds": 601.9631724357605,
+  "status": "bounded_run_complete",
+  "fine_normalized": 43589150599.40877,
+  "fine_sampled_curvature": 0.9376930684276579,
+  "fine_signed": 16607697690.175003
 }
