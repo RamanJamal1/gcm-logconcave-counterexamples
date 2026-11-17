@@ -1,0 +1,9 @@
+{
+  "orders": [
+    12,
+    13,
+    14
+  ],
+  "status": "numerical solver failures or poorly conditioned attempts, not mathematical infeasibility",
+  "details": "Native order12 stopped as pUNBD despite a mathematically bounded formulation and large residual. Fixed-margin zero-objective order13/14 runs showed growing infeasibility and were interrupted. Alternative row-whitened trace-minimization is being tried."
+}
