@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-17T07:30:42.318672+00:00",
-  "reason": "m10=181440 m11=1814400 m12=1.99584e+07",
+  "timestamp": "2026-11-17T08:32:25.612505+00:00",
+  "reason": "m6=60",
   "steps": [
     {
       "command": [
@@ -17,10 +17,10 @@
         "git",
         "commit",
         "-m",
-        "chore: checkpoint 2026-11-17T07:30:42.318672+00:00 - m10=181440 m11=1814400 m12=1.99584e+07"
+        "chore: checkpoint 2026-11-17T08:32:25.612505+00:00 - m6=60"
       ],
       "returncode": 0,
-      "stdout": "[main 1ba77c1] chore: checkpoint 2026-11-17T07:30:42.318672+00:00 - m10=181440 m11=1814400 m12=1.99584e+07\n 6 files changed, 105 insertions(+), 22 deletions(-)\n create mode 100644 certs/failed_sdp_attempts.json\n create mode 100644 src/sos_mintrace.py",
+      "stdout": "[main 6611a81] chore: checkpoint 2026-11-17T08:32:25.612505+00:00 - m6=60\n 8 files changed, 2557 insertions(+), 22 deletions(-)\n create mode 100644 certs/multifourier_m16.json\n create mode 100644 checkpoints/periodic_curvature_m12.json\n create mode 100644 checkpoints/periodic_curvature_m13.json\n create mode 100644 checkpoints/periodic_curvature_m14.json\n rewrite checkpoints/periodic_curvature_m15.json (62%)\n create mode 100644 src/certify_multifourier_spatial.py",
       "stderr": ""
     },
     {
@@ -33,7 +33,7 @@
       ],
       "returncode": 0,
       "stdout": "Branch 'main' set up to track remote branch 'main' from 'origin'.",
-      "stderr": "To https://github.com/returnedlegend/gcm-logconcave-counterexamples.git\n   b584c95..1ba77c1  main -> main"
+      "stderr": "To https://github.com/returnedlegend/gcm-logconcave-counterexamples.git\n   2197621..6611a81  main -> main"
     }
   ],
   "remote_status": "pushed"

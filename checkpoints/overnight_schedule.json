@@ -1,20 +1,21 @@
 {
   "start_utc": "2026-11-17T06:02:55.131528+00:00",
   "deadline_utc": "2026-11-17T14:02:00+00:00",
-  "phase": "A",
+  "phase": "B",
   "campaign_A_seconds": 9000,
   "campaign_B_seconds": 7200,
   "campaign_C_seconds": 3600,
-  "status": "campaign_A_running",
-  "live_exec_session_id": 68237,
+  "status": "campaign_B_running",
+  "live_exec_session_id": 44119,
   "sos_probe_exec_session_id": 42062,
   "campaign_B_batch": 65536,
   "campaign_B_microbatch": 65536,
-  "campaign_B_status": "warmed; scheduled start 08:32:55 UTC",
+  "campaign_B_status": "rewarming verified larger kernels; scheduled after A",
   "supplementary_sessions": {
-    "polynomial_wide": 19621,
-    "sos_preconditioned_001": 44873,
-    "sos_preconditioned_01": 56086
+    "higher_campaign": 23758,
+    "polynomial_campaign": 14430,
+    "projection_baseline": 57663,
+    "projection_warm": 87215
   },
-  "campaign_B_exec_session_id": 77424
+  "campaign_B_started_utc": "2026-11-17T08:32:56.984942+00:00"
 }
