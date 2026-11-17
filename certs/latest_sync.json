@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-17T06:28:06.162511+00:00",
+  "timestamp": "2026-11-17T06:29:15.220965+00:00",
   "reason": "m6=60",
   "steps": [
     {
@@ -17,10 +17,10 @@
         "git",
         "commit",
         "-m",
-        "chore: checkpoint 2026-11-17T06:28:06.162511+00:00 - m6=60"
+        "chore: checkpoint 2026-11-17T06:29:15.220965+00:00 - m6=60"
       ],
       "returncode": 0,
-      "stdout": "[main b73dec0] chore: checkpoint 2026-11-17T06:28:06.162511+00:00 - m6=60\n 19 files changed, 12949 insertions(+), 10 deletions(-)\n create mode 100644 certs/fourier_series_m40.json\n create mode 100644 certs/fourier_series_m44.json\n create mode 100644 certs/fourier_series_m48.json\n create mode 100644 certs/fourier_series_m48_retained_modes.json\n create mode 100644 certs/fourier_series_m52.json\n create mode 100644 certs/fourier_series_m56.json\n create mode 100644 certs/fourier_series_m9_control.json\n create mode 100644 certs/higher_formula_tests.json\n create mode 100644 certs/sos_projected_m10.json\n create mode 100644 certs/sos_projected_m11.json\n create mode 100644 certs/sos_projected_m9.json\n create mode 100644 certs/sos_scaled_m10.json\n create mode 100644 certs/sos_scaled_m9.json\n create mode 100644 src/certify_fourier_series.py\n create mode 100644 src/sos_scaled.py\n create mode 100644 src/test_higher_formulas.py",
+      "stdout": "[main 976506a] chore: checkpoint 2026-11-17T06:29:15.220965+00:00 - m6=60\n 4 files changed, 53 insertions(+), 20 deletions(-)\n create mode 100644 checkpoints/series_campaign.json",
       "stderr": ""
     },
     {
@@ -33,7 +33,7 @@
       ],
       "returncode": 0,
       "stdout": "Branch 'main' set up to track remote branch 'main' from 'origin'.",
-      "stderr": "To https://github.com/returnedlegend/gcm-logconcave-counterexamples.git\n   7045af7..b73dec0  main -> main"
+      "stderr": "To https://github.com/returnedlegend/gcm-logconcave-counterexamples.git\n   6a73a33..976506a  main -> main"
     }
   ],
   "remote_status": "pushed"
