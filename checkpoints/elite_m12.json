@@ -1,26 +1,13 @@
 {
   "parameters": {
-    "family": "fourier_multiplier",
-    "amplitudes": [
-      -1.6666415697240024e-05,
-      -2.6014981545974126e-06,
-      9.162523477191954e-06
-    ],
-    "frequencies": [
-      0.2172608185966724,
-      0.32859773377575063,
-      0.24686434184091935
-    ],
-    "phases": [
-      -2.5787196411122895,
-      1.2854542706856822,
-      -3.1404757244479486
-    ]
+    "family": "skew_gaussian_mixture",
+    "separation_half": 0.008765708950206261,
+    "weight": 0.0016098830353866761
   },
-  "normalized": 19958400.00000071,
-  "signed": 19958407.96825342,
-  "convexity_bound": 0.9999983739781046,
+  "normalized": 19958400.000000246,
+  "signed": 19958281.686512925,
+  "convexity_bound": 0.9999231623466003,
   "certified": false,
-  "generation": 20,
+  "generation": 23,
   "grid": 4097
 }
