@@ -1,11 +1,11 @@
 # Overnight research results: log-concave GCM
 
 **Provisional report — research is still running.**
-Updated 2026-11-17 11:15:30 UTC. Scheduled interval: 2026-11-17T06:02:55.131528+00:00 to 2026-11-17T14:02:00+00:00.
+Updated 2026-11-17 11:36:07 UTC. Scheduled interval: 2026-11-17T06:02:55.131528+00:00 to 2026-11-17T14:02:00+00:00.
 
-**The exact minimal order remains unresolved. The verified bracket is 12 ≤ m* ≤ 16.**
+**The exact minimal order remains unresolved. The verified bracket is 14 ≤ m* ≤ 16.**
 
-Exact rational certificates establish nonnegative signs at orders 6, 7, 8, 9, 10, 11. The positive-time smoothing and endpoint hypotheses are stated explicitly in the note. A strictly log-concave order-16 density has a rigorously negative entropy derivative.
+Exact rational certificates establish nonnegative signs at orders 6, 7, 8, 9, 10, 11, 12, 13. The positive-time smoothing and endpoint hypotheses are stated explicitly in the note. A strictly log-concave order-16 density has a rigorously negative entropy derivative.
 
 The convention is Boltzmann entropy `H = integral p log p`, with heat generator `(1/2) d²/dx²`. The opposite entropy convention reverses the signs.
 
@@ -46,14 +46,14 @@ The Gaussian uniquely attains these proven bounds. For a normalized minimizing s
 
 GPU: NVIDIA RTX A6000, 49,140 MiB reported memory. The environment exposed 8 CPU cores and 62.8 GiB host RAM; these observed values differ from the requested 6-core/48-GB specification. The filesystem reported about 206.9 GB total capacity. PyTorch/CUDA executed the search; it was not a CPU-only run.
 
-Production FP32 candidate evaluations: **90,562,560**.
-Recorded FP64 refined candidates: **793,088**. These are evaluations, not necessarily unique densities; warmups/readiness tests and uncheckpointed interrupted partial generations are excluded.
+Production FP32 candidate evaluations: **97,837,056**.
+Recorded FP64 refined candidates: **849,920**. These are evaluations, not necessarily unique densities; warmups/readiness tests and uncheckpointed interrupted partial generations are excluded.
 
 | Campaign | Saved status | FP32 evaluations | FP64 refinements |
 |---|---|---:|---:|
 | campaign_A | bounded_run_complete | 11,468,800 | 154,112 |
 | campaign_B | bounded_run_complete | 70,057,984 | 547,328 |
-| campaign_C | running | 6,488,064 | 50,688 |
+| campaign_C | running | 13,762,560 | 107,520 |
 | higher_campaign | stopped_for_new_order12_family | 1,630,208 | 25,472 |
 | polynomial_campaign | interrupted_exit143 | 32,768 | 512 |
 | polynomial_wide_campaign | bounded_run_complete | 884,736 | 13,824 |
@@ -61,7 +61,7 @@ Recorded FP64 refined candidates: **793,088**. These are evaluations, not necess
 
 Campaign B used 65,536 simultaneous FP32 candidates, selected 512 elites, and used FP64 refinement with 2,049- and 4,097-point resolution checks. Campaign C uses a periodic GPU approximation only to screen rationalized parameters; retained negative results require full spatial Arb certification. Supplementary searches include polynomial curvature, signed higher harmonics, asymmetric phases, localized Fourier modes, convex quartic deformations, two interacting base frequencies, and positive-curvature lattices.
 
-Resource sampling began at 2026-11-17T09:02:01.851026+00:00; 264 observations were recorded. Maximum observed host nonavailable-memory estimate: 6.10 GiB. Maximum sampled GPU memory use during that monitoring interval: 8,200 MiB. Earlier compiled-batch validation measured a 5.73-GB allocation. Sampling is not a continuous proof of a resource bound. Certification process pools were capped at four workers.
+Resource sampling began at 2026-11-17T09:02:01.851026+00:00; 305 observations were recorded. Maximum observed host nonavailable-memory estimate: 6.57 GiB. Maximum sampled GPU memory use during that monitoring interval: 8,200 MiB. Earlier compiled-batch validation measured a 5.73-GB allocation. Sampling is not a continuous proof of a resource bound. Certification process pools were capped at four workers.
 
 ## Validation, limitations, and files
 

@@ -1,0 +1,13 @@
+{
+  "order": 15,
+  "proved": false,
+  "status": "numerical_row_transform_only",
+  "method": "QR of the original transposed coefficient system; original cache retained",
+  "dimensions": [
+    176,
+    135
+  ],
+  "rows": 1039,
+  "bytes": 680666017,
+  "seconds": 124.08143520355225
+}

@@ -5,7 +5,9 @@
     8,
     9,
     10,
-    11
+    11,
+    12,
+    13
   ],
   "sharp_gaussian_orders": [
     6,
@@ -50,11 +52,24 @@
       "seconds": 28.105060338974,
       "sha256": "90cc900f691ed1d1e33ed8c04e53b61c46771cfe8eafc1a808c975b57c4e3a9f",
       "certificate": "certs/exact_quotient_m11.json"
+    },
+    "13": {
+      "order": 13,
+      "target_subtraction": "0",
+      "exact_identity": true,
+      "positive_definite_grams": true,
+      "ibp_identities_verified": true,
+      "verifier": "independent Fraction polynomial identity and Arb interval Schur complements",
+      "seconds": 4.512944936752319,
+      "digits": 200,
+      "verification_record": "certs/interval_sos_verification_m13.json",
+      "sha256": "4fe7fe1954f62cab4006a241c0addbc3e6d3f0040111c016820b90eb3fbf8d84",
+      "certificate": "certs/exact_quotient_m13.json"
     }
   },
-  "lower_bound": 12,
+  "lower_bound": 14,
   "upper_bound": 16,
-  "updated": 1794907968.7492878,
+  "updated": 1794915367.0866294,
   "exact_minimal_order_resolved": false,
   "independent_negative_witness_certificate": "certs/independent_simple_kappa_48000_m16.json",
   "witness_certificate_sha256": {
@@ -110,5 +125,15 @@
       "independent_certificate": "certs/independent_direct_heat_m16.json",
       "curvature_certificate": "certs/exact_min_curvature_m16.json"
     }
-  ]
+  ],
+  "propagated_signs": {
+    "12": {
+      "source_order": 13,
+      "source_certificate": "certs/exact_quotient_m13.json",
+      "lemma": "certs/downward_propagation.md",
+      "lemma_sha256": "44705c835b6f416a65d4b2f34517306d572147c3739f87b883fce134df6f18cc",
+      "method": "Universal higher sign integrated along heat flow; endpoint via right Taylor expansion"
+    }
+  },
+  "report_revision_required": true
 }
