@@ -1,0 +1,24 @@
+{
+  "status": "running",
+  "order": 12,
+  "gpu_evaluations": 32768,
+  "refinement_evaluations": 512,
+  "best": {
+    "normalized": 41336354.28759066,
+    "signed": 6176688116606666.0,
+    "variance": 0.20835217646891724,
+    "q_coefficients": [
+      1.9152516676800027,
+      0.039763635507232276,
+      0.13179565926270137,
+      0.03297019924727339,
+      -0.023438815436168,
+      -0.006901100413948564
+    ],
+    "tilt": -0.6845425721498745,
+    "curvature_lower_bound": 1,
+    "certified": false
+  },
+  "errors": [],
+  "elapsed_seconds": 182.3704605102539
+}
