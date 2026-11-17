@@ -1,7 +1,7 @@
 {
   "status": "bounded_run_complete",
   "gpu_evaluations": 0,
-  "refinement_evaluations": 1152,
+  "refinement_evaluations": 1176,
   "method": "Supplementary FP64 harmonic, asymmetric-phase, and tighter-curvature L-BFGS searches",
   "source_files": [
     "checkpoints/gpu_harmonic_K12_m12_s0.json",
@@ -15,6 +15,7 @@
     "checkpoints/gpu_tight_curvature_K6_m12_s0.json",
     "checkpoints/gpu_tight_curvature_K6_m13_s0.json",
     "checkpoints/gpu_tight_curvature_K6_m14_s0.json",
-    "checkpoints/gpu_tight_curvature_K6_m15_s0.json"
+    "checkpoints/gpu_tight_curvature_K6_m15_s0.json",
+    "checkpoints/squared_curvature_m15_s0.json"
   ]
 }

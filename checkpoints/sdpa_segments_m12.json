@@ -1,7 +1,7 @@
 {
   "order": 12,
   "segment": 14,
-  "status": "running",
+  "status": "stopped_after_verified_order13_certificate",
   "proved": false,
   "history": [
     {
@@ -193,5 +193,7 @@
     0.00013847555159570338
   ],
   "warm_start_abandoned": "Near-feasible but ill-conditioned warm Gram stalled at zero iterations; restart from default identity.",
-  "initial_file": "logs/native_m12_segment_14.ini-s"
+  "initial_file": "logs/native_m12_segment_14.ini-s",
+  "stop_reason": "The independently verified order-13 certificate proves all lower signs by heat-flow propagation. These numerical iterations are no longer needed.",
+  "stopped_utc": "2026-11-17T11:36:58.609295+00:00"
 }

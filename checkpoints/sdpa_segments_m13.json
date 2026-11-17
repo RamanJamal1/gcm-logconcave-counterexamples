@@ -1,7 +1,7 @@
 {
   "order": 13,
   "segment": 4,
-  "status": "running",
+  "status": "stopped_after_verified_order13_certificate",
   "proved": false,
   "history": [
     {
@@ -64,5 +64,7 @@
   "min_scaled_eigenvalues": [
     15.147412637703768,
     12.200799777958101
-  ]
+  ],
+  "stop_reason": "The independently verified order-13 certificate proves all lower signs by heat-flow propagation. These numerical iterations are no longer needed.",
+  "stopped_utc": "2026-11-17T11:36:58.610127+00:00"
 }

@@ -1,12 +1,12 @@
 # Log-concave entropy derivatives: computational research record
 
-The current verified bracket is **12 ≤ m* ≤ 16**, with the endpoint regularity made explicit in the note. The exact minimal order remains unresolved. The scheduled overnight campaign is still running; see [the briefing](MORNING_BRIEFING.md) and [progress](PROGRESS.md).
+The current verified bracket is **14 ≤ m* ≤ 16**, with the endpoint regularity made explicit in the note. The exact minimal order remains unresolved. The scheduled overnight campaign is still running; see [the briefing](MORNING_BRIEFING.md) and [progress](PROGRESS.md).
 
 The convention is Boltzmann entropy `H(p) = integral p log p` and heat generator `(1/2) d²/dx²`. Reversing the entropy convention reverses the derivative signs.
 
 ## Verified results
 
-- Exact rational sum-of-squares identities establish nonnegativity at orders 6–11 under justified integration by parts. The note gives the positive-time smoothing and endpoint argument.
+- Exact rational sum-of-squares identities establish nonnegativity at orders 6–11 and 13 under justified integration by parts. Order 12 follows by downward propagation along heat flow. The note gives the positive-time smoothing and endpoint argument.
 - Stronger identities give `S_m Var(p)^m ≥ (m-1)!/2` for every order 6–11, including the sharp bounds `S6 Var^6 ≥ 60`, `S7 Var^7 ≥ 360`, and `S8 Var^8 ≥ 2520`.
 - The explicit density
 
@@ -69,4 +69,4 @@ Both routines use 200-digit ball arithmetic with analytic bounds for the omitted
 - `src/certify_multifourier_spatial.py` and `src/certify_direct_heat.py`: independent order-16 proofs.
 - `src/checkpoint.py`: serialized Git checkpoints and private GitHub backup.
 
-The original papers and source retrieval records are under `literature/`; [literature notes](notes_literature.md) record the conventions and verified source claims. A finite unsuccessful search does not establish universal positivity. The interval `[12,16]` combines exact lower-order identities with a certified upper-bound example, not empirical minima.
+The original papers and source retrieval records are under `literature/`; [literature notes](notes_literature.md) record the conventions and verified source claims. A finite unsuccessful search does not establish universal positivity. The interval `[14,16]` combines exact lower-order identities with a certified upper-bound example, not empirical minima.
