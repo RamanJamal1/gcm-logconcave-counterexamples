@@ -13,7 +13,7 @@
     8
   ],
   "negative_witness_order": 17,
-  "negative_witness_certificate": "certs/simple_fourier_m17.json",
+  "negative_witness_certificate": "certs/rationalized_m17_2.json",
   "verified_certificates": {
     "9": {
       "order": 9,
@@ -52,5 +52,10 @@
   "lower_bound": 12,
   "upper_bound": 17,
   "updated": 1794900952.6975117,
-  "exact_minimal_order_resolved": false
+  "exact_minimal_order_resolved": false,
+  "independent_negative_witness_certificate": "certs/independent_spatial_m17.json",
+  "witness_certificate_sha256": {
+    "certs/rationalized_m17_2.json": "287537e256ecb1634a0726aaa2268135d5c4c474862e3380753d2200c708be55",
+    "certs/independent_spatial_m17.json": "33bd5df38a7d00b1eb53dd227f74df38eff39bb4766fd53521756245b618e3b1"
+  }
 }
