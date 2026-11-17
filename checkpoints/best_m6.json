@@ -39,5 +39,8 @@
   },
   "coarse_dense_relative_discrepancy": 1.5789838572446674e-16,
   "certified": false,
-  "evaluation": 883
+  "evaluation": 883,
+  "status": "invalidated_interrupted_pilot",
+  "valid_for_research_conclusions": false,
+  "reason": "Pilot interrupted by user pause; RBF mode finder was subsequently corrected from undamped Newton to bracketed Brent root."
 }

@@ -133,8 +133,10 @@
   },
   "hits": [],
   "certified_counterexamples": 0,
-  "status": "running",
+  "status": "invalidated_interrupted_pilot",
   "elapsed_seconds": 0.022857759000089573,
   "failures": 0,
-  "search_scope": "finite sampled family search; no universal lower bound"
+  "search_scope": "finite sampled family search; no universal lower bound",
+  "valid_for_research_conclusions": false,
+  "reason": "Pilot interrupted by user pause; RBF mode finder was subsequently corrected from undamped Newton to bracketed Brent root."
 }

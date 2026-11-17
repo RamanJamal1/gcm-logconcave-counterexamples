@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """Reproducible signed Boltzmann-entropy derivative search.
 
-CPU fallback uses NumPy float64. CUDA support uses Torch FP32 exploration and
-FP64 refinement only when an actual CUDA device is available. No sampled sign
-is a certificate. All implemented families have global analytic strict-convexity
+Current implementation uses NumPy float64 only. Requested CUDA FP32 exploration
+and FP64 refinement are not yet implemented. No sampled sign is a certificate. All implemented families have global analytic strict-convexity
 bounds. Dimensionless objectives S_m Var(X)**m avoid dilation degeneracy.
 """
 import os
@@ -12,6 +11,7 @@ for key in ('OMP_NUM_THREADS','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_
 import argparse, json, math, time, pathlib, sys
 import numpy as np
 from scipy.special import erf
+from scipy.optimize import brentq
 from generated_integrands import INTEGRANDS
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 
@@ -66,12 +66,12 @@ def density_jets(c,x):
 
 
 def evaluate(c,points=1025,extent=12.):
-    # RBF modes can move. Newton locate the unique mode under V''>=1.
+    # V' is strictly increasing; its nonlinear part is bounded globally.
+    # Bracketing prevents undamped Newton oscillation for steep local curvature.
     mode=0.
     if c['family']=='rbf_curvature':
-        for _ in range(30):
-            _,u,_=density_jets(c,np.array([mode]));step=float(u[1][0]/u[2][0]);mode-=step
-            if abs(step)<1e-12:break
+        bound=abs(c['tilt'])+sum(a*s*math.sqrt(math.pi/2) for a,s in zip(c['weights'],c['widths']))+1
+        mode=brentq(lambda z:float(density_jets(c,np.array([z]))[1][1][0]),-bound,bound,xtol=1e-13)
     x=np.linspace(mode-extent,mode+extent,points)
     lp,u,convex=density_jets(c,x);p=np.exp(lp-np.max(lp));z=np.trapezoid(p,x);p/=z
     mean=float(np.trapezoid(x*p,x));var=float(np.trapezoid((x-mean)**2*p,x))

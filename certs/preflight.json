@@ -1,0 +1,110 @@
+{
+  "timestamp_utc": "2026-11-17T05:41:36.679670+00:00",
+  "mode": "preflight_only; overnight goal paused",
+  "gh_installed": true,
+  "gh_auth_status": {
+    "command": [
+      "gh",
+      "auth",
+      "status"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "github.com\n  X github.com: authentication failed\n  - The github.com token in /home/ubuntu/.config/gh/hosts.yml is no longer valid.\n  - To re-authenticate, run: gh auth login -h github.com\n  - To forget about this host, run: gh auth logout -h github.com"
+  },
+  "github_identity": {
+    "command": [
+      "gh",
+      "api",
+      "user",
+      "--jq",
+      ".login"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "error connecting to api.github.com\ncheck your internet connection or https://githubstatus.com"
+  },
+  "github_network": {
+    "command": [
+      "curl",
+      "-sS",
+      "--max-time",
+      "8",
+      "-o",
+      "/dev/null",
+      "-w",
+      "%{http_code}",
+      "https://api.github.com"
+    ],
+    "returncode": 6,
+    "stdout": "000",
+    "stderr": "curl: (6) Could not resolve host: api.github.com"
+  },
+  "nvidia_smi": {
+    "command": [
+      "timeout",
+      "-k",
+      "1s",
+      "5s",
+      "nvidia-smi"
+    ],
+    "returncode": 124,
+    "stdout": "",
+    "stderr": "Thunder cannot get the GPU node list from http://10.250.0.21:2096/api/v1/roster (Failed to connect to 10.250.0.21 port 2096 after 0 ms: Couldn't connect to server); retrying for up to 60s"
+  },
+  "gpu_device_paths": [],
+  "git_head": {
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "returncode": 0,
+    "stdout": "1adf47552ca6f1313047aebcd66260c35d19dfb7",
+    "stderr": ""
+  },
+  "git_origin": {
+    "command": [
+      "git",
+      "remote",
+      "get-url",
+      "origin"
+    ],
+    "returncode": 2,
+    "stdout": "",
+    "stderr": "error: No such remote 'origin'"
+  },
+  "packages": {
+    "numpy": true,
+    "scipy": true,
+    "sympy": true,
+    "mpmath": true,
+    "torch": true,
+    "jax": false,
+    "flint": false,
+    "optax": false,
+    "evosax": false
+  },
+  "formula_validation_passed": true,
+  "formula_test_relative_errors": {
+    "6": "1.11174844647e-22",
+    "7": "1.91808545533e-22",
+    "8": "1.16228135624e-19"
+  },
+  "cpu_search_smoke": {
+    "status": "passed",
+    "evaluations": 10,
+    "gpu_evaluations": 0,
+    "failures": null,
+    "elapsed_seconds": null
+  },
+  "blockers": [
+    "CLI GitHub API identity cannot be verified; repository create/push and issue posting unverified.",
+    "GPU probe fails; requested RTX A6000 is not accessible from this execution environment.",
+    "python-flint/Arb unavailable; mpmath alone does not supply a rigorous certificate.",
+    "Requested batched CUDA FP32/FP64 optimization pipeline is not implemented or validated; current search is CPU only.",
+    "Rigorous interval certification with analytic tail bounds is not implemented or validated.",
+    "25-minute continuous sync and new-elite hooks are not enabled; local checkpoint utility only."
+  ],
+  "ready_for_overnight": false
+}

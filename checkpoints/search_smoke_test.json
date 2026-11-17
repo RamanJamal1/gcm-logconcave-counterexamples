@@ -1,0 +1,188 @@
+{
+  "status": "passed",
+  "candidate_count": 5,
+  "evaluations": 10,
+  "gpu_evaluations": 0,
+  "backend": "numpy_cpu_float64",
+  "scope": "five controlled cases only; not a search campaign or interval certificate",
+  "results": [
+    {
+      "family": "fourier_multiplier",
+      "parameters": {
+        "family": "fourier_multiplier",
+        "amplitudes": [
+          0.0
+        ],
+        "frequencies": [
+          1.0
+        ],
+        "phases": [
+          0.0
+        ]
+      },
+      "result": {
+        "signed": {
+          "6": 60.0,
+          "7": 360.0,
+          "8": 2520.0000000000005
+        },
+        "normalized": {
+          "6": 60.0,
+          "7": 360.0,
+          "8": 2520.0000000000005
+        },
+        "variance": 1.0,
+        "mean": 0.0,
+        "convexity_lower_bound": 1.0,
+        "grid_points": 4097,
+        "extent": 12.0,
+        "mode": 0.0,
+        "edge_mass_density": 2.1463837356630605e-32
+      },
+      "grid_relative_error": 1.8045529797081907e-16
+    },
+    {
+      "family": "fourier_multiplier",
+      "parameters": {
+        "family": "fourier_multiplier",
+        "amplitudes": [
+          0.17851898523472923
+        ],
+        "frequencies": [
+          2.144857451474239
+        ],
+        "phases": [
+          2.3951533391195703
+        ]
+      },
+      "result": {
+        "signed": {
+          "6": 3198.5298692405904,
+          "7": 46431.735718576514,
+          "8": 748603.7079753262
+        },
+        "normalized": {
+          "6": 4551.069514668385,
+          "7": 70065.64973354155,
+          "8": 1198034.6668313416
+        },
+        "variance": 1.060540300648542,
+        "mean": -0.026408702323275857,
+        "convexity_lower_bound": 0.0002676475488888608,
+        "grid_points": 4097,
+        "extent": 12.0,
+        "mode": 0.0,
+        "edge_mass_density": 2.0906742336785273e-32
+      },
+      "grid_relative_error": 3.265708855460556e-15
+    },
+    {
+      "family": "fourier_potential",
+      "parameters": {
+        "family": "fourier_potential",
+        "amplitudes": [
+          0.0012045170943079892,
+          -0.9078304525420541,
+          -0.015339857485447994
+        ],
+        "frequencies": [
+          8.806554677779932,
+          0.4083170128478671,
+          1.3311585741787644
+        ],
+        "phases": [
+          -2.2589084710904554,
+          2.9699819470550795,
+          -2.9370566806514717
+        ]
+      },
+      "result": {
+        "signed": {
+          "6": 119806.46219678441,
+          "7": 10889688.003407557,
+          "8": 1015759061.3453915
+        },
+        "normalized": {
+          "6": 51497.3350000799,
+          "7": 4066343.2255145484,
+          "8": 329506044.9685139
+        },
+        "variance": 0.8687285313691167,
+        "mean": 0.04945394055653929,
+        "convexity_lower_bound": 0.7280452000645814,
+        "grid_points": 4097,
+        "extent": 12.0,
+        "mode": 0.0,
+        "edge_mass_density": 1.2614971009669905e-32
+      },
+      "grid_relative_error": 2.429237114850291e-16
+    },
+    {
+      "family": "rbf_curvature",
+      "parameters": {
+        "family": "rbf_curvature",
+        "weights": [
+          2.3277435697122097,
+          0.056702440484208014
+        ],
+        "widths": [
+          0.4977080925869158,
+          0.16863560523324972
+        ],
+        "centers": [
+          0.8936969176424516,
+          1.1357185205221105
+        ],
+        "tilt": 0.7778695611326638
+      },
+      "result": {
+        "signed": {
+          "6": 79936.54124999752,
+          "7": 3108053.369749847,
+          "8": 197719417.33403942
+        },
+        "normalized": {
+          "6": 2235.5423029859667,
+          "7": 47888.61354226837,
+          "8": 1678415.0864340097
+        },
+        "variance": 0.5509424761457691,
+        "mean": 0.1221760109755907,
+        "convexity_lower_bound": 1.0,
+        "grid_points": 4097,
+        "extent": 12.0,
+        "mode": 0.3220504408025341,
+        "edge_mass_density": 4.190703286001103e-34
+      },
+      "grid_relative_error": 1.5073037736776972e-16
+    },
+    {
+      "family": "skew_gaussian_mixture",
+      "parameters": {
+        "family": "skew_gaussian_mixture",
+        "separation_half": 0.40273730673330266,
+        "weight": 0.8096766162678869
+      },
+      "result": {
+        "signed": {
+          "6": 35.836734019615804,
+          "7": 201.20299578996026,
+          "8": 1328.9781531635572
+        },
+        "normalized": {
+          "6": 63.479582771990735,
+          "7": 392.03456207666443,
+          "8": 2848.3413110894176
+        },
+        "variance": 1.099978694480702,
+        "mean": 0.24943665278802246,
+        "convexity_lower_bound": 0.8378026617652057,
+        "grid_points": 4097,
+        "extent": 12.0,
+        "mode": 0.0,
+        "edge_mass_density": 2.012258707207996e-30
+      },
+      "grid_relative_error": 1.9827217942661107e-16
+    }
+  ]
+}
