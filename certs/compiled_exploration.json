@@ -1,0 +1,12 @@
+{
+  "passed_families": [
+    {
+      "family": "fourier_multiplier",
+      "batch": 2048,
+      "compile_seconds": 53.90902876853943,
+      "seconds": 0.011498689651489258,
+      "max_relative_difference_fp32": 6.04534761805553e-06
+    }
+  ],
+  "note": "FP32 screening only. All selected candidates receive eager FP64 refinement and resolution checks."
+}
