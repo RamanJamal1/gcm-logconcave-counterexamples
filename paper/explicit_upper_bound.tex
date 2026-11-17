@@ -1,4 +1,4 @@
-\section{An explicit certified upper bound}
+\section{An independently checked order-17 example}
 \begin{proposition}[A rational-parameter order-17 witness]
 Let
 \[
@@ -94,4 +94,50 @@ The calculation is recorded in
 \end{proof}
 This witness gives an upper bound, not minimality. Together with the
 lower-order certificates and their endpoint hypotheses, it brackets the
-remaining question between orders 12 and 17.
+remaining question between orders 12 and 17 before the improvement below.
+
+
+\section{An improved order-16 upper bound}
+\begin{proposition}[A three-mode rational witness]
+Define
+\[
+ p(x)=Z^{-1}e^{-67x^2/2000}
+ \left(1+\frac{\cos x}{16}+\frac{\cos2x}{45000}
+            -\frac{\cos3x}{20000000}\right),
+\]
+where
+\[
+ Z=\sqrt{\frac{2000\pi}{67}}
+ \left(1+\frac{e^{-500/67}}{16}+\frac{e^{-2000/67}}{45000}
+             -\frac{e^{-4500/67}}{20000000}\right).
+\]
+Then $p$ is a smooth positive probability density and
+\[
+ (-\log p)''>\frac1{5000},\qquad S_{16}(p)<-\frac12.
+\]
+\end{proposition}
+\begin{proof}[Computer-assisted proof]
+Let $a=(1/16,1/45000,-1/20000000)$, $\kappa=67/1000$, and
+$A_j=\sum_{k=1}^3|a_k|k^j$. Positivity follows from $A_0<1$, and
+\[
+ V''\ge\kappa-\frac{A_2}{1-A_0}
+ =\frac{39900397}{168745991000}>\frac1{5000}.
+\]
+Gaussian Fourier integration gives the displayed normalizer exactly.
+The spatial rational-polynomial procedure above extends to three modes:
+$G(z)=z^3(1+\sum a_k(z^k+z^{-k})/2)$ is a degree-six polynomial,
+and the signed order-16 integrand has denominator $G^{32}$.
+Exact rational recurrence and reciprocal symmetry reduce its numerator to
+a polynomial in $\cos x$. At 200 digits, Arb integrates on quarter-unit
+intervals through $L=120$ and adds the analytic Gaussian-tail bound.
+The resulting enclosure is
+\[
+ S_{16}(p)\in[-0.572129678217109698165767,
+              -0.572129678217109698165753].
+\]
+Every interval contribution and the tail bound are recorded in
+\texttt{certs/multifourier\_m16.json}; the reproducing code is
+\texttt{src/certify\_multifourier\_spatial.py}.
+\end{proof}
+Together with the lower-order certificates and their endpoint hypotheses,
+this proves $12\le m^*\le16$. The exact order within this interval remains unresolved.
