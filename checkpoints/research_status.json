@@ -12,7 +12,8 @@
     7,
     8,
     9,
-    10
+    10,
+    11
   ],
   "negative_witness_order": 16,
   "negative_witness_certificate": "certs/multifourier_m16.json",
@@ -53,7 +54,7 @@
   },
   "lower_bound": 12,
   "upper_bound": 16,
-  "updated": 1794907892.8977287,
+  "updated": 1794907968.7492878,
   "exact_minimal_order_resolved": false,
   "independent_negative_witness_certificate": "certs/independent_direct_heat_m16.json",
   "witness_certificate_sha256": {
@@ -87,6 +88,17 @@
       "seconds": 2.34794020652771,
       "sha256": "c1d24a0ea34272b2c753e23be1f19175f5e18360973bc765304fe447ecd6b887",
       "certificate": "certs/exact_mckean_quotient_m10.json"
+    },
+    "11": {
+      "order": 11,
+      "target_subtraction": "-1814400*u2**11",
+      "exact_identity": true,
+      "positive_definite_grams": true,
+      "ibp_identities_verified": true,
+      "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
+      "seconds": 15.934104681015015,
+      "sha256": "35e0b1acbc83909c952804710f113445f2feb3861fec343a96443346053427ef",
+      "certificate": "certs/exact_mckean_quotient_m11.json"
     }
   }
 }
