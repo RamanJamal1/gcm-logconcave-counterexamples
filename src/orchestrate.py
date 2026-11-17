@@ -81,7 +81,7 @@ def main(args):
    for target,future in list(pending):
     if future.done():
      result=future.result();state['certificates'].append({'path':target,'status':result['status']});pending.remove((target,future));save(sync=result.get('certified',False))
-   periodic=time.monotonic()-last_sync>=1500
+   periodic=time.monotonic()-last_sync>=args.sync_seconds
    save(sync=periodic)
    if periodic:last_sync=time.monotonic()
    print(json.dumps({k:state[k] for k in ['generation','gpu_evaluations','refinement_evaluations','errors']}),flush=True)
@@ -94,4 +94,4 @@ def main(args):
  print(json.dumps({'status':state['status'],'state':str(path),'best':state['best']},indent=2))
 
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--seconds',type=float,default=60);p.add_argument('--generations',type=int,default=12);p.add_argument('--batch',type=int,default=32768);p.add_argument('--microbatch',type=int,default=128);p.add_argument('--elites',type=int,default=512);p.add_argument('--refine-chunk',type=int,default=4);p.add_argument('--refine-steps',type=int,default=8);p.add_argument('--grid',type=int,default=513);p.add_argument('--dense-grid',type=int,default=2049);p.add_argument('--terms',type=int,default=3);p.add_argument('--workers',type=int,default=4);p.add_argument('--seed',type=int,default=260830275);p.add_argument('--state',default='checkpoints/campaign.json');p.add_argument('--resume',action='store_true');p.add_argument('--sync',action='store_true');main(p.parse_args())
+ p=argparse.ArgumentParser();p.add_argument('--seconds',type=float,default=60);p.add_argument('--generations',type=int,default=12);p.add_argument('--batch',type=int,default=32768);p.add_argument('--microbatch',type=int,default=128);p.add_argument('--elites',type=int,default=512);p.add_argument('--refine-chunk',type=int,default=4);p.add_argument('--refine-steps',type=int,default=8);p.add_argument('--grid',type=int,default=513);p.add_argument('--dense-grid',type=int,default=2049);p.add_argument('--terms',type=int,default=3);p.add_argument('--workers',type=int,default=4);p.add_argument('--seed',type=int,default=260830275);p.add_argument('--state',default='checkpoints/campaign.json');p.add_argument('--resume',action='store_true');p.add_argument('--sync-seconds',type=float,default=1500);p.add_argument('--sync',action='store_true');main(p.parse_args())

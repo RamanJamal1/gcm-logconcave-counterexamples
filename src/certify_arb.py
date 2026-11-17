@@ -1,7 +1,6 @@
-"""Rigorous Arb integration and analytic Gaussian tails for Fourier families.
+"""Rigorous Arb integration and analytic Gaussian tails for all four implemented density families.
 
-Only exact decimal/rational input parameters are certified. Other families are
-explicitly unsupported, never silently labelled certified. H = integral p log p.
+Only exact decimal/rational input parameters are certified. Unsupported parameters are rejected. H = integral p log p.
 """
 import argparse,json,math
 from fractions import Fraction
@@ -16,9 +15,11 @@ def exact(v):
 def certify(candidate,order=6,dps=200,extent=16):
  ctx.dps=dps;ctx.threads=1
  c=candidate.get('parameters',candidate);family=c['family']
- if family not in ('fourier_multiplier','fourier_potential'):
-  return {'status':'unsupported_family','certified':False,'family':family}
- a=list(map(exact,c['amplitudes']));w=list(map(exact,c['frequencies']));phase=list(map(exact,c['phases']))
+ extra = family not in ('fourier_multiplier','fourier_potential')
+ if extra:
+  from certification_families import extra_family
+  extra_jets,extra_bounds,extra_curvature,extra_tail,extra_z=extra_family(c,exact,arb(extent))
+ a=list(map(exact,c.get('amplitudes',[])));w=list(map(exact,c.get('frequencies',[])));phase=list(map(exact,c.get('phases',[])))
  A={j:sum((abs(x)*abs(y)**j for x,y in zip(a,w)),arb(0)) for j in range(9)}
  if family=='fourier_multiplier':
   if not A[0]<1:return {'status':'positivity_not_proven','certified':False}
@@ -26,8 +27,10 @@ def certify(candidate,order=6,dps=200,extent=16):
   for n in range(2,9):bounds[n]=q[n]+sum(math.comb(n-1,k-1)*bounds[k]*q[n-k] for k in range(1,n))
   factor=1+A[0]
  else:curvature=1-A[2];bounds=A.copy();factor=A[0].exp()
+ if extra:curvature=extra_curvature
  if not curvature>0:return {'status':'convexity_not_proven','certified':False,'curvature':str(curvature)}
  bounds[2]+=1
+ if extra:bounds=extra_bounds
  import sympy as sp
  poly=sp.Poly(derive()[order],*[symbols[j] for j in range(2,order+1)])
  bound=arb(0)
@@ -36,7 +39,9 @@ def certify(candidate,order=6,dps=200,extent=16):
   for j,power in enumerate(powers,2):term*=bounds[j]**power
   bound+=term
  L=arb(extent);tail_mass=2*factor*(-L*L/2).exp()/L
+ if extra:tail_mass=extra_tail
  def jets(x):
+  if extra:return extra_jets(x)
   ds={j:sum((aa*ww**j*(ww*x+pp+j*arb.pi()/2).cos() for aa,ww,pp in zip(a,w,phase)),acb(0)) for j in range(9)}
   if family=='fourier_multiplier':
    g=1+ds[0];q={j:ds[j]/g for j in range(1,9)};u={1:q[1]}
@@ -52,7 +57,8 @@ def certify(candidate,order=6,dps=200,extent=16):
  tol=arb('1e-30')
  numerator=acb.integral(f,-L,L,abs_tol=tol,rel_tol=tol,eval_limit=200000).real
  numerator=numerator+arb(0,(bound*tail_mass).upper())
- if family=='fourier_multiplier':
+ if extra and extra_z is not None:z=extra_z
+ elif family=='fourier_multiplier':
   z=(2*arb.pi()).sqrt()*(1+sum((aa*(-ww*ww/2).exp()*pp.cos() for aa,ww,pp in zip(a,w,phase)),arb(0)))
  else:
   z=acb.integral(lambda x,_:jets(x)[0],-L,L,abs_tol=tol,rel_tol=tol,eval_limit=200000).real+arb(0,tail_mass.upper())
