@@ -50,7 +50,9 @@ def certify(m,a_string,b_string,kappa_string,N=96,dps=200,mode_cutoff=0):
  moment=math.factorial(m)*kappa**(m-1)*(a/2*(-1/(2*kappa)).exp()+2*b*(-2/kappa).exp())
  baseline=arb(math.factorial(m-1))/2*kappa**m
  value=baseline+(periodic+moment+arb(0,(filtering+tail).upper()))/xi
- result={'order':m,'family':'gaussian_two_fourier_modes','parameters':{'a':a_string,'b':b_string,'kappa':kappa_string},'density':'Z^-1 exp(-kappa*x^2/2)*(1+a*cos(x)+b*cos(2*x))','signed_derivative_interval':str(value),'convexity_lower_bound':str(curvature.lower()),'periodic_finite_sum':str(periodic),'nonzero_mode_absolute_bound':str(filtering.upper()),'series_tail_absolute_bound':str(tail.upper()),'mode_cutoff':mode_cutoff,'series_cutoff':N,'digits':dps,'certified':bool(value.is_finite() and value<0),'status':'certified_negative' if value.is_finite() and value<0 else 'inconclusive_or_nonnegative','seconds':time.time()-start,'method':'exact time-change polynomial, finite periodic Fourier sum, rigorous nonzero-mode and infinite-series bounds'}
+ variance=(1+a*(1-1/kappa)*(-1/(2*kappa)).exp()+b*(1-4/kappa)*(-2/kappa).exp())/(kappa*xi)
+ normalized=value*variance**m
+ result={'normalized_signed_midpoint':float(normalized.mid()),'normalized_signed_interval':str(normalized),'variance_interval':str(variance),'order':m,'family':'gaussian_two_fourier_modes','parameters':{'a':a_string,'b':b_string,'kappa':kappa_string},'density':'Z^-1 exp(-kappa*x^2/2)*(1+a*cos(x)+b*cos(2*x))','signed_derivative_interval':str(value),'convexity_lower_bound':str(curvature.lower()),'periodic_finite_sum':str(periodic),'nonzero_mode_absolute_bound':str(filtering.upper()),'series_tail_absolute_bound':str(tail.upper()),'mode_cutoff':mode_cutoff,'series_cutoff':N,'digits':dps,'certified':bool(value.is_finite() and value<0),'status':'certified_negative' if value.is_finite() and value<0 else 'inconclusive_or_nonnegative','seconds':time.time()-start,'method':'exact time-change polynomial, finite periodic Fourier sum, rigorous nonzero-mode and infinite-series bounds'}
  return result
 
 if __name__=='__main__':
