@@ -86,5 +86,23 @@
       "signed": 32117960436.69613
     }
   ],
-  "certified": false
+  "certified": false,
+  "simpson_checks": [
+    {
+      "grid": 1025,
+      "normalized": 19959895.90174596,
+      "signed": 32117960433.093018
+    },
+    {
+      "grid": 4097,
+      "normalized": 19959907.020246834,
+      "signed": 32117960436.694817
+    },
+    {
+      "grid": 16385,
+      "normalized": 19959907.01042059,
+      "signed": 32117960436.696075
+    }
+  ],
+  "conclusion": "Coarse trapezoidal apparent improvement below Gaussian was a quadrature artifact; fine grids are above the Gaussian benchmark."
 }

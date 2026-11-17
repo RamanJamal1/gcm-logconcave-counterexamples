@@ -5,6 +5,7 @@ import argparse,json,time,math
 from pathlib import Path
 import numpy as np
 from scipy.special import erf
+from scipy.integrate import simpson
 from scipy.optimize import differential_evolution,brentq
 from generated_extended_integrands import INTEGRANDS
 ROOT=Path(__file__).resolve().parents[1]
@@ -20,10 +21,10 @@ def evaluate(raw,m,grid=1025):
   hi=1.
   while potential(np.array([mode+sign*hi]))[0]-v0<120:hi*=2
   distance=brentq(lambda d:potential(np.array([mode+sign*d]))[0]-v0-120,0,hi);ends.append(mode+sign*distance)
- x=np.linspace(*ends,grid);extras=np.concatenate([cc+np.linspace(-8,8,max(65,grid//16))*width for cc,width in zip(c,s)]);x=np.unique(np.concatenate([x,extras[(extras>ends[0])&(extras<ends[1])]]));lp=-potential(x)+v0;density=np.exp(lp);density/=np.trapezoid(density,x);z=(x[None,:]-c[:,None])/ss;base=np.exp(-z*z/2);H0=np.ones_like(z);H1=z;u={2:-eps-np.sum(w[:,None]*base,axis=0)}
+ x=np.linspace(*ends,grid);extras=np.concatenate([cc+np.linspace(-8,8,max(65,grid//16))*width for cc,width in zip(c,s)]);x=np.unique(np.concatenate([x,extras[(extras>ends[0])&(extras<ends[1])]]));lp=-potential(x)+v0;density=np.exp(lp);density/=simpson(density,x=x);z=(x[None,:]-c[:,None])/ss;base=np.exp(-z*z/2);H0=np.ones_like(z);H1=z;u={2:-eps-np.sum(w[:,None]*base,axis=0)}
  for j in range(3,m+1):
   n=j-2;u[j]=-np.sum(w[:,None]*ss**(-n)*(-1)**n*H1*base,axis=0);H0,H1=H1,z*H1-n*H0
- mean=np.trapezoid(x*density,x);variance=np.trapezoid((x-mean)**2*density,x);signed=float((-1)**m*np.trapezoid(INTEGRANDS[m](u)*density,x));return signed*variance**m,signed,variance
+ mean=simpson(x*density,x=x);variance=simpson((x-mean)**2*density,x=x);signed=float((-1)**m*simpson(INTEGRANDS[m](u)*density,x=x));return signed*variance**m,signed,variance
 
 def search(m,seconds,seed):
  start=time.time();count=0;best={};path=ROOT/f'checkpoints/rbf_lattice_m{m}_s{seed}.json'
