@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "seed": 260830275,
-  "generation": 35,
-  "gpu_evaluations": 294912,
-  "refinement_evaluations": 4528,
+  "generation": 47,
+  "gpu_evaluations": 393216,
+  "refinement_evaluations": 6104,
   "best": {
     "10": {
       "parameters": {
@@ -34,14 +34,14 @@
     "12": {
       "parameters": {
         "family": "skew_gaussian_mixture",
-        "separation_half": 0.0008487375922451312,
-        "weight": 0.9230938450817542
+        "separation_half": 0.0006385613599884197,
+        "weight": 0.41832109082951385
       },
-      "normalized": 19958399.99999992,
-      "signed": 19958351.008559108,
-      "convexity_bound": 0.9999992796444995,
+      "normalized": 19958399.999999918,
+      "signed": 19958304.94735886,
+      "convexity_bound": 0.9999995922393895,
       "certified": false,
-      "generation": 35,
+      "generation": 47,
       "grid": 4097
     }
   },
@@ -62,7 +62,7 @@
     0,
     0,
     0,
-    25,
+    34,
     0,
     0,
     0,

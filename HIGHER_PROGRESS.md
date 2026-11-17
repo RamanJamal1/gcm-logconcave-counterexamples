@@ -1,8 +1,8 @@
 # GCM research progress
 
 Status: running
-GPU evaluations: 294912
-Completed generations: 35
+GPU evaluations: 393216
+Completed generations: 47
 
 Numerical candidates are not interval certificates.
 - Order 10: normalized signed derivative 181440; certified: false
