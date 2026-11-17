@@ -3,17 +3,17 @@
   "seed": 260830276,
   "generation": 3,
   "gpu_evaluations": 262144,
-  "refinement_evaluations": 1552,
+  "refinement_evaluations": 1584,
   "best": {
     "7": {
       "parameters": {
         "family": "skew_gaussian_mixture",
-        "separation_half": 0.020297299913388623,
-        "weight": 0.561102448445623
+        "separation_half": 0.017689722011329453,
+        "weight": 0.5539481896685864
       },
-      "normalized": 360.0000000624942,
-      "signed": 358.9789719903904,
-      "convexity_bound": 0.999588019616226,
+      "normalized": 360.0000000214961,
+      "signed": 359.22156944202237,
+      "convexity_bound": 0.9996870737351619,
       "certified": false,
       "generation": 3,
       "grid": 4097
