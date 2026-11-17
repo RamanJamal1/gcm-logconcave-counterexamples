@@ -26,7 +26,7 @@ def main(seconds=3600,batch=65536,sync=False,state_path='checkpoints/campaign_C.
  torch.set_num_threads(1);torch.manual_seed(170617);start=time.time();lastsync=start
  research=json.loads((ROOT/'checkpoints/research_status.json').read_text());witness=json.loads((ROOT/research['negative_witness_certificate']).read_text());order=research['negative_witness_order'];reference=witness['parameters']['amplitudes'];K=len(reference)
  fractions=sorted({Fraction(p,q) for q in range(10,1001) for p in range(1,min(150,q//5)+1) if Fraction(1,100)<=Fraction(p,q)<=Fraction(1,5)})
- values64=torch.tensor([float(f) for f in fractions],device='cuda',dtype=torch.float64);values=values64.float();pool=ProcessPoolExecutor(max_workers=2,mp_context=multiprocessing.get_context('spawn'));pending=[];seen=set()
+ values64=torch.tensor([float(f) for f in fractions],device='cuda',dtype=torch.float64);values=values64.float();pool=ProcessPoolExecutor(max_workers=4,mp_context=multiprocessing.get_context('spawn'));pending=[];seen=set()
  state={'status':'running','gpu_evaluations':0,'refinement_evaluations':0,'generation':0,'certifications':0,'best_certified':{},'errors':[],'method':'rational multi-harmonic GPU periodic screening; full spatial Arb verification','order':order,'device':torch.cuda.get_device_name(0)}
  path=ROOT/state_path
  if K==3:
@@ -66,7 +66,7 @@ def main(seconds=3600,batch=65536,sync=False,state_path='checkpoints/campaign_C.
    endpoint=(amps[:,0]-4*amps[:,1]+9*amps[:,2])/(1-amps[:,0]+amps[:,1]-amps[:,2])+1e-6
    bound=torch.where(box,endpoint,bound)
   offset=torch.randint(1,40,(batch,),device='cuda');ki=(torch.searchsorted(values,bound)+offset-1).clamp(max=len(values)-1);kk=values[ki]
-  valid=kk>bound;params=torch.cat([amps,kk[:,None]],dim=1);score=torch.full((batch,),float('inf'),device='cuda');micro=4096
+  valid=kk>bound;params=torch.cat([amps,kk[:,None]],dim=1);score=torch.full((batch,),float('inf'),device='cuda');micro=65536
   begin=0
   while begin<batch:
    end=min(batch,begin+micro)
@@ -90,7 +90,10 @@ def main(seconds=3600,batch=65536,sync=False,state_path='checkpoints/campaign_C.
    # Queue is bounded so CPU memory remains independent of campaign duration.
    if len(pending)>=16:harvest(wait=True)
    pending.append((pool.submit(certify_job,order,strings),strings,order))
+ pool_completed_start=state['certifications']
  while time.time()-start<seconds:
+  if state['certifications']-pool_completed_start>=128:
+   harvest(wait=True);pool.shutdown();pool=ProcessPoolExecutor(max_workers=4,mp_context=multiprocessing.get_context('spawn'));pool_completed_start=state['certifications'];state['pool_rotations']=state.get('pool_rotations',0)+1;save()
   run_generation(order);state['generation']+=1;harvest();save()
   print({k:v for k,v in state.items() if k not in ['errors','rng_state','seen_parameters']},flush=True)
   if time.time()-lastsync>=1500:save('campaign C periodic rationalization checkpoint');lastsync=time.time()
