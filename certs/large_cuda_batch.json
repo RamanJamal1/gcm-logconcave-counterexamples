@@ -1,0 +1,20 @@
+{
+  "passed_families": [
+    {
+      "family": "fourier_multiplier",
+      "simultaneous_candidates": 65536,
+      "finite": true,
+      "seconds_including_compilation": 57.9775071144104,
+      "peak_gpu_allocated_bytes": 5726275072,
+      "process_peak_host_rss_kib": 2456408
+    },
+    {
+      "family": "rbf_curvature",
+      "simultaneous_candidates": 65536,
+      "finite": true,
+      "seconds_including_compilation": 91.58793115615845,
+      "peak_gpu_allocated_bytes": 2872313344,
+      "process_peak_host_rss_kib": 3108928
+    }
+  ]
+}

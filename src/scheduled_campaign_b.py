@@ -21,7 +21,7 @@ def main():
   time.sleep(10)
  from orchestrate_compiled import main as campaign
  state='checkpoints/campaign_B.json'
- args=SimpleNamespace(orders=[7,8],seconds=7200,generations=100000,batch=32768,microbatch=2048,elites=512,refine_chunk=16,refine_steps=8,grid=513,dense_grid=2049,terms=3,workers=4,seed=260830276,state=state,resume=(ROOT/state).exists(),sync_seconds=1500,sync=True)
+ args=SimpleNamespace(orders=[7,8],seconds=7200,generations=100000,batch=65536,microbatch=65536,elites=512,refine_chunk=16,refine_steps=8,grid=513,dense_grid=2049,terms=3,workers=4,seed=260830276,state=state,resume=(ROOT/state).exists(),sync_seconds=1500,sync=True)
  schedule.update(phase='B',status='campaign_B_running',campaign_B_started_utc=datetime.datetime.now(datetime.timezone.utc).isoformat());(ROOT/'checkpoints/overnight_schedule.json').write_text(json.dumps(schedule,indent=2)+'\n');print('starting campaign B',schedule['campaign_B_started_utc'],flush=True)
  campaign(args)
  schedule.update(status='campaign_B_complete',phase='C_pending');(ROOT/'checkpoints/overnight_schedule.json').write_text(json.dumps(schedule,indent=2)+'\n')

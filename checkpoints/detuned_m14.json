@@ -1,0 +1,12 @@
+{
+  "order": 14,
+  "a": 0.0020000000002265467,
+  "b": 1.787194206270329e-08,
+  "kappa": 0.0020041000530511078,
+  "frequency_ratio": 2.004585264379018,
+  "screening_signed_derivative": 1.4118579078383554e-06,
+  "evaluations": 10757,
+  "seconds": 4.529054403305054,
+  "certified": false,
+  "method": "finite Gaussian-filtered series; numerical search without rigorous error bounds"
+}

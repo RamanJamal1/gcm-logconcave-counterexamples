@@ -5,7 +5,7 @@ import torch
 from cuda_compiled import evaluate,eager,FAMILIES
 rows=[]
 for family in FAMILIES:
- x=torch.randn(2048,4,3,device='cuda',dtype=torch.float32)
+ x=torch.randn(65536,4,3,device='cuda',dtype=torch.float32)
  with torch.no_grad():
   a=eager(x,family);start=time.time();b=evaluate(x,family);torch.cuda.synchronize();compile_seconds=time.time()-start
   start=time.time()

@@ -7,5 +7,14 @@
   "campaign_C_seconds": 3600,
   "status": "campaign_A_running",
   "live_exec_session_id": 44119,
-  "sos_probe_exec_session_id": 42062
+  "sos_probe_exec_session_id": 42062,
+  "campaign_B_batch": 65536,
+  "campaign_B_microbatch": 65536,
+  "campaign_B_status": "rewarming verified larger kernels; scheduled after A",
+  "supplementary_sessions": {
+    "higher_campaign": 23758,
+    "polynomial_campaign": 14430,
+    "projection_baseline": 57663,
+    "projection_warm": 87215
+  }
 }
