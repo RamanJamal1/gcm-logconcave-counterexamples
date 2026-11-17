@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "seed": 260830276,
-  "generation": 994,
-  "gpu_evaluations": 65142784,
-  "refinement_evaluations": 508928,
+  "generation": 1030,
+  "gpu_evaluations": 67502080,
+  "refinement_evaluations": 527360,
   "best": {
     "7": {
       "parameters": {
@@ -47,8 +47,8 @@
     0,
     0,
     0,
-    16,
-    31,
+    48,
+    32,
     0,
     0,
     0,
@@ -56,6 +56,6 @@
     0,
     0
   ],
-  "active_runtime_seconds": 6812.801575331996,
+  "active_runtime_seconds": 6999.263293086995,
   "runtime_estimation_note": "Initial segment estimated from last saved checkpoint mtime; subsequent segments use a monotonic clock."
 }
