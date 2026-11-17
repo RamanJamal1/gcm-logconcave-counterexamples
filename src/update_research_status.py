@@ -5,6 +5,7 @@ new sign certificate can never accidentally extend a sharp-bound claim.
 """
 import argparse,json,hashlib,time
 from pathlib import Path
+from checkpoint_io import write_json
 from verify_sos_standalone import verify
 ROOT=Path(__file__).resolve().parents[1]
 def update(orders,interval=False,downward=False):
@@ -14,7 +15,7 @@ def update(orders,interval=False,downward=False):
   if interval:
    from verify_sos_arb import verify as interval_verify
    result=interval_verify(cert)
-   proof_path=ROOT/f'certs/interval_sos_verification_m{m}.json';proof_path.write_text(json.dumps(result,indent=2)+'\n')
+   proof_path=ROOT/f'certs/interval_sos_verification_m{m}.json';write_json(proof_path,result)
    result={k:v for k,v in result.items() if k!='matrix_checks'};result['verification_record']=str(proof_path.relative_to(ROOT))
   else:result=verify(cert)
   assert result['exact_identity'] and result['positive_definite_grams'] and result['ibp_identities_verified']
@@ -31,6 +32,6 @@ def update(orders,interval=False,downward=False):
  changed=lower!=state['lower_bound'];state.update(lower_bound=lower,upper_bound=upper,updated=time.time(),exact_minimal_order_resolved=lower==upper)
  state['nonnegative_orders'].sort()
  if changed:state['report_revision_required']=True
- path.write_text(json.dumps(state,indent=2)+'\n');print(json.dumps({'lower_bound':lower,'upper_bound':upper,'verified_orders':orders}),flush=True);return state
+ write_json(path,state);print(json.dumps({'lower_bound':lower,'upper_bound':upper,'verified_orders':orders}),flush=True);return state
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--orders',type=int,nargs='+',required=True);p.add_argument('--interval',action='store_true');p.add_argument('--downward',action='store_true');a=p.parse_args();update(a.orders,a.interval,a.downward)

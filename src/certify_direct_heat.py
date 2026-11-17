@@ -7,6 +7,7 @@ import os
 os.environ['OMP_NUM_THREADS']='1';os.environ['OPENBLAS_NUM_THREADS']='1'
 import math,json,time,argparse
 from pathlib import Path
+from checkpoint_io import write_json
 from fractions import Fraction
 from flint import arb,acb,acb_series,ctx
 
@@ -52,4 +53,4 @@ def certify(source,L=120,dps=200,order_override=None):
  value=(total+arb(0,tail.upper()))/z
  return {'order':m,'parameters':params,'signed_derivative_interval':str(value),'certified_negative_derivative':bool(value.is_finite() and value<0),'certified':bool(value.is_finite() and value<0 and curvature>0),'convexity_lower_bound':str(curvature),'exact_curvature_certificate':exact_curvature,'convexity_certificate':source,'normalizer_interval':str(z),'numerator_tail_bound':str(tail),'cauchy_rho':'1/100','cauchy_log_disk_radius_bound':str(A),'digits':dps,'extent':L,'intervals':pieces,'seconds':time.time()-start,'method':'exact heat-density Taylor coefficients via acb_series; rigorous complex integration; local complex-time Cauchy Gaussian-moment tail bound'}
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('source');p.add_argument('--output',required=True);a=p.parse_args();r=certify(a.source);Path(a.output).write_text(json.dumps(r,indent=2)+'\n');print(r['certified_negative_derivative'],r['signed_derivative_interval'],flush=True)
+ p=argparse.ArgumentParser();p.add_argument('source');p.add_argument('--output',required=True);a=p.parse_args();r=certify(a.source);write_json(a.output,r);print(r['certified_negative_derivative'],r['signed_derivative_interval'],flush=True)

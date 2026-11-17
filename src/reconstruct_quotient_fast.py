@@ -4,6 +4,7 @@ os.environ["OPENBLAS_NUM_THREADS"]="1";os.environ["OMP_NUM_THREADS"]="1"
 import argparse,json,time
 from flint import fmpq,fmpq_mat
 from pathlib import Path
+from checkpoint_io import write_json
 import sympy as s
 import numpy as np
 import scipy.linalg as la
@@ -63,6 +64,6 @@ def reconstruct(m,source,sharp=False):
  if sharp:
   result['target_subtraction']=str(s.factorial(m-1)*(-u[2])**m/2);result['identity']='(-1)^m F_m - (m-1)!/2 (-u2)^m = v^T Q0 v + (-u2) w^T Q1 w - sum lambda_i (D P_i + u1 P_i)'
  tag='mckean_' if sharp else ''
- (ROOT/f'certs/exact_fast_{tag}quotient_m{m}.json').write_text(json.dumps(result,indent=2)+'\n');print(m,result['status'],result['seconds'],flush=True)
+ write_json(ROOT/f'certs/exact_fast_{tag}quotient_m{m}.json',result);print(m,result['status'],result['seconds'],flush=True)
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('order',type=int);p.add_argument('source');p.add_argument('--sharp',action='store_true');a=p.parse_args();reconstruct(a.order,a.source,a.sharp)

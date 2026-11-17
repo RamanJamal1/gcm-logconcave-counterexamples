@@ -7,6 +7,7 @@ import os
 os.environ['OPENBLAS_NUM_THREADS']='1';os.environ['OMP_NUM_THREADS']='1'
 import math,json,time,argparse
 from pathlib import Path
+from checkpoint_io import write_json
 from fractions import Fraction
 from flint import arb,acb,fmpq,fmpq_poly,acb_poly,ctx
 from entropy_sparse import signed_polynomial
@@ -65,4 +66,4 @@ def certify(m,amplitude_strings,k_s,L=120,dps=200):
   except AssertionError:pass
  return {'order':m,'parameters':{'amplitudes':amplitude_strings,'kappa':k_s},'certified':bool(value<0 and curvature>0),'signed_derivative_interval':str(value),'convexity_lower_bound':str(curvature),'exact_curvature_certificate':exact_curvature,'numerator_tail_bound':str(tail),'normalizer_interval':str(normalizer),'pieces':pieces,'digits':dps,'extent':L,'seconds':time.time()-start,'method':'independent exact rational spatial entropy polynomial, Arb complex analytic integration and Gaussian tail'}
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--order',type=int,default=16);p.add_argument('--amplitudes',nargs='+',default=['1/15','1/40000','-1/18000000']);p.add_argument('--kappa',default='1/14');p.add_argument('--extent',type=int,default=120);p.add_argument('--output',default='certs/paired15_m16.json');a=p.parse_args();r=certify(a.order,a.amplitudes,a.kappa,a.extent);Path(a.output).write_text(json.dumps(r,indent=2)+'\n');print(r['certified'],r['signed_derivative_interval'],flush=True)
+ p=argparse.ArgumentParser();p.add_argument('--order',type=int,default=16);p.add_argument('--amplitudes',nargs='+',default=['1/15','1/40000','-1/18000000']);p.add_argument('--kappa',default='1/14');p.add_argument('--extent',type=int,default=120);p.add_argument('--output',default='certs/paired15_m16.json');a=p.parse_args();r=certify(a.order,a.amplitudes,a.kappa,a.extent);write_json(a.output,r);print(r['certified'],r['signed_derivative_interval'],flush=True)
