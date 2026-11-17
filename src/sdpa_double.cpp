@@ -6,7 +6,7 @@
 int main(int argc,char**argv) {
  if(argc<5){fprintf(stderr,"usage: segment input output iterations bits [initial]\n");return 2;}
  
- FILE* sink=fopen("/dev/null","w");SDPA p;p.setNumThreads(1);p.setDisplay(stdout);p.setResultFile(sink);p.setParameterMaxIteration(atoi(argv[3]));p.setParameterEpsilonStar(1e-10);p.setParameterEpsilonDash(1e-10);p.setParameterLambdaStar(1000);p.setParameterUpperBound(1e14);p.setParameterLowerBound(-1e14);
+ FILE* sink=fopen("/dev/null","w");SDPA p;p.setNumThreads(1);p.setDisplay(stdout);p.setResultFile(sink);p.setParameterMaxIteration(atoi(argv[3]));p.setParameterEpsilonStar(1e-10);p.setParameterEpsilonDash(1e-10);p.setParameterLambdaStar(getenv("SDPA_LAMBDA")?atof(getenv("SDPA_LAMBDA")):1000);p.setParameterUpperBound(1e14);p.setParameterLowerBound(-1e14);
  p.readInput(argv[1],sink,SDPA::SPARSE);
  if(argc>5){p.setInitPoint(true);p.readInit(argv[5],sink,SDPA::SPARSE);}
  p.initializeSolve();p.solve();
