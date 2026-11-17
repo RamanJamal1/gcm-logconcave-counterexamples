@@ -19,6 +19,12 @@ def certify(source,L=120,dps=200,order_override=None):
  A0=sum(map(abs,aa),arb(0))
  if not A0<1:raise ValueError('Density positivity not proven')
  curvature=k-sum((abs(a)*w*w for a,w in zip(aa,frequencies)),arb(0))/(1-A0)
+ exact_curvature=None
+ if K==3 and params.get('frequencies',[1,2,3])==[1,2,3]:
+  try:
+   from certify_min_curvature import certify as curvature_proof
+   exact_curvature=curvature_proof(strings,params['kappa']);curvature=rat(exact_curvature['minimum_curvature_exact'])
+  except AssertionError:pass
  t=acb_series([0,1],prec=m+1);d=1+k*t;invd=1/d;tau=t*invd;front=d**arb('-0.5');logd=d.log();atten=[(-w*w*tau/2).exp() for w in frequencies]
  def integrand(x,analytic):
   r=1+sum((a*atten[j]*(frequencies[j]*x*invd).cos() for j,a in enumerate(aa)),acb_series([0],prec=m+1))
@@ -44,6 +50,6 @@ def certify(source,L=120,dps=200,order_override=None):
   total+=2*part;pieces.append(str(part))
   if index%40==0:print('interval',index,'seconds',time.time()-start,flush=True)
  value=(total+arb(0,tail.upper()))/z
- return {'order':m,'parameters':params,'signed_derivative_interval':str(value),'certified_negative_derivative':bool(value.is_finite() and value<0),'certified':bool(value.is_finite() and value<0 and curvature>0),'convexity_lower_bound':str(curvature),'convexity_certificate':source,'normalizer_interval':str(z),'numerator_tail_bound':str(tail),'cauchy_rho':'1/100','cauchy_log_disk_radius_bound':str(A),'digits':dps,'extent':L,'intervals':pieces,'seconds':time.time()-start,'method':'exact heat-density Taylor coefficients via acb_series; rigorous complex integration; local complex-time Cauchy Gaussian-moment tail bound'}
+ return {'order':m,'parameters':params,'signed_derivative_interval':str(value),'certified_negative_derivative':bool(value.is_finite() and value<0),'certified':bool(value.is_finite() and value<0 and curvature>0),'convexity_lower_bound':str(curvature),'exact_curvature_certificate':exact_curvature,'convexity_certificate':source,'normalizer_interval':str(z),'numerator_tail_bound':str(tail),'cauchy_rho':'1/100','cauchy_log_disk_radius_bound':str(A),'digits':dps,'extent':L,'intervals':pieces,'seconds':time.time()-start,'method':'exact heat-density Taylor coefficients via acb_series; rigorous complex integration; local complex-time Cauchy Gaussian-moment tail bound'}
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('source');p.add_argument('--output',required=True);a=p.parse_args();r=certify(a.source);Path(a.output).write_text(json.dumps(r,indent=2)+'\n');print(r['certified_negative_derivative'],r['signed_derivative_interval'],flush=True)

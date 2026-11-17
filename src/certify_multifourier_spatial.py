@@ -57,7 +57,12 @@ def certify(m,amplitude_strings,k_s,L=120,dps=200):
   left=arb(index)/4;right=arb(index+1)/4;part=acb.integral(integrand,left,right,abs_tol=tol,rel_tol=tol,eval_limit=100000).real
   if not part.is_finite():raise ArithmeticError(f'Nonfinite interval {left}:{right}')
   total+=2*part;pieces.append({'left':str(left),'right':str(right),'integral':str(part)});print(left,right,str(part),flush=True)
- value=(total+arb(0,tail.upper()))/normalizer;curvature=kk-A[2]/(1-A[0])
- return {'order':m,'parameters':{'amplitudes':amplitude_strings,'kappa':k_s},'certified':bool(value<0 and curvature>0),'signed_derivative_interval':str(value),'convexity_lower_bound':str(curvature),'numerator_tail_bound':str(tail),'normalizer_interval':str(normalizer),'pieces':pieces,'digits':dps,'extent':L,'seconds':time.time()-start,'method':'independent exact rational spatial entropy polynomial, Arb complex analytic integration and Gaussian tail'}
+ value=(total+arb(0,tail.upper()))/normalizer;curvature=kk-A[2]/(1-A[0]);exact_curvature=None
+ if K==3:
+  try:
+   from certify_min_curvature import certify as curvature_proof
+   exact_curvature=curvature_proof(amplitude_strings,k_s);curvature=ball(exact_curvature['minimum_curvature_exact'])
+  except AssertionError:pass
+ return {'order':m,'parameters':{'amplitudes':amplitude_strings,'kappa':k_s},'certified':bool(value<0 and curvature>0),'signed_derivative_interval':str(value),'convexity_lower_bound':str(curvature),'exact_curvature_certificate':exact_curvature,'numerator_tail_bound':str(tail),'normalizer_interval':str(normalizer),'pieces':pieces,'digits':dps,'extent':L,'seconds':time.time()-start,'method':'independent exact rational spatial entropy polynomial, Arb complex analytic integration and Gaussian tail'}
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--order',type=int,default=16);p.add_argument('--amplitudes',nargs='+',default=['1/16','1/45000','-1/20000000']);p.add_argument('--kappa',default='67/1000');p.add_argument('--extent',type=int,default=120);p.add_argument('--output',default='certs/multifourier_m16.json');a=p.parse_args();r=certify(a.order,a.amplitudes,a.kappa,a.extent);Path(a.output).write_text(json.dumps(r,indent=2)+'\n');print(r['certified'],r['signed_derivative_interval'],flush=True)

@@ -59,7 +59,9 @@
   "variance": 0.40649442815059444,
   "objective": 0.4812086951365191,
   "certified": false,
-  "evaluations": 8286,
-  "elapsed_seconds": 487.22658920288086,
-  "status": "running"
+  "evaluations": 10296,
+  "elapsed_seconds": 601.5621259212494,
+  "status": "bounded_run_complete",
+  "fine_normalized": 43589236748.68146,
+  "fine_signed": 3.188279309696407e+16
 }
