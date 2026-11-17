@@ -1,0 +1,22 @@
+{
+  "status": "bounded_run_complete",
+  "gpu_evaluations": 10240,
+  "refinement_evaluations": 2560,
+  "generation": 5,
+  "certifications": 64,
+  "best_certified": {
+    "17": {
+      "signed": -1.203587463086842,
+      "parameters": {
+        "a": "5/92",
+        "b": "1/70000",
+        "kappa": "3/52"
+      },
+      "certificate": "certs/campaign_C_m17_best.json"
+    }
+  },
+  "errors": [],
+  "method": "rational parameter GPU periodic screening; full Gaussian Arb verification",
+  "device": "NVIDIA RTX A6000",
+  "elapsed_seconds": 42.96668362617493
+}

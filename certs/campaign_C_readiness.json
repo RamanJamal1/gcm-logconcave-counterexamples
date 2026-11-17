@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "gpu_evaluations": 10240,
+  "refinement_evaluations": 2560,
+  "certifications": 64,
+  "note": "Bounded readiness run, excluded from production counters. Rationalized negative examples verified by full Gaussian Arb series."
+}
