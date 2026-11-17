@@ -5,5 +5,7 @@
   "campaign_A_seconds": 9000,
   "campaign_B_seconds": 7200,
   "campaign_C_seconds": 3600,
-  "status": "starting"
+  "status": "campaign_A_running",
+  "live_exec_session_id": 44119,
+  "sos_probe_exec_session_id": 42062
 }
