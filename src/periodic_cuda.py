@@ -1,13 +1,14 @@
 """Batched periodic surrogate for screening; Gaussian-filter terms are omitted."""
 import math,torch
 
-def evaluate(amplitudes,kappa,order,grid=512):
+def evaluate(amplitudes,kappa,order,grid=512,sine_amplitudes=None):
  B,K=amplitudes.shape;dtype=amplitudes.dtype;device=amplitudes.device
  frequencies=torch.arange(1,K+1,dtype=dtype,device=device)
  theta=torch.arange(grid,dtype=dtype,device=device)*2*math.pi/grid
  cosine=torch.cos(frequencies[:,None]*theta[None,:])
  factors=torch.stack([(frequencies**2/2)**n/math.factorial(n) for n in range(order+1)])
  v=torch.einsum('bk,nk,kx->bnx',amplitudes,factors,cosine)
+ if sine_amplitudes is not None:v=v+torch.einsum('bk,nk,kx->bnx',sine_amplitudes,factors,torch.sin(frequencies[:,None]*theta[None,:]))
  g=1+v[:,0];logs=[torch.log1p(v[:,0])];result=torch.zeros(B,dtype=dtype,device=device)
  for n in range(1,order+1):
   logn=(v[:,n]-sum((k/n)*logs[k]*v[:,n-k] for k in range(1,n)))/g;logs.append(logn)

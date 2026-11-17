@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-17T08:40:51.011218+00:00",
+  "timestamp": "2026-11-17T08:45:13.573125+00:00",
   "reason": "m7=360 m8=2520",
   "steps": [
     {
@@ -17,10 +17,10 @@
         "git",
         "commit",
         "-m",
-        "chore: checkpoint 2026-11-17T08:40:51.011218+00:00 - m7=360 m8=2520"
+        "chore: checkpoint 2026-11-17T08:45:13.573125+00:00 - m7=360 m8=2520"
       ],
       "returncode": 0,
-      "stdout": "[main 6ce15ab] chore: checkpoint 2026-11-17T08:40:51.011218+00:00 - m7=360 m8=2520\n 13 files changed, 2708 insertions(+), 59 deletions(-)\n create mode 100644 certs/campaign_C_m16_best.json\n create mode 100644 checkpoints/campaign_C_multimode_readiness.json\n create mode 100644 checkpoints/hierarchy_K8_m12_s0.json\n create mode 100644 checkpoints/hierarchy_K8_m13_s0.json\n rewrite checkpoints/hierarchy_K8_m14_s0.json (79%)\n create mode 100644 src/campaign_c_multimode.py\n create mode 100644 src/certify_direct_heat.py",
+      "stdout": "[main 2da3add] chore: checkpoint 2026-11-17T08:45:13.573125+00:00 - m7=360 m8=2520\n 6 files changed, 68 insertions(+), 24 deletions(-)\n create mode 100644 certs/sos_exact_preconditioned_m12.json\n create mode 100644 src/gpu_harmonic_refine.py",
       "stderr": ""
     },
     {
@@ -33,7 +33,7 @@
       ],
       "returncode": 0,
       "stdout": "Branch 'main' set up to track remote branch 'main' from 'origin'.",
-      "stderr": "To https://github.com/returnedlegend/gcm-logconcave-counterexamples.git\n   6ef417f..6ce15ab  main -> main"
+      "stderr": "To https://github.com/returnedlegend/gcm-logconcave-counterexamples.git\n   edfb487..2da3add  main -> main"
     }
   ],
   "remote_status": "pushed"

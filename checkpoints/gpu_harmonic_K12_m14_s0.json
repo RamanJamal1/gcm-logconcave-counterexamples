@@ -1,0 +1,27 @@
+{
+  "order": 14,
+  "terms": 12,
+  "amplitudes": [
+    0.007999999999999997,
+    3.2488037958240374e-07,
+    -1.2389942473448485e-10,
+    1.4480642610139525e-13,
+    -2.567470992585583e-16,
+    5.361220582672766e-19,
+    -1.9964619210589224e-20,
+    8.484518040534291e-22,
+    -5.575606910534508e-22,
+    2.6573281569310195e-21,
+    2.4317325189400433e-22,
+    -5.108778828074664e-23
+  ],
+  "kappa": 0.008066636482553355,
+  "periodic_surrogate": 5.516234626964254e-05,
+  "normalized_screen": 0.8619116604631655,
+  "coarse_fine_error": 3.561739661886443e-16,
+  "certified": false,
+  "calls": 124,
+  "refinement_candidates": 96,
+  "seconds": 48.76412296295166,
+  "note": "Periodic surrogate with full Gaussian corrections omitted; requires spatial certificate"
+}
