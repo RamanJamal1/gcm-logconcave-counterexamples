@@ -11,6 +11,7 @@ import numpy as np
 import sympy as s
 import cvxpy as cp
 from derive_integrands import derive,u
+from entropy_sparse import signed_polynomial
 from sos_probe import partitions
 ROOT=Path(__file__).resolve().parents[1]
 def setup(m):
@@ -26,7 +27,7 @@ def setup(m):
     for k,v in reduce(tuple(f)).items():out[k]=out.get(k,0)-n*v
   return {k:v for k,v in out.items() if v}
  bases=[[exp(p) for p in partitions(m,m)],[exp(p) for p in partitions(m-1,m-1)]]
- target={tuple(k)+(0,)*(L-m):s.Rational(v) for k,v in s.Poly((-1)**m*derive(m)[m],*[u[j] for j in range(1,m+1)]).terms()}
+ target={e:s.Rational(c.numerator,c.denominator) for e,c in signed_polynomial(m).items()}
  keys=set(target);columns=[];layout=[]
  for block,base in enumerate(bases):
   for i,a in enumerate(base):
