@@ -34,6 +34,12 @@ def main():
  assert curvature_proof(rc['parameters']['amplitudes'],rc['parameters']['kappa'],rc['simple_strict_lower_bound'])==rc
  for p in (a,b,c):
   relative=str(p.relative_to(ROOT));assert state['witness_certificate_sha256'][relative]==digest(p);records.append({'kind':'negative_witness_or_global_curvature','order':state['negative_witness_order'],'path':relative,'sha256':digest(p)})
+ for extra in state.get('additional_witnesses',[]):
+  pair=[ROOT/extra['certificate'],ROOT/extra['independent_certificate']];data=[json.loads(p.read_text()) for p in pair]
+  assert data[0]['parameters']==data[1]['parameters'];assert all(r['certified'] and arb(r['signed_derivative_interval'])<0 for r in data);assert arb(data[0]['signed_derivative_interval']).overlaps(arb(data[1]['signed_derivative_interval']))
+  proof=data[0]['exact_curvature_certificate'];assert curvature_proof(proof['parameters']['amplitudes'],proof['parameters']['kappa'],proof['simple_strict_lower_bound'])==proof
+  for p in pair:
+   relative=str(p.relative_to(ROOT));assert extra['sha256'][relative]==digest(p);records.append({'kind':'additional_negative_witness','order':extra['order'],'path':relative,'sha256':digest(p)})
  family=ROOT/'certs/logcosh_family_coefficients.json';check=ROOT/'certs/independent_logcosh_family.json';r=json.loads(check.read_text());assert r['status']=='complete' and r['source_sha256']==digest(family);assert r['verified_orders']==list(range(2,18));records.append({'kind':'family_specific_positive_signs','orders':r['verified_orders'],'path':str(family.relative_to(ROOT)),'sha256':digest(family),'verification_record':str(check.relative_to(ROOT)),'verification_sha256':digest(check)})
  assert state['lower_bound']==max(state['nonnegative_orders'])+1<=state['upper_bound']==state['negative_witness_order']
  write_json(sp,state);out={'passed':True,'lower_bound':state['lower_bound'],'upper_bound':state['upper_bound'],'exact_minimal_order_resolved':state['exact_minimal_order_resolved'],'records':records,'seconds':time.time()-start,'note':'Analytic extension and downward propagation are mathematical arguments in the note; numerical search candidates are not included.'};write_json(ROOT/'certs/verified_manifest.json',out);print({'passed':True,'records':len(records),'bracket':[state['lower_bound'],state['upper_bound']],'seconds':time.time()-start},flush=True)

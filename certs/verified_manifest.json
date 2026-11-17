@@ -123,6 +123,18 @@
       "sha256": "e6d38e6d50343d5a529647e4750ace658f61e917b555ef8d7100ae2a4c341890"
     },
     {
+      "kind": "additional_negative_witness",
+      "order": 16,
+      "path": "certs/campaign_C_m16_best.json",
+      "sha256": "1d438174d5c437254e970715f62bd12d6b19cd0cfb14e6dbc76745c70df88dc8"
+    },
+    {
+      "kind": "additional_negative_witness",
+      "order": 16,
+      "path": "certs/independent_campaign_C_m16_best.json",
+      "sha256": "3f8ba2974f408d9b8660588c64fb8f5cfb67448ef0109eaee733b78131cf9aea"
+    },
+    {
       "kind": "family_specific_positive_signs",
       "orders": [
         2,
@@ -148,6 +160,6 @@
       "verification_sha256": "0937655a15c2806dd69b16ddb7d6c38428198109f37de0be36e48175903de062"
     }
   ],
-  "seconds": 0.9143476486206055,
+  "seconds": 0.07554507255554199,
   "note": "Analytic extension and downward propagation are mathematical arguments in the note; numerical search candidates are not included."
 }

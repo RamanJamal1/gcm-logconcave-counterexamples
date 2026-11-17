@@ -1,6 +1,6 @@
 # GCM research progress
 
-Updated: 2026-11-17T11:56:53.170517+00:00
+Updated: 2026-11-17T12:00:15.296743+00:00
 
 Verified bracket: 14 ≤ m* ≤ 16. Exact minimality remains unresolved.
 
@@ -17,7 +17,7 @@ Verified bracket: 14 ≤ m* ≤ 16. Exact minimality remains unresolved.
 Recorded production totals: 105,308,160 FP32 candidate evaluations; 908,328 FP64 refinements. Warmups and readiness runs are excluded. Interrupted partial generations may not be counted.
 
 Sharp proven normalized bounds: S6 Var^6 ≥ 60; S7 Var^7 ≥ 360; S8 Var^8 ≥ 2520.
-Exact rational nonnegativity and sharp Gaussian-bound certificates cover orders 6–11.
+Nonnegative signs cover orders 6–13, including the recorded heat-flow propagation steps. Sharp Gaussian-bound certificates cover orders 6–11.
 An order-16 witness has a spatial Arb certificate; the earlier order-17 witness has independent Fourier-series and spatial certificates.
 See MORNING_BRIEFING.md, checkpoints/research_status.json, and paper/draft_note.tex.
 
@@ -28,6 +28,8 @@ Numerical search values and SDP iterates in this table are not proofs.
 | Attempt | Status | Recorded work |
 |---|---|---|
 | Order-12 high-precision SDP | stopped_after_verified_order13_certificate | segment 14; affine residual 9.61e-05 |
+| Order-13 high-precision SDP | stopped_after_verified_order13_certificate | segment 4; affine residual 141 |
+| Order-15 high-precision SDP | stopped_for_exact_row_preconditioning | segment 1; affine residual 2.07e+03 |
 | Order-15 two base frequencies | bounded_run_complete | 12,348 CPU objective evaluations |
 | Order-15 positive curvature bumps | bounded_run_complete | 4,400 CPU objective evaluations |
 | Order-12 curvature lattice | bounded_run_complete | 30,384 CPU objective evaluations |

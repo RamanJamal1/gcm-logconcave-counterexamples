@@ -209,5 +209,17 @@
       "method": "Universal higher sign integrated along heat flow; endpoint via right Taylor expansion"
     }
   },
-  "report_revision_required": true
+  "report_revision_required": true,
+  "additional_witnesses": [
+    {
+      "order": 16,
+      "certificate": "certs/campaign_C_m16_best.json",
+      "independent_certificate": "certs/independent_campaign_C_m16_best.json",
+      "sha256": {
+        "certs/campaign_C_m16_best.json": "1d438174d5c437254e970715f62bd12d6b19cd0cfb14e6dbc76745c70df88dc8",
+        "certs/independent_campaign_C_m16_best.json": "3f8ba2974f408d9b8660588c64fb8f5cfb67448ef0109eaee733b78131cf9aea"
+      },
+      "role": "strongest retained Campaign C margin"
+    }
+  ]
 }

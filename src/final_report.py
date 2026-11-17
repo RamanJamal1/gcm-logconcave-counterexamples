@@ -25,6 +25,9 @@ def render(final=False):
  if research.get('curvature_certificate'):lines += [link(research['curvature_certificate'],'Exact global minimum-curvature proof')+'.']
  independent=research.get('independent_negative_witness_certificate')
  if independent:lines += [link(independent,'Independent interval calculation')+'. The spatial score-polynomial and exact heat-density calculations agree. Both include rigorous infinite-tail bounds.']
+ for extra in research.get('additional_witnesses',[]):
+  ec=read(ROOT/extra['certificate']);ep=ec['parameters']
+  lines += ['',f"Campaign C's strongest retained candidate has amplitudes `{', '.join(ep['amplitudes'])}` and `kappa = {ep['kappa']}`. Its certified derivative enclosure is `{ec['signed_derivative_interval']}`. The global minimum curvature is `{ec['exact_curvature_certificate']['minimum_curvature_exact']}`.",link(extra['certificate'],'Campaign C spatial certificate')+'; '+link(extra['independent_certificate'],'independent heat-density certificate')+'.']
  lines += ['','## Orders 6, 7, and 8','','| Order | Sharp proven lower bound for S_m Var(p)^m | Best recorded numerical value |','|---|---:|---:|']
  for m,bound in [(6,60),(7,360),(8,2520)]:
   values=[s.get('best',{}).get(str(m),{}).get('normalized',float('inf')) for s in states.values() if isinstance(s.get('best'),dict)];v=min(values,default=float('inf'));lines.append(f'| {m} | {bound} | {v:.14g} |' if math.isfinite(v) else f'| {m} | {bound} | unavailable |')

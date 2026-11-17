@@ -1,0 +1,15 @@
+{
+  "order": 13,
+  "status": "ready_for_exact_reconstruction",
+  "proved": false,
+  "gpu_matrix_iterations": 1,
+  "best_min_scaled_eigenvalue": 1.0004062945294753e-05,
+  "current_min_scaled_eigenvalues": [
+    1.0004062945294753e-05,
+    1.0171184930169812e-05
+  ],
+  "residual": 6.821210263296962e-13,
+  "seconds": 1.8456010818481445,
+  "candidate": "certs/sos_gpu_feasibility_m13.json",
+  "device": "NVIDIA RTX A6000"
+}

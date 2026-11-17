@@ -1,0 +1,9 @@
+{
+  "order": 15,
+  "condition": 6645288514.703582,
+  "seconds": 1251.6486406326294,
+  "rank": 1039,
+  "columns": 24756,
+  "proved": false,
+  "method": "exact small Schur inverse and blocked rational row transformation; float SDP input only"
+}
