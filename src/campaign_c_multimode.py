@@ -29,6 +29,8 @@ def main(seconds=3600,batch=65536,sync=False,state_path='checkpoints/campaign_C.
  values64=torch.tensor([float(f) for f in fractions],device='cuda',dtype=torch.float64);values=values64.float();pool=ProcessPoolExecutor(max_workers=2,mp_context=multiprocessing.get_context('spawn'));pending=[];seen=set()
  state={'status':'running','gpu_evaluations':0,'refinement_evaluations':0,'generation':0,'certifications':0,'best_certified':{},'errors':[],'method':'rational multi-harmonic GPU periodic screening; full spatial Arb verification','order':order,'device':torch.cuda.get_device_name(0)}
  path=ROOT/state_path
+ if K==3:
+  box_proof=json.loads((ROOT/'certs/curvature_rationalization_box.json').read_text());assert box_proof['certified']
  if resume and path.exists():
   state=json.loads(path.read_text())
   if state.get('rng_state'):torch.cuda.set_rng_state(torch.tensor(state['rng_state'],dtype=torch.uint8))
@@ -58,6 +60,11 @@ def main(seconds=3600,batch=65536,sync=False,state_path='checkpoints/campaign_C.
    value=torch.where(torch.arange(batch,device='cuda')%32==j,torch.zeros_like(value),value)
    amplitudes.append(value);denominators.append(denominator)
   amps=torch.stack(amplitudes,dim=1);frequencies=torch.arange(1,K+1,device='cuda');bound=(abs(amps)*frequencies**2).sum(1)/(1-abs(amps).sum(1))
+  if K==3:
+   # The interval box certificate proves the maximum occurs at cos(x)=-1.
+   box=(amps[:,0]>=.04)&(amps[:,0]<=.09)&(amps[:,1]>=0)&(amps[:,1]<=.0001)&(amps[:,2]>=-.000001)&(amps[:,2]<=0)
+   endpoint=(amps[:,0]-4*amps[:,1]+9*amps[:,2])/(1-amps[:,0]+amps[:,1]-amps[:,2])+1e-6
+   bound=torch.where(box,endpoint,bound)
   offset=torch.randint(1,40,(batch,),device='cuda');ki=(torch.searchsorted(values,bound)+offset-1).clamp(max=len(values)-1);kk=values[ki]
   valid=kk>bound;params=torch.cat([amps,kk[:,None]],dim=1);score=torch.full((batch,),float('inf'),device='cuda');micro=4096
   begin=0
