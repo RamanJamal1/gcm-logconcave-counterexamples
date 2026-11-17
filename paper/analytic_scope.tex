@@ -68,3 +68,42 @@ substitute for existence of the stated time derivative. Under this natural
 interpretation of the derivative in the research question, the certificates
 rule out counterexamples at orders six, seven, and eight. They do not identify
 the first failing higher order.
+
+\subsection{Sharp Gaussian lower bounds at orders six through eight}
+A second set of exact certificates, \texttt{certs/exact\_mckean\_m6.json}
+through \texttt{exact\_mckean\_m8.json}, verifies the stronger identities
+\[
+ (-1)^mF_m-\frac{(m-1)!}{2}(-u_2)^m
+ =w_m^TA_mw_m+(-u_2)w_{m-1}^TB_mw_{m-1}
+ -\sum_k\eta_{m,k}(DP_k+u_1P_k).
+\]
+The vectors $w_r$ contain only weighted-degree-$r$ monomials involving at
+least one $u_j$ with $j\ge3$. All matrices are positive definite over the
+rationals. Their dimensions are respectively $(7,4)$, $(11,7)$, and $(17,11)$.
+The independent verifier confirms these identities using exact arithmetic.
+
+\begin{proposition}[Sharp variance-normalized bounds]
+Under the derivative and integration-by-parts hypotheses above, a log-concave
+probability density of variance $v$ satisfies
+\[
+ S_6(p)v^6\ge60,\qquad S_7(p)v^7\ge360,\qquad S_8(p)v^8\ge2520.
+\]
+The Gaussian attains each bound. The positive-time smoothing argument extends
+these bounds to arbitrary log-concave inputs at positive heat times, with
+$v$ replaced by $v+t$; the endpoint argument applies when the indicated
+right entropy derivative exists in the Taylor sense.
+\end{proposition}
+\begin{proof}
+Integrating the stronger identities gives
+$S_m\ge\tfrac12(m-1)!\mathbb E[(-u_2)^m]$.
+Since $-u_2\ge0$, Jensen's inequality and integration by parts imply
+$\mathbb E[(-u_2)^m]\ge(\mathbb E[-u_2])^m=I(p)^m$.
+The score identity $\mathbb E[(X-\mathbb EX)u_1(X)]=-1$ and Cauchy--Schwarz
+give $vI(p)\ge1$. Combining these bounds proves the assertions.
+For a Gaussian, all $u_j$, $j\ge3$, vanish, and equality holds throughout.
+The stated smoothing and endpoint extensions follow as before.
+\end{proof}
+Thus a finite negative derivative at orders six, seven, or eight cannot
+occur in the regularity class specified by the question's time derivative.
+The first possible failing order is at least nine; locating that first
+failure remains open in this computational record.

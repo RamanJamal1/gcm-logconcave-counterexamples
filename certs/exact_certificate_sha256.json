@@ -1,0 +1,9 @@
+{
+  "certs/exact_mckean_m6.json": "ec7e74e3a2cf83559824bb3c15a6564c80f211ab569c360484a2731f9aef1da3",
+  "certs/exact_mckean_m7.json": "5ec7d48aa51e6bfadb75dd275868909750893eb9992c13481ba2294e00df03b9",
+  "certs/exact_mckean_m8.json": "b366db412c9b5f56228c8e8bfb73dc9778412f12b88675e7519553f757e51f8a",
+  "certs/exact_sos_m5.json": "5c5b035e35367f0bb1bc6980560345e0b565f9b754cd8e999aabcbf79c12aed1",
+  "certs/exact_sos_m6.json": "1c33e5da89d84634e327442b2d4ab18e5cad76e6c01d48d78b472baabd9f4ae2",
+  "certs/exact_sos_m7.json": "440c22d0a4a4a17ec2ff4e3ce6d1d2f2a6e9cf728bdf3e4237ff4e365bd19b52",
+  "certs/exact_sos_m8.json": "33e1d20ae2937ffcbd5b782f08a3daab98a535636a073ef340427d0a578369b1"
+}

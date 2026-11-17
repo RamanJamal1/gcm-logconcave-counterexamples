@@ -1,34 +1,29 @@
 [
   {
-    "order": 5,
-    "exact_identity": true,
-    "positive_definite_grams": true,
-    "ibp_identities_verified": true,
-    "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
-    "seconds": 0.015107870101928711
-  },
-  {
     "order": 6,
+    "target_subtraction": "60*u2**6",
     "exact_identity": true,
     "positive_definite_grams": true,
     "ibp_identities_verified": true,
     "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
-    "seconds": 0.03406095504760742
+    "seconds": 0.07038164138793945
   },
   {
     "order": 7,
+    "target_subtraction": "-360*u2**7",
     "exact_identity": true,
     "positive_definite_grams": true,
     "ibp_identities_verified": true,
     "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
-    "seconds": 0.07540369033813477
+    "seconds": 0.11926746368408203
   },
   {
     "order": 8,
+    "target_subtraction": "2520*u2**8",
     "exact_identity": true,
     "positive_definite_grams": true,
     "ibp_identities_verified": true,
     "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
-    "seconds": 0.18929576873779297
+    "seconds": 0.22016644477844238
   }
 ]

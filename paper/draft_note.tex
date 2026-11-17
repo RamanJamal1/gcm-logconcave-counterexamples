@@ -3,7 +3,7 @@
 \usepackage{amsmath,amssymb,amsthm,booktabs,geometry,hyperref}
 \geometry{margin=1in}
 \newtheorem{proposition}{Proposition}
-\title{A Reproducible Search for Low-Order Log-Concave Violations of Gaussian Complete Monotonicity}
+\title{Exact Lower-Order Certificates and a Search for Log-Concave Violations of Gaussian Complete Monotonicity}
 \author{Computational research record}
 \date{November 17, 2026 --- provisional during computation}
 \begin{document}
@@ -13,8 +13,9 @@ We describe reduced entropy-derivative formulas, constrained density families,
 and a mixed-precision computational search at orders six, seven, and eight.
 The formulas are independently checked against high-precision heat-convolution
 finite differences. Rigorous finite-interval integration is combined with
-analytic tail bounds and global convexity estimates. This document is a
-methods and ongoing-results record: no new counterexample or exact minimal
+analytic tail bounds and global convexity estimates. Exact rational sum-of-squares identities additionally yield the sharp Gaussian
+lower bounds at orders six through eight under the stated analytic hypotheses.
+This document is an ongoing-results record: no new counterexample or exact minimal
 order is asserted in this provisional version.
 \end{abstract}
 \section{Question and conventions}
@@ -113,7 +114,8 @@ bound, is accepted as a counterexample.
 \input{analytic_scope.tex}
 
 \section{Status and reproducibility}
-The current run is ongoing. No exact minimal-order conclusion is claimed.
+The current run is ongoing. Exact algebraic certificates establish the
+lower-order bounds described above. No exact minimal-order conclusion is claimed.
 The authoritative numerical state is in \texttt{checkpoints/campaign\_A.json};
 certificates are in \texttt{certs/}. Complete counts and final outcomes will
 replace this provisional paragraph after the scheduled campaign.
