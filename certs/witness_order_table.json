@@ -40,5 +40,35 @@
     "signed_derivative_interval": "[1.894017553054347681880 +/- 9.05e-22]",
     "negative": false,
     "certificate": "certs/witness_order_table/m15.json"
+  },
+  {
+    "order": 16,
+    "signed_derivative_interval": "[-0.57212967821710969817 +/- 5.03e-21]",
+    "negative": true,
+    "certificate": "certs/witness_order_table/m16.json"
+  },
+  {
+    "order": 17,
+    "signed_derivative_interval": "[-14.92848176279213472237 +/- 2.88e-21]",
+    "negative": true,
+    "certificate": "certs/witness_order_table/m17.json"
+  },
+  {
+    "order": 18,
+    "signed_derivative_interval": "[93.0510504127262818135 +/- 4.96e-20]",
+    "negative": false,
+    "certificate": "certs/witness_order_table/m18.json"
+  },
+  {
+    "order": 19,
+    "signed_derivative_interval": "[3571.2181514017492166273 +/- 4.83e-20]",
+    "negative": false,
+    "certificate": "certs/witness_order_table/m19.json"
+  },
+  {
+    "order": 20,
+    "signed_derivative_interval": "[60128.673742775618891687 +/- 7.34e-19]",
+    "negative": false,
+    "certificate": "certs/witness_order_table/m20.json"
   }
 ]
