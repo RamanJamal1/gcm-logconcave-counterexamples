@@ -41,11 +41,15 @@ def certify(m,a_string,b_string,kappa_string,N=96,dps=200,mode_cutoff=0):
  # Its exponent is B=(sum frequencies² - (sum frequencies)²)/2,
  # |B|<=2n². |T_m(B,kappa)| <= (2n²+m*kappa)^m.
  # Every nonzero mode is suppressed by exp(-1/(2*kappa)).
- filtering=(-arb((mode_cutoff+1)**2)/(2*kappa)).exp()*(2*N*N+m*kappa)**m*r*r/(1-r)
- # n^(2m) r^n has decreasing ratio, bounded by qtail for n>=N+1.
- qtail=r*(1+arb(1)/(N+1))**(2*m)
+ y0=arb((mode_cutoff+1)**2)/2
+ filtering=(-y0/kappa).exp()*(2*N+y0+m*kappa)**m*r*r/(1-r)
+ # With y=k²/2, e^-y/kappa (2n+y+m*kappa)^m decreases in y.
+ # Hence the complete filtered n-th contribution is bounded by
+ # r^n (2n+m*kappa)^m, including all modes.
+ # n^m r^n has decreasing ratio for n>=N+1.
+ qtail=r*(1+arb(1)/(N+1))**m
  if not qtail<1:raise ValueError('increase series cutoff')
- tail=(2+m*kappa)**m*r**(N+1)*arb(N+1)**(2*m)/(1-qtail)
+ tail=(2+m*kappa)**m*r**(N+1)*arb(N+1)**m/(1-qtail)
  xi=1+a*(-1/(2*kappa)).exp()+b*(-2/kappa).exp()
  moment=math.factorial(m)*kappa**(m-1)*(a/2*(-1/(2*kappa)).exp()+2*b*(-2/kappa).exp())
  baseline=arb(math.factorial(m-1))/2*kappa**m
