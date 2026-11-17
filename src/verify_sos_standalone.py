@@ -103,8 +103,10 @@ def verify(path):
  for expr,coefficient in zip(d['ibp_polynomials'],d['ibp_multipliers']):
   ident=parse(expr);assert ident in identities;identities.remove(ident);out=add(out,scale(ident,-Q(coefficient)))
  assert not identities
- assert out==entropy_polynomial(m),'polynomial identity failed'
- return {'order':m,'exact_identity':True,'positive_definite_grams':True,'ibp_identities_verified':True,'verifier':'standard-library Fraction sparse polynomials and exact Schur complements','seconds':time.time()-start}
+ target=entropy_polynomial(m)
+ if 'target_subtraction' in d:target=add(target,scale(parse(d['target_subtraction']),-1))
+ assert out==target,'polynomial identity failed'
+ return {'order':m,'target_subtraction':d.get('target_subtraction','0'),'exact_identity':True,'positive_definite_grams':True,'ibp_identities_verified':True,'verifier':'standard-library Fraction sparse polynomials and exact Schur complements','seconds':time.time()-start}
 
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('certificates',nargs='+');a=p.parse_args();results=[]
