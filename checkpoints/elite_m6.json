@@ -1,27 +1,13 @@
 {
   "parameters": {
-    "family": "rbf_curvature",
-    "weights": [
-      0.22472566115497206,
-      0.2829409069149194,
-      0.5154573163420082
-    ],
-    "widths": [
-      2.1561429576186857,
-      1.534984145563097,
-      1.553470467422055
-    ],
-    "centers": [
-      -2.302882556661411,
-      -1.0326692747580584,
-      2.0419774430239497
-    ],
-    "tilt": -1.0502574268816733
+    "family": "skew_gaussian_mixture",
+    "separation_half": 0.1233507819637388,
+    "weight": 0.7934637702164468
   },
-  "normalized": 60.49974644027586,
-  "signed": 953.6803034354491,
-  "convexity_bound": 1.0,
+  "normalized": 60.00340554114922,
+  "signed": 56.53467087511899,
+  "convexity_bound": 0.9847845845889341,
   "certified": false,
-  "generation": 2,
+  "generation": 3,
   "grid": 2049
 }
