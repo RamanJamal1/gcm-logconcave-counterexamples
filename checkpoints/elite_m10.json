@@ -1,12 +1,12 @@
 {
   "parameters": {
     "family": "skew_gaussian_mixture",
-    "separation_half": 0.015505225240373847,
-    "weight": 0.606000089908854
+    "separation_half": 0.015071443888815882,
+    "weight": 0.05910343666458717
   },
-  "normalized": 181440.00004564208,
-  "signed": 181023.92687463565,
-  "convexity_bound": 0.9997595879902452,
+  "normalized": 181440.00003601302,
+  "signed": 181348.3491463894,
+  "convexity_bound": 0.9997728515791062,
   "certified": false,
   "generation": 15,
   "grid": 4097
