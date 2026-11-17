@@ -4,7 +4,8 @@
     7,
     8,
     9,
-    10
+    10,
+    11
   ],
   "sharp_gaussian_orders": [
     6,
@@ -35,10 +36,21 @@
       "seconds": 3.9383156299591064,
       "sha256": "0e30cfac02ba0c992041f6505336ecf70b4f6f301f0c75cac1b12d4ca58aa1fc",
       "certificate": "certs/exact_quotient_m10.json"
+    },
+    "11": {
+      "order": 11,
+      "target_subtraction": "0",
+      "exact_identity": true,
+      "positive_definite_grams": true,
+      "ibp_identities_verified": true,
+      "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
+      "seconds": 47.485257387161255,
+      "sha256": "cfc42c163fc28c806d7751762fec85ffc854d7172859ad29fb3d816e29795fd2",
+      "certificate": "certs/exact_quotient_m11.json"
     }
   },
-  "lower_bound": 11,
+  "lower_bound": 12,
   "upper_bound": 17,
-  "updated": 1794898993.0538797,
+  "updated": 1794899913.112507,
   "exact_minimal_order_resolved": false
 }

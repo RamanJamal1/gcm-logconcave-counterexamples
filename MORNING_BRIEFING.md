@@ -2,7 +2,7 @@
 
 The scheduled run continues until 2026-11-17 14:02 UTC. This is not a final report.
 
-The exact minimal order remains unresolved. Exact rational sum-of-squares certificates establish the sharp Gaussian lower bounds at orders 6, 7, and 8, under the analytic endpoint hypotheses detailed in `paper/analytic_scope.tex`. Additional exact rational certificates prove nonnegative signs through order 10 (`certs/exact_quotient_m*.json`), independently verified using standard-library rational arithmetic. An explicit strictly log-concave order-17 witness has a rigorous Arb certificate. The resulting current bracket is **11 ≤ m* ≤ 17**.
+The exact minimal order remains unresolved. Exact rational sum-of-squares certificates establish the sharp Gaussian lower bounds at orders 6, 7, and 8, under the analytic endpoint hypotheses detailed in `paper/analytic_scope.tex`. Additional exact rational certificates prove nonnegative signs through order 10 (`certs/exact_quotient_m*.json`), independently verified using standard-library rational arithmetic. An explicit strictly log-concave order-17 witness has a rigorous Arb certificate. The resulting current bracket is **12 ≤ m* ≤ 17**.
 
 The simple witness is
 
