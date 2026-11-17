@@ -28,5 +28,17 @@
     "signed_derivative_interval": "[0.614252053171316591106 +/- 7.46e-22]",
     "negative": false,
     "certificate": "certs/witness_order_table/m13.json"
+  },
+  {
+    "order": 14,
+    "signed_derivative_interval": "[1.248398018405229224785 +/- 9.14e-22]",
+    "negative": false,
+    "certificate": "certs/witness_order_table/m14.json"
+  },
+  {
+    "order": 15,
+    "signed_derivative_interval": "[1.894017553054347681880 +/- 9.05e-22]",
+    "negative": false,
+    "certificate": "certs/witness_order_table/m15.json"
   }
 ]
