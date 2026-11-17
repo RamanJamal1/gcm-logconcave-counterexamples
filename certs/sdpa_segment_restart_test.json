@@ -7,5 +7,5 @@
   "resumed_final_line": "SEGMENT phase=pdOPT      iterations=22 primal_error=1.77281497951e-15 dual_error=7.1054273576e-15",
   "reference_final_line": "SEGMENT phase=pdOPT      iterations=24 primal_error=1.77281497951e-15 dual_error=7.1054273576e-15",
   "wrapper_sha256": "bf764dca1659bfc612025306830787e98bb9bc9298c9127951767c6d55c6a753",
-  "notes": "Restart file requires leading whitespace for upstream scanf parser. Initial NULL file-stream misuse was fixed before validation."
+  "notes": "Restart file requires leading whitespace for upstream scanf parser. Initial NULL file-stream misuse was fixed before validation. The first external-wheel linking attempt was replaced with a consistent local source build; proof verification does not depend on this locator."
 }

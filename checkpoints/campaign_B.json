@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "seed": 260830276,
-  "generation": 644,
-  "gpu_evaluations": 42205184,
-  "refinement_evaluations": 329728,
+  "generation": 698,
+  "gpu_evaluations": 45744128,
+  "refinement_evaluations": 357376,
   "best": {
     "7": {
       "parameters": {
@@ -33,7 +33,7 @@
     }
   },
   "certificates": [],
-  "status": "chunk_complete",
+  "status": "running",
   "errors": [],
   "pending_certifications": [],
   "backend": "torch_cuda",
@@ -47,8 +47,8 @@
     0,
     0,
     0,
-    32,
-    20,
+    208,
+    21,
     0,
     0,
     0,
@@ -56,6 +56,6 @@
     0,
     0
   ],
-  "active_runtime_seconds": 4792.021196500995,
+  "active_runtime_seconds": 5112.046075595994,
   "runtime_estimation_note": "Initial segment estimated from last saved checkpoint mtime; subsequent segments use a monotonic clock."
 }
