@@ -24,7 +24,7 @@ Use the exact heat formula in~\cite{zou} and the absolutely convergent series
 \[
  (1+u)\log(1+u)=u+\sum_{n\ge2}\frac{(-1)^n}{n(n-1)}u^n.
 \]
-A term with $p+q=n$ has time exponent $L=(p+4q)/2$ and Fourier modes $k$.
+The Gaussian average of the linear term is constant, so its positive-order time derivatives vanish. A term with $p+q=n$ has time exponent $L=(p+4q)/2$ and Fourier modes $k$.
 Gaussian averaging changes its time factor to
 $e^{-k^2/(2\kappa)}e^{-(L-k^2/2)\tau}$.
 The exact signed derivative polynomial is
@@ -57,8 +57,13 @@ the omitted modes in degrees at most $N$ contribute at most
  e^{-y_0/\kappa}(2N+y_0+m\kappa)^m\frac{r_0^2}{1-r_0},
  \qquad y_0=(K+1)^2/2.
 \]
-The exact Gaussian entropy and second-moment contributions are included
-separately. With $N=96$, $K=0$, and 200 decimal digits, outward-rounded Arb
+Put $\Xi=1+ae^{-1/(2\kappa)}+be^{-2/\kappa}$. The final expression is
+$\tfrac12(m-1)!\kappa^m+(\mathrm{finite\ sum}+M_m)/\Xi$, with the
+sum of the two error bounds divided by $\Xi$, where
+\[
+ M_m=m!\kappa^{m-1}\left(\frac a2 e^{-1/(2\kappa)}+2be^{-2/\kappa}\right).
+\]
+These are the exact Gaussian entropy and second-moment contributions. With $N=96$, $K=0$, and 200 decimal digits, outward-rounded Arb
 arithmetic, including both errors, gives
 \[
  S_{46}(p)\in[-2.280758403046968\cdot10^{-5},
