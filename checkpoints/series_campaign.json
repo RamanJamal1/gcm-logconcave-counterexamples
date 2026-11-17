@@ -1,5 +1,5 @@
 {
-  "evaluations": 160,
+  "evaluations": 320,
   "orders": {
     "9": {
       "normalized_signed_midpoint": 721269.6276573567,
@@ -24,6 +24,31 @@
       "certified": false,
       "status": "inconclusive_or_nonnegative",
       "seconds": 0.21329069137573242,
+      "method": "exact time-change polynomial, finite periodic Fourier sum, rigorous nonzero-mode and infinite-series bounds"
+    },
+    "10": {
+      "normalized_signed_midpoint": 11400291.462389737,
+      "normalized_signed_interval": "[11400291.46238973704073227917360742573020222 +/- 5.50e-36]",
+      "variance_interval": "[3.142580086997553897315697980192538024278300547170423216746216673046410194692178555944284175426212745 +/- 5.30e-100]",
+      "order": 10,
+      "family": "gaussian_two_fourier_modes",
+      "parameters": {
+        "a": "1/8",
+        "b": "59049/67108864",
+        "kappa": "17249608/58661207"
+      },
+      "density": "Z^-1 exp(-kappa*x^2/2)*(1+a*cos(x)+b*cos(2*x))",
+      "signed_derivative_interval": "[121.3535295089198582099570422172396454991845 +/- 2.90e-41]",
+      "convexity_lower_bound": "[0.1470273872816834471203430914744048822589006734893811509879092668516009225654016972409040270855661050 +/- 3.35e-101]",
+      "periodic_finite_sum": "[122.5458028341955839354889218008168399830300583862530578334775052288866490709096839973215088859114 +/- 7.28e-95]",
+      "nonzero_mode_absolute_bound": "[1.303996656737552252920114994038730786144016021428765283455871132976928375313315001602393854268283760e-84 +/- 5.21e-185]",
+      "series_tail_absolute_bound": "[2.766064851118691152985563822886774934571490350514253410676274659999880475831698453949961341376544276e-41 +/- 4.44e-141]",
+      "mode_cutoff": 12,
+      "series_cutoff": 96,
+      "digits": 100,
+      "certified": false,
+      "status": "inconclusive_or_nonnegative",
+      "seconds": 0.21645426750183105,
       "method": "exact time-change polynomial, finite periodic Fourier sum, rigorous nonzero-mode and infinite-series bounds"
     }
   },
