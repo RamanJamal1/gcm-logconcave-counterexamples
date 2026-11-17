@@ -11,8 +11,11 @@ from sos_quotient import setup,ROOT
 from derive_integrands import u
 from affine_pivots import select,ExactPivotSolve
 
-def reconstruct(m,source):
- start=time.time();data=json.loads(Path(source).read_text());bases,target,keys,cols,layout,rows=setup(m);print('setup complete',m,time.time()-start,flush=True)
+def reconstruct(m,source,sharp=False):
+ if sharp:
+  from mckean_quotient import setup as selected_setup
+ else:selected_setup=setup
+ start=time.time();data=json.loads(Path(source).read_text());bases,target,keys,cols,layout,rows=selected_setup(m);print('setup complete',m,time.time()-start,flush=True)
  scales=data['basis_scales'];normalization=data['normalization']
  top,bottom,chosen,tail,_,_=select(keys,cols,layout,scales);solver=ExactPivotSolve(keys,cols,top,bottom,chosen,tail)
  x=[s.Rational(str(data['gram_matrices'][block][i][j])) for block,i,j in layout];keyindex={k:i for i,k in enumerate(keys)};rhs=[fmpq(str(target.get(k,0))) for k in keys]
@@ -57,6 +60,9 @@ def reconstruct(m,source):
  ps=[(mon(e),v) for e,v in sorted(generators.items()) if v]
  ids=[s.expand(u[1]*p+sum(s.diff(p,u[j])*u[j+1] for j in range(1,2*m))) for p,v in ps]
  result={'order':m,'status':'exact_identity_and_positive_definite_grams_verified','scope':'integrated nonnegativity when entropy derivative and displayed IBP identities are valid','bases':[[str(mon(e)) for e in base] for base in bases],'gram_matrices':[[[str(v) for v in row] for row in Q.tolist()] for Q in grams],'ibp_generators':[str(p) for p,v in ps],'ibp_polynomials':[str(p) for p in ids],'ibp_multipliers':[str(v) for p,v in ps],'positive_characteristic_coefficient_counts':positive_counts,'identity':'(-1)^m F_m = v^T Q0 v + (-u2) w^T Q1 w - sum lambda_i (D P_i + u1 P_i)','source':str(source),'seconds':time.time()-start}
- (ROOT/f'certs/exact_fast_quotient_m{m}.json').write_text(json.dumps(result,indent=2)+'\n');print(m,result['status'],result['seconds'],flush=True)
+ if sharp:
+  result['target_subtraction']=str(s.factorial(m-1)*(-u[2])**m/2);result['identity']='(-1)^m F_m - (m-1)!/2 (-u2)^m = v^T Q0 v + (-u2) w^T Q1 w - sum lambda_i (D P_i + u1 P_i)'
+ tag='mckean_' if sharp else ''
+ (ROOT/f'certs/exact_fast_{tag}quotient_m{m}.json').write_text(json.dumps(result,indent=2)+'\n');print(m,result['status'],result['seconds'],flush=True)
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('order',type=int);p.add_argument('source');a=p.parse_args();reconstruct(a.order,a.source)
+ p=argparse.ArgumentParser();p.add_argument('order',type=int);p.add_argument('source');p.add_argument('--sharp',action='store_true');a=p.parse_args();reconstruct(a.order,a.source,a.sharp)
