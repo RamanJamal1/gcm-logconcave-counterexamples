@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "seed": 260830275,
-  "generation": 269,
-  "gpu_evaluations": 9371648,
-  "refinement_evaluations": 137728,
+  "generation": 293,
+  "gpu_evaluations": 10944512,
+  "refinement_evaluations": 150016,
   "best": {
     "6": {
       "parameters": {
@@ -34,8 +34,8 @@
     0,
     0,
     0,
-    136,
-    63,
+    72,
+    64,
     0,
     0,
     0,

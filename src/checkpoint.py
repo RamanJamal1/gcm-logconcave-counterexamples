@@ -5,6 +5,7 @@ No daemon is started by importing this module. Remote errors are reported,
 not mistaken for a successful backup. Keep secrets outside this repository.
 """
 import argparse
+import fcntl
 import datetime
 import json
 import os
@@ -22,7 +23,7 @@ def run(args, timeout=30):
     except subprocess.TimeoutExpired:
         return {'command': args, 'returncode': 124, 'stderr': 'Timeout'}
 
-def checkpoint(reason='checkpoint', push=True):
+def _checkpoint_unlocked(reason='checkpoint', push=True):
     stamp = datetime.datetime.now(datetime.timezone.utc).isoformat()
     # Gitignore cannot filter by file size: exclude raw dumps at every size,
     # and check all staged content for accidentally included large files.
@@ -48,6 +49,15 @@ def checkpoint(reason='checkpoint', push=True):
     else:
         result['remote_status'] = 'not_requested'
     return result
+
+def checkpoint(reason='checkpoint', push=True):
+    # Serialize independent research processes without placing a lock in Git's
+    # own index.lock namespace. Kernel releases this lock if a process exits.
+    with open(ROOT / '.git' / 'research-checkpoint.lock', 'a') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        from progress_dashboard import update
+        update()
+        return _checkpoint_unlocked(reason, push)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
