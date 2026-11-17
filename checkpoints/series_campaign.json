@@ -1,5 +1,5 @@
 {
-  "evaluations": 980,
+  "evaluations": 1140,
   "orders": {
     "9": {
       "normalized_signed_midpoint": 721269.6276573567,
@@ -149,6 +149,31 @@
       "certified": false,
       "status": "inconclusive_or_nonnegative",
       "seconds": 0.21840763092041016,
+      "method": "exact time-change polynomial, finite periodic Fourier sum, rigorous nonzero-mode and infinite-series bounds"
+    },
+    "15": {
+      "normalized_signed_midpoint": 30784204324762.08,
+      "normalized_signed_interval": "[30784204324762.07920242 +/- 6.45e-9]",
+      "variance_interval": "[3.216022249664172639093348992818710043033195919598319644368183735088621641373725312388944187304438615 +/- 6.47e-100]",
+      "order": 15,
+      "family": "gaussian_two_fourier_modes",
+      "parameters": {
+        "a": "1/8",
+        "b": "14348907/68719476736",
+        "kappa": "17294660440/60115193237"
+      },
+      "density": "Z^-1 exp(-kappa*x^2/2)*(1+a*cos(x)+b*cos(2*x))",
+      "signed_derivative_interval": "[756035.628690079345214 +/- 1.71e-16]",
+      "convexity_lower_bound": "[0.1438460022229072353335201839234836426481135424849603399104848493327650251099533033012314726762690586 +/- 4.00e-101]",
+      "periodic_finite_sum": "[771933.494903300931833544405403851444010615028089415010313440197799301064917856462468747368998039 +/- 4.92e-91]",
+      "nonzero_mode_absolute_bound": "[4.773686971710635979666854488013854754468773643760893493552069756529103501840920873555601919202174578e-66 +/- 7.96e-167]",
+      "series_tail_absolute_bound": "[1.448157566938823950526949960522179740503154852164869271118715974114070089218229524830934146010215421e-16 +/- 1.54e-116]",
+      "mode_cutoff": 12,
+      "series_cutoff": 96,
+      "digits": 100,
+      "certified": false,
+      "status": "inconclusive_or_nonnegative",
+      "seconds": 0.21616697311401367,
       "method": "exact time-change polynomial, finite periodic Fourier sum, rigorous nonzero-mode and infinite-series bounds"
     }
   },
