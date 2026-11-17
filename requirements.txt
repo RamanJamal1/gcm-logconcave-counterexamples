@@ -1,0 +1,6 @@
+numpy
+scipy
+sympy
+mpmath
+python-flint==0.9.0
+torch==2.12.1

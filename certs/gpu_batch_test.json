@@ -1,0 +1,10 @@
+{
+  "candidates": 32768,
+  "elapsed_seconds": 2.3424609270000474,
+  "precision": "float32",
+  "microbatch": 512,
+  "grid": 513,
+  "peak_gpu_allocated_bytes": 46197248,
+  "process_peak_host_rss_kib": 1330792,
+  "passed": true
+}

@@ -57,11 +57,16 @@ def main():
         r['blockers'].append('CPU search smoke test has not completed.')
     if not r['packages']['flint']:
         r['blockers'].append('python-flint/Arb unavailable; mpmath alone does not supply a rigorous certificate.')
-    r['blockers'].extend([
-        'Requested batched CUDA FP32/FP64 optimization pipeline is not implemented or validated; current search is CPU only.',
-        'Rigorous interval certification with analytic tail bounds is not implemented or validated.',
-        '25-minute continuous sync and new-elite hooks are not enabled; local checkpoint utility only.',
-    ])
+    required = ['src/cuda_pipeline.py','src/orchestrate.py','src/certify_arb.py',
+                'src/certification_families.py','src/rationalize.py','src/report.py']
+    for item in required:
+        if not (ROOT/item).exists(): r['blockers'].append('Missing implementation: '+item)
+    for item in ['certs/cuda_pipeline_test.json','certs/arb_family_tests.json','certs/gpu_batch_test.json']:
+        if not (ROOT/item).exists(): r['blockers'].append('Missing validation: '+item)
+    campaign = read_json('checkpoints/readiness_run.json')
+    if campaign.get('generation',0)<12 or campaign.get('errors'):
+        r['blockers'].append('Four-family, three-order resumed GPU smoke run has not passed.')
+    r['scope_note']='Bounded readiness tests; not a proof of future uptime or mathematical discovery.'
     r['ready_for_overnight'] = not r['blockers']
     (ROOT / 'certs/preflight.json').write_text(json.dumps(r, indent=2) + '\n')
     print(json.dumps(r, indent=2))

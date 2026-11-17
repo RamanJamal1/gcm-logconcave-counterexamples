@@ -34,6 +34,7 @@ def main(args):
  else:state={'schema':1,'seed':args.seed,'generation':0,'gpu_evaluations':0,'refinement_evaluations':0,'best':{},'certificates':[],'status':'running','errors':[]}
  torch.manual_seed(args.seed);rng=torch.Generator(device='cuda');rng.manual_seed(args.seed)
  if 'rng_state' in state:rng.set_state(torch.tensor(state['rng_state'],dtype=torch.uint8))
+ state.setdefault('pending_certifications',[])
  pending=[];start=time.monotonic();last_sync=start;initial_generation=state['generation']
  state['status']='running';state['backend']='torch_cuda';state['device']=torch.cuda.get_device_name(0)
  def save(sync=False):
@@ -42,6 +43,12 @@ def main(args):
    reason=' '.join(f'm{m}={v["normalized"]:.7g}' for m,v in state['best'].items())
    result=checkpoint(reason or 'campaign initialized');atomic_json(ROOT/'certs/latest_sync.json',result)
  pool=ProcessPoolExecutor(max_workers=min(args.workers,4),mp_context=multiprocessing.get_context('spawn'))
+ for job in state['pending_certifications']:
+  target=Path(job['path'])
+  if target.exists():
+   result=json.loads(target.read_text());state['certificates'].append({'path':str(target),'status':result['status']})
+  else:pending.append((str(target),pool.submit(certification_job,job['candidate'],job['order'],target)))
+ state['pending_certifications']=[j for j in state['pending_certifications'] if not Path(j['path']).exists()]
  try:
   while time.monotonic()-start<args.seconds and state['generation']-initial_generation<args.generations:
    g=state['generation'];family=FAMILIES[g%4];order=6+(g//4)%3;remaining=args.batch;elites=[];scores=[];micro=args.microbatch
@@ -73,14 +80,14 @@ def main(args):
        c=parameters(optimized[j],family);entry={'parameters':c,'normalized':val,'signed':float(fine[1][j,order-6]),'convexity_bound':curvature,'certified':False,'generation':g,'grid':2*args.dense_grid-1}
        state['best'][str(order)]=entry;atomic_json(ROOT/f'checkpoints/elite_m{order}.json',entry);improved=True
        if entry['signed']<-1e-8:
-        target=ROOT/f'certs/m{order}_g{g}_{j}.json';pending.append((str(target),pool.submit(certification_job,c,order,target)))
+        target=ROOT/f'certs/m{order}_g{g}_{j}.json';state['pending_certifications'].append({'path':str(target),'candidate':c,'order':order});save();pending.append((str(target),pool.submit(certification_job,c,order,target)))
        save(sync=True)
     except (RuntimeError,FloatingPointError) as e:
      state['errors'].append(str(e)[:300]);torch.cuda.empty_cache()
    state['generation']+=1
    for target,future in list(pending):
     if future.done():
-     result=future.result();state['certificates'].append({'path':target,'status':result['status']});pending.remove((target,future));save(sync=result.get('certified',False))
+     result=future.result();state['certificates'].append({'path':target,'status':result['status']});pending.remove((target,future));state['pending_certifications']=[j for j in state['pending_certifications'] if j['path']!=target];save(sync=result.get('certified',False))
    periodic=time.monotonic()-last_sync>=args.sync_seconds
    save(sync=periodic)
    if periodic:last_sync=time.monotonic()
@@ -90,6 +97,7 @@ def main(args):
   pool.shutdown(wait=True)
   for target,future in pending:
    result=future.result();state['certificates'].append({'path':target,'status':result['status']})
+  state['pending_certifications']=[]
   save(sync=True)
  print(json.dumps({'status':state['status'],'state':str(path),'best':state['best']},indent=2))
 

@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-11-17T05:41:36.679670+00:00",
+  "timestamp_utc": "2026-11-17T05:57:27.060922+00:00",
   "mode": "preflight_only; overnight goal paused",
   "gh_installed": true,
   "gh_auth_status": {
@@ -8,9 +8,9 @@
       "auth",
       "status"
     ],
-    "returncode": 1,
+    "returncode": 0,
     "stdout": "",
-    "stderr": "github.com\n  X github.com: authentication failed\n  - The github.com token in /home/ubuntu/.config/gh/hosts.yml is no longer valid.\n  - To re-authenticate, run: gh auth login -h github.com\n  - To forget about this host, run: gh auth logout -h github.com"
+    "stderr": "github.com\n  \u2713 Logged in to github.com as returnedlegend (/home/ubuntu/.config/gh/hosts.yml)\n  \u2713 Git operations for github.com configured to use https protocol.\n  \u2713 Token: *******************"
   },
   "github_identity": {
     "command": [
@@ -20,9 +20,9 @@
       "--jq",
       ".login"
     ],
-    "returncode": 1,
-    "stdout": "",
-    "stderr": "error connecting to api.github.com\ncheck your internet connection or https://githubstatus.com"
+    "returncode": 0,
+    "stdout": "returnedlegend",
+    "stderr": ""
   },
   "github_network": {
     "command": [
@@ -36,9 +36,9 @@
       "%{http_code}",
       "https://api.github.com"
     ],
-    "returncode": 6,
-    "stdout": "000",
-    "stderr": "curl: (6) Could not resolve host: api.github.com"
+    "returncode": 0,
+    "stdout": "200",
+    "stderr": ""
   },
   "nvidia_smi": {
     "command": [
@@ -48,9 +48,9 @@
       "5s",
       "nvidia-smi"
     ],
-    "returncode": 124,
-    "stdout": "",
-    "stderr": "Thunder cannot get the GPU node list from http://10.250.0.21:2096/api/v1/roster (Failed to connect to 10.250.0.21 port 2096 after 0 ms: Couldn't connect to server); retrying for up to 60s"
+    "returncode": 0,
+    "stdout": "Tue Nov 17 05:57:28 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 610.43.02              KMD Version: 610.43.02     CUDA UMD Version: 13.3     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  NVIDIA RTX A6000               On  |   00000000:0F:00.0 Off |                  Off |\n| 30%   29C    P8             14W /  300W |       0MiB /  49140MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+",
+    "stderr": ""
   },
   "gpu_device_paths": [],
   "git_head": {
@@ -60,7 +60,7 @@
       "HEAD"
     ],
     "returncode": 0,
-    "stdout": "1adf47552ca6f1313047aebcd66260c35d19dfb7",
+    "stdout": "88d1d4c09029c31963323129ca1a25f9798b0a15",
     "stderr": ""
   },
   "git_origin": {
@@ -70,9 +70,9 @@
       "get-url",
       "origin"
     ],
-    "returncode": 2,
-    "stdout": "",
-    "stderr": "error: No such remote 'origin'"
+    "returncode": 0,
+    "stdout": "https://github.com/returnedlegend/gcm-logconcave-counterexamples.git",
+    "stderr": ""
   },
   "packages": {
     "numpy": true,
@@ -81,7 +81,7 @@
     "mpmath": true,
     "torch": true,
     "jax": false,
-    "flint": false,
+    "flint": true,
     "optax": false,
     "evosax": false
   },
@@ -98,13 +98,7 @@
     "failures": null,
     "elapsed_seconds": null
   },
-  "blockers": [
-    "CLI GitHub API identity cannot be verified; repository create/push and issue posting unverified.",
-    "GPU probe fails; requested RTX A6000 is not accessible from this execution environment.",
-    "python-flint/Arb unavailable; mpmath alone does not supply a rigorous certificate.",
-    "Requested batched CUDA FP32/FP64 optimization pipeline is not implemented or validated; current search is CPU only.",
-    "Rigorous interval certification with analytic tail bounds is not implemented or validated.",
-    "25-minute continuous sync and new-elite hooks are not enabled; local checkpoint utility only."
-  ],
-  "ready_for_overnight": false
+  "blockers": [],
+  "scope_note": "Bounded readiness tests; not a proof of future uptime or mathematical discovery.",
+  "ready_for_overnight": true
 }
