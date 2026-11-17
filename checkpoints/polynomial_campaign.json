@@ -1,5 +1,5 @@
 {
-  "status": "running",
+  "status": "interrupted_exit143",
   "order": 12,
   "gpu_evaluations": 32768,
   "refinement_evaluations": 512,
@@ -20,5 +20,6 @@
     "certified": false
   },
   "errors": [],
-  "elapsed_seconds": 182.3704605102539
+  "elapsed_seconds": 182.3704605102539,
+  "note": "Only completed saved counts are reported; a wider replacement family is running."
 }

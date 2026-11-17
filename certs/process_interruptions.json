@@ -1,0 +1,17 @@
+{
+  "detected_utc": "2026-11-17T08:14:12.683120+00:00",
+  "processes": [
+    {
+      "name": "campaign_A",
+      "exit_code": 143,
+      "last_saved_generation": 252,
+      "recovery": "Resume from saved RNG and counters for remaining scheduled time, compiled 65536 batches."
+    },
+    {
+      "name": "polynomial_campaign",
+      "exit_code": 143,
+      "recovery": "Retain recorded counts; wider polynomial family active."
+    }
+  ],
+  "cause": "Not established; no Python traceback in redirected logs."
+}
