@@ -16,7 +16,7 @@
     11
   ],
   "negative_witness_order": 16,
-  "negative_witness_certificate": "certs/multifourier_m16.json",
+  "negative_witness_certificate": "certs/simple_kappa_48000_m16.json",
   "verified_certificates": {
     "9": {
       "order": 9,
@@ -56,16 +56,19 @@
   "upper_bound": 16,
   "updated": 1794907968.7492878,
   "exact_minimal_order_resolved": false,
-  "independent_negative_witness_certificate": "certs/independent_direct_heat_m16.json",
+  "independent_negative_witness_certificate": "certs/independent_simple_kappa_48000_m16.json",
   "witness_certificate_sha256": {
     "certs/rationalized_m17_2.json": "287537e256ecb1634a0726aaa2268135d5c4c474862e3380753d2200c708be55",
     "certs/independent_spatial_m17.json": "33bd5df38a7d00b1eb53dd227f74df38eff39bb4766fd53521756245b618e3b1",
     "certs/multifourier_m16.json": "b3678c2eea8273cb40924a0392427c180a71b3061aba60077b78e0bc6132e175",
     "certs/independent_direct_heat_m16.json": "d366d9f9a7c494b281678efabd40ce2fb6636c59e8475f3b868ea1c583e127d9",
-    "certs/exact_min_curvature_m16.json": "c2844735d6ac7f2d813bade60cc27b85188ddbdce94016855817334d1d3b6509"
+    "certs/exact_min_curvature_m16.json": "c2844735d6ac7f2d813bade60cc27b85188ddbdce94016855817334d1d3b6509",
+    "certs/simple_kappa_48000_m16.json": "cfdf839a817425095af18cefa18ec834fdbb8c8bfde99e3cd22712119fb44646",
+    "certs/independent_simple_kappa_48000_m16.json": "679a6b9392d2027aef9dd9c6a1322c246ff74d635ab46f1451f3eff000875f13",
+    "certs/exact_min_curvature_simple_48000_m16.json": "1341fac150315c8e245cb9374a7b6dcc7083d2bb00b9f8141a7624de19d8b71f"
   },
-  "updated_utc": "2026-11-17T08:33:26.877706+00:00",
-  "curvature_certificate": "certs/exact_min_curvature_m16.json",
+  "updated_utc": "2026-11-17T10:39:03.088998+00:00",
+  "curvature_certificate": "certs/exact_min_curvature_simple_48000_m16.json",
   "verified_sharp_certificates": {
     "9": {
       "order": 9,
@@ -100,5 +103,12 @@
       "sha256": "35e0b1acbc83909c952804710f113445f2feb3861fec343a96443346053427ef",
       "certificate": "certs/exact_mckean_quotient_m11.json"
     }
-  }
+  },
+  "historical_witnesses": [
+    {
+      "certificate": "certs/multifourier_m16.json",
+      "independent_certificate": "certs/independent_direct_heat_m16.json",
+      "curvature_certificate": "certs/exact_min_curvature_m16.json"
+    }
+  ]
 }

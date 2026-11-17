@@ -11,19 +11,19 @@ The convention is Boltzmann entropy `H(p) = integral p log p` and heat generator
 - The explicit density
 
   ```text
-  p(x) = exp(-67*x²/2000)
-         * (1 + cos(x)/16 + cos(2*x)/45000 - cos(3*x)/20000000) / Z
+  p(x) = exp(-x²/30)
+         * (1 + cos(x)/16 + cos(2*x)/48000 - cos(3*x)/20000000) / Z
   ```
 
-  has `V'' > 1/2500` globally and `S16 < -1/2`. Here
+  has `V'' > 1/12000` globally and `S16 < -3/4`. Here
 
   ```text
-  Z = sqrt(2000*pi/67)
-      * (1 + exp(-500/67)/16 + exp(-2000/67)/45000
-           - exp(-4500/67)/20000000).
+  Z = sqrt(30*pi)
+      * (1 + exp(-15/2)/16 + exp(-30)/48000
+           - exp(-135/2)/20000000).
   ```
 
-  Two independent Arb calculations certify its signed derivative near `-0.57212967821710969817`: [spatial score-polynomial integration](certs/multifourier_m16.json) and [exact heat-density Taylor integration](certs/independent_direct_heat_m16.json).
+  Two independent Arb calculations certify its signed derivative near `-0.76099654207878681651`: [spatial score-polynomial integration](certs/simple_kappa_48000_m16.json) and [exact heat-density Taylor integration](certs/independent_simple_kappa_48000_m16.json).
 
 Read [the LaTeX note](paper/draft_note.tex) or [its PDF](paper/draft_note.pdf) for definitions, proofs, analytic error bounds, and limitations. No novelty or exact-minimality claim is made.
 
@@ -43,7 +43,7 @@ python3 src/verify_sos_standalone.py \
 
 It independently derives the entropy polynomial, checks each integration-by-parts identity, and proves positivity of the rational Gram matrices by exact Schur complements. A numerical SDP status is never used as a proof.
 
-The exact global minimum curvature is `72599603/168754009000 > 1/2500`; its independent standard-library proof is reproduced with `python3 src/certify_min_curvature.py`.
+The exact global minimum curvature is `76658/843768795 > 1/12000`; its independent standard-library proof is reproduced with `python3 src/certify_min_curvature.py`.
 
 The entropy-derivative verification needs `python-flint`:
 
@@ -51,8 +51,8 @@ The entropy-derivative verification needs `python-flint`:
 python3 -m venv .venv
 .venv/bin/pip install python-flint==0.9.0
 .venv/bin/python src/certify_multifourier_spatial.py
-.venv/bin/python src/certify_direct_heat.py certs/multifourier_m16.json \
-  --output certs/independent_direct_heat_m16.json
+.venv/bin/python src/certify_direct_heat.py certs/simple_kappa_48000_m16.json \
+  --output certs/independent_simple_kappa_48000_m16.json
 ```
 
 Both routines use 200-digit ball arithmetic with analytic bounds for the omitted infinite tails. High precision alone is not treated as a rigorous enclosure. The independent calculation differentiates the exact heat evolution and bounds its tail using Cauchy's estimate.

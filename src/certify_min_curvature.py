@@ -25,4 +25,4 @@ def certify(amplitudes=('1/16','1/45000','-1/20000000'),kappa='67/1000',lower_bo
  return r
 if __name__=='__main__':
  import argparse
- p=argparse.ArgumentParser();p.add_argument('--amplitudes',nargs=3,default=['1/16','1/45000','-1/20000000']);p.add_argument('--kappa',default='67/1000');p.add_argument('--lower-bound',default='1/2500');p.add_argument('--output',default='certs/exact_min_curvature_m16.json');a=p.parse_args();r=certify(a.amplitudes,a.kappa,a.lower_bound);Path(a.output).write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r,indent=2))
+ p=argparse.ArgumentParser();p.add_argument('--amplitudes',nargs=3,default=['1/16','1/48000','-1/20000000']);p.add_argument('--kappa',default='1/15');p.add_argument('--lower-bound',default='1/12000');p.add_argument('--output',default='certs/exact_min_curvature_simple_48000_m16.json');a=p.parse_args();r=certify(a.amplitudes,a.kappa,a.lower_bound);Path(a.output).write_text(json.dumps(r,indent=2)+'\n');print(json.dumps(r,indent=2))
