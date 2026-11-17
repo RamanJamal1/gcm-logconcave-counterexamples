@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-17T06:29:15.220965+00:00",
+  "timestamp": "2026-11-17T06:29:17.135141+00:00",
   "reason": "m6=60",
   "steps": [
     {
@@ -17,10 +17,10 @@
         "git",
         "commit",
         "-m",
-        "chore: checkpoint 2026-11-17T06:29:15.220965+00:00 - m6=60"
+        "chore: checkpoint 2026-11-17T06:29:17.135141+00:00 - m6=60"
       ],
       "returncode": 0,
-      "stdout": "[main 976506a] chore: checkpoint 2026-11-17T06:29:15.220965+00:00 - m6=60\n 4 files changed, 53 insertions(+), 20 deletions(-)\n create mode 100644 checkpoints/series_campaign.json",
+      "stdout": "[main 24717dc] chore: checkpoint 2026-11-17T06:29:17.135141+00:00 - m6=60\n 4 files changed, 52 insertions(+), 52 deletions(-)\n rewrite certs/latest_sync.json (63%)",
       "stderr": ""
     },
     {
@@ -33,7 +33,7 @@
       ],
       "returncode": 0,
       "stdout": "Branch 'main' set up to track remote branch 'main' from 'origin'.",
-      "stderr": "To https://github.com/returnedlegend/gcm-logconcave-counterexamples.git\n   6a73a33..976506a  main -> main"
+      "stderr": "To https://github.com/returnedlegend/gcm-logconcave-counterexamples.git\n   976506a..24717dc  main -> main"
     }
   ],
   "remote_status": "pushed"
