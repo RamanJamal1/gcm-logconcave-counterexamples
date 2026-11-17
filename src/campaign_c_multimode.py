@@ -15,6 +15,10 @@ from gpu_search import atomic_json
 from checkpoint import checkpoint
 ROOT=Path(__file__).resolve().parents[1]
 
+def pool_workers():
+ p=ROOT/'checkpoints/certification_workers.json'
+ return min(4,max(1,int(json.loads(p.read_text()).get('workers',2)))) if p.exists() else 2
+
 def certify_job(order,params):
  from certify_multifourier_spatial import certify
  import contextlib
@@ -26,7 +30,7 @@ def main(seconds=3600,batch=65536,sync=False,state_path='checkpoints/campaign_C.
  torch.set_num_threads(1);torch.manual_seed(170617);start=time.time();lastsync=start
  research=json.loads((ROOT/'checkpoints/research_status.json').read_text());witness=json.loads((ROOT/research['negative_witness_certificate']).read_text());order=research['negative_witness_order'];reference=witness['parameters']['amplitudes'];K=len(reference)
  fractions=sorted({Fraction(p,q) for q in range(10,1001) for p in range(1,min(150,q//5)+1) if Fraction(1,100)<=Fraction(p,q)<=Fraction(1,5)})
- values64=torch.tensor([float(f) for f in fractions],device='cuda',dtype=torch.float64);values=values64.float();pool=ProcessPoolExecutor(max_workers=4,mp_context=multiprocessing.get_context('spawn'));pending=[];seen=set()
+ values64=torch.tensor([float(f) for f in fractions],device='cuda',dtype=torch.float64);values=values64.float();pool=ProcessPoolExecutor(max_workers=pool_workers(),mp_context=multiprocessing.get_context('spawn'));pending=[];seen=set()
  state={'status':'running','gpu_evaluations':0,'refinement_evaluations':0,'generation':0,'certifications':0,'best_certified':{},'errors':[],'method':'rational multi-harmonic GPU periodic screening; full spatial Arb verification','order':order,'device':torch.cuda.get_device_name(0)}
  path=ROOT/state_path
  if K==3:
@@ -38,7 +42,7 @@ def main(seconds=3600,batch=65536,sync=False,state_path='checkpoints/campaign_C.
  prior_runtime=state.get('active_runtime_seconds',0)
  state['status']='running'
  def save(reason=None):
-  state['elapsed_seconds']=time.time()-start;state['active_runtime_seconds']=prior_runtime+time.time()-start;state['rng_state']=torch.cuda.get_rng_state().tolist();state['seen_parameters']=[list(v) for _,v in sorted(seen)];atomic_json(path,state)
+  state['configured_certification_worker_limit']=pool_workers();state['peak_cuda_memory_allocated_bytes']=max(state.get('peak_cuda_memory_allocated_bytes',0),torch.cuda.max_memory_allocated());state['elapsed_seconds']=time.time()-start;state['active_runtime_seconds']=prior_runtime+time.time()-start;state['rng_state']=torch.cuda.get_rng_state().tolist();state['seen_parameters']=[list(v) for _,v in sorted(seen)];atomic_json(path,state)
   if reason and sync:checkpoint(reason)
  def harvest(wait=False):
   for future,params,order in list(pending):
@@ -93,7 +97,7 @@ def main(seconds=3600,batch=65536,sync=False,state_path='checkpoints/campaign_C.
  pool_completed_start=state['certifications']
  while time.time()-start<seconds:
   if state['certifications']-pool_completed_start>=128:
-   harvest(wait=True);pool.shutdown();pool=ProcessPoolExecutor(max_workers=4,mp_context=multiprocessing.get_context('spawn'));pool_completed_start=state['certifications'];state['pool_rotations']=state.get('pool_rotations',0)+1;save()
+   harvest(wait=True);pool.shutdown();pool=ProcessPoolExecutor(max_workers=pool_workers(),mp_context=multiprocessing.get_context('spawn'));pool_completed_start=state['certifications'];state['pool_rotations']=state.get('pool_rotations',0)+1;save()
   run_generation(order);state['generation']+=1;harvest();save()
   print({k:v for k,v in state.items() if k not in ['errors','rng_state','seen_parameters']},flush=True)
   if time.time()-lastsync>=1500:save('campaign C periodic rationalization checkpoint');lastsync=time.time()
