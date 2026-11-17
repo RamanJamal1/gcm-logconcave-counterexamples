@@ -28,7 +28,7 @@ def solve(m,cap):
   for j in range(n):trace[off+j*n+j]=1
  A=np.vstack([A,trace/1e5]);b=np.r_[b,1.];objective=np.zeros(count);objective[0]=-1
  print('truncated setup',m,cap,dims,'rows',len(keys),'rank',rank,'seconds',time.time()-start,flush=True)
- x,y,info,timing,extra=sdpap.solve(sp.csc_matrix(A),b,objective,sdpap.SymCone(l=2,s=tuple(dims)),sdpap.SymCone(f=len(b)),{'epsilonStar':1e-16,'epsilonDash':1e-16,'mpfPrecision':128,'maxIteration':100,'numThreads':1,'lambdaStar':1000.,'print':'display'})
+ x,y,info,timing,extra=sdpap.solve(sp.csc_matrix(A),b,objective,sdpap.SymCone(l=2,s=tuple(dims)),sdpap.SymCone(f=len(b)),{'epsilonStar':1e-16,'epsilonDash':1e-16,'mpfPrecision':128,'maxIteration':100,'numThreads':1,'lambdaStar':100.,'omegaStar':1e8,'upperBound':1e15,'lowerBound':-1e15,'print':'display'})
  xx=np.asarray(x.toarray()).ravel();margin=xx[0];qs=[xx[off:off+n*n].reshape(n,n)+margin*np.eye(n) for off,n in zip(offsets,dims)];r={'order':m,'score_power_cap':cap,'proved':False,'status':str(info['phasevalue']),'normalization':norm,'basis_scales':scales,'gram_matrices':[(q*norm/np.outer(ss,ss)).tolist() for q,ss in zip(qs,scales)],'margin':float(margin),'min_scaled_eigenvalues':[float(la.eigvalsh(q)[0]) for q in qs],'full_residual':float(np.max(abs(originalA@xx-originalb))),'seconds':time.time()-start,'rank':rank,'all_rows':len(keys)};(ROOT/f'certs/sos_truncated_m{m}_cap{cap}.json').write_text(json.dumps(r,indent=2)+'\n');print({k:v for k,v in r.items() if k not in ['basis_scales','gram_matrices']},flush=True)
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--orders',type=int,nargs='+',default=[12]);p.add_argument('--cap',type=int,default=1);a=p.parse_args()
