@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-17T07:28:05.125871+00:00",
+  "timestamp": "2026-11-17T07:30:42.318672+00:00",
   "reason": "m10=181440 m11=1814400 m12=1.99584e+07",
   "steps": [
     {
@@ -17,10 +17,10 @@
         "git",
         "commit",
         "-m",
-        "chore: checkpoint 2026-11-17T07:28:05.125871+00:00 - m10=181440 m11=1814400 m12=1.99584e+07"
+        "chore: checkpoint 2026-11-17T07:30:42.318672+00:00 - m10=181440 m11=1814400 m12=1.99584e+07"
       ],
       "returncode": 0,
-      "stdout": "[main b584c95] chore: checkpoint 2026-11-17T07:28:05.125871+00:00 - m10=181440 m11=1814400 m12=1.99584e+07\n 23 files changed, 25334 insertions(+), 118 deletions(-)\n rewrite certs/compiled_refinement.json (65%)\n create mode 100644 certs/interval_sos_verification_m11.json\n create mode 100644 certs/periodic_cuda_tests.json\n create mode 100644 certs/sos_direct_m12.json\n create mode 100644 certs/sos_whitened_m11_CLARABEL.json\n create mode 100644 certs/sos_whitened_m12_CLARABEL.json\n create mode 100644 checkpoints/compiled_readiness.json\n rewrite checkpoints/elite_m7.json (83%)\n create mode 100644 paper/extracted_text.txt\n create mode 100644 src/orchestrate_compiled.py\n create mode 100644 src/periodic_cuda.py\n create mode 100644 src/scheduled_campaign_b.py\n create mode 100644 src/sos_whitened.py\n create mode 100644 src/verify_sos_arb.py",
+      "stdout": "[main 1ba77c1] chore: checkpoint 2026-11-17T07:30:42.318672+00:00 - m10=181440 m11=1814400 m12=1.99584e+07\n 6 files changed, 105 insertions(+), 22 deletions(-)\n create mode 100644 certs/failed_sdp_attempts.json\n create mode 100644 src/sos_mintrace.py",
       "stderr": ""
     },
     {
@@ -33,7 +33,7 @@
       ],
       "returncode": 0,
       "stdout": "Branch 'main' set up to track remote branch 'main' from 'origin'.",
-      "stderr": "To https://github.com/returnedlegend/gcm-logconcave-counterexamples.git\n   55ad0b7..b584c95  main -> main"
+      "stderr": "To https://github.com/returnedlegend/gcm-logconcave-counterexamples.git\n   b584c95..1ba77c1  main -> main"
     }
   ],
   "remote_status": "pushed"

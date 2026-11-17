@@ -44,13 +44,13 @@
       "positive_definite_grams": true,
       "ibp_identities_verified": true,
       "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
-      "seconds": 47.485257387161255,
-      "sha256": "cfc42c163fc28c806d7751762fec85ffc854d7172859ad29fb3d816e29795fd2",
+      "seconds": 28.105060338974,
+      "sha256": "90cc900f691ed1d1e33ed8c04e53b61c46771cfe8eafc1a808c975b57c4e3a9f",
       "certificate": "certs/exact_quotient_m11.json"
     }
   },
   "lower_bound": 12,
   "upper_bound": 17,
-  "updated": 1794899913.112507,
+  "updated": 1794900952.6975117,
   "exact_minimal_order_resolved": false
 }

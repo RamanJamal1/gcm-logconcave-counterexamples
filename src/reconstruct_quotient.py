@@ -17,8 +17,19 @@ def reconstruct(m,source):
  A=s.Matrix([[d.get(k,0) for d in cols] for k in keys]);b=s.Matrix([target.get(k,0) for k in keys])
  # Rank-revealing pivoting in scaled Gram coordinates controls rounding amplification.
  numerical=np.array(A,float)*np.array([float(f) for f in factors])[None,:];rn=np.maximum(np.linalg.norm(numerical,axis=1),1e-100)
- _,_,permutation=la.qr(numerical/rn[:,None],mode='economic',pivoting=True)
- permutation=list(map(int,permutation));permuted=A[:,permutation]
+ # Prefer singleton columns to retain a sparse exact affine solve.
+ single={}
+ for j,d in enumerate(cols):
+  if len(d)==1:
+   key=next(iter(d));row=keys.index(key);strength=abs(numerical[row,j])
+   if row not in single or strength>single[row][0]:single[row]=(strength,j)
+ selected=[single[row][1] for row in sorted(single)]
+ remaining_cols=[j for j in range(len(cols)) if j not in set(selected)]
+ remaining_rows=[i for i in range(len(keys)) if i not in single]
+ _,_,tail=la.qr((numerical/rn[:,None])[remaining_rows][:,remaining_cols],mode='economic',pivoting=True)
+ permutation=selected+[remaining_cols[int(j)] for j in tail]
+ print('singleton pivots',len(selected),'remaining rows',len(remaining_rows),flush=True)
+ permuted=A[:,permutation]
  R,piv=permuted.row_join(b).rref();assert len(cols) not in piv;print('exact affine solve complete',m,time.time()-start,flush=True)
  original=[s.Rational(str(data['gram_matrices'][block][i][j])) for block,i,j in layout]
  y=[original[j] for j in permutation];free=[j for j in range(len(y)) if j not in piv]

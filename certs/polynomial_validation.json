@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "gpu": 43423163.35625337,
+  "arb": {
+    "order": 12,
+    "family": "squared_polynomial_curvature",
+    "parameters": {
+      "q_coefficients": [
+        "1/5",
+        "1/10"
+      ],
+      "tilt": "3/10"
+    },
+    "curvature_lower_bound": "1",
+    "signed_derivative_interval": "[43423163.35625334782982227730421 +/- 3.09e-24]",
+    "normalizer_interval": "[2.574963158963619025979446639283 +/- 3.24e-31]",
+    "numerator_tail_bound": "[1.483779801600854311785949777357430742983173181238852642032486824000981661687852219289235222650231803e-419 +/- 2.78e-519]",
+    "normalizer_tail_bound": "[1.197067799873679995920573390101774052621815376217105167467359147598084105324220737086322518430868489e-446 +/- 1.41e-546]",
+    "potential_degree": 4,
+    "integrand_polynomial_degree": 24,
+    "digits": 100,
+    "extent": 64,
+    "certified": false,
+    "status": "nonnegative_or_inconclusive",
+    "seconds": 0.10276341438293457,
+    "method": "exact rational polynomial entropy integrand; Arb complex integration; Gaussian polynomial-moment tail recurrence"
+  },
+  "relative_error": 5.147423647465016e-16
+}

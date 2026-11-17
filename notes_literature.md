@@ -86,3 +86,8 @@ The following observations are derived here, not attributed to an unverified ref
 
 
 Update 2026-11-17 06:03 UTC: terminal networking restored; full HTML and original arXiv source archives for both papers downloaded successfully. See literature/download_manifest.json and extracted *_source directories. Earlier DNS failure notes describe the initial environment only.
+
+
+## Follow-up search, 2026-11-17 07:31 UTC
+
+Repeated targeted web searches for the cited identifier, eleventh/twelfth-order log-concave signs, and minimal order seventeen located the original [Zou et al. preprint](https://arxiv.org/abs/2608.30275), [Gu–Sellke](https://arxiv.org/abs/2605.11656), and [Wang](https://arxiv.org/abs/2408.13957), but no verified later resolution of the exact minimal-order question. This limited search is not a novelty or priority determination. The archived Zou source explicitly uses Boltzmann entropy and heat generator one-half the Laplacian, matching this project.
