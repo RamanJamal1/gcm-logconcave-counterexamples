@@ -1,0 +1,21 @@
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.npy
+*.npz
+*.pt
+*.bin
+*.log
+.env
+.env.*
+*.pem
+*.key
+# Source, JSON checkpoints, proofs, and reports remain tracked.
+!src/
+!checkpoints/
+!certs/
+!paper/
+!PROGRESS.md
+!MORNING_BRIEFING.md

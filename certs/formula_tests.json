@@ -1,0 +1,69 @@
+{
+  "convention": "Boltzmann H=integral p log p, generator (1/2)dxx",
+  "density": "standard_normal(x)*(1+(1/10)*sin(x))",
+  "strict_convexity_global_lower_bound": "71/81",
+  "proof_of_convexity": "Vxx=1-qxx/q+(qx/q)^2 >=1-|qxx|/q >=8/9; conservative 71/81 also valid",
+  "digits": 100,
+  "finite_difference": {
+    "scheme": "24-point forward on nonnegative heat times",
+    "step": "0.0001",
+    "exact_rational_weights": true
+  },
+  "convolution": "exact Gaussian conditioning formula, outer high-precision Gauss-Hermite integration",
+  "runs": [
+    {
+      "nodes": 96,
+      "results": {
+        "6": {
+          "integrand": "70.152479604245512593407532401882273763955316044044150043840344255555",
+          "heat_convolution_forward_difference": "70.1524796042454713223712309186496877261081034058507819565220343961268",
+          "relative_error": "5.88304740393e-16",
+          "passed": true
+        },
+        "7": {
+          "integrand": "-454.5413426718715521278854515847008400433408111008239924035006793407658",
+          "heat_convolution_forward_difference": "-454.5413426718781752553733136488134464001999957187831520602000176596939",
+          "relative_error": "1.45710122844e-14",
+          "passed": true
+        },
+        "8": {
+          "integrand": "3513.293149526402624665038365119551310924501119476734119597210860155776",
+          "heat_convolution_forward_difference": "3513.293149525400529166261939116290213744244479151792954831674401945105",
+          "relative_error": "2.85229685121e-13",
+          "passed": true
+        }
+      }
+    },
+    {
+      "nodes": 160,
+      "results": {
+        "6": {
+          "integrand": "70.15247960424547135964702524051209499878133162461226097543937333800369",
+          "heat_convolution_forward_difference": "70.15247960424547135963922604949046268021085843814434762134136237866026",
+          "relative_error": "1.11174844647e-22",
+          "passed": true
+        },
+        "7": {
+          "integrand": "-454.5413426718781765237227487423039868502114715342958161718076986671437",
+          "heat_convolution_forward_difference": "-454.5413426718781765238099336561264732168017220485733042808662306772195",
+          "relative_error": "1.91808545533e-22",
+          "passed": true
+        },
+        "8": {
+          "integrand": "3513.293149525400567767764847324304885940875458624140986482944518079886",
+          "heat_convolution_forward_difference": "3513.293149525400568176108359992916848516278628253877502688927025290635",
+          "relative_error": "1.16228135624e-19",
+          "passed": true
+        }
+      }
+    }
+  ],
+  "cross_resolution_relative_errors": {
+    "6": "5.87773386483e-16",
+    "7": "1.45738026784e-14",
+    "8": "2.8521869785e-13"
+  },
+  "rigorous_interval_certificate": false,
+  "passed": true,
+  "generated_backend_smoke_check": "passed separate exact-rational jets check at 100 digits"
+}

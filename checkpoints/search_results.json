@@ -1,0 +1,140 @@
+{
+  "schema": 1,
+  "started_utc": "2026-11-17T05:40:04Z",
+  "backend": "numpy_cpu_float64",
+  "gpu_evaluations": 0,
+  "seed": 260830275,
+  "evaluations": 1,
+  "refinement_evaluations": 3,
+  "families": [
+    "fourier_multiplier",
+    "fourier_potential",
+    "rbf_curvature",
+    "skew_gaussian_mixture"
+  ],
+  "best": {
+    "6": {
+      "parameters": {
+        "family": "fourier_multiplier",
+        "amplitudes": [
+          -0.3451334649581844,
+          -0.09047935852893983
+        ],
+        "frequencies": [
+          0.450957080335266,
+          2.3368067458185857
+        ],
+        "phases": [
+          0.8987820589149305,
+          2.258928474646508
+        ]
+      },
+      "result": {
+        "signed": {
+          "6": 2412.1140581153695,
+          "7": 36807.473088552055,
+          "8": 623063.2732300531
+        },
+        "normalized": {
+          "6": 2430.552039033667,
+          "7": 37135.92688306927,
+          "8": 629421.5350471934
+        },
+        "variance": 1.001269946130541,
+        "mean": 0.1490409555137146,
+        "convexity_lower_bound": 0.00021706648746666612,
+        "grid_points": 2051,
+        "extent": 12.0,
+        "mode": 0.0,
+        "edge_mass_density": 2.641535745866771e-32
+      },
+      "coarse_dense_relative_discrepancy": 5.605304958359384e-16,
+      "certified": false,
+      "evaluation": 1
+    },
+    "7": {
+      "parameters": {
+        "family": "fourier_multiplier",
+        "amplitudes": [
+          -0.3451334649581844,
+          -0.09047935852893983
+        ],
+        "frequencies": [
+          0.450957080335266,
+          2.3368067458185857
+        ],
+        "phases": [
+          0.8987820589149305,
+          2.258928474646508
+        ]
+      },
+      "result": {
+        "signed": {
+          "6": 2412.1140581153695,
+          "7": 36807.473088552055,
+          "8": 623063.2732300531
+        },
+        "normalized": {
+          "6": 2430.552039033667,
+          "7": 37135.92688306927,
+          "8": 629421.5350471934
+        },
+        "variance": 1.001269946130541,
+        "mean": 0.1490409555137146,
+        "convexity_lower_bound": 0.00021706648746666612,
+        "grid_points": 2051,
+        "extent": 12.0,
+        "mode": 0.0,
+        "edge_mass_density": 2.641535745866771e-32
+      },
+      "coarse_dense_relative_discrepancy": 5.605304958359384e-16,
+      "certified": false,
+      "evaluation": 1
+    },
+    "8": {
+      "parameters": {
+        "family": "fourier_multiplier",
+        "amplitudes": [
+          -0.3451334649581844,
+          -0.09047935852893983
+        ],
+        "frequencies": [
+          0.450957080335266,
+          2.3368067458185857
+        ],
+        "phases": [
+          0.8987820589149305,
+          2.258928474646508
+        ]
+      },
+      "result": {
+        "signed": {
+          "6": 2412.1140581153695,
+          "7": 36807.473088552055,
+          "8": 623063.2732300531
+        },
+        "normalized": {
+          "6": 2430.552039033667,
+          "7": 37135.92688306927,
+          "8": 629421.5350471934
+        },
+        "variance": 1.001269946130541,
+        "mean": 0.1490409555137146,
+        "convexity_lower_bound": 0.00021706648746666612,
+        "grid_points": 2051,
+        "extent": 12.0,
+        "mode": 0.0,
+        "edge_mass_density": 2.641535745866771e-32
+      },
+      "coarse_dense_relative_discrepancy": 5.605304958359384e-16,
+      "certified": false,
+      "evaluation": 1
+    }
+  },
+  "hits": [],
+  "certified_counterexamples": 0,
+  "status": "running",
+  "elapsed_seconds": 0.022857759000089573,
+  "failures": 0,
+  "search_scope": "finite sampled family search; no universal lower bound"
+}

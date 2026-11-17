@@ -1,0 +1,45 @@
+{
+  "timestamp_utc": "2026-11-17T05:39:00Z",
+  "platform": "Linux-6.12.115-thunder-sandbox-x86_64-with-glibc2.35",
+  "cpu_count": 8,
+  "gpu_device_paths": [],
+  "packages": {
+    "torch": true,
+    "jax": false,
+    "sympy": true,
+    "scipy": true,
+    "numpy": true,
+    "mpmath": true,
+    "flint": false,
+    "optax": false,
+    "evosax": false
+  },
+  "free -h": {
+    "returncode": 0,
+    "stdout": "               total        used        free      shared  buff/cache   available\nMem:            62Gi       614Mi        60Gi       0.0Ki       1.7Gi        61Gi\nSwap:             0B          0B          0B\n",
+    "stderr": ""
+  },
+  "df -h /home/ubuntu": {
+    "returncode": 0,
+    "stdout": "Filesystem      Size  Used Avail Use% Mounted on\noverlay         193G  5.2G  188G   3% /home/ubuntu\n",
+    "stderr": ""
+  },
+  "lscpu": {
+    "returncode": 0,
+    "stdout": "Architecture:                            x86_64\nCPU op-mode(s):                          32-bit, 64-bit\nAddress sizes:                           46 bits physical, 48 bits virtual\nByte Order:                              Little Endian\nCPU(s):                                  8\nOn-line CPU(s) list:                     0-7\nVendor ID:                               GenuineIntel\nModel name:                              Intel(R) Xeon(R) Processor @ 2.10GHz\nCPU family:                              6\nModel:                                   79\nThread(s) per core:                      1\nCore(s) per socket:                      8\nSocket(s):                               1\nStepping:                                1\nBogoMIPS:                                4199.99\nFlags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault pti ssbd ibrs ibpb stibp fsgsbase tsc_adjust bmi1 hle avx2 smep bmi2 erms invpcid rtm rdseed adx smap xsaveopt arat umip md_clear flush_l1d arch_capabilities\nHypervisor vendor:                       KVM\nVirtualization type:                     full\nL1d cache:                               256 KiB (8 instances)\nL1i cache:                               256 KiB (8 instances)\nL2 cache:                                2 MiB (8 instances)\nL3 cache:                                40 MiB (1 instance)\nNUMA node(s):                            1\nNUMA node0 CPU(s):                       0-7\nVulnerability Gather data sampling:      Not affected\nVulnerability Indirect target selection: Not affected\nVulnerability Itlb multihit:             Not affected\nVulnerability L1tf:                      Mitigation; PTE Inversion\nVulnerability Mds:                       Mitigation; Clear CPU buffers; SMT Host state unknown\nVulnerability Meltdown:                  Mitigation; PTI\nVulnerability Mmio stale data:           Mitigation; Clear CPU buffers; SMT Host state unknown\nVulnerability Reg file data sampling:    Not affected\nVulnerability Retbleed:                  Not affected\nVulnerability Spec rstack overflow:      Not affected\nVulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization\nVulnerability Spectre v2:                Mitigation; Retpolines; IBPB conditional; IBRS_FW; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Retpoline\nVulnerability Srbds:                     Not affected\nVulnerability Tsa:                       Not affected\nVulnerability Tsx async abort:           Mitigation; Clear CPU buffers; SMT Host state unknown\nVulnerability Vmscape:                   Not affected\n",
+    "stderr": ""
+  },
+  "git --version": {
+    "returncode": 0,
+    "stdout": "git version 2.34.1\n",
+    "stderr": ""
+  },
+  "github_cli": {
+    "installed": false,
+    "auth_config_exists": false,
+    "network": "curl API hostname DNS resolution failed"
+  },
+  "nvidia_smi": {
+    "status": "probe hung; no device nodes visible; GPU unavailable unless later probe succeeds"
+  }
+}

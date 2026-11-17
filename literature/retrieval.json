@@ -1,0 +1,26 @@
+[
+  {
+    "url": "https://arxiv.org/html/2608.30275v1",
+    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+  },
+  {
+    "url": "https://arxiv.org/src/2608.30275v1",
+    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2608.30275v1",
+    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+  },
+  {
+    "url": "https://arxiv.org/html/2605.11656v1",
+    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+  },
+  {
+    "url": "https://arxiv.org/src/2605.11656v1",
+    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+  },
+  {
+    "url": "https://arxiv.org/pdf/2605.11656v1",
+    "error": "<urlopen error [Errno -3] Temporary failure in name resolution>"
+  }
+]

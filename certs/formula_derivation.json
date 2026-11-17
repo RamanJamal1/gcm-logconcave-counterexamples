@@ -1,0 +1,55 @@
+{
+  "convention": "Boltzmann H=integral p log p; heat generator (1/2)dxx",
+  "recurrence": "integration-by-parts reduction, highest log-density derivative order m",
+  "formulas": {
+    "1": {
+      "expression": "-u1**2/2",
+      "term_count": 1,
+      "max_derivative": 1,
+      "standard_gaussian_exact": "-1/2"
+    },
+    "2": {
+      "expression": "u2**2/2",
+      "term_count": 1,
+      "max_derivative": 2,
+      "standard_gaussian_exact": "1/2"
+    },
+    "3": {
+      "expression": "u2**3 - u3**2/2",
+      "term_count": 2,
+      "max_derivative": 3,
+      "standard_gaussian_exact": "-1"
+    },
+    "4": {
+      "expression": "3*u2**4 - 6*u2*u3**2 + u4**2/2",
+      "term_count": 3,
+      "max_derivative": 4,
+      "standard_gaussian_exact": "3"
+    },
+    "5": {
+      "expression": "12*u2**5 - 60*u2**2*u3**2 + 10*u2*u4**2 + 15*u3**2*u4 - u5**2/2",
+      "term_count": 5,
+      "max_derivative": 5,
+      "standard_gaussian_exact": "-12"
+    },
+    "6": {
+      "expression": "60*u2**6 - 600*u2**3*u3**2 + 150*u2**2*u4**2 + 450*u2*u3**2*u4 - 15*u2*u5**2 + 105*u3**4 - 60*u3*u4*u5 - 15*u4**3 + u6**2/2",
+      "term_count": 9,
+      "max_derivative": 6,
+      "standard_gaussian_exact": "60"
+    },
+    "7": {
+      "expression": "360*u2**7 - 6300*u2**4*u3**2 + 2100*u2**3*u4**2 + 9450*u2**2*u3**2*u4 - 315*u2**2*u5**2 + 4410*u2*u3**4 - 2520*u2*u3*u4*u5 - 630*u2*u4**3 + 21*u2*u6**2 - 630*u3**3*u5 - 2415*u3**2*u4**2 + 105*u3*u5*u6 + 70*u4**2*u6 + 105*u4*u5**2 - u7**2/2",
+      "term_count": 15,
+      "max_derivative": 7,
+      "standard_gaussian_exact": "-360"
+    },
+    "8": {
+      "expression": "2520*u2**8 - 70560*u2**5*u3**2 + 29400*u2**4*u4**2 + 176400*u2**3*u3**2*u4 - 5880*u2**3*u5**2 + 123480*u2**2*u3**4 - 70560*u2**2*u3*u4*u5 - 17640*u2**2*u4**3 + 588*u2**2*u6**2 - 35280*u2*u3**3*u5 - 135240*u2*u3**2*u4**2 + 5880*u2*u3*u5*u6 + 3920*u2*u4**2*u6 + 5880*u2*u4*u5**2 - 28*u2*u7**2 - 47880*u3**4*u4 + 5880*u3**2*u4*u6 + 7140*u3**2*u5**2 + 20160*u3*u4**2*u5 - 168*u3*u6*u7 + 3115*u4**4 - 280*u4*u5*u7 - 210*u4*u6**2 - 280*u5**2*u6 + u8**2/2",
+      "term_count": 25,
+      "max_derivative": 8,
+      "standard_gaussian_exact": "2520"
+    }
+  },
+  "gaussian_checks": "passed exact symbolic equality for m=1,...,8"
+}
