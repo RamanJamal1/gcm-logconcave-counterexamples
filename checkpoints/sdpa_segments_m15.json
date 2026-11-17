@@ -1,9 +1,29 @@
 {
   "order": 15,
-  "segment": 0,
-  "status": "running",
+  "segment": 1,
+  "status": "segment_complete",
   "proved": false,
-  "history": [],
+  "history": [
+    {
+      "order": 15,
+      "proved": false,
+      "status": "numerical_segment_candidate",
+      "normalization": 87178291200,
+      "min_scaled_eigenvalues": [
+        100.03561918773903,
+        274.29281600412287
+      ],
+      "residual": 2074.0429238039724,
+      "segment": 1,
+      "seconds": 663.8010594844818
+    }
+  ],
   "precision_bits": 64,
-  "iterations_per_segment": 1
+  "iterations_per_segment": 1,
+  "initial_file": "logs/native_m15_segment_1.ini-s",
+  "last_residual": 2074.0429238039724,
+  "min_scaled_eigenvalues": [
+    100.03561918773903,
+    274.29281600412287
+  ]
 }
