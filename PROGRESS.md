@@ -1,6 +1,6 @@
 # GCM research progress
 
-Updated: 2026-11-17T10:46:04.457227+00:00
+Updated: 2026-11-17T10:46:41.560206+00:00
 
 Verified bracket: 12 ≤ m* ≤ 16. Exact minimality remains unresolved.
 
@@ -18,16 +18,3 @@ Sharp proven normalized bounds: S6 Var^6 ≥ 60; S7 Var^7 ≥ 360; S8 Var^8 ≥ 
 Exact rational nonnegativity and sharp Gaussian-bound certificates cover orders 6–11.
 An order-16 witness has a spatial Arb certificate; the earlier order-17 witness has independent Fourier-series and spatial certificates.
 See MORNING_BRIEFING.md, checkpoints/research_status.json, and paper/draft_note.tex.
-
-## Additional work in progress
-
-Numerical search values and SDP iterates in this table are not proofs.
-
-| Attempt | Status | Recorded work |
-|---|---|---|
-| Order-12 high-precision SDP | running | segment 6; affine residual 0.0649 |
-| Order-15 two base frequencies | bounded_run_complete | 12,348 CPU objective evaluations |
-| Order-15 positive curvature bumps | bounded_run_complete | 4,400 CPU objective evaluations |
-| Order-12 curvature lattice | bounded_run_complete | 30,384 CPU objective evaluations |
-
-The small apparent order-12 improvement on a coarse curvature-lattice grid was rejected after refinement; see `certs/rbf_lattice_grid_check.json`.
