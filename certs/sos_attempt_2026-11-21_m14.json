@@ -1,0 +1,21 @@
+{
+ "order": 14,
+ "proved": false,
+ "date": "2026-11-21",
+ "status": "no strictly feasible seed found",
+ "prep": "native_sos_m14.npz regenerated (160s); m15 regenerated (688s, cond 6.6e9)",
+ "methods": [
+  "src/gpu_ipm_feas.py: FP64 GPU infeasible-start HKM IPM on min-trace form with 1e-5 margin; 0.3s/iter; stalls at primal residual ~1e-3 abs (pres 2e-7 rel), mu~6, ||y|| growing 3e5->1e7, b^T y plateau ~3.1e5 (m14) / 1.26e6 (m15): needs trace >=3e5 vs margin 1e-5 (dynamic range ~1e10, beyond FP64). Same at delta=0, 1e-7.",
+  "gpu_sdp_anderson.py from earlier primal seed: min scaled eig -0.0447 -> -0.037 in 920 s",
+  "gpu_sdp_anderson.py warm-started from IPM point: -3.4e-4 -> -3.22e-4 (block0), -1.1e-5 -> -9e-6 (block1) in 550 s, improving ~1e-6/100s, residual 5e-12",
+  "sdpap 200-bit via resume_native_solver.py: ran 25+ min with no iteration output (stuck in setup), killed",
+  "CLARABEL via cvxpy (src/sos_maxmargin_cvx.py): no iteration 0 after 8 min (dense 14k-dim PSD cone KKT), killed"
+ ],
+ "best_min_scaled_eigenvalues": [
+  -0.0003223149285312852,
+  -9.299013347175797e-06
+ ],
+ "best_residual": 7.73070496506989e-12,
+ "m15_ipm": "same stall: pres 2e-7, rp_abs 3e-3, minX ~1e-7 after 90 s",
+ "assessment": "FP64 insufficient; needs multiprecision/double-double IPM (SDPA-DD/GMP) as at order 13. Not proof of infeasibility."
+}
