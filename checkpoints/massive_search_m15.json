@@ -1,0 +1,48 @@
+{
+ "total_evals": 1209139200,
+ "min_Q15": [
+  [
+   1.0067963491512861,
+   "checkpoints/ms_K5_cs_rand.json"
+  ],
+  [
+   1.0069480382163314,
+   "checkpoints/ms_K6_cs_rand.json"
+  ],
+  [
+   1.0078248479929106,
+   "checkpoints/ms_K8_c_rand.json"
+  ],
+  [
+   1.0093765823961995,
+   "checkpoints/ms_K3_cs_rand_a0.1.json"
+  ],
+  [
+   1.0096134723358796,
+   "checkpoints/ms_K3_cs_rand.json"
+  ]
+ ],
+ "min_Q14": [
+  [
+   1.0062327042695143,
+   "checkpoints/ms_K5_cs_rand.json"
+  ],
+  [
+   1.0062699867181844,
+   "checkpoints/ms_K6_cs_rand.json"
+  ],
+  [
+   1.0064702397084817,
+   "checkpoints/ms_K8_c_rand.json"
+  ],
+  [
+   1.0082676206729315,
+   "checkpoints/ms_K3_cs_rand_a0.1.json"
+  ],
+  [
+   1.0088147743456155,
+   "checkpoints/ms_K3_cs_rand.json"
+  ]
+ ],
+ "note": "no Q<0 found; see ms_*.json per family"
+}
