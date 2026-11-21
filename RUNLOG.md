@@ -15,3 +15,4 @@
 - 2026-11-21T21:42:45Z RESTART. INBOX directive: skip Phase 1, only critical job = m15 max margin; no X2/X4/X6/X7; X5 only if margin<0. P1/X3 agents were killed by overseer.
 - X3 state: SDPA-GMP m13 diverging (free-variable split, objP 5e6), in-house ipm.py crashed (Cholesky). Not reused.
 - DECISION: decide m15 with the E_ddipm double-double dual-barrier solver (converged at m13 with delta=0). Copied to tracks/M15/ (output dir changed). Job: build_dd 15 && solve.py 15 --delta 0 (PID 9106, log tracks/M15/m15.log). Convergence to an analytic center => strict interior exists (margin > 0); divergence of -b^T y => dual ray (margin <= 0).
+- 2026-11-21T21:58:22Z M15 poll: dd it75 (860 s, 11.6 s/it). |g|inf 431->182 slowly falling, lam2 stuck ~3.05 at alpha=1, phi 1373->1367 (~-2/it), Xmin ~4.36e-5/5.03e-5, Xmax 3e7->1.3e7. Undecided; continue to maxit 300.
