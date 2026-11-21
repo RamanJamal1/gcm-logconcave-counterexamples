@@ -1,17 +1,14 @@
 {
- "updated": "2026-11-21T21:31:25.310981Z",
- "phase": "phase1_order13",
+ "updated": "2026-11-21T21:42:45Z",
+ "phase": "m15_margin",
  "running_jobs": [
   {
-   "pidfile": "tracks/director/gate_m13.pid",
-   "what": "gate on existing m13 cert"
+   "pid": 9106,
+   "what": "M15 build_dd+dd solve delta=0",
+   "log": "tracks/M15/m15.log"
   }
  ],
- "agents": [
-  "sonnet:P1_order13(GPU)",
-  "sonnet:X3_maxmargin(CPU)",
-  "opus:X1"
- ],
+ "agents": [],
  "best": {
   "bracket": "14<=m*<=16",
   "certified_orders_exact": [
@@ -27,7 +24,5 @@
   "order15": "none",
   "rho15_best": 0.948
  },
- "blockers": [
-  "git push 403"
- ]
+ "blockers": []
 }
