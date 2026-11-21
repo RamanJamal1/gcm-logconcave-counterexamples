@@ -77,8 +77,66 @@ def final(m,K,sg,bth,best,top=5):
         d["Q15"]=float(Qs(a,15,2048)[0]);d["Q14"]=float(Qs(a,14,2048)[0]);d["S15"]=float(Qs(a,15,2048)[1])
         d["filter_scale"]=math.exp(-1/(2*d["kappa"]));res.append(d)
     return res
+
+def pn_all(a,order,grid=2048):
+    B,K=a.shape
+    f=torch.arange(1,K+1,dtype=dt,device=dev)
+    th=torch.arange(grid,dtype=dt,device=dev)*2*math.pi/grid
+    cs=torch.cos(f[:,None]*th[None,:])
+    fac=torch.stack([(f**2/2)**n/math.factorial(n) for n in range(order+1)])
+    v=torch.einsum('bk,nk,kx->bnx',a,fac,cs)
+    g=1+v[:,0];logs=[torch.log1p(v[:,0])];Ps=[]
+    for n in range(1,order+1):
+        logn=(v[:,n]-sum((k/n)*logs[k]*v[:,n-k] for k in range(1,n)))/g;logs.append(logn)
+        h=v[:,n]*logs[0]+sum((1-k/n)*v[:,n-k]*logs[k] for k in range(1,n))
+        Ps.append(math.factorial(n)*h.mean(dim=1))
+    return torch.stack(Ps,1)
+def ratio(a,m,grid=2048,kap=None):
+    k,rmin=kappa_of(a,4096) if kap is None else (kap,None)
+    Pn=pn_all(a,m,grid)
+    w=torch.stack([math.comb(m-1,n-1)*math.factorial(m)/math.factorial(n)*k**(m-n) for n in range(1,m+1)],1)
+    G=0.5*math.factorial(m-1)*k**m
+    S=G+(w*Pn).sum(1)
+    return S/(G+(w*Pn).abs().sum(1)),S,k,rmin
+def run_ratio(m,K,B,steps,seed,lr=0.05):
+    g=torch.Generator(device=dev);g.manual_seed(seed)
+    sg,th=seeds(B,K,g);th.requires_grad_(True)
+    opt=torch.optim.Adam([th],lr=lr)
+    best=torch.full((B,),float("inf"),dtype=dt,device=dev);bth=th.detach().clone()
+    for it in range(steps):
+        a=build(sg,th);R,S,k,rmin=ratio(a,m,512)
+        bad=(k>CAP)|(rmin<0.5)|~torch.isfinite(R)
+        loss=R+100*torch.relu(k-CAP)+100*torch.relu(0.5-rmin)
+        loss=torch.where(torch.isfinite(loss),loss,torch.full_like(loss,50.))
+        ok=(~bad)&(R<best);best=torch.where(ok,R.detach(),best);bth[ok]=th.detach()[ok]
+        opt.zero_grad();loss.sum().backward();opt.step()
+        if it%100==0:print(m,K,it,"bestR %.5g"%best.min().item(),flush=True)
+    return sg,bth,best
+def final_ratio(m,K,sg,bth,best,top=5):
+    idx=torch.argsort(best)[:top];res=[]
+    for i in idx.tolist():
+        a=build(sg[i:i+1],bth[i:i+1]);d={"a":[float(v) for v in a[0]]}
+        for grid in (1024,2048,4096):
+            R,S,k,rmin=ratio(a,m,grid);d["R_grid%d"%grid]=float(R)
+        d["kappa"]=float(k);d["rmin"]=float(rmin)
+        for mm in (14,15,16):
+            R,S,_,_=ratio(a,mm,2048,kap=k);d["R%d"%mm]=float(R);d["S%d"%mm]=float(S)
+        d["filter_scale"]=math.exp(-1/(2*d["kappa"]));res.append(d)
+    return res
+def ratio_main():
+    m=int(sys.argv[2]);Ks=[int(v) for v in sys.argv[3].split(",")];B=int(sys.argv[4]);steps=int(sys.argv[5])
+    out={};fn="checkpoints/a1_ratio_m%d_cap%g_K%s.json"%(m,CAP,sys.argv[3].replace(",",""))
+    for K in Ks:
+        sg,bth,best=run_ratio(m,K,B,steps,2000*K+m);out[str(K)]=final_ratio(m,K,sg,bth,best)
+        json.dump(out,open(fn,"w"),indent=1);print("DONE K",K,{k:v for k,v in out[str(K)][0].items() if k in("R15","R14","S15","kappa","a")},flush=True)
+def ablation_ratio():
+    for name,a in [("witness",WIT),("drop a3",WIT[:2])]+[("a3=%g"%x,[WIT[0],WIT[1],x]) for x in (-2e-7,-1e-7,-5.5e-8,-2e-8,-1e-8)]+[("a4=%g"%x,WIT+[x]) for x in (-1e-9,-3e-10,-1e-10,1e-10,3e-10,1e-9)]:
+        t=torch.tensor([a],dtype=dt,device=dev);k=torch.tensor([1/14],dtype=dt,device=dev)
+        print(name,["R%d=%.4f"%(m,float(ratio(t,m,4096,kap=k)[0])) for m in (14,15,16,17)],flush=True)
 if __name__=="__main__":
-    if sys.argv[1]=="ablation":ablation()
+    if sys.argv[1]=="ratio":ratio_main()
+    elif sys.argv[1]=="ratabl":ablation_ratio()
+    elif sys.argv[1]=="ablation":ablation()
     else:
         m=int(sys.argv[1]);Ks=[int(v) for v in sys.argv[2].split(",")];B=int(sys.argv[3]);steps=int(sys.argv[4]);reps=int(sys.argv[5])
         out={}
