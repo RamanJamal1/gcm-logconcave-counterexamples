@@ -1,2 +1,33 @@
-{"updated":"2026-11-21T21:28:44Z","phase":"startup","running_jobs":[],"agents":["haiku:tracks-summary","sonnet:setup","opus:X1"],
- "best":{"bracket":"14<=m*<=16","certified_orders_exact":[6,7,8,9,10,11,13],"order14":"none","order15":"none","rho15_best":0.948}}
+{
+ "updated": "2026-11-21T21:31:25.310981Z",
+ "phase": "phase1_order13",
+ "running_jobs": [
+  {
+   "pidfile": "tracks/director/gate_m13.pid",
+   "what": "gate on existing m13 cert"
+  }
+ ],
+ "agents": [
+  "sonnet:P1_order13(GPU)",
+  "sonnet:X3_maxmargin(CPU)",
+  "opus:X1"
+ ],
+ "best": {
+  "bracket": "14<=m*<=16",
+  "certified_orders_exact": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   13
+  ],
+  "order14": "none",
+  "order15": "none",
+  "rho15_best": 0.948
+ },
+ "blockers": [
+  "git push 403"
+ ]
+}
