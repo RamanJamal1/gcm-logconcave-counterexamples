@@ -5,3 +5,4 @@
 - Bracket: 14 <= m* <= 16. Goal: exact rational SOS certificate for S_15 >= 0.
 - Delegated: Haiku summary of tracks (notes/tracks_summary.md); Sonnet env setup + prep_sparse for m=13,14,15 (tracks/setup/).
 - Launched X1 (Opus subagent): verify positive-time compactification & explicit C_k (tracks/X1_compactification/).
+- 2026-11-21T21:28:57Z BLOCKER: git push returns HTTP 403 (fine-grained PAT lacks contents:write). Commits kept locally; user must fix token. Will retry periodically.
