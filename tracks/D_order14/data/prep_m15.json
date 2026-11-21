@@ -1,0 +1,14 @@
+{
+  "order": 15,
+  "rows_total": 1039,
+  "rank_numeric": 1039,
+  "cols": 49201,
+  "nnz_selected": 6987430,
+  "dims": [
+    176,
+    135
+  ],
+  "margin": 1e-05,
+  "proved": false,
+  "note": "numeric row selection; exact verifier re-checks the full identity"
+}
