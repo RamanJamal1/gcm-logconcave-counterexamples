@@ -5,7 +5,7 @@ Fourier-series enclosure can promote a candidate to a counterexample.
 """
 import os
 os.environ['OMP_NUM_THREADS']='1';os.environ['OPENBLAS_NUM_THREADS']='1'
-import argparse,json,time,math,multiprocessing,hashlib
+import argparse,json,time,math,multiprocessing,hashlib,heapq
 from pathlib import Path
 from fractions import Fraction
 from concurrent.futures import ProcessPoolExecutor
@@ -17,7 +17,8 @@ ROOT=Path(__file__).resolve().parents[1]
 
 def pool_workers():
  p=ROOT/'checkpoints/certification_workers.json'
- return min(4,max(1,int(json.loads(p.read_text()).get('workers',2)))) if p.exists() else 2
+ cap=max(1,(os.cpu_count() or 4)-2)
+ return min(cap,max(1,int(json.loads(p.read_text()).get('workers',cap)))) if p.exists() else cap
 
 def certify_job(order,params):
  from certify_multifourier_spatial import certify
@@ -26,11 +27,11 @@ def certify_job(order,params):
   with open(os.devnull,'w') as sink,contextlib.redirect_stdout(sink):return certify(order,list(params[:-1]),params[-1])
  except Exception as e:return {'certified':False,'error':repr(e),'parameters':params,'order':order}
 
-def main(seconds=3600,batch=65536,sync=False,state_path='checkpoints/campaign_C.json',resume=True):
+def main(seconds=3600,batch=262144,sync=False,state_path='checkpoints/campaign_C.json',resume=True):
  torch.set_num_threads(1);torch.manual_seed(170617);start=time.time();lastsync=start
  research=json.loads((ROOT/'checkpoints/research_status.json').read_text());witness=json.loads((ROOT/research['negative_witness_certificate']).read_text());order=research['negative_witness_order'];reference=witness['parameters']['amplitudes'];K=len(reference)
  fractions=sorted({Fraction(p,q) for q in range(10,1001) for p in range(1,min(150,q//5)+1) if Fraction(1,100)<=Fraction(p,q)<=Fraction(1,5)})
- values64=torch.tensor([float(f) for f in fractions],device='cuda',dtype=torch.float64);values=values64.float();pool=ProcessPoolExecutor(max_workers=pool_workers(),mp_context=multiprocessing.get_context('spawn'));pending=[];seen=set()
+ values64=torch.tensor([float(f) for f in fractions],device='cuda',dtype=torch.float64);values=values64.float();pool=ProcessPoolExecutor(max_workers=pool_workers(),mp_context=multiprocessing.get_context('spawn'),max_tasks_per_child=32);pending=[];seen=set();queue=[];QMAX=4096
  state={'status':'running','gpu_evaluations':0,'refinement_evaluations':0,'generation':0,'certifications':0,'best_certified':{},'errors':[],'method':'rational multi-harmonic GPU periodic screening; full spatial Arb verification','order':order,'device':torch.cuda.get_device_name(0)}
  path=ROOT/state_path
  if K==3:
@@ -84,24 +85,30 @@ def main(seconds=3600,batch=65536,sync=False,state_path='checkpoints/campaign_C.
   with torch.no_grad():
    coarse=evaluate(elite[:,:K],elite[:,K],order,1024);fine=evaluate(elite[:,:K],elite[:,K],order,2048)
   state['refinement_evaluations']+=len(elite);consistent=torch.isfinite(fine)&(abs(fine-coarse)<=1e-7*torch.maximum(torch.ones_like(fine),abs(fine)))
-  for j in fine.argsort()[:8].tolist():
-   if not consistent[j] or fine[j]>=0:continue
-   original=int(top[j]);a=fractions[int(idx[original])];k=fractions[int(ki[original])]
-   rational_amplitudes=[a]+[Fraction(0) if float(amps[original,l+1])==0 else Fraction(1 if float(Fraction(reference[l+1]))>0 else -1,int(denominators[l][original])) for l in range(K-1)]
+  # Filter on the GPU, then one device-to-host transfer for the best 128 refined elites.
+  sel=fine.argsort()[:128];sel=sel[consistent[sel]&(fine[sel]<0)];orig=top[sel]
+  dens=torch.stack(denominators,1)[orig].tolist() if denominators else [[] for _ in range(len(orig))]
+  signs=[1 if float(Fraction(r))>0 else -1 for r in reference[1:]]
+  for fv,ii,kv,am,dn in zip(fine[sel].tolist(),idx[orig].tolist(),ki[orig].tolist(),amps[orig].tolist(),dens):
+   a=fractions[ii];k=fractions[kv]
+   rational_amplitudes=[a]+[Fraction(0) if am[l+1]==0 else Fraction(signs[l],int(dn[l])) for l in range(K-1)]
    strings=tuple(map(str,rational_amplitudes+[k]));key=(order,strings)
    if key in seen:continue
-   seen.add(key)
-   # Queue is bounded so CPU memory remains independent of campaign duration.
-   if len(pending)>=16:harvest(wait=True)
-   pending.append((pool.submit(certify_job,order,strings),strings,order))
- pool_completed_start=state['certifications']
+   seen.add(key);heapq.heappush(queue,(fv,strings))
+   # Bounded best-first queue: CPU memory stays independent of campaign duration, GPU never waits.
+   if len(queue)>QMAX:queue[:]=heapq.nsmallest(QMAX//2,queue)
+ def feed(order):
+  limit=2*pool_workers()
+  while queue and len(pending)<limit:
+   strings=heapq.heappop(queue)[1];pending.append((pool.submit(certify_job,order,strings),strings,order))
+ lastsave=0
  while time.time()-start<seconds:
-  if state['certifications']-pool_completed_start>=128:
-   harvest(wait=True);pool.shutdown();pool=ProcessPoolExecutor(max_workers=pool_workers(),mp_context=multiprocessing.get_context('spawn'));pool_completed_start=state['certifications'];state['pool_rotations']=state.get('pool_rotations',0)+1;save()
-  run_generation(order);state['generation']+=1;harvest();save()
-  print({k:v for k,v in state.items() if k not in ['errors','rng_state','seen_parameters']},flush=True)
+  run_generation(order);state['generation']+=1;harvest();feed(order)
+  if time.time()-lastsave>=10:
+   state['certification_queue']=len(queue);save();lastsave=time.time()
+   print({k:v for k,v in state.items() if k not in ['errors','rng_state','seen_parameters']},flush=True)
   if time.time()-lastsync>=1500:save('campaign C periodic rationalization checkpoint');lastsync=time.time()
- harvest(wait=True);pool.shutdown();state['status']='bounded_run_complete';save('campaign C complete')
+ harvest(wait=True);pool.shutdown();state['certification_queue']=len(queue);state['status']='bounded_run_complete';save('campaign C complete')
  return state
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--seconds',type=float,default=3600);p.add_argument('--batch',type=int,default=65536);p.add_argument('--sync',action='store_true');p.add_argument('--state',default='checkpoints/campaign_C.json');a=p.parse_args();main(a.seconds,a.batch,a.sync,a.state)
+ p=argparse.ArgumentParser();p.add_argument('--seconds',type=float,default=3600);p.add_argument('--batch',type=int,default=262144);p.add_argument('--sync',action='store_true');p.add_argument('--state',default='checkpoints/campaign_C.json');a=p.parse_args();main(a.seconds,a.batch,a.sync,a.state)

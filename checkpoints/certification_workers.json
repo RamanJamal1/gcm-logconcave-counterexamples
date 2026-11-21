@@ -1,4 +1,4 @@
 {
-  "workers": 2,
-  "reason": "Reserve CPU capacity for three active proof locators and GPU feeding; increase only when proof jobs finish."
+  "workers": 10,
+  "reason": "Thunder A100 instance (12 vCPU): 10 Arb certification workers, 2 cores left for the GPU feeder and OS."
 }
