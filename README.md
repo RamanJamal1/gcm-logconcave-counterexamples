@@ -31,7 +31,9 @@ The convention is Boltzmann entropy `H(p) = integral p log p` and heat generator
 
 - The explicit family of Zou–Fan–Gao–Wang, `f_m ∝ exp(-κx²/2)(1 + a cos x + b cos 2x)` with `a = 2^(-m/4)`, `b = 2^(-m)`, `κ = 8a`, which their paper shows fails only for "sufficiently large m", first fails at order **33**: rigorous Arb series enclosures give `S_M(f_M) > 0` for `6 ≤ M ≤ 32` and `S_M(f_M) < 0` for every evaluated `33 ≤ M ≤ 400` ([data](checkpoints/zou_family_threshold.json), [script](src/zou_threshold.py)).
 
-Read [the research note](paper/draft_note.pdf) ([LaTeX source](paper/draft_note.tex)) for definitions, proofs, analytic error bounds, and limitations. The PDF was rebuilt from the current source on 2026-11-21 (`tectonic -X compile paper/draft_note.tex`, Tectonic 0.17.0). It is still a working draft that needs human review. No novelty or exact-minimality claim is made.
+**Paper:** [`paper/main.pdf`](paper/main.pdf) ([LaTeX source](paper/main.tex)) is the structured manuscript prepared for expert review: main theorems, the certificate method, the analytic arguments, the order-16 counterexample, the Zou-family threshold, and a discussion of orders 14–15. Section 1 states explicitly which steps are machine-checked and which are written arguments needing review. The original research note, [`paper/draft_note.pdf`](paper/draft_note.pdf) ([source](paper/draft_note.tex)), is kept as the detailed computational record.
+
+Read the paper for definitions, proofs, analytic error bounds, and limitations. The PDF was rebuilt from the current source on 2026-11-21 (`tectonic -X compile paper/draft_note.tex`, Tectonic 0.17.0). It is still a working draft that needs human review. No novelty or exact-minimality claim is made.
 
 ## Reproduce the proofs on a CPU
 

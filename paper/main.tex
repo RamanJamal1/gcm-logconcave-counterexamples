@@ -1,0 +1,605 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,geometry,graphicx,enumitem}
+\usepackage[hidelinks]{hyperref}
+\geometry{margin=1in}
+\setlength{\emergencystretch}{2em}
+\allowdisplaybreaks
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{assumption}[theorem]{Assumption}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\He}{\mathrm{He}}
+\newcommand{\repo}{\url{https://github.com/RamanJamal1/gcm-logconcave-counterexamples}}
+
+\title{Signs of Entropy Derivatives along the Heat Flow for Log-Concave Densities:\\
+Exact Certificates through Order Thirteen and a Counterexample at Order Sixteen}
+\author{Raman Jamal\thanks{ORCID: \href{https://orcid.org/0009-0004-7042-8149}{0009-0004-7042-8149}.}}
+\date{Working draft for expert review --- version 0.1.0, November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For a probability density $p$ on the real line let $P_t$ denote the heat semigroup
+and $H(p)=\int p\log p$ the Boltzmann entropy, and set
+$S_m(p)=(-1)^m\partial_t^mH(P_tp)|_{t=0}$. The Gaussian completely monotone
+conjecture asserts $S_m\ge0$ for every $m$. It is false for general densities, and
+it is known to fail also for log-concave densities, but only at an unspecified order
+or at all sufficiently large orders. We study the first failing order
+$m^*=\min\{m:\ S_m(p)<0\text{ for some log-concave }p\}$. Exact rational
+sum-of-squares identities, checked by an independent verifier, show that
+$S_m(p)\ge0$ for every log-concave density at orders $6\le m\le11$ and $m=13$,
+under stated analytic hypotheses; a propagation argument along the heat flow gives
+order $12$. At orders $6\le m\le11$ the identities give the sharp bound
+$S_m(p)\Var(p)^m\ge(m-1)!/2$, with equality only for Gaussians. An explicit
+log-concave density with three Fourier modes has $S_{16}<-3/4$, certified by two
+independent interval-arithmetic computations. Hence $14\le m^*\le16$. We also show
+that the explicit family of Zou, Fan, Gao and Wang first fails at order $33$.
+The value of $m^*$ within the bracket remains open.
+\end{abstract}
+
+\noindent\textbf{Keywords:} entropy, heat flow, Fisher information, log-concave
+density, completely monotone conjecture, sum of squares, computer-assisted proof,
+interval arithmetic.
+
+\noindent\textbf{MSC 2020:} 94A17, 60E15, 35K05, 90C22, 65G20.
+
+\section{Introduction}
+
+\subsection{Background}
+Let $X$ be a real random variable with density $p$, and let $Z$ be an independent
+standard Gaussian. The density of $X+\sqrt tZ$ is $P_tp$, where
+$P_t=e^{t\partial_x^2/2}$ is the heat semigroup with generator $\tfrac12\partial_x^2$.
+Throughout we use the Boltzmann entropy
+\[
+ H(p)=\int_\R p\log p,
+\]
+which is the negative of the differential (Shannon) entropy; all signs below reverse
+under the other convention. De Bruijn's identity~\cite{Stam59} gives
+$\partial_tH(P_tp)=-\tfrac12I(P_tp)$, where $I$ is the Fisher information, and
+Costa's concavity of the entropy power~\cite{Costa85} concerns the second derivative.
+McKean~\cite{McKean66} studied the signs of the higher derivatives in the context of
+Kac's model, and Cheng and Geng~\cite{ChengGeng15} formulated the
+\emph{Gaussian completely monotone conjecture}: with
+\[
+ S_m(p)=(-1)^m\left.\partial_t^mH(P_tp)\right|_{t=0},
+\]
+one has $S_m(p)\ge0$ for all $m\ge1$, i.e.\ $t\mapsto -\partial_tH(P_tp)$ is
+completely monotone. Cheng and Geng verified it in dimension one through order four.
+
+Gu and Sellke~\cite{GuSellke26} disproved the conjecture: an explicit discrete
+measure gives a negative fifth derivative at a positive time. For log-concave inputs
+the signs are known through order five (see~\cite{Wang24} and the discussion
+in~\cite{GuSellke26}), and Gu and Sellke showed, by a backward-propagation argument,
+that the conjecture nevertheless fails for some log-concave density at some
+\emph{unspecified} order. Zou, Fan, Gao and Wang~\cite{ZFGW26} constructed an explicit
+log-concave family $f_m$ with $S_m(f_m)<0$ for all \emph{sufficiently large} $m$,
+without an explicit threshold. This leaves the natural question
+\[
+ m^*:=\min\{m:\ S_m(p)<0\ \text{for some log-concave probability density }p\},
+\]
+for which the results above give $m^*\ge6$.
+
+\subsection{Main results}
+Denote by $\mathcal{LC}$ the smooth, strictly positive, log-concave probability
+densities on $\R$. Since $S_m(p)$ is a derivative at the endpoint $t=0$, we make the
+following convention explicit.
+
+\begin{assumption}[Endpoint regularity]\label{ass:endpoint}
+For $p\in\mathcal{LC}$ and a given order $m$, the function $t\mapsto H(P_tp)$ admits
+an order-$m$ right Taylor expansion at $t=0$; $S_m(p)$ denotes the corresponding
+signed right derivative.
+\end{assumption}
+
+\begin{theorem}[Certified bracket]\label{thm:main}
+\begin{enumerate}[label=(\roman*)]
+\item For every $p\in\mathcal{LC}$, every $t>0$ and every $m\in\{6,\dots,13\}$,
+ $S_m(P_tp)\ge0$. Under Assumption~\ref{ass:endpoint}, also $S_m(p)\ge0$.
+\item The density
+ \[
+ p_{16}(x)=Z^{-1}e^{-x^2/28}\Bigl(1+\tfrac{\cos x}{15}+\tfrac{\cos2x}{40000}
+ -\tfrac{\cos3x}{18000000}\Bigr),
+ \]
+ with the explicit normalizer of Proposition~\ref{prop:witness}, satisfies
+ $(-\log p_{16})''\ge 25777/235206314>10^{-4}$ on $\R$ and $S_{16}(p_{16})<-3/4$.
+\end{enumerate}
+Consequently $14\le m^*\le16$.
+\end{theorem}
+
+\begin{theorem}[Sharp Gaussian bounds]\label{thm:sharp}
+For $p\in\mathcal{LC}$ with variance $v$ and $6\le m\le11$, under the hypotheses of
+Theorem~\ref{thm:main}(i),
+\[
+ S_m(p)\,v^m\ \ge\ \frac{(m-1)!}{2},
+\]
+with equality if and only if $p$ is Gaussian. In particular
+$S_6v^6\ge60$, $S_7v^7\ge360$ and $S_8v^8\ge2520$.
+\end{theorem}
+
+\begin{theorem}[The Zou--Fan--Gao--Wang family]\label{thm:zou}
+Let $f_M\propto e^{-\kappa_Mx^2/2}(1+a_M\cos x+b_M\cos2x)$ with $a_M=2^{-M/4}$,
+$b_M=2^{-M}$ and $\kappa_M=8a_M$. Then $S_M(f_M)>0$ for $6\le M\le32$ and
+$S_M(f_M)<0$ for every $33\le M\le400$ that was evaluated, where members with
+$4\nmid M$ use a rational approximation of $a_M$ (Section~\ref{sec:zou}). Among the
+exact members, $f_{32}$ satisfies the sign condition at order $32$ and $f_{36}$
+violates it at order $36$; with the approximations, the first failing order is $33$.
+\end{theorem}
+
+\subsection{Nature of the proofs}
+Theorem~\ref{thm:main}(i) and Theorem~\ref{thm:sharp} rest on explicit polynomial
+identities in the jet variables $u_j=\partial_x^j\log p$, with rational positive
+definite Gram matrices (Section~\ref{sec:sos}). Each identity is checked by a
+standalone verifier written in the Python standard library, which re-derives the
+entropy polynomial independently and verifies positivity by exact rational Schur
+complements; no floating-point solver output is used as evidence. Theorem~\ref{thm:main}(ii)
+and Theorem~\ref{thm:zou} rest on outward-rounded ball arithmetic
+(Arb~\cite{Johansson17}) with analytic bounds for all truncated tails.
+
+\begin{remark}[What is machine-checked]\label{rem:status}
+The computer verifies (a) the polynomial identities and the positive definiteness of
+the Gram matrices, (b) the global curvature bound for $p_{16}$, and (c) the interval
+enclosures of the entropy derivatives. The passage from an identity to an inequality
+for every $p\in\mathcal{LC}$ uses the analytic arguments of
+Sections~\ref{sec:positive-time}--\ref{sec:propagation} (integrability and
+integration by parts at positive times, the endpoint argument, and downward
+propagation). These are written arguments, not machine-checked, and they are the
+parts of the paper on which expert scrutiny is most needed.
+\end{remark}
+
+\subsection{Organization}
+Section~\ref{sec:prelim} fixes notation and derives the reduced integrands.
+Section~\ref{sec:sos} states the certificate form and derives the sign consequences,
+including the propagation lemma and the sharp bounds. Section~\ref{sec:computation}
+describes how the certificates were found and verified. Section~\ref{sec:witness}
+proves part (ii) of Theorem~\ref{thm:main}, and Section~\ref{sec:zou} proves
+Theorem~\ref{thm:zou}. Section~\ref{sec:logcosh} treats a family with exponential
+tails, and Section~\ref{sec:discussion} discusses the open orders fourteen and fifteen.
+Appendix~\ref{app:formulas} lists reduced integrands and Appendix~\ref{app:series}
+the Fourier-series enclosure used in Sections~\ref{sec:witness}--\ref{sec:zou}.
+
+\section{Preliminaries}\label{sec:prelim}
+
+\begin{proposition}[Scaling and Gaussian values]\label{prop:scaling}
+For $p_a(x)=a^{-1}p(x/a)$, $a>0$, one has $S_m(p_a)=a^{-2m}S_m(p)$. For the centred
+Gaussian of variance $v$, $S_m=(m-1)!/(2v^m)$. Hence $S_m(p)\Var(p)^m$ is scale
+invariant, and no strictly positive universal lower bound for unnormalized $S_m$ exists.
+\end{proposition}
+\begin{proof}
+Heat scaling gives $H(P_tp_a)=H(P_{t/a^2}p)-\log a$. For the Gaussian,
+$H(P_tp)=-\tfrac12\log(2\pi e(v+t))$. Differentiate $m$ times.
+\end{proof}
+
+Write $u_j=\partial_x^j\log p$ and let $D$ be the derivation on polynomials in
+$u_1,u_2,\dots$ with $Du_j=u_{j+1}$, so that $\partial_x[P(u(x))]=(DP)(u(x))$.
+For a polynomial $P$ and sufficiently regular $p$,
+\begin{equation}\label{eq:ibp}
+ \int_\R p\,(DP+u_1P)=\int_\R\partial_x(pP)=0 .
+\end{equation}
+We call $DP+u_1P$ an \emph{integration-by-parts (IBP) identity}. Give $u_j$ weight
+$j$; then $\partial_t^mH(P_tp)|_{t=0}$ is the expectation of a polynomial of weighted
+degree $2m$.
+
+\begin{proposition}[Reduced derivative recurrence]\label{prop:recurrence}
+For smooth densities with Gaussian decay and bounded higher log-derivatives, if $F$
+is a polynomial in $u_2,u_3,\dots$ then $\partial_t\E_pF=\E_p\mathcal LF$, where
+\[
+ \mathcal LF=-\frac12\sum_{i,j\ge2}F_{ij}\,u_{i+1}u_{j+1}
+ +\frac12\sum_{i\ge2}F_i\sum_{k=1}^{i-1}\binom ik u_{k+1}u_{i-k+1},
+\]
+with $F_i=\partial F/\partial u_i$. With $F_2=u_2^2/2$ and $F_m=\mathcal L^{m-2}F_2$
+one has $\partial_t^mH(P_tp)|_{t=0}=\E_pF_m$, and $F_m$ involves derivatives of order
+at most $m$.
+\end{proposition}
+\begin{proof}
+The heat equation gives $\partial_t\log p=(u_2+u_1^2)/2$. Differentiating $u_i$ in time
+produces a diffusion term, a drift term $u_1u_{i+1}$, and the quadratic sum displayed.
+Differentiating the expectation contributes $\tfrac12\E_p\partial_x^2F$. Applying
+\eqref{eq:ibp} in the form $\E_p(\partial_x^2F+u_1\partial_xF)=0$ eliminates the
+drift and combines the second-order terms into $-\tfrac12\sum F_{ij}u_{i+1}u_{j+1}$.
+Gaussian tails justify the boundary limits; Section~\ref{sec:positive-time} removes
+this restriction at positive times.
+\end{proof}
+The integrands $F_6,F_7,F_8$ are listed in Appendix~\ref{app:formulas}. Note that
+$S_m(p)=(-1)^m\E_pF_m$.
+
+\section{Sum-of-squares certificates and their consequences}\label{sec:sos}
+
+\subsection{The certificate form}
+For $r\ge1$ let $v_r$ be a vector of monomials of weighted degree $r$ in the $u_j$.
+
+\begin{definition}\label{def:cert}
+An \emph{order-$m$ certificate} consists of symmetric rational matrices
+$Q_0\succ0$, $Q_1\succ0$, rational numbers $\lambda_k$ and monomials $P_k$ of weighted
+degree $2m-1$ such that, as polynomials,
+\begin{equation}\label{eq:cert}
+ (-1)^mF_m=v_m^{\mathsf T}Q_0v_m+(-u_2)\,v_{m-1}^{\mathsf T}Q_1v_{m-1}
+ -\sum_k\lambda_k\,(DP_k+u_1P_k).
+\end{equation}
+A \emph{sharp certificate} replaces the left side by
+$(-1)^mF_m-\tfrac12(m-1)!\,(-u_2)^m$, with $v_r$ restricted to monomials containing
+at least one $u_j$ with $j\ge3$.
+\end{definition}
+
+\begin{proposition}[Sign from a certificate]\label{prop:sign}
+Suppose an order-$m$ certificate exists, and let $p\in\mathcal{LC}$ be such that
+$S_m(p)=(-1)^m\int pF_m$, every term of \eqref{eq:cert} is $p$-integrable, and
+\eqref{eq:ibp} holds for each $P_k$. Then $S_m(p)\ge0$.
+\end{proposition}
+\begin{proof}
+Integrate \eqref{eq:cert} against $p$. The IBP terms vanish. Log-concavity gives
+$-u_2\ge0$, and positive definiteness makes both remaining terms pointwise
+nonnegative.
+\end{proof}
+
+Certificates exist at orders $6,\dots,11$ and $13$, and sharp certificates at orders
+$6,\dots,11$ (Table~\ref{tab:certs}).
+
+\subsection{Positive heat times}\label{sec:positive-time}
+Let $X\sim p\in\mathcal{LC}$, $Y=X+\sqrt tZ$ with $t>0$, and let $p_t$ be the density of
+$Y$. With $\He_k$ the probabilists' Hermite polynomials,
+\[
+ \frac{p_t^{(k)}(y)}{p_t(y)}=t^{-k/2}\,\E\bigl[(-1)^k\He_k(Z)\bigm| Y=y\bigr].
+\]
+By conditional Jensen, for every finite $q\ge1$,
+\[
+ \int p_t\left|\frac{p_t^{(k)}}{p_t}\right|^q\le t^{-kq/2}\,\E|\He_k(Z)|^q<\infty .
+\]
+Each $u_j$ is a polynomial in the ratios $p_t^{(k)}/p_t$, $k\le j$, so by H\"older's
+inequality every polynomial in the $u_j$ is $p_t$-integrable, locally uniformly in
+$t>0$. For a compactly supported cutoff $\chi_R\to1$ with $\|\chi_R'\|_\infty=O(R^{-1})$,
+\[
+ \int\chi_R\,p_t\,(DP+u_1P)=-\int\chi_R'\,p_tP\longrightarrow0,
+\]
+which justifies \eqref{eq:ibp} for $p_t$ without pointwise boundary estimates.
+Gaussian convolution preserves log-concavity. Log-concave densities have moments of
+all orders; a bounded set carrying positive mass gives a quadratic lower bound for
+$\log p_t$, and the Gaussian kernel gives an upper bound. Together with the
+conditional-moment estimates these justify differentiating the entropy and the
+recurrence of Proposition~\ref{prop:recurrence} on compact subintervals of $(0,\infty)$.
+Applying Proposition~\ref{prop:sign} to $p_t$ gives $S_m(P_tp)\ge0$ for all $t>0$ at
+every order with a certificate.
+
+\subsection{The endpoint}\label{sec:endpoint}
+Under Assumption~\ref{ass:endpoint}, continuity and the positive-time sign give
+$(-1)^m\Delta_h^mH(P_\cdot p)(0)\ge0$ for the forward differences with step $h>0$;
+dividing by $h^m$ and letting $h\downarrow0$ gives $S_m(p)\ge0$. Smoothness of $p$ in
+space is not used as a substitute for the existence of the time derivative.
+
+\subsection{Downward propagation}\label{sec:propagation}
+\begin{lemma}\label{lem:propagation}
+If $S_{r+1}(P_sp)\ge0$ for all $s>0$, then $S_r(P_tp)\ge0$ for all $t>0$.
+Consequently a certificate at order $M$ gives the sign at every order $r\le M$.
+\end{lemma}
+\begin{proof}
+At positive times the conditional-Hermite bounds and weighted homogeneity give
+$|S_r(P_tp)|\le C_rt^{-r}$, so $S_r(P_tp)\to0$ as $t\to\infty$. Since
+$\partial_tS_r(P_tp)=-S_{r+1}(P_tp)$,
+\[
+ S_r(P_tp)=\int_t^\infty S_{r+1}(P_sp)\,ds\ \ge0 .
+\]
+Induct downward and apply the endpoint argument.
+\end{proof}
+Applied with $M=13$, Lemma~\ref{lem:propagation} supplies order $12$, completing
+Theorem~\ref{thm:main}(i). A sharp variance bound at order $M$ propagates in the same
+way, because $\int_t^\infty (M-1)!/[2(v+s)^M]\,ds=(M-2)!/[2(v+t)^{M-1}]$.
+
+\subsection{Sharp bounds}
+\begin{proof}[Proof of Theorem~\ref{thm:sharp}]
+Integrating the sharp identity gives $S_m\ge\tfrac12(m-1)!\,\E[(-u_2)^m]$. Since
+$-u_2\ge0$, Jensen's inequality gives $\E[(-u_2)^m]\ge(\E[-u_2])^m=I(p)^m$, using
+$\E[-u_2]=\E[u_1^2]=I(p)$ by \eqref{eq:ibp}. The score identity
+$\E[(X-\E X)u_1(X)]=-1$ and Cauchy--Schwarz give $vI(p)\ge1$, so
+$S_mv^m\ge(m-1)!/2$. For a Gaussian $u_j=0$ for $j\ge3$ and equality holds throughout.
+Conversely, equality forces equality in the score Cauchy--Schwarz inequality, so
+$u_1(x)=-(x-\E X)/v$ almost everywhere and $p$ is Gaussian. Quantitatively, if
+$S_mv^m\le\tfrac12(m-1)!(1+\varepsilon)$ then
+\[
+ 0\le vI(p)-1\le(1+\varepsilon)^{1/m}-1,\qquad
+ \E\Bigl[\Bigl(\sqrt v\,u_1(X)+\tfrac{X-\E X}{\sqrt v}\Bigr)^2\Bigr]=vI(p)-1,
+\]
+so near-minimizers are close to Gaussian in relative score. The positive-time and
+endpoint extensions apply as before, with $v$ replaced by $v+t$ at time $t$.
+\end{proof}
+
+\section{Computation and verification of the certificates}\label{sec:computation}
+The certificates were found by a standard numerical-then-exact procedure
+(cf.~\cite{Parrilo03,PeyrlParrilo08}).
+\begin{enumerate}[label=(\arabic*)]
+\item \emph{Reduction.} Using \eqref{eq:ibp}, the score $u_1$ is eliminated, which
+ replaces \eqref{eq:cert} by a linear system on the Gram entries in the quotient
+ by the IBP identities.
+\item \emph{Numerical location.} A semidefinite program in that quotient is solved
+ numerically (SDPA~\cite{SDPA03}, including double-double precision at order 13).
+ Its output is used only as a seed.
+\item \emph{Exact reconstruction.} The seed is rounded to rationals and repaired so
+ that the linear system holds exactly; the IBP coefficients $\lambda_k$ and monomials
+ $P_k$ are then recovered by exact elimination.
+\item \emph{Independent verification.} A verifier using only the Python standard
+ library re-derives $F_m$ from the recurrence, checks the identity \eqref{eq:cert}
+ coefficient by coefficient, checks that every listed term is an IBP identity, and
+ proves $Q_0,Q_1\succ0$ by exact rational Schur complements. At order 13 positivity
+ was also checked by rational characteristic-polynomial coefficients and by
+ 200-digit Arb Schur complements.
+\end{enumerate}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{rccr}
+\toprule
+order $m$ & type & Gram sizes $(Q_0,Q_1)$ & IBP terms \\
+\midrule
+6 & sign & $(11,7)$ & 37\\
+7 & sign & $(15,11)$ & 71\\
+8 & sign & $(22,15)$ & 131\\
+9 & sign & $(30,22)$ & 230\\
+10 & sign & $(42,30)$ & 393\\
+11 & sign & $(56,42)$ & 653\\
+13 & sign & $(101,77)$ & 1686\\
+\midrule
+6 & sharp & $(7,4)$ & 37\\
+7 & sharp & $(11,7)$ & 71\\
+8 & sharp & $(17,11)$ & 131\\
+9 & sharp & $(25,17)$ & 182\\
+10 & sharp & $(36,25)$ & 332\\
+11 & sharp & $(50,36)$ & 578\\
+\bottomrule
+\end{tabular}
+\caption{Exact rational certificates. ``Sign'' certificates have the form
+\eqref{eq:cert}; ``sharp'' certificates subtract $\tfrac12(m-1)!(-u_2)^m$.
+Files: \texttt{certs/exact\_sos\_m6--8.json}, \texttt{exact\_quotient\_m9--11,13.json},
+\texttt{exact\_mckean\_m6--8.json}, \texttt{exact\_mckean\_quotient\_m9--11.json}.}
+\label{tab:certs}
+\end{table}
+
+No order-12 matrix certificate is used: order 12 follows from order 13 by
+Lemma~\ref{lem:propagation}. The standard-library verification of the order-13
+certificate takes about half an hour on one CPU core.
+
+\section{A log-concave counterexample at order sixteen}\label{sec:witness}
+
+\begin{proposition}\label{prop:witness}
+Let $a=(a_1,a_2,a_3)=(1/15,\,1/40000,\,-1/18000000)$, $\kappa=1/14$, and
+\[
+ p_{16}(x)=Z^{-1}e^{-\kappa x^2/2}\Bigl(1+\sum_{k=1}^3a_k\cos kx\Bigr),\qquad
+ Z=\sqrt{28\pi}\Bigl(1+\tfrac{e^{-7}}{15}+\tfrac{e^{-28}}{40000}
+ -\tfrac{e^{-63}}{18000000}\Bigr).
+\]
+Then $p_{16}$ is a smooth positive probability density,
+\[
+ \min_{x\in\R}(-\log p_{16})''(x)=\frac{25777}{235206314}>10^{-4},
+\]
+and
+\[
+ S_{16}(p_{16})\in[-0.7697125088477879460876,\,-0.7697125088477879460875].
+\]
+\end{proposition}
+
+\begin{proof}[Computer-assisted proof]
+Positivity follows from $\sum|a_k|<1$, and $Z$ from Gaussian Fourier integration.
+\emph{Curvature.} With $c=\cos x$ and
+$g(c)=1+a_1c+a_2(2c^2-1)+a_3(4c^3-3c)$, the periodic part of $(\log p_{16})''$ is
+$H/g^2$ with $H(c)=((1-c^2)g''-cg')g-(1-c^2)g'^2$. The numerator $N=H'g-2Hg'$ of its
+derivative, written as $N(c)=\sum_jN_jc^j$, has in exact rational arithmetic
+$N_0<-3/50$ and $\sum_{j\ge1}|N_j|<1/100$; since $|c|^j\le1$, $N(c)<-1/20$ on $[-1,1]$. So the
+curvature is minimized at $c=-1$, where it equals $25777/235206314$. Since the
+curvature is $\kappa$ minus a $2\pi$-periodic function, this bound holds on all of $\R$.
+\emph{Entropy derivative, first method.} With $z=e^{ix}$, the multiplier is
+$G(z)/z^3$ for a degree-six polynomial $G$, and the signed order-16 integrand is
+$N(z)/G(z)^{32}$ for an exact rational polynomial $N$. Reciprocal symmetry turns it
+into a polynomial in $\cos x$. Arb integrates it at 200 digits on quarter-unit
+subintervals of $[0,120]$; an analytic Gaussian-tail bound covers $|x|>120$. This gives
+the stated interval.
+\emph{Second, independent method.} Differentiating the exact heat evolution
+$P_t\bigl(e^{-\kappa x^2/2}e^{inx}\bigr)=d^{-1/2}e^{-\kappa x^2/(2d)}e^{-n^2t/(2d)}e^{inx/d}$,
+$d=1+\kappa t$ (\cite[Lemma~3]{ZFGW26}), with Arb complex Taylor series, without the
+score recurrence, gives
+$S_{16}(p_{16})\in[-0.769712508847787946094,\,-0.769712508847787946086]$.
+For its tail, on the complex-time disc $|t|\le\rho/(1+x^2)$ with $\rho=1/100$ and
+$\epsilon=\kappa\rho$ the Fourier multiplier stays within distance
+$A=\sum_j|a_j|\exp\bigl(\tfrac{j^2\rho}{2(1-\epsilon)}\bigr)
+\cosh\bigl(\tfrac{j\kappa\rho}{2(1-\epsilon)}\bigr)<1$ of one, and Cauchy's estimate
+bounds the order-$m$ entropy-density derivative by
+$m!\rho^{-m}(1+x^2)^mCe^{-\beta x^2}(C_0+C_2x^2)$ with explicit constants
+$C=(1+A)/\sqrt{1-\epsilon}$, $\beta=\kappa/[2(1+\epsilon)]$,
+$C_0=-\tfrac12\log(1-\epsilon)-\log(1-A)$ and $C_2=\kappa/[2(1-\epsilon)]$.
+Both intervals agree and are strictly negative.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Part (i) is Proposition~\ref{prop:sign} with Sections~\ref{sec:positive-time}--\ref{sec:propagation}
+and Table~\ref{tab:certs}. Part (ii) is Proposition~\ref{prop:witness}. Hence no
+log-concave density fails at an order $\le13$, while $p_{16}$ fails at order $16$.
+\end{proof}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=.85\textwidth]{witness16.pdf}
+\caption{The order-sixteen density relative to its Gaussian envelope, and the
+curvature of its potential. The plot is illustrative; the curvature bound and the
+sign of $S_{16}$ are established by the certificates.}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{rrc}
+\toprule
+$m$ & $S_m(p_{16})$ (rounded) & sign \\
+\midrule
+6 & $0.0058218676$ & $+$\\
+7 & $0.010328902$ & $+$\\
+8 & $0.019558949$ & $+$\\
+12 & $0.41753255$ & $+$\\
+13 & $0.9490475$ & $+$\\
+14 & $2.0231416$ & $+$\\
+15 & $3.2947621$ & $+$\\
+16 & $-0.76971251$ & $-$\\
+17 & $-36.171892$ & $-$\\
+18 & $-31.18273$ & $-$\\
+19 & $3700.7193$ & $+$\\
+20 & $75350.4$ & $+$\\
+\bottomrule
+\end{tabular}
+\caption{Entropy derivatives of $p_{16}$. Every sign is certified by a rigorous Arb
+enclosure (second method of Proposition~\ref{prop:witness}); values are rounded
+midpoints. Enclosures: \texttt{certs/witness\_order\_table\_paired15/}. The density
+fails exactly at orders 16--18 among those listed.}
+\label{tab:witness}
+\end{table}
+
+\begin{remark}[A two-mode witness at order seventeen]
+The two-mode density $p\propto e^{-x^2/36}(1+\cos x/20+\cos2x/100000)$ satisfies
+$(-\log p)''>1/400$ and $S_{17}(p)<-3/20$, with two independent enclosures
+(Appendix~\ref{app:series} and a spatial computation) agreeing to about $10^{-15}$.
+Numerically, two-mode families of this type do not reach order sixteen; the third
+mode is what lowers the threshold by one.
+\end{remark}
+
+\section{The Zou--Fan--Gao--Wang family at finite order}\label{sec:zou}
+Zou, Fan, Gao and Wang~\cite{ZFGW26} prove that $f_m$ (Theorem~\ref{thm:zou})
+violates the sign condition for all sufficiently large $m$, with
+$(-1)^mH^{(m)}_{f_m}(0)=-\tfrac{11}{96}\beta^m+o(\beta^m)$, $\beta=3/(2\sqrt2)$, but
+without an explicit threshold.
+
+\begin{proposition}\label{prop:zou}
+For each $6\le M\le400$, evaluate the member $f_M$ at its own order $M$, using the
+exact parameters when $4\mid M$ and, otherwise, a rational $a_M$ within $10^{-12}$ of
+$2^{-M/4}$ (still an admissible log-concave density), with $b_M=2^{-M}$ and
+$\kappa_M=8a_M$. The rigorous enclosure of Appendix~\ref{app:series} gives
+$S_M(f_M)>0$ for $6\le M\le32$ and $S_M(f_M)<0$ for every evaluated
+$33\le M\le400$.
+\end{proposition}
+For $M\ge165$ not divisible by four the rational approximation underflowed and
+those members were skipped; all exact members $f_{4k}$, $k\le100$, were evaluated.
+The exact members give $S_{32}(f_{32})>0$ and $S_{36}(f_{36})<0$. The enclosures are in
+\texttt{checkpoints/zou\_family\_threshold.json}. The family's first failing order,
+thirty-three, is seventeen above that of $p_{16}$.
+
+\section{A family with exponential tails}\label{sec:logcosh}
+\begin{proposition}
+For $p_{\alpha,\beta}(x)\propto e^{\beta x}\cosh(x)^{-\alpha}$ with $\alpha>0$ and
+$|\beta|<\alpha$, one has $S_m(p_{\alpha,\beta})>0$ for every $2\le m\le17$.
+\end{proposition}
+\begin{proof}
+Here $V''=\alpha\operatorname{sech}^2x>0$, all higher log-derivatives are bounded, and
+exponential tails justify the differentiation. Put $T=\tanh X$; then $(1+T)/2$ is
+beta-distributed with parameters $(\alpha\pm\beta)/2$, and the moments $M_k=\E T^k$
+satisfy $M_0=1$, $M_1=\beta/\alpha$, $M_{k+1}=(\beta M_k+kM_{k-1})/(\alpha+k)$. The
+score derivatives of order at least two are $\alpha$ times polynomials in $T$.
+Substituting into the entropy recurrence, multiplying by
+$(\alpha)_{2m}=\prod_{j<2m}(\alpha+j)$ and setting $s=1-\beta^2/\alpha^2\in(0,1]$
+gives $(\alpha)_{2m}S_m=\sum_i\alpha^i\sum_kb_{m,i,k}\binom{n_i}ks^k(1-s)^{n_i-k}$
+with exact rational $b_{m,i,k}\ge0$ and, for each $m$, a strictly positive endpoint
+coefficient; an independent verifier checks every identity and sign exactly.
+\end{proof}
+This concerns this family only and does not improve the lower bound for $m^*$.
+
+\section{Discussion: the orders fourteen and fifteen}\label{sec:discussion}
+The remaining question is whether $m^*$ equals $14$, $15$ or $16$. By
+Lemma~\ref{lem:propagation}, an order-$15$ certificate alone would prove $m^*=16$.
+
+\emph{Certificates.} The certificate SDPs grow quickly: at order 14 the quotient
+system has 708 independent constraints and Gram blocks of sizes 135 and 101; at
+order 15, 1039 constraints and blocks of sizes 176 and 135. Double-precision
+interior-point and first-order solvers stall on these instances. We found no
+infeasibility certificate (Farkas ray) at order 14, which suggests ill-conditioning
+rather than nonexistence, but neither order is settled.
+
+\emph{Numerical evidence (not proof).} For densities $e^{-\kappa x^2/2}r(x)$ with
+trigonometric $r$, the exact heat evolution reduces $S_m$, up to Gaussian-filter
+terms of size $e^{-1/(2\kappa)}$, to $\tfrac12(m-1)!\kappa^m$ plus a sum over
+Fourier ``energy levels'' $d$ of the periodic part, each weighted by a positive
+kernel. Negativity requires a negative level, such as the cubic term
+$-\tfrac18a_1^2a_2$, to outweigh the positive level $\tfrac14a_1^2$, whose weight
+is fixed by the log-concavity constraint $\kappa\ge\max(\log r)''$. Searches over
+several families (cosine sums with up to eight modes, incommensurate frequencies,
+localized wave packets on non-Gaussian convex bases, and piecewise-linear
+log-densities at positive time) found no density with $S_{15}<0$; the closest
+reached about $95\%$ of the curvature margin required. This is consistent with, but
+does not prove, the conjecture $m^*=16$.
+
+\section*{Data and code availability}
+All certificates, verification programs and data are at \repo{} (code under the MIT
+licence; text, certificates and data under CC~BY~4.0). The README lists the commands
+that reproduce every verification on a CPU. The standalone verifier
+\texttt{src/verify\_sos\_standalone.py} reports failures through Python
+\texttt{assert} statements and must therefore be run without the \texttt{-O} flag.
+
+\section*{Acknowledgements and use of AI}
+This work made extensive use of AI assistants (Anthropic's Claude models, via Claude
+Code) to write and run the software, including the symbolic computations, numerical
+searches and semidefinite solvers that produced the certificates and counterexamples,
+and to help draft the text. All certificates are verified by independent exact
+rational or rigorous interval-arithmetic checkers included with the paper. The author
+takes full responsibility for the content.
+
+\appendix
+\section{Reduced integrands}\label{app:formulas}
+\input{formulas.tex}
+
+\section{Rigorous Fourier-series enclosure}\label{app:series}
+For $p\propto e^{-\kappa x^2/2}(1+a\cos x+b\cos2x)$, set $d=1+\kappa t$,
+$\tau=t/d$ and $r(\tau,y)=1+ae^{-\tau/2}\cos y+be^{-2\tau}\cos2y$. Expand
+$(1+u)\log(1+u)=u+\sum_{n\ge2}\frac{(-1)^n}{n(n-1)}u^n$. A term $a^pb^q$ with
+$p+q=n$ has time exponent $L=(p+4q)/2$; Gaussian averaging of Fourier mode $k$
+multiplies it by $e^{-k^2/(2\kappa)}e^{-(L-k^2/2)\tau}$. The signed order-$m$ time
+derivative of $e^{-B\tau(t)}$ is the exact polynomial
+\[
+ T_m(B,\kappa)=\sum_{j=0}^{m-1}\frac{m!}{(m-j)!}\binom{m-1}{j}\kappa^jB^{m-j},
+\]
+and the zero-mode coefficient of $\cos^py\cos^q2y$ is
+$2^{-n}\sum_{j}\binom qj\binom p{(p+2q-4j)/2}$ (zero for odd $p$). With
+$r_0=|a|+|b|$, the degree-$n$ contributions are bounded by $r_0^n(2n+m\kappa)^m$;
+after truncation at $N$ the tail is at most
+\[
+ \frac{(2+m\kappa)^mr_0^{N+1}(N+1)^m}{1-r_0(1+1/(N+1))^m}
+\]
+when the denominator is positive, and omitting Fourier modes $|k|>K$ costs at most
+$e^{-y_0/\kappa}(2N+y_0+m\kappa)^m\,r_0^2/(1-r_0)$, $y_0=(K+1)^2/2$. With
+$\Xi=1+ae^{-1/(2\kappa)}+be^{-2/\kappa}$ the result is
+$\tfrac12(m-1)!\kappa^m+(\text{finite sum}+M_m)/\Xi$, where
+$M_m=m!\kappa^{m-1}(\tfrac a2e^{-1/(2\kappa)}+2be^{-2/\kappa})$, with both error
+bounds divided by $\Xi$. All arithmetic is outward-rounded Arb at 100--200 digits.
+Implementation: \texttt{src/certify\_fourier\_series.py}.
+
+\begin{thebibliography}{99}
+\bibitem{ChengGeng15} F.~Cheng and Y.~Geng, Higher order derivatives in Costa's
+entropy power inequality, \emph{IEEE Trans.\ Inform.\ Theory} \textbf{61} (2015),
+no.~11, 5892--5905.
+\bibitem{Costa85} M.~H.~M.~Costa, A new entropy power inequality,
+\emph{IEEE Trans.\ Inform.\ Theory} \textbf{31} (1985), no.~6, 751--760.
+\bibitem{GuSellke26} Y.~Gu and M.~Sellke, A counterexample to the Gaussian completely
+monotone conjecture, arXiv:2605.11656 (2026).
+\bibitem{Johansson17} F.~Johansson, Arb: efficient arbitrary-precision
+midpoint-radius interval arithmetic, \emph{IEEE Trans.\ Comput.} \textbf{66} (2017),
+no.~8, 1281--1292.
+\bibitem{McKean66} H.~P.~McKean, Jr., Speed of approach to equilibrium for Kac's
+caricature of a Maxwellian gas, \emph{Arch.\ Rational Mech.\ Anal.} \textbf{21}
+(1966), 343--367.
+\bibitem{Parrilo03} P.~A.~Parrilo, Semidefinite programming relaxations for
+semialgebraic problems, \emph{Math.\ Program.} \textbf{96} (2003), 293--320.
+\bibitem{PeyrlParrilo08} H.~Peyrl and P.~A.~Parrilo, Computing sum of squares
+decompositions with rational coefficients, \emph{Theoret.\ Comput.\ Sci.}
+\textbf{409} (2008), 269--281.
+\bibitem{SDPA03} M.~Yamashita, K.~Fujisawa and M.~Kojima, Implementation and
+evaluation of SDPA~6.0 (SemiDefinite Programming Algorithm~6.0),
+\emph{Optim.\ Methods Softw.} \textbf{18} (2003), 491--505.
+\bibitem{Stam59} A.~J.~Stam, Some inequalities satisfied by the quantities of
+information of Fisher and Shannon, \emph{Inform.\ Control} \textbf{2} (1959), 101--112.
+\bibitem{Wang24} G.~Wang, A higher-order Otto calculus approach to the Gaussian
+completely monotone conjecture, arXiv:2408.13957.
+\bibitem{ZFGW26} J.~Zou, L.~Fan, J.~Gao and J.~Wang, An explicit family of
+log-concave counterexamples to the Gaussian completely monotone conjecture,
+arXiv:2608.30275 (2026).
+\end{thebibliography}
+\end{document}

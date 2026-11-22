@@ -29,6 +29,7 @@ personally; the rest can be prepared in the repository.
 - [ ] Decide the headline result. With the current state: the bracket **14 ≤ m* ≤ 16** with explicit certificates and
       witness, plus the certified Zou-family threshold **m₀ = 33**. If an order-15 certificate is later verified, the
       headline becomes **m* = 16**.
+- [x] Structured manuscript `paper/main.tex` (introduction, theorems, method, proofs, discussion, bibliography); please double-check the bibliographic details.
 - [ ] Add the AI-use disclosure (see `AUTHORSHIP_AND_AI_DISCLOSURE.md`), a data/code availability statement pointing to
       the archived release (DOI), and acknowledgements.
 - [ ] Remove internal or automation language from the text (for example "campaign", "briefing", automated status notes).
