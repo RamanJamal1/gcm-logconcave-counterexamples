@@ -13,7 +13,7 @@ def report(state_path,post=False):
  for m in ['6','7','8']:
   e=s['best'].get(m);text.append(f"| {m} | {e['normalized'] if e else 'not evaluated'} | numerical, uncertified |")
  text+=['','Parameters are in checkpoints/elite_m*.json. Formula validation is in certs/formula_tests.json.','',f'Certification records: {json.dumps(certs)}','',f"Recorded errors: {json.dumps(s.get('errors',[]))}",'','A finite unsuccessful search proves no universal lower bound. Even a certified order-7 or order-8 violation would not determine minimality without lower-order theorems.']
- path=ROOT/'MORNING_BRIEFING.md';path.write_text('\n'.join(text)+'\n')
+ path=ROOT/'archive/process-records/MORNING_BRIEFING.md';path.write_text('\n'.join(text)+'\n')
  if post:
   receipt=ROOT/'certs/github_issue.json'
   if receipt.exists():raise RuntimeError('Issue receipt exists; inspect before posting again')

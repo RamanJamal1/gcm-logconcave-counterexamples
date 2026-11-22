@@ -14,11 +14,11 @@ def verify(path,dps=200):
  ctx.dps=dps;ctx.threads=1;records=[]
  def interval_positive(matrix):
   exact=[[Fraction(v) for v in row] for row in matrix];n=len(exact)
-  assert all(len(row)==n for row in exact)
-  assert all(exact[i][j]==exact[j][i] for i in range(n) for j in range(n))
+  independent.require(n>0 and all(len(row)==n for row in exact),'Gram matrix is not square')
+  independent.require(all(exact[i][j]==exact[j][i] for i in range(n) for j in range(n)),'Gram matrix is not symmetric')
   a=[[arb(v.numerator)/v.denominator for v in row] for row in exact];pivots=[]
   for k in range(n):
-   pivot=a[k][k];assert pivot>0,('interval pivot not proved positive',k,str(pivot));pivots.append(str(pivot))
+   pivot=a[k][k];independent.require(pivot>0,lambda:('interval pivot not proved positive',k,str(pivot)));pivots.append(str(pivot))
    for i in range(k+1,n):
     ratio=a[i][k]/pivot
     for j in range(i,n):a[i][j]-=ratio*a[j][k];a[j][i]=a[i][j]

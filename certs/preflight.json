@@ -10,7 +10,7 @@
     ],
     "returncode": 0,
     "stdout": "",
-    "stderr": "github.com\n  \u2713 Logged in to github.com as returnedlegend (/home/ubuntu/.config/gh/hosts.yml)\n  \u2713 Git operations for github.com configured to use https protocol.\n  \u2713 Token: *******************"
+    "stderr": "github.com\n  \u2713 Logged in to github.com as [redacted-github-account] (/home/ubuntu/.config/gh/hosts.yml)\n  \u2713 Git operations for github.com configured to use https protocol.\n  \u2713 Token: *******************"
   },
   "github_identity": {
     "command": [
@@ -21,7 +21,7 @@
       ".login"
     ],
     "returncode": 0,
-    "stdout": "returnedlegend",
+    "stdout": "[redacted-github-account]",
     "stderr": ""
   },
   "github_network": {
@@ -71,7 +71,7 @@
       "origin"
     ],
     "returncode": 0,
-    "stdout": "https://github.com/returnedlegend/gcm-logconcave-counterexamples.git",
+    "stdout": "https://github.com/[redacted-github-account]/gcm-logconcave-counterexamples.git",
     "stderr": ""
   },
   "packages": {

@@ -31,7 +31,7 @@ def certify(m,amplitude_strings,k_s,L=120,dps=200):
    if power:p*=R[j]**power
   N+=p
  aa=list(map(ball,amplitudes));kk=ball(k);center=2*K*m
- assert all(N[j]==N[2*center-j] for j in range(center+1)), 'Expected reciprocal numerator'
+ if not all(N[j]==N[2*center-j] for j in range(center+1)):raise ArithmeticError('Expected reciprocal numerator')
  cheb=[fmpq_poly([1]),z];C=fmpq_poly([N[center]])
  for j in range(1,center+1):
   if j>=2:cheb.append(2*z*cheb[-1]-cheb[-2])
