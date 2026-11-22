@@ -7,20 +7,24 @@
 \newtheorem{proposition}{Proposition}
 \newtheorem{theorem}{Theorem}
 \title{Log-Concave Entropy Derivatives: Exact Certificates through Order Thirteen and a Counterexample at Order Sixteen}
-\author{Computational research record}
-\date{November 17, 2026 --- provisional during computation}
+\author{Raman Jamal}
+\date{Working draft, version 0.1.0 --- November 21, 2026}
 \begin{document}
 \maketitle
 \begin{abstract}
-We describe reduced entropy-derivative formulas, constrained density families,
-and a mixed-precision computational search at orders six, seven, and eight.
-The formulas are independently checked against high-precision heat-convolution
-finite differences. Rigorous finite-interval integration is combined with
-analytic tail bounds and global convexity estimates. Exact rational sum-of-squares identities additionally yield the sharp Gaussian
-lower bounds at orders six through eleven under the stated analytic hypotheses.
-An additional exact order-thirteen certificate, together with downward propagation along heat flow, establishes the nonnegative signs through order thirteen.
-This document is an ongoing-results record: an explicit order-16 witness is certified, with an independently double-checked order-17 example, while the exact minimal
-order remains unresolved.
+We study the signs of the higher time-derivatives
+$S_m(p)=(-1)^m\partial_t^mH(P_tp)|_{t=0}$ of Boltzmann entropy along the heat
+flow for log-concave densities $p$ on the real line, and the first order $m^*$
+at which a negative value can occur. Exact rational sum-of-squares identities,
+checked by an independent verifier, show that $S_m(p)\ge0$ for every
+log-concave density at orders six through eleven and thirteen, under the stated
+analytic hypotheses; downward propagation along the heat flow then gives order
+twelve. At orders six through eleven the identities also give the sharp
+Gaussian bound $S_m(p)\operatorname{Var}(p)^m\ge(m-1)!/2$. An explicit
+log-concave density with three Fourier modes has $S_{16}<-3/4$, certified by
+two independent interval-arithmetic computations. Hence $14\le m^*\le16$. We
+also certify that the explicit family of Zou, Fan, Gao and Wang first fails at
+order thirty-three. The value of $m^*$ within the bracket remains open.
 \end{abstract}
 \section{Question and conventions}
 Throughout, $P_t=e^{t\partial_x^2/2}$ and
@@ -132,15 +136,39 @@ bound, is accepted as a counterexample.
 
 \input{explicit_upper_bound.tex}
 
+\section{The explicit family of Zou, Fan, Gao and Wang at finite order}
+The family $f_m\propto e^{-\kappa_mx^2/2}(1+a_m\cos x+b_m\cos 2x)$ with
+$a_m=2^{-m/4}$, $b_m=2^{-m}$ and $\kappa_m=8a_m$ is shown in \cite{zou} to
+violate the sign condition for all sufficiently large $m$. Evaluating each
+member $f_M$ at its own order $M$ with the rigorous Fourier-series enclosure of
+\texttt{src/certify\_fourier\_series.py} gives $S_M(f_M)>0$ for $6\le M\le32$
+and $S_M(f_M)<0$ for every evaluated $33\le M\le400$. For $M$ divisible by four
+the exact parameters are used. For other $M$, $a_M$ is replaced by a rational
+within $10^{-12}$, which is still an admissible log-concave density. The
+enclosures are recorded in \texttt{checkpoints/zou\_family\_threshold.json}.
+The family's first failing order is therefore thirty-three, seventeen above the
+witness of Section~\ref{sec:witness}.
+
 \section{Status and reproducibility}
-The current run is ongoing. Exact algebraic certificates establish the
-lower-order bounds described above. No exact minimal-order conclusion is claimed.
-The authoritative numerical state is in \texttt{checkpoints/campaign\_A.json};
-certificates are in \texttt{certs/}. Complete counts and final outcomes will
-replace this provisional paragraph after the scheduled campaign.
-The code, source literature, and versioned checkpoints are backed up to the
-private research repository. Float32 exploration, float64 refinement, and
-rigorous interval certification are distinct stages.
+Exact algebraic certificates establish the lower-order bounds described above,
+and interval-arithmetic certificates establish the order-sixteen witness. The
+orders fourteen and fifteen remain open, and no exact minimal-order conclusion is
+claimed. Extensive numerical searches at order fifteen, over several families of
+log-concave densities, found no negative value; this is evidence, not proof.
+Code, certificates and data are available at
+\url{https://github.com/RamanJamal1/gcm-logconcave-counterexamples}
+(code under the MIT license; text, certificates and data under CC BY 4.0).
+Float32 exploration, float64 refinement and rigorous interval certification
+are distinct stages, and only the last is used for any claim.
+
+\section*{Acknowledgements and use of AI}
+This work made extensive use of AI assistants (Anthropic's Claude models, via
+Claude Code) to write and run the software, including the symbolic
+computations, numerical searches and semidefinite solvers that produced the
+certificates and counterexamples, and to help draft parts of the text. All
+certificates are verified by independent exact rational or rigorous
+interval-arithmetic checkers included with the paper. The author takes full
+responsibility for the content.
 
 \begin{thebibliography}{9}
 \bibitem{zou} J. Zou, L. Fan, J. Gao, and J. Wang,

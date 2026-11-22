@@ -24,8 +24,8 @@ personally; the rest can be prepared in the repository.
 
 ## 4. The paper
 - [x] `paper/draft_note.pdf` rebuilt from the current `.tex` (2026-11-21, Tectonic 0.17.0; a fragile `\path` inside a caption was fixed).
-- [ ] Revise the draft's framing: it is titled a "computational research record", marked "provisional during computation", and
-      has no author line. Add **Raman Jamal** as author and rewrite the abstract for the venue.
+- [x] Draft framing updated: author line (Raman Jamal), abstract, a section on the Zou-family threshold, an AI-use
+      acknowledgement, and the public repository link. The abstract may still need adapting to the chosen venue.
 - [ ] Decide the headline result. With the current state: the bracket **14 ≤ m* ≤ 16** with explicit certificates and
       witness, plus the certified Zou-family threshold **m₀ = 33**. If an order-15 certificate is later verified, the
       headline becomes **m* = 16**.
