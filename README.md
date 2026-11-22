@@ -4,14 +4,14 @@ This repository studies the signs of higher time-derivatives of entropy along th
 
 The current verified bracket is **14 ≤ m* ≤ 16**, with the endpoint regularity made explicit in the note. The exact minimal order remains unresolved: orders 14 and 15 have neither a certificate nor a counterexample.
 
-**Status (2026-11-21).** The original search campaigns finished on 2026-11-17; [the briefing](MORNING_BRIEFING.md) and [progress](PROGRESS.md) are records of that run, and their "running" wording is historical. Follow-up work on orders 14–15 lives on the branch [`research/order15-mechanisms`](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/tree/research/order15-mechanisms); see its `HANDOFF_2026-11-21.md`. That branch contains exploratory numerics and new solver code but **no new certificate**. All numerical evidence so far (billions of candidate evaluations over several density families) is consistent with `m* = 16`; it is evidence, not proof.
+**Status (2026-11-21, version 0.2.0).** The original search campaigns finished on 2026-11-17. The unedited records of those AI-driven runs (prompt, run logs, [briefing](archive/process-records/MORNING_BRIEFING.md), [progress](archive/process-records/PROGRESS.md)) are kept in [`archive/process-records/`](archive/process-records/README.md); their "running" wording is historical. Follow-up work on orders 14–15 lives on the branch [`research/order15-mechanisms`](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/tree/research/order15-mechanisms); see its `HANDOFF_2026-11-21.md`. That branch contains exploratory numerics and new solver code but **no new certificate**. All numerical evidence so far (billions of candidate evaluations over several density families) is consistent with `m* = 16`; it is evidence, not proof.
 
 The convention is Boltzmann entropy `H(p) = integral p log p` and heat generator `(1/2) d²/dx²`. Reversing the entropy convention reverses the derivative signs.
 
 ## Verified results
 
-- Exact rational sum-of-squares identities establish nonnegativity at orders 6–11 and 13 under justified integration by parts. Order 12 follows by downward propagation along heat flow. The note gives the positive-time smoothing and endpoint argument.
-- Stronger identities give `S_m Var(p)^m ≥ (m-1)!/2` for every order 6–11, including the sharp bounds `S6 Var^6 ≥ 60`, `S7 Var^7 ≥ 360`, and `S8 Var^8 ≥ 2520`.
+- An exact rational sum-of-squares identity at order 13, plus downward propagation along the heat flow, gives `S_m(P_t p) ≥ 0` for every log-concave `p`, every `t > 0` and every `m ≤ 13` (direct identities also exist at orders 6–11). At `t = 0` the sign follows under the endpoint-regularity assumption stated in the paper.
+- Stronger identities give McKean's Gaussian optimality bound `S_m Var(p)^m ≥ (m-1)!/2` for log-concave densities at every order `m ≤ 11` (previously known for `m ≤ 5`), including `S6 Var^6 ≥ 60`, `S7 Var^7 ≥ 360`, and `S8 Var^8 ≥ 2520`.
 - The explicit density
 
   ```text
@@ -29,15 +29,22 @@ The convention is Boltzmann entropy `H(p) = integral p log p` and heat generator
 
   Two independent Arb calculations certify its signed derivative near `-0.76971250884778794609`: [spatial score-polynomial integration](certs/paired15_m16.json) and [exact heat-density Taylor integration](certs/independent_paired15_m16.json).
 
-- The explicit family of Zou–Fan–Gao–Wang, `f_m ∝ exp(-κx²/2)(1 + a cos x + b cos 2x)` with `a = 2^(-m/4)`, `b = 2^(-m)`, `κ = 8a`, which their paper shows fails only for "sufficiently large m", first fails at order **33**: rigorous Arb series enclosures give `S_M(f_M) > 0` for `6 ≤ M ≤ 32` and `S_M(f_M) < 0` for every evaluated `33 ≤ M ≤ 400` ([data](checkpoints/zou_family_threshold.json), [script](src/zou_threshold.py)).
+- The explicit family of Zou–Fan–Gao–Wang, `f_m ∝ exp(-κx²/2)(1 + a cos x + b cos 2x)` with `a = 2^(-m/4)`, `b = 2^(-m)`, `κ = 8a`, which their paper shows fails only for "sufficiently large m", first fails at order **33**: rigorous Arb series enclosures for the exact members (`a = 2^(-M/4)` enclosed in an Arb ball; no member skipped or approximated) give `S_M(f_M) > 0` for `6 ≤ M ≤ 32` and `S_M(f_M) < 0` for `33 ≤ M ≤ 400` ([data](checkpoints/zou_family_threshold.json), [script](src/zou_threshold.py), about 3.5 minutes). `src/zou_crosscheck.py` confirms `M = 32, 33, 36` with the independent heat-evolution method ([data](checkpoints/zou_crosscheck.json)).
+- Table 2 of the paper (certified `S_m` of the order-16 witness) now covers every order 6–20; the per-order enclosures are in `certs/witness_order_table_paired15/`.
 
 **Paper:** [`paper/main.pdf`](paper/main.pdf) ([LaTeX source](paper/main.tex)) is the structured manuscript prepared for expert review: main theorems, the certificate method, the analytic arguments, the order-16 counterexample, the Zou-family threshold, and a discussion of orders 14–15. Section 1 states explicitly which steps are machine-checked and which are written arguments needing review. The original research note, [`paper/draft_note.pdf`](paper/draft_note.pdf) ([source](paper/draft_note.tex)), is kept as the detailed computational record.
 
-Read the paper for definitions, proofs, analytic error bounds, and limitations. The PDF was rebuilt from the current source on 2026-11-21 (`tectonic -X compile paper/draft_note.tex`, Tectonic 0.17.0). It is still a working draft that needs human review. No novelty or exact-minimality claim is made.
+Read the paper for definitions, proofs, analytic error bounds, and limitations. Build the PDF with `tectonic -X compile paper/main.tex` (Tectonic 0.17.0). The analytic arguments (Lemma 3.3 and Sections 3.2–3.5) have not yet been checked by an independent human expert.
 
 ## Reproduce the proofs on a CPU
 
-Run from the repository root. The rational SOS verifier uses only the Python standard library:
+Run from the repository root (use `python` instead of `python3` on Windows). On Windows, clone with `git -c core.autocrlf=false clone ...` so certificate bytes match the hash manifest; `.gitattributes` also protects `certs/` and `checkpoints/`. First check that the data are the published bytes:
+
+```bash
+python3 src/check_hashes.py
+```
+
+The rational SOS verifier uses only the Python standard library:
 
 ```bash
 python3 src/verify_sos_standalone.py \
@@ -49,25 +56,29 @@ python3 src/verify_sos_standalone.py \
   certs/exact_mckean_quotient_m11.json
 ```
 
-It independently derives the entropy polynomial, checks each integration-by-parts identity, and proves positivity of the rational Gram matrices by exact Schur complements. A numerical SDP status is never used as a proof.
+It independently derives the entropy polynomial, checks each integration-by-parts identity, checks that every sharp certificate subtracts exactly `(m-1)!/2 (-u2)^m`, and proves positivity of the rational Gram matrices by exact Schur complements. A numerical SDP status is never used as a proof. It prints one JSON line per certificate, exits non-zero if any certificate fails, and writes a results file only when asked (`--output PATH`).
 
-> **Do not run this verifier with `python -O`.** It reports failures through `assert` statements, which `-O` removes, so under `-O` it would accept invalid certificates. Run it with plain `python3` as shown. The research branch adds `tracks/D_order14/verify_strict.py`, which runs the same verifier with every `assert` rewritten into an explicit error, so it is also valid under `-O`.
->
-> Running the verifier's command-line entry point also writes `certs/independent_sos_verification.json`.
+All verifiers raise explicit errors instead of using `assert`, so they are equally strict under `python -O`. To see the verifier reject corrupted certificates (perturbed Gram entry, wrong IBP multiplier, non-positive-definite or asymmetric Gram, wrong sharp term, dropped IBP term) under both `python` and `python -O`:
 
-The exact global minimum curvature is `25777/235206314 > 1/10000`; its independent standard-library proof is reproduced with `python3 src/certify_min_curvature.py`.
+```bash
+python3 src/test_verifier_rejects.py
+```
 
-The entropy-derivative verification needs `python-flint`:
+The exact global minimum curvature is `25777/235206314 > 1/10000`; its independent standard-library proof is reproduced with `python3 src/certify_min_curvature.py --output /tmp/curvature.json` (without `--output` it rewrites the tracked file).
+
+The entropy-derivative verification needs `python-flint` (the only entry in `requirements-verify.txt`):
 
 ```bash
 python3 -m venv .venv
-.venv/bin/pip install python-flint==0.9.0
+.venv/bin/pip install -r requirements-verify.txt
 .venv/bin/python src/certify_multifourier_spatial.py
 .venv/bin/python src/certify_direct_heat.py certs/paired15_m16.json \
   --output certs/independent_paired15_m16.json
+.venv/bin/python src/zou_threshold.py      # Zou family, M = 6..400 (about 3.5 minutes)
+.venv/bin/python src/zou_crosscheck.py     # M = 32, 33, 36 by the heat-evolution method
 ```
 
-The standard-library order-13 check took about 31 minutes in this run. For that larger identity, a faster independent matrix check uses exact rational polynomial arithmetic and outward-rounded Arb Schur complements:
+The standard-library order-13 check takes 15–30 minutes on one core, almost all of it in the exact Schur complements. For that larger identity, a faster independent matrix check uses exact rational polynomial arithmetic and outward-rounded Arb Schur complements:
 
 ```bash
 .venv/bin/python src/verify_sos_arb.py certs/exact_quotient_m13.json
@@ -86,7 +97,7 @@ Both routines use 200-digit ball arithmetic with analytic bounds for the omitted
 - `src/entropy_sparse.py`: faster exact rational recurrence for higher orders.
 - `src/sos_*.py`: numerical searches for identities; their outputs marked `proved: false` are not certificates.
 - `src/reconstruct_quotient.py`: exact rational reconstruction, followed by independent verification.
-- `src/certify_fourier_series.py`: an additional rigorous Fourier-series method, used for the independently checked order-17 example.
+- `src/certify_fourier_series.py`: an additional rigorous Fourier-series method, used for the independently checked order-17 example and the Zou family; `certify_balls` accepts Arb-ball parameters.
 - `src/certify_multifourier_spatial.py` and `src/certify_direct_heat.py`: independent order-16 proofs.
 - `src/checkpoint.py`: serialized Git checkpoints. It runs `git add -A`, commits and pushes to `origin main`, and campaigns call it when started with `--sync`.
 

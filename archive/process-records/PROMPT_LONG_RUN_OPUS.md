@@ -14,7 +14,7 @@ python3 -O tracks/D_order14/verify_strict.py <cert> <out>.
 Order 14 is a stepping stone (it improves the bracket to 15 <= m* <= 16) and is worth committing on the way.
 
 # START-UP (first 30 minutes)
-1. gh repo clone returnedlegend/gcm-logconcave-counterexamples; cd into it;
+1. gh repo clone [redacted-github-account]/gcm-logconcave-counterexamples; cd into it;
    git switch research/order15-mechanisms; git config user.name "GCM Research Automation";
    git config user.email gcm-research@localhost.
 2. Read HANDOFF_2026-11-21.md yourself in full. Delegate to a Haiku subagent: summarize tracks/*/REPORT.md,

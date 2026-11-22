@@ -1,0 +1,4 @@
+# Everything needed to re-run the proofs cited in the paper.
+# src/verify_sos_standalone.py and src/certify_min_curvature.py need only the Python standard library.
+# The interval-arithmetic certifiers (order-16 witness, Table 2, Zou family, Arb Schur check) need:
+python-flint==0.9.0

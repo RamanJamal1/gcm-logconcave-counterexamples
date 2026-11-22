@@ -23,7 +23,7 @@ def certification_job(c,order,path):
 def progress(state):
  lines=['# GCM research progress','',f"Status: {state['status']}",f"GPU evaluations: {state['gpu_evaluations']}",f"Completed generations: {state['generation']}",'','Numerical candidates are not interval certificates.']
  for m,e in state['best'].items():lines.append(f"- Order {m}: normalized signed derivative {e['normalized']:.12g}; certified: false")
- (ROOT/'PROGRESS.md').write_text('\n'.join(lines)+'\n')
+ (ROOT/'archive/process-records/PROGRESS.md').write_text('\n'.join(lines)+'\n')
 
 def main(args):
  path=ROOT/args.state

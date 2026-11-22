@@ -19,8 +19,20 @@ def gamma_numerator(p,q,k=0):
  return sum(math.comb(q,j)*math.comb(p,(p+2*q-4*j-k)//2) for j in range(q+1) if 0<=p+2*q-4*j-k<=2*p)
 
 def certify(m,a_string,b_string,kappa_string,N=96,dps=200,mode_cutoff=0):
+ """Original interface: parameters are exact rationals given as strings."""
+ ctx.dps=dps
+ return certify_balls(m,rat(a_string),rat(b_string),rat(kappa_string),N,dps,mode_cutoff,
+                      {'a':a_string,'b':b_string,'kappa':kappa_string})
+
+def certify_balls(m,a,b,kappa,N=96,dps=200,mode_cutoff=0,parameters=None):
+ """Same enclosure with a, b, kappa given as Arb balls (e.g. a = 2^(-M/4) enclosed).
+
+ Build the balls after setting ctx.dps. Every admissibility test below is a
+ rigorous ball comparison, so an undecidable test raises instead of passing.
+ """
  start=time.time();ctx.dps=dps;ctx.threads=1
- a,b,kappa=map(rat,[a_string,b_string,kappa_string]);r=abs(a)+abs(b)
+ if parameters is None:parameters={'a':str(a),'b':str(b),'kappa':str(kappa)}
+ r=abs(a)+abs(b)
  if not (r<1 and kappa>0):raise ValueError('inadmissible parameters')
  curvature=kappa-(abs(a)+4*abs(b))/(1-r)
  if not curvature>0:raise ValueError('convexity not proven')
@@ -56,7 +68,7 @@ def certify(m,a_string,b_string,kappa_string,N=96,dps=200,mode_cutoff=0):
  value=baseline+(periodic+moment+arb(0,(filtering+tail).upper()))/xi
  variance=(1+a*(1-1/kappa)*(-1/(2*kappa)).exp()+b*(1-4/kappa)*(-2/kappa).exp())/(kappa*xi)
  normalized=value*variance**m
- result={'normalized_signed_midpoint':float(normalized.mid()),'normalized_signed_interval':str(normalized),'variance_interval':str(variance),'order':m,'family':'gaussian_two_fourier_modes','parameters':{'a':a_string,'b':b_string,'kappa':kappa_string},'density':'Z^-1 exp(-kappa*x^2/2)*(1+a*cos(x)+b*cos(2*x))','signed_derivative_interval':str(value),'convexity_lower_bound':str(curvature.lower()),'periodic_finite_sum':str(periodic),'nonzero_mode_absolute_bound':str(filtering.upper()),'series_tail_absolute_bound':str(tail.upper()),'mode_cutoff':mode_cutoff,'series_cutoff':N,'digits':dps,'certified':bool(value.is_finite() and value<0),'status':'certified_negative' if value.is_finite() and value<0 else 'inconclusive_or_nonnegative','seconds':time.time()-start,'method':'exact time-change polynomial, finite periodic Fourier sum, rigorous nonzero-mode and infinite-series bounds'}
+ result={'normalized_signed_midpoint':float(normalized.mid()),'normalized_signed_interval':str(normalized),'variance_interval':str(variance),'order':m,'family':'gaussian_two_fourier_modes','parameters':parameters,'density':'Z^-1 exp(-kappa*x^2/2)*(1+a*cos(x)+b*cos(2*x))','signed_derivative_interval':str(value),'convexity_lower_bound':str(curvature.lower()),'periodic_finite_sum':str(periodic),'nonzero_mode_absolute_bound':str(filtering.upper()),'series_tail_absolute_bound':str(tail.upper()),'mode_cutoff':mode_cutoff,'series_cutoff':N,'digits':dps,'certified':bool(value.is_finite() and value<0),'status':'certified_negative' if value.is_finite() and value<0 else 'inconclusive_or_nonnegative','seconds':time.time()-start,'method':'exact time-change polynomial, finite periodic Fourier sum, rigorous nonzero-mode and infinite-series bounds'}
  return result
 
 if __name__=='__main__':

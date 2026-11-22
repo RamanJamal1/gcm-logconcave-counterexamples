@@ -33,7 +33,7 @@
       ],
       "returncode": 0,
       "stdout": "Branch 'main' set up to track remote branch 'main' from 'origin'.",
-      "stderr": "To https://github.com/returnedlegend/gcm-logconcave-counterexamples.git\n   1015169..92495ce  main -> main"
+      "stderr": "To https://github.com/[redacted-github-account]/gcm-logconcave-counterexamples.git\n   1015169..92495ce  main -> main"
     }
   ],
   "remote_status": "pushed"

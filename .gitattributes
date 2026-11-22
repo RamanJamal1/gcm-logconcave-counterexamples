@@ -1,0 +1,7 @@
+# Keep certificate and data bytes identical on every platform, so the SHA-256
+# manifest (certs/exact_certificate_sha256.json) matches on Windows checkouts too.
+certs/** -text
+checkpoints/** -text
+*.json -text
+*.pdf binary
+*.png binary

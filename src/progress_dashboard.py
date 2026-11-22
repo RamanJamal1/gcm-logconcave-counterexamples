@@ -21,5 +21,5 @@ def update():
    detail=f"segment {record['segment']}; affine residual {record.get('last_residual',float('nan')):.3g}" if 'segment' in record else f"{record.get('evaluations',0):,} CPU objective evaluations"
    lines.append(f"| {label} | {record.get('status','unknown')} | {detail} |")
  lines+=['','The small apparent order-12 improvement on a coarse curvature-lattice grid was rejected after refinement; see `certs/rbf_lattice_grid_check.json`.']
- write_text(ROOT/'PROGRESS.md','\n'.join(lines)+'\n');return {'gpu_evaluations':totals[0],'refinement_evaluations':totals[1]}
+ write_text(ROOT/'archive/process-records/PROGRESS.md','\n'.join(lines)+'\n');return {'gpu_evaluations':totals[0],'refinement_evaluations':totals[1]}
 if __name__=='__main__':print(update())

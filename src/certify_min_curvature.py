@@ -15,12 +15,19 @@ def value(a,x):
  out=Q(0)
  for c in reversed(a):out=out*x+c
  return out
+class CurvatureProofError(AssertionError):
+ """Raised explicitly (not via `assert`), so the proof is equally strict under python -O.
+ Subclasses AssertionError so existing callers that catch AssertionError keep working."""
+
 def certify(amplitudes=('1/15','1/40000','-1/18000000'),kappa='1/14',lower_bound='0'):
  a,b,c=map(Q,amplitudes);k=Q(kappa)
  g=[1-b,a-3*c,2*b,4*c];gp=deriv(g);gpp=deriv(gp);one_minus_x2=[Q(1),Q(0),Q(-1)]
  H=add(mul(add(mul(one_minus_x2,gpp),scale(mul([Q(0),Q(1)],gp),-1)),g),scale(mul(one_minus_x2,mul(gp,gp)),-1))
- N=add(mul(deriv(H),g),scale(mul(H,gp),-2));constant=N[0];rest=sum(map(abs,N[1:]));assert abs(a)+abs(b)+abs(c)<1;assert constant+rest<0, 'Coefficient dominance does not prove monotonicity'
- minimum=k-value(H,Q(-1))/value(g,Q(-1))**2;assert minimum>Q(lower_bound)
+ N=add(mul(deriv(H),g),scale(mul(H,gp),-2));constant=N[0];rest=sum(map(abs,N[1:]))
+ if not abs(a)+abs(b)+abs(c)<1:raise CurvatureProofError('density positivity not proved')
+ if not constant+rest<0:raise CurvatureProofError('Coefficient dominance does not prove monotonicity')
+ minimum=k-value(H,Q(-1))/value(g,Q(-1))**2
+ if not minimum>Q(lower_bound):raise CurvatureProofError('minimum curvature not above the lower bound')
  r={'certified':True,'parameters':{'amplitudes':list(map(str,[a,b,c])),'kappa':str(k)},'cosine_polynomial_g':list(map(str,g)),'log_curvature_numerator_H':list(map(str,H)),'derivative_numerator_N':list(map(str,N)),'constant_coefficient':str(constant),'absolute_sum_nonconstant_coefficients':str(rest),'N_uniform_upper_bound':str(constant+rest),'minimum_curvature_exact':str(minimum),'minimum_attained_when':'cos(x) = -1','simple_strict_lower_bound':str(Q(lower_bound)),'method':'exact Fraction polynomial arithmetic; N(c)<0 on [-1,1] by coefficient dominance; endpoint evaluation'}
  return r
 if __name__=='__main__':
