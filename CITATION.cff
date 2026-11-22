@@ -1,0 +1,57 @@
+# Citation metadata for this repository (https://citation-file-format.github.io/).
+# TODO before publishing: replace the placeholder author entry with your real name and ORCID,
+# and update `version`, `date-released` and `doi` when you make an archived release.
+cff-version: 1.2.0
+message: "If you use this software or its certificates, please cite it as below."
+type: software
+title: "Log-concave entropy derivatives along the heat flow: certificates and counterexamples"
+abstract: >-
+  Computer-assisted research on the signs of higher time-derivatives of entropy along the heat
+  flow for log-concave densities, S_m(p) = (-1)^m d^m/dt^m H(P_t p) at t = 0. Contains exact
+  rational sum-of-squares certificates of nonnegativity at orders 6-11 and 13 (order 12 by
+  heat-flow propagation), an Arb-certified log-concave counterexample at order 16, giving the
+  bracket 14 <= m* <= 16 for the first failing order, and the certified threshold m_0 = 33 of the
+  explicit family of Zou-Fan-Gao-Wang.
+authors:
+  - family-names: "<FAMILY NAME>"
+    given-names: "<GIVEN NAME>"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+repository-code: "https://github.com/RamanJamal1/gcm-logconcave-counterexamples"
+license: MIT
+version: "0.1.0"
+date-released: "2026-11-21"
+keywords:
+  - entropy
+  - heat flow
+  - log-concave densities
+  - completely monotone conjecture
+  - sum of squares
+  - computer-assisted proof
+  - interval arithmetic
+references:
+  - type: article
+    title: "A Counterexample to the Gaussian Completely Monotone Conjecture"
+    authors:
+      - family-names: "Gu"
+        given-names: "Yuzhou"
+      - family-names: "Sellke"
+        given-names: "Mark"
+    identifiers:
+      - type: other
+        value: "arXiv:2605.11656"
+    url: "https://arxiv.org/abs/2605.11656"
+  - type: article
+    title: "An Explicit Family of Log-Concave Counterexamples to the Gaussian Completely Monotone Conjecture"
+    authors:
+      - family-names: "Zou"
+        given-names: "Jiayang"
+      - family-names: "Fan"
+        given-names: "Luyao"
+      - family-names: "Gao"
+        given-names: "Jiayang"
+      - family-names: "Wang"
+        given-names: "Jia"
+    identifiers:
+      - type: other
+        value: "arXiv:2608.30275"
+    url: "https://arxiv.org/abs/2608.30275"

@@ -95,3 +95,7 @@ The original papers and source retrieval records are under `literature/`; [liter
 - **Code** (`src/` and the scripts under `tracks/` on the research branch): [MIT License](LICENSE).
 - **Paper, documentation, certificates and research data** (`paper/`, the Markdown files, `certs/`, `checkpoints/`): [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE-CC-BY-4.0.txt).
 - **Third-party material** under `literature/` (copies of published papers and their sources) is covered by neither license and remains under its authors' original terms.
+
+## Citing and publishing
+
+Citation metadata is in [`CITATION.cff`](CITATION.cff); GitHub shows a "Cite this repository" button from it. [`.zenodo.json`](.zenodo.json) holds metadata for an archived, DOI-bearing release. Authorship and the disclosure of AI assistance are described in [`AUTHORSHIP_AND_AI_DISCLOSURE.md`](AUTHORSHIP_AND_AI_DISCLOSURE.md), and the remaining steps toward publication are in [`PUBLICATION_CHECKLIST.md`](PUBLICATION_CHECKLIST.md).
