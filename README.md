@@ -31,7 +31,7 @@ The convention is Boltzmann entropy `H(p) = integral p log p` and heat generator
 
 - The explicit family of Zou–Fan–Gao–Wang, `f_m ∝ exp(-κx²/2)(1 + a cos x + b cos 2x)` with `a = 2^(-m/4)`, `b = 2^(-m)`, `κ = 8a`, which their paper shows fails only for "sufficiently large m", first fails at order **33**: rigorous Arb series enclosures give `S_M(f_M) > 0` for `6 ≤ M ≤ 32` and `S_M(f_M) < 0` for every evaluated `33 ≤ M ≤ 400` ([data](checkpoints/zou_family_threshold.json), [script](src/zou_threshold.py)).
 
-Read [the LaTeX note](paper/draft_note.tex) for definitions, proofs, analytic error bounds, and limitations. **The compiled [PDF](paper/draft_note.pdf) is out of date**: it predates the current `.tex` and still shows an older bracket and witness, so treat the `.tex` source as authoritative until the PDF is rebuilt. No novelty or exact-minimality claim is made.
+Read [the research note](paper/draft_note.pdf) ([LaTeX source](paper/draft_note.tex)) for definitions, proofs, analytic error bounds, and limitations. The PDF was rebuilt from the current source on 2026-11-21 (`tectonic -X compile paper/draft_note.tex`, Tectonic 0.17.0). It is still a working draft that needs human review. No novelty or exact-minimality claim is made.
 
 ## Reproduce the proofs on a CPU
 
@@ -88,13 +88,13 @@ Both routines use 200-digit ball arithmetic with analytic bounds for the omitted
 - `src/certify_multifourier_spatial.py` and `src/certify_direct_heat.py`: independent order-16 proofs.
 - `src/checkpoint.py`: serialized Git checkpoints. It runs `git add -A`, commits and pushes to `origin main`, and campaigns call it when started with `--sync`.
 
-The original papers and source retrieval records are under `literature/`; [literature notes](notes_literature.md) record the conventions and verified source claims. A finite unsuccessful search does not establish universal positivity. The interval `[14,16]` combines exact lower-order identities with a certified upper-bound example, not empirical minima.
+Citations and links for the two source papers are in [`literature/README.md`](literature/README.md) (the downloaded copies were removed for licensing reasons); [literature notes](notes_literature.md) record the conventions and verified source claims. A finite unsuccessful search does not establish universal positivity. The interval `[14,16]` combines exact lower-order identities with a certified upper-bound example, not empirical minima.
 
 ## License
 
 - **Code** (`src/` and the scripts under `tracks/` on the research branch): [MIT License](LICENSE).
 - **Paper, documentation, certificates and research data** (`paper/`, the Markdown files, `certs/`, `checkpoints/`): [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE-CC-BY-4.0.txt).
-- **Third-party material** under `literature/` (copies of published papers and their sources) is covered by neither license and remains under its authors' original terms.
+- **Third-party works** cited here (the papers listed in `literature/README.md`) are not included in the repository and remain under their authors' terms.
 
 ## Citing and publishing
 

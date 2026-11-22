@@ -23,7 +23,9 @@ personally; the rest can be prepared in the repository.
 - [ ] Ideally, have a second person (or a second independent implementation) re-check the certificates.
 
 ## 4. The paper
-- [ ] Rebuild `paper/draft_note.pdf` from the current `.tex` (the committed PDF is out of date).
+- [x] `paper/draft_note.pdf` rebuilt from the current `.tex` (2026-11-21, Tectonic 0.17.0; a fragile `\path` inside a caption was fixed).
+- [ ] Revise the draft's framing: it is titled a "computational research record", marked "provisional during computation", and
+      has no author line. Add **Raman Jamal** as author and rewrite the abstract for the venue.
 - [ ] Decide the headline result. With the current state: the bracket **14 ≤ m* ≤ 16** with explicit certificates and
       witness, plus the certified Zou-family threshold **m₀ = 33**. If an order-15 certificate is later verified, the
       headline becomes **m* = 16**.
@@ -32,9 +34,8 @@ personally; the rest can be prepared in the repository.
 - [ ] Remove internal or automation language from the text (for example "campaign", "briefing", automated status notes).
 
 ## 5. Third-party material
-- [ ] `literature/` contains copies of other authors' papers and their source files. These are **not** covered by this
-      repository's licenses, and redistributing them publicly may not be permitted. Before publication, consider
-      replacing them with links and citations (the arXiv identifiers are in `notes_literature.md`).
+- [x] Copies of other authors' papers were removed from `literature/` and replaced by citations and links
+      (`literature/README.md`). They remain in the git history; if that matters, the history can be rewritten.
 
 ## 6. Archiving and citation
 - [ ] **(you)** Connect the GitHub repository to Zenodo (https://zenodo.org → GitHub integration), then create a GitHub

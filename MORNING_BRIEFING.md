@@ -22,12 +22,12 @@ Z = sqrt(28*pi)
 Exact global minimum curvature: `min V'' = 25777/235206314 > 1/10000`.
 Certified signed derivative: `S16 < -3/4`, with an enclosure near `-0.76971250884778794609`.
 
-[Primary interval certificate](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/paired15_m16.json).
-[Exact global minimum-curvature proof](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/exact_min_curvature_paired15_m16.json).
-[Independent interval calculation](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/independent_paired15_m16.json). The spatial score-polynomial and exact heat-density calculations agree. Both include rigorous infinite-tail bounds.
+[Primary interval certificate](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/certs/paired15_m16.json).
+[Exact global minimum-curvature proof](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/certs/exact_min_curvature_paired15_m16.json).
+[Independent interval calculation](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/certs/independent_paired15_m16.json). The spatial score-polynomial and exact heat-density calculations agree. Both include rigorous infinite-tail bounds.
 
 Campaign C's strongest retained candidate has amplitudes `5/77, 1/42500, -1/19200000` and `kappa = 19/274`. Its certified derivative enclosure is `[-0.89447787200355764529870 +/- 3.90e-24]`. The global minimum curvature is `9819265/6439381591306`.
-[Campaign C spatial certificate](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/campaign_C_m16_best.json); [independent heat-density certificate](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/independent_campaign_C_m16_best.json).
+[Campaign C spatial certificate](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/certs/campaign_C_m16_best.json); [independent heat-density certificate](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/certs/independent_campaign_C_m16_best.json).
 
 ## Orders 6, 7, and 8
 
@@ -43,7 +43,7 @@ An additional exact certificate excludes the entire family `p ∝ exp(beta*x) co
 
 The Gaussian uniquely attains these proven bounds. For a normalized minimizing sequence, the relative score discrepancy from the matching Gaussian tends to zero; the note gives an explicit bound. Numerical values can differ in their last digits because of rounding; they are not the proof. The infimum of the unnormalized derivative is zero under dilation, so normalization is essential.
 
-[certs/exact_mckean_m6.json](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/exact_mckean_m6.json), [certs/exact_mckean_m7.json](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/exact_mckean_m7.json), [certs/exact_mckean_m8.json](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/exact_mckean_m8.json).
+[certs/exact_mckean_m6.json](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/certs/exact_mckean_m6.json), [certs/exact_mckean_m7.json](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/certs/exact_mckean_m7.json), [certs/exact_mckean_m8.json](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/certs/exact_mckean_m8.json).
 
 ## Hardware and actual work
 
@@ -70,19 +70,19 @@ Resource sampling began at 2026-11-17T09:02:01.851026+00:00; 378 observations we
 
 Formula tests at orders 6–8 passed the requested 1e-11 relative-error threshold against high-precision positive-time heat-convolution finite differences. Exact rational SOS identities were checked by a separate standard-library verifier. The counterexample has two different interval proof routes. Recovery checks exercised OOM handling and the bounded certification pool.
 
-Several CPU jobs exited with code 143 without a Python traceback. Their saved results were preserved, incomplete runs were not represented as completed, and proof jobs were restarted with heartbeat/exit supervision. Numerical SDP failures and indefinite Gram matrices are explicitly not proofs of either positivity or failure. See [certs/process_interruptions.json](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/process_interruptions.json).
+Several CPU jobs exited with code 143 without a Python traceback. Their saved results were preserved, incomplete runs were not represented as completed, and proof jobs were restarted with heartbeat/exit supervision. Numerical SDP failures and indefinite Gram matrices are explicitly not proofs of either positivity or failure. See [certs/process_interruptions.json](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/certs/process_interruptions.json).
 
 A finite search cannot prove a universal lower bound. The lower end of the bracket comes from exact certificates, not search minima. The remaining orders inside the bracket have not been resolved globally. No claim of novelty or peer review is made.
 
-- [Research note PDF](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/paper/draft_note.pdf)
-- [LaTeX source](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/paper/draft_note.tex)
-- [CPU-only reproduction instructions](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/README.md)
-- [Verified bracket and certificate hashes](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/checkpoints/research_status.json)
-- [Audited proof manifest](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/verified_manifest.json)
-- [Formula validation](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/formula_tests.json)
-- [Certified derivative table for the explicit witness](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/certs/witness_order_table.json)
-- [Literature verification](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/notes_literature.md)
-- [Progress and recorded counts](https://github.com/returnedlegend/gcm-logconcave-counterexamples/blob/main/PROGRESS.md)
+- [Research note PDF](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/paper/draft_note.pdf)
+- [LaTeX source](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/paper/draft_note.tex)
+- [CPU-only reproduction instructions](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/README.md)
+- [Verified bracket and certificate hashes](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/checkpoints/research_status.json)
+- [Audited proof manifest](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/certs/verified_manifest.json)
+- [Formula validation](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/certs/formula_tests.json)
+- [Certified derivative table for the explicit witness](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/certs/witness_order_table.json)
+- [Literature verification](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/notes_literature.md)
+- [Progress and recorded counts](https://github.com/RamanJamal1/gcm-logconcave-counterexamples/blob/main/PROGRESS.md)
 
 Local working logs are in `logs/`; raw logs are excluded from Git. Source code, JSON checkpoints, proof certificates, the note, and this briefing are tracked.
 

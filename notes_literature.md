@@ -1,6 +1,6 @@
 # Literature verification and mathematical conventions
 
-Checked 2026-11-17 UTC. Both primary papers were verified and their full HTML and original source archives downloaded. See `literature/download_manifest.json` and extracted source directories. Initial network failures remain recorded for provenance in `literature/retrieval.json`.
+Checked 2026-11-17 UTC. Both primary papers were verified and their full HTML and original source archives downloaded. See `literature/download_manifest.json`. (The downloaded copies were later removed from the repository for licensing reasons; see `literature/README.md`.) Initial network failures remain recorded for provenance in `literature/retrieval.json`.
 
 ## Zou, Fan, Gao, Wang (2026)
 
@@ -85,7 +85,7 @@ The following observations are derived here, not attributed to an unverified ref
 
 
 
-Update 2026-11-17 06:03 UTC: terminal networking restored; full HTML and original arXiv source archives for both papers downloaded successfully. See literature/download_manifest.json and extracted *_source directories. Earlier DNS failure notes describe the initial environment only.
+Update 2026-11-17 06:03 UTC: terminal networking restored; full HTML and original arXiv source archives for both papers downloaded successfully. See literature/download_manifest.json. (The copies were later removed for licensing reasons; see literature/README.md.) Earlier DNS failure notes describe the initial environment only.
 
 
 ## Follow-up search, 2026-11-17 07:31 UTC

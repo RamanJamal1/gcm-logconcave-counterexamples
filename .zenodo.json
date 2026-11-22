@@ -1,7 +1,8 @@
 {
   "title": "Log-concave entropy derivatives along the heat flow: certificates and counterexamples",
   "upload_type": "software",
-  "description": "Computer-assisted research on the signs of higher time-derivatives of entropy along the heat flow for log-concave densities: exact rational sum-of-squares certificates of nonnegativity at orders 6-11 and 13 (order 12 by heat-flow propagation), an Arb-certified log-concave counterexample at order 16 (bracket 14 <= m* <= 16), and the certified threshold m_0 = 33 of the Zou-Fan-Gao-Wang family. Prepared with substantial AI assistance; see AUTHORSHIP_AND_AI_DISCLOSURE.md.",
+  "description": "Computer-assisted research on the signs of higher time-derivatives of entropy along the heat flow for log-concave densities: exact rational sum-of-squares certificates of nonnegativity at orders 6-11 and 13 (order 12 by heat-flow propagation), an Arb-certified log-concave counterexample at order 16 (bracket 14 <= m* <= 16), and the certified threshold m_0 = 33 of the Zou-Fan-Gao-Wang family. The code is licensed under MIT; the paper, documentation, certificates and research data in this archive are licensed under CC BY 4.0 (see LICENSE and LICENSE-CC-BY-4.0.txt). Prepared with substantial AI assistance; see AUTHORSHIP_AND_AI_DISCLOSURE.md.",
+  "version": "0.1.0",
   "creators": [
     {
       "name": "Jamal, Raman"

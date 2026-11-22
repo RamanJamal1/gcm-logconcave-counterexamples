@@ -8,7 +8,7 @@ from pathlib import Path
 from checkpoint_io import write_text
 from progress_dashboard import CAMPAIGNS,update,read
 ROOT=Path(__file__).resolve().parents[1]
-REPO='https://github.com/returnedlegend/gcm-logconcave-counterexamples'
+REPO='https://github.com/RamanJamal1/gcm-logconcave-counterexamples'
 def link(path,label=None):return f'[{label or path}]({REPO}/blob/main/{path})'
 def render(final=False):
  now=datetime.datetime.now(datetime.timezone.utc);schedule=read(ROOT/'checkpoints/overnight_schedule.json');research=read(ROOT/'checkpoints/research_status.json');deadline=datetime.datetime.fromisoformat(schedule['deadline_utc'])
