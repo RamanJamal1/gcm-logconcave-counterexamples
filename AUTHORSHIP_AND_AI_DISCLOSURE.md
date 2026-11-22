@@ -1,12 +1,12 @@
 # Authorship and AI-use disclosure
 
-> **Before publishing:** add your ORCID when you have one, adjust the description of the human contributions so it is
+> **Before publishing:** adjust the description of the human contributions so it is
 > accurate, and copy the disclosure paragraph (adapted to the venue's wording) into the paper. arXiv and most journals
 > require AI use to be disclosed, and do not allow AI systems to be listed as authors.
 
 ## Author
 
-- **Raman Jamal**, the sole author and the person responsible for the
+- **Raman Jamal** (ORCID: [0009-0004-7042-8149](https://orcid.org/0009-0004-7042-8149)), the sole author and the person responsible for the
   content, its correctness and any submission.
 
 ## Contributions

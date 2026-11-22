@@ -5,7 +5,7 @@ personally; the rest can be prepared in the repository.
 
 ## 1. Authorship and ownership
 - [x] Author name (Raman Jamal) set in `CITATION.cff`, `.zenodo.json`, `AUTHORSHIP_AND_AI_DISCLOSURE.md` and `LICENSE`.
-- [ ] **(you)** Add your ORCID to `CITATION.cff` and `.zenodo.json` (free at https://orcid.org).
+- [x] ORCID 0009-0004-7042-8149 added to `CITATION.cff`, `.zenodo.json` and `AUTHORSHIP_AND_AI_DISCLOSURE.md`.
 - [ ] **(you)** Decide whether to keep the repository public before submission. Public code is fine, and many venues
       encourage it, but it also counts as prior disclosure.
 
