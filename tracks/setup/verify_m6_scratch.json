@@ -1,0 +1,12 @@
+{
+  "order": 6,
+  "target_subtraction": "0",
+  "exact_identity": true,
+  "positive_definite_grams": true,
+  "ibp_identities_verified": true,
+  "verifier": "standard-library Fraction sparse polynomials and exact Schur complements",
+  "seconds": 0.031192302703857422,
+  "certificate": "/home/ubuntu/gcm-run/repo/certs/exact_sos_m6.json",
+  "python_optimize_flag": 1,
+  "assert_rewritten": true
+}

@@ -1,0 +1,3 @@
+data/dd_m*.npz
+data/ck_*.npz
+__pycache__/

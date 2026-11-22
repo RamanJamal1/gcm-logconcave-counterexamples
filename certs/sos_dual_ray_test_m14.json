@@ -1,0 +1,37 @@
+{
+ "method": "min ||A x - b_delta|| over PSD x via restarted FISTA (A has orthonormal rows, L=1); candidate Farkas ray y=-r/|r| (S=A^T y, certificate needs S<=0 and b.y>0). Phase-1 IPM (min t s.t. Ax+tp=b) also tried: stalled numerically at t~0.93 (conditioning), uninformative.",
+ "deltas_tested": [
+  0.0,
+  1e-05
+ ],
+ "iterations": "~1.6e5 per delta, 1500 s each",
+ "results": {
+  "0.0": {
+   "residual_norm": 0.2596,
+   "b_norm": 20355,
+   "bty": 1.106,
+   "lambda_max_S_blocks": [
+    5.6e-06,
+    4.6e-06
+   ],
+   "trace_S": -1.829,
+   "norm_y": 1.0
+  },
+  "1e-5": {
+   "residual_norm": 0.2596,
+   "bty": 1.105,
+   "lambda_max_S_blocks": [
+    5.6e-06,
+    4.6e-06
+   ],
+   "trace_S": -1.829,
+   "norm_y": 1.0
+  }
+ },
+ "trajectory": "residual 1.9e4->4.2(k=8e3)->0.86(k=4.4e4)->0.26(k=1.56e5), decaying ~1/k; trace(X) saturating 3.4e5->4.8e5. Not a plateau: relative residual 1.3e-5 and falling.",
+ "interpretation": "lambda_max(S)>0 (not NSD) so no valid ray; bty<=lmax*trX holds (5.6e-6*4.8e5=2.7>1.1) so ray is consistent with a feasible X of trace ~5e5. Evidence: feasible but ill-conditioned, not infeasible.",
+ "exact_check_attempted": false,
+ "exact_check_passed": false,
+ "proved": false,
+ "claim": "No infeasibility of the SOS ansatz shown."
+}
