@@ -1,6 +1,5 @@
 # Citation metadata for this repository (https://citation-file-format.github.io/).
-# TODO before publishing: replace the placeholder author entry with your real name and ORCID,
-# and update `version`, `date-released` and `doi` when you make an archived release.
+# TODO: add your ORCID to the author entry when you have one, and update `version`, `date-released` and `doi` when you make an archived release.
 cff-version: 1.2.0
 message: "If you use this software or its certificates, please cite it as below."
 type: software
@@ -13,9 +12,8 @@ abstract: >-
   bracket 14 <= m* <= 16 for the first failing order, and the certified threshold m_0 = 33 of the
   explicit family of Zou-Fan-Gao-Wang.
 authors:
-  - family-names: "<FAMILY NAME>"
-    given-names: "<GIVEN NAME>"
-    orcid: "https://orcid.org/0000-0000-0000-0000"
+  - family-names: "Jamal"
+    given-names: "Raman"
 repository-code: "https://github.com/RamanJamal1/gcm-logconcave-counterexamples"
 license: MIT
 version: "0.1.0"

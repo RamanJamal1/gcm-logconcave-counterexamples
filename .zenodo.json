@@ -4,8 +4,7 @@
   "description": "Computer-assisted research on the signs of higher time-derivatives of entropy along the heat flow for log-concave densities: exact rational sum-of-squares certificates of nonnegativity at orders 6-11 and 13 (order 12 by heat-flow propagation), an Arb-certified log-concave counterexample at order 16 (bracket 14 <= m* <= 16), and the certified threshold m_0 = 33 of the Zou-Fan-Gao-Wang family. Prepared with substantial AI assistance; see AUTHORSHIP_AND_AI_DISCLOSURE.md.",
   "creators": [
     {
-      "name": "<FAMILY NAME>, <GIVEN NAME>",
-      "orcid": "0000-0000-0000-0000"
+      "name": "Jamal, Raman"
     }
   ],
   "license": "MIT",
